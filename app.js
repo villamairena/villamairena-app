@@ -6,7 +6,7 @@
   var ADDR = "Calle Navarra 5, 29612 La Mairena (Ojén), Málaga";
   var DRIVER = "Villa en Calle Navarra 5, La Mairena. Llame al interfono de la puerta y le abrimos. ¡Gracias!";
   var HOW_IDS = (C.da.how || []).map(function (h) { return h.id; });
-  var TABS = ["hjem", "ankomst", "huset", "omraadet", "kontakt"];
+  var TABS = ["hjem", "ankomst", "huset", "omraadet", "kontakt"], PANELS = TABS.concat(["ejer"]);
 
   function store(k, v) { try { if (v === undefined) return localStorage.getItem(k); localStorage.setItem(k, v); } catch (e) { return null; } }
   function pickLang() {
@@ -210,16 +210,95 @@
       '<div class="season"><span class="lbl">' + ic("i-flame", 16) + esc(s.seasonLabel) + "</span><p>" + esc(s.season) + "</p></div>" +
       "<ul>" + s.rules.map(function (r) { return "<li>" + esc(r) + "</li>"; }).join("") + "</ul>" + todo(s.houseRuleTodo) +
       "<h4>" + esc(s.fireTitle) + '</h4><ol class="fire-steps">' + s.fire.map(function (r) { return "<li>" + esc(r) + "</li>"; }).join("") + "</ol>" +
-      todo(s.evacTodo) + todo(s.extTodo) + "</section>";
+      todo(s.evacTodo) + todo(s.extTodo) + "</section>" +
+      '<a class="ownerlink" href="#ejer">Ejer-login</a>';
+  }
+
+
+  /* ---------- ejer (login + bookinger fra Lodgify via villamairena.com/ejer/api.php) ---------- */
+  var OWNER_API = "https://villamairena.com/ejer/api.php";
+  function renderOwnerShell() {
+    return '<div class="top-o" style="display:flex;justify-content:space-between;align-items:baseline"><h2>Ejer</h2><button class="btn" id="o-out" style="grid-row:auto;grid-column:auto" hidden>Log ud</button></div><div id="o-body"></div>';
+  }
+  var ownerMem = null;
+  function ownerToken() { return ownerMem || store("vm-owner-token"); }
+  function ownerLogin(msg) {
+    var b = document.getElementById("o-body"); if (!b) return;
+    document.getElementById("o-out").hidden = true;
+    b.innerHTML = '<form class="card owner-login" id="o-form"><p class="muted" style="font-size:.9rem">Kun for ejerne af VillaMairena.</p>' +
+      (msg ? '<div class="err">' + esc(msg) + "</div>" : "") +
+      '<label for="o-user" class="eyebrow" style="color:var(--muted)">Navn</label><input id="o-user" autocomplete="username" required>' +
+      '<label for="o-pass" class="eyebrow" style="color:var(--muted)">Adgangskode</label><input id="o-pass" type="password" autocomplete="current-password" required>' +
+      '<button class="cta" type="submit" style="border:0;cursor:pointer;justify-content:center">Log ind</button></form>';
+    document.getElementById("o-form").addEventListener("submit", function (e) {
+      e.preventDefault();
+      var btn = e.target.querySelector("button"); btn.disabled = true; btn.textContent = "Logger ind …";
+      fetch(OWNER_API + "?action=login", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ user: document.getElementById("o-user").value, password: document.getElementById("o-pass").value }) })
+        .then(function (r) { return r.json().then(function (j) { return { ok: r.ok, j: j }; }); })
+        .then(function (x) { if (x.ok && x.j.token) { ownerMem = x.j.token; store("vm-owner-token", x.j.token); ownerLoad(); } else ownerLogin(x.j.error || "Forkert navn eller adgangskode"); })
+        .catch(function () { ownerLogin("Kunne ikke kontakte serveren. Prøv igen."); });
+    });
+  }
+  function ownerLoad() {
+    var b = document.getElementById("o-body"); if (!b) return;
+    var tok = ownerToken(); if (!tok) { ownerLogin(); return; }
+    b.innerHTML = '<div class="card"><span class="muted">Henter bookinger fra Lodgify …</span></div>';
+    fetch(OWNER_API, { headers: { Authorization: "Bearer " + tok }, cache: "no-store" })
+      .then(function (r) { if (r.status === 401) { ownerMem = null; try { localStorage.removeItem("vm-owner-token"); } catch (e) {} throw "login"; } return r.json(); })
+      .then(ownerRender)
+      .catch(function (e) { if (e === "login") ownerLogin("Log ind igen."); else b.innerHTML = '<div class="err">Kunne ikke hente data. Tjek forbindelsen, og prøv igen.</div>'; });
+  }
+  document.addEventListener("click", function (e) {
+    if (e.target.id === "o-out") { ownerMem = null; try { localStorage.removeItem("vm-owner-token"); } catch (x) {} ownerLogin(); }
+    if (e.target.id === "o-reload") ownerLoad();
+  });
+  function ownerRender(data) {
+    var DAY = 864e5, fmtD = new Intl.DateTimeFormat("da-DK", { day: "numeric", month: "short" }), fmtW = new Intl.DateTimeFormat("da-DK", { weekday: "short" }), fmtM = new Intl.DateTimeFormat("da-DK", { month: "long", year: "numeric" });
+    function d(s) { return new Date(s + "T12:00:00"); }
+    function iso(dt) { return new Date(dt.getTime() - dt.getTimezoneOffset() * 6e4).toISOString().slice(0, 10); }
+    var todayS = iso(new Date());
+    function money(b) { return b.amount != null ? new Intl.NumberFormat("da-DK", { style: "currency", currency: b.currency || "EUR", maximumFractionDigits: 0 }).format(b.amount) : ""; }
+    var B = data.bookings || [];
+    document.getElementById("o-out").hidden = false;
+    var cur = B.filter(function (b) { return b.arrival <= todayS && b.departure > todayS; })[0];
+    var fut = B.filter(function (b) { return b.arrival > todayS; });
+    var html = "";
+    if (data.errors && data.errors.length) html += '<div class="err">Lodgify gav en fejl: ' + esc(data.errors.join(", ")) + "</div>";
+    if (cur) html += '<div class="card now"><span class="pill">Optaget nu</span><span class="big">' + esc(cur.guest) + (cur.people > 1 ? " + " + (cur.people - 1) : "") + '</span><span class="muted">' + fmtD.format(d(cur.arrival)) + " – " + fmtD.format(d(cur.departure)) + " · " + cur.nights + ' nætter · <span class="ch">' + esc(cur.channel) + "</span></span></div>";
+    else { var n = fut[0]; html += '<div class="card now"><span class="pill free">Ledigt nu</span><span class="big">' + (n ? "Næste gæst " + fmtW.format(d(n.arrival)) + " " + fmtD.format(d(n.arrival)) : "Ingen kommende bookinger") + "</span>" + (n ? '<span class="muted">' + esc(n.guest) + " · " + n.nights + ' nætter · <span class="ch">' + esc(n.channel) + "</span></span>" : "") + "</div>"; }
+    function occ(days) { var s = d(todayS), o = 0; for (var i = 0; i < days; i++) { var x = iso(new Date(s.getTime() + i * DAY)); if (B.some(function (b) { return b.arrival <= x && b.departure > x; })) o++; } return Math.round(o / days * 100); }
+    html += '<div class="stat"><div><b>' + occ(30) + "%</b><span>Belagt næste 30 dage</span></div><div><b>" + occ(90) + "%</b><span>Belagt næste 90 dage</span></div><div><b>" + fut.length + "</b><span>Kommende ophold</span></div></div>";
+    html += '<div class="card"><h3>Næste ophold</h3><div>' + (fut.slice(0, 12).map(function (b) {
+      return '<div class="bk"><span class="dt">' + fmtD.format(d(b.arrival)) + "<small>" + fmtW.format(d(b.arrival)) + '</small></span><span class="who">' + esc(b.guest) + '</span><span class="ch">' + esc(b.channel) + '</span><span class="meta">' + b.nights + " nætter til " + fmtD.format(d(b.departure)) + (b.people ? " · " + b.people + " gæster" : "") + (money(b) ? " · " + money(b) : "") + (b.status && b.status.toLowerCase() !== "booked" ? " · " + esc(b.status) : "") + "</span></div>";
+    }).join("") || '<p class="muted">Ingen kommende ophold.</p>') + "</div></div>";
+    var deps = B.slice().sort(function (a, b) { return a.departure < b.departure ? -1 : 1; }).filter(function (b) { return b.departure >= todayS; }).slice(0, 10);
+    html += '<div class="card"><h3>Skiftedage</h3><p class="muted" style="font-size:.86rem">Til rengøring og administrator.</p><div>' + (deps.map(function (b) {
+      var nxt = B.filter(function (x) { return x.arrival >= b.departure; }).sort(function (x, y) { return x.arrival < y.arrival ? -1 : 1; })[0];
+      var same = nxt && nxt.arrival === b.departure;
+      return '<div class="turn"><span class="d">' + fmtW.format(d(b.departure)) + " " + fmtD.format(d(b.departure)) + "</span>" + (same ? '<span class="warn">Skift samme dag</span>' : '<span class="muted">' + (nxt ? Math.round((d(nxt.arrival) - d(b.departure)) / DAY) + " dage til næste" : "Ingen næste") + "</span>") + '<span class="s">' + esc(b.guest) + " rejser" + (nxt ? " · næste gæst ankommer " + fmtD.format(d(nxt.arrival)) : "") + "</span></div>";
+    }).join("") || '<p class="muted">Ingen skiftedage.</p>') + "</div></div>";
+    var cal = "", s0 = d(todayS);
+    for (var m = 0; m < 4; m++) {
+      var first = new Date(s0.getFullYear(), s0.getMonth() + m, 1, 12), dim = new Date(first.getFullYear(), first.getMonth() + 1, 0).getDate(), off = (first.getDay() + 6) % 7;
+      cal += '<div class="mon"><h4>' + fmtM.format(first) + '</h4><div class="grid7">' + ["M", "T", "O", "T", "F", "L", "S"].map(function (x) { return '<span class="h">' + x + "</span>"; }).join("");
+      for (var i = 0; i < off; i++) cal += "<span></span>";
+      for (var day = 1; day <= dim; day++) { var x = iso(new Date(first.getFullYear(), first.getMonth(), day, 12)); var o = B.some(function (b) { return b.arrival <= x && b.departure > x; }); cal += '<span class="c' + (o ? " o" : "") + (x === todayS ? " t" : "") + '">' + day + "</span>"; }
+      cal += "</div></div>";
+    }
+    html += '<div class="card"><h3>Belægning</h3><div class="legend"><span><i></i>Optaget nat</span></div><div class="cal">' + cal + "</div></div>";
+    html += '<div class="card cam"><div><h3>Kamera ved indkørslen</h3><p class="muted" style="font-size:.86rem">' + (data.camera_url ? "Åbner live-billedet fra kameraet." : "Kameraet er ikke sat op endnu.") + "</p></div>" + (data.camera_url ? '<a class="cta" href="' + esc(data.camera_url) + '" target="_blank" rel="noopener">Se live</a>' : "") + "</div>";
+    html += '<div class="foot"><span>Logget ind som ' + esc(data.user || "") + " · opdateret " + new Date(data.updated || Date.now()).toLocaleString("da-DK", { dateStyle: "short", timeStyle: "short" }) + '</span><button class="btn" id="o-reload" style="grid-row:auto;grid-column:auto">Opdater</button></div>';
+    document.getElementById("o-body").innerHTML = html;
   }
 
   /* ---------- shell ---------- */
-  var panels = { hjem: renderHome, ankomst: renderArrival, huset: renderHouse, omraadet: renderArea, kontakt: renderContact };
+  var panels = { hjem: renderHome, ankomst: renderArrival, huset: renderHouse, omraadet: renderArea, kontakt: renderContact, ejer: renderOwnerShell };
   var current = "hjem";
   function renderAll() {
     T = C[lang];
     document.documentElement.lang = lang;
-    TABS.forEach(function (id) { document.getElementById(id).innerHTML = panels[id](); });
+    PANELS.forEach(function (id) { document.getElementById(id).innerHTML = panels[id](); });
+    if (current === "ejer") ownerLoad();
     document.querySelectorAll(".tabs button").forEach(function (b) { b.querySelector("span").textContent = T.ui.tabs[b.dataset.go]; });
     var sel = document.getElementById("lang"); sel.value = lang; sel.setAttribute("aria-label", T.ui.language);
     loadWx();
@@ -230,9 +309,10 @@
     else if (target === "sikkerhed") { tab = "kontakt"; focusEl = target; }
     else if (target === "mad" || target === "vejr") { tab = "hjem"; focusEl = target; }
     else if (target === "golf" || target === "padel" || target === "strande" || target === "indkoeb" || target === "kultur" || target === "restauranter") { tab = "omraadet"; focusEl = target; }
-    if (TABS.indexOf(tab) < 0) tab = "hjem";
+    if (PANELS.indexOf(tab) < 0) tab = "hjem";
     current = tab;
-    TABS.forEach(function (id) { document.getElementById(id).hidden = id !== tab; });
+    PANELS.forEach(function (id) { document.getElementById(id).hidden = id !== tab; });
+    if (tab === "ejer") ownerLoad();
     document.querySelectorAll(".tabs button").forEach(function (t) { t.setAttribute("aria-selected", t.dataset.go === tab ? "true" : "false"); });
     if (focusEl) {
       var el = document.getElementById(focusEl);

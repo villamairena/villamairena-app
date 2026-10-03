@@ -233,6 +233,45 @@ details.place.golf li::before{width:20px;height:20px;font-size:.72rem}
 .golf .hrs{display:flex;align-items:center;gap:6px;color:var(--ink);font-weight:600}
 .golf .hrs svg{width:13px;height:13px;color:var(--gold)}
 
+/* ejer */
+.now{display:grid;gap:6px}
+.now .big{font-family:var(--f-display);font-size:1.6rem;line-height:1.2}
+.pill{display:inline-flex;align-items:center;gap:6px;font-size:.78rem;font-weight:700;border-radius:99px;padding:3px 10px;background:var(--pine-soft);color:var(--pine);width:fit-content}
+.pill.free{background:var(--gold-soft);color:var(--todo)}
+.ch{font-size:.72rem;font-weight:700;border-radius:6px;padding:2px 7px;background:var(--bg);border:1px solid var(--line);white-space:nowrap}
+.bk{display:grid;grid-template-columns:62px 1fr auto;gap:2px 12px;padding-block:12px;border-top:1px solid var(--line);align-items:start}
+.bk:first-child{border-top:0;padding-top:0}
+.bk .dt{font-family:var(--f-display);font-size:1.15rem;line-height:1.1;font-variant-numeric:tabular-nums}
+.bk .dt small{display:block;font-family:var(--f-body);font-size:.72rem;color:var(--muted);text-transform:uppercase;letter-spacing:.06em}
+.bk .who{font-weight:700;min-width:0}
+.bk .meta{grid-column:2/-1;color:var(--muted);font-size:.86rem}
+.turn{display:grid;grid-template-columns:1fr auto;gap:2px 12px;padding-block:10px;border-top:1px solid var(--line)}
+.turn:first-child{border-top:0;padding-top:0}
+.turn .d{font-weight:700}
+.turn .s{color:var(--muted);font-size:.86rem;grid-column:1/-1}
+.warn{color:var(--todo);font-weight:700}
+.cal{display:grid;gap:16px}
+.mon h4{font-family:var(--f-display);font-weight:400;font-size:1.05rem;margin:0 0 6px;text-transform:capitalize}
+.grid7{display:grid;grid-template-columns:repeat(7,1fr);gap:3px;font-size:.78rem;font-variant-numeric:tabular-nums}
+.grid7 .h{color:var(--muted);text-align:center;font-weight:700;font-size:.7rem}
+.grid7 .c{aspect-ratio:1;display:grid;place-items:center;border-radius:6px;background:var(--bg);color:var(--muted)}
+.grid7 .c.o{background:var(--pine);color:var(--surface);font-weight:700}
+.grid7 .c.t{outline:2px solid var(--gold)}
+.legend{display:flex;gap:14px;font-size:.8rem;color:var(--muted);align-items:center}
+.legend i{display:inline-block;width:12px;height:12px;border-radius:3px;background:var(--pine);margin-right:6px;vertical-align:-1px}
+.stat{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.stat div{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:10px 12px;display:grid;gap:2px}
+.stat b{font-family:var(--f-display);font-weight:400;font-size:1.5rem;font-variant-numeric:tabular-nums}
+.stat span{font-size:.75rem;color:var(--muted)}
+.cam{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.err{border:1px solid var(--todo);background:var(--todo-bg);border-radius:12px;padding:12px 14px;font-size:.9rem}
+.foot{display:flex;justify-content:space-between;align-items:center;gap:10px;color:var(--muted);font-size:.8rem}
+.owner-login{display:grid;gap:10px}
+.owner-login input{font:inherit;padding:10px 12px;border:1px solid var(--line);border-radius:10px;background:var(--bg);color:var(--ink)}
+.owner-login input:focus-visible{outline:2px solid var(--gold);outline-offset:1px}
+.ownerlink{display:block;text-align:center;color:var(--muted);font-size:.82rem;padding:6px}
+#o-body{display:grid;gap:14px}
+
 </style>
 </head>
 <body>
@@ -272,6 +311,7 @@ details.place.golf li::before{width:20px;height:20px;font-size:.72rem}
   <section class="panel" id="huset" hidden></section>
   <section class="panel" id="omraadet" hidden></section>
   <section class="panel" id="kontakt" hidden></section>
+  <section class="panel" id="ejer" hidden></section>
 </div>
 <nav class="tabs" aria-label="Menu">
   <div class="in" role="tablist">

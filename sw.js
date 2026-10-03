@@ -1,5 +1,5 @@
 // Gemmer appen på telefonen, så den virker uden internet. Hent altid nyeste version først.
-const CACHE='villamairena-v26';
+const CACHE='villamairena-v29';
 const FILES=['./','index.html','manifest.webmanifest','content.js','app.js','icons/icon-192.png','icons/icon-512.png','images/logo-light.png','images/logo-dark.png',
  'images/ext.jpg','images/pool.jpg','images/living.jpg','images/kitchen.jpg','images/bath.jpg','images/closet.jpg',
  'images/r1.jpg','images/r2.jpg','images/r3.jpg','images/r4.jpg','images/r5.jpg'];
