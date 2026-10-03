@@ -91,6 +91,7 @@
     return "<div>" + list.map(function (p) {
       if (p.key === "golf") return renderGolfItem(p);
       if (p.key === "padel") return renderPadelItem(p);
+      if (p.key === "kultur") return renderCultItem(p);
       return '<div class="place">' + (p.tag ? '<span class="tag">' + esc(sug) + "</span><span></span>" : "") +
         '<span class="nm" style="grid-column:1">' + esc(p.n) + '</span><span class="dist">' + esc(p.d || "") + "</span>" + (p.s ? '<span class="ds">' + esc(p.s) + "</span>" : "") + "</div>";
     }).join("") + "</div>";
@@ -137,13 +138,57 @@
           '<span class="gl"><a href="' + route + '" target="_blank" rel="noopener">' + ic("i-pin", 14) + esc(a.golfRoute) + "</a></span></li>";
       }).join("") + "</ol></details>";
   }
+  function renderShopItem() {
+    var a = T.area, L = a.shops || [];
+    var origin = encodeURIComponent("Calle Navarra 5, 29612 La Mairena, Ojén");
+    return '<details class="place golf" id="indkoeb"><summary><span class="nm">' + esc(a.shopSum) + '</span><span class="dist">' + esc(a.shopSumD) + "</span></summary>" +
+      '<p class="muted gi">' + esc(a.shopIntro) + "</p><ol>" +
+      L.map(function (g) {
+        var route = "https://www.google.com/maps/dir/?api=1&origin=" + origin + "&destination=" + encodeURIComponent(g.q) + "&travelmode=driving";
+        return '<li><div class="gh"><span class="gn">' + esc(g.n) + '</span><span class="gm">ca. ' + g.min + " " + esc(a.golfMin) + "</span></div>" +
+          '<span class="gs">' + esc(g.type) + " · " + esc(g.area) + "</span>" +
+          '<span class="gs">' + esc(g.s) + "</span>" +
+          (g.hours ? '<span class="gs hrs">' + ic("i-clock", 13) + " " + esc(g.hours) + "</span>" : "") +
+          '<span class="gl"><a href="' + route + '" target="_blank" rel="noopener">' + ic("i-pin", 14) + esc(a.golfRoute) + "</a>" +
+          (g.url ? '<a href="' + esc(g.url) + '" target="_blank" rel="noopener">' + esc(a.golfWeb) + " ↗</a>" : "") + "</span></li>";
+      }).join("") + "</ol></details>";
+  }
+  function renderCultItem(p) {
+    var a = T.area, L = a.cults || [];
+    var origin = encodeURIComponent("Calle Navarra 5, 29612 La Mairena, Ojén");
+    return '<details class="place golf" id="kultur"><summary><span class="nm">' + esc(p.n) + '</span><span class="dist">' + esc(p.d || "") + '</span><span class="ds">' + esc(p.s) + "</span></summary>" +
+      '<p class="muted gi">' + esc(a.cultIntro) + "</p><ol>" +
+      L.map(function (g) {
+        var route = "https://www.google.com/maps/dir/?api=1&origin=" + origin + "&destination=" + encodeURIComponent(g.q) + "&travelmode=driving";
+        return '<li><div class="gh"><span class="gn">' + esc(g.n) + '</span><span class="gm">ca. ' + g.min + " " + esc(a.golfMin) + "</span></div>" +
+          '<span class="gs">' + esc(g.type) + " · " + esc(g.area) + "</span>" +
+          '<span class="gs">' + esc(g.s) + "</span>" +
+          (g.hours ? '<span class="gs hrs">' + ic("i-clock", 13) + " " + esc(g.hours) + "</span>" : "") +
+          '<span class="gl"><a href="' + route + '" target="_blank" rel="noopener">' + ic("i-pin", 14) + esc(a.golfRoute) + "</a>" +
+          (g.url ? '<a href="' + esc(g.url) + '" target="_blank" rel="noopener">' + esc(a.golfWeb) + " ↗</a>" : "") + "</span></li>";
+      }).join("") + "</ol></details>";
+  }
+  function renderRestItem() {
+    var a = T.area, L = a.rests || [];
+    var origin = encodeURIComponent("Calle Navarra 5, 29612 La Mairena, Ojén");
+    return '<details class="place golf" id="restauranter"><summary><span class="nm">' + esc(a.restSum) + '</span><span class="dist">' + esc(a.restSumD) + "</span></summary>" +
+      '<p class="muted gi">' + esc(a.restIntro) + "</p><ol>" +
+      L.map(function (g) {
+        var route = "https://www.google.com/maps/dir/?api=1&origin=" + origin + "&destination=" + encodeURIComponent(g.q) + "&travelmode=driving";
+        return '<li><div class="gh"><span class="gn">' + esc(g.n) + '</span><span class="gm">ca. ' + g.min + " " + esc(a.golfMin) + "</span></div>" +
+          '<span class="gs">' + esc(g.type) + " · " + esc(g.area) + (g.price ? " · " + esc(g.price) : "") + "</span>" +
+          '<span class="gs">' + esc(g.s) + "</span>" +
+          '<span class="gl"><a href="' + route + '" target="_blank" rel="noopener">' + ic("i-pin", 14) + esc(a.golfRoute) + "</a>" +
+          (g.url ? '<a href="' + esc(g.url) + '" target="_blank" rel="noopener">' + esc(a.golfWeb) + " ↗</a>" : "") + "</span></li>";
+      }).join("") + "</ol></details>";
+  }
   function renderArea() {
     var a = T.area;
     return '<div class="stack"><p class="eyebrow">' + esc(a.eyebrow) + "</p><h2>" + esc(a.title) + '</h2><p class="muted">' + esc(a.intro) + "</p></div>" +
+      '<div class="card"><h3>' + esc(a.dailyTitle) + "</h3><div>" + renderShopItem() + renderRestItem() + "</div>" + places(a.daily) + todo(a.dailyTodo) + "</div>" +
       '<div class="card"><h3>' + esc(a.beachTitle) + '</h3><p class="muted" style="font-size:.9rem">' + esc(a.beachText) + "</p>" +
       "<div>" + renderBeachItem() + "</div></div>" +
-      '<div class="card"><h3>' + esc(a.dailyTitle) + "</h3>" + places(a.daily) + todo(a.dailyTodo) + "</div>" +
-      '<div class="card"><h3>' + esc(a.expTitle) + "</h3>" + places(a.exp, a.suggestion) + todo(a.expTodo) + "</div>";
+      '<div class="card"><h3>' + esc(a.expTitle) + "</h3>" + places(a.exp, a.suggestion) + "</div>";
   }
 
   function contactRow(who, num, copyVal) {
@@ -184,7 +229,7 @@
     if (HOW_IDS.indexOf(target) >= 0) { tab = "huset"; focusEl = target; }
     else if (target === "sikkerhed") { tab = "kontakt"; focusEl = target; }
     else if (target === "mad" || target === "vejr") { tab = "hjem"; focusEl = target; }
-    else if (target === "golf" || target === "padel" || target === "strande") { tab = "omraadet"; focusEl = target; }
+    else if (target === "golf" || target === "padel" || target === "strande" || target === "indkoeb" || target === "kultur" || target === "restauranter") { tab = "omraadet"; focusEl = target; }
     if (TABS.indexOf(tab) < 0) tab = "hjem";
     current = tab;
     TABS.forEach(function (id) { document.getElementById(id).hidden = id !== tab; });
