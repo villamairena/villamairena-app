@@ -1,0 +1,281 @@
+<!doctype html>
+<html lang="da">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#f7f2e7">
+<meta name="description" content="VillaMairena · La Mairena, Ojén">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icons/icon-192.png">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="VillaMairena">
+<title>VillaMairena</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Marcellus&family=Nunito+Sans:opsz,wght@6..12,400;6..12,600;6..12,700&display=swap">
+<style>
+/* Layout: a phone-width app shell — sticky header, one scrolling panel per tab, bottom tab bar. Brand: VillaMairena gold on cream, pine green as the second voice. */
+:root{
+  --bg:#f7f2e7; --surface:#fffdf8; --ink:#2b2a24; --muted:#6f6a5b; --line:#e4dccb;
+  --gold:#a8812f; --gold-soft:#efe3c4; --pine:#3f5a45; --pine-soft:#e3ebe2;
+  --todo:#9a6a1c; --todo-bg:#fbf1dc;
+  --sky1:#f3e2bd; --sky2:#f7f2e7; --hill1:#c9b894; --hill2:#8f9c7f; --hill3:#3f5a45;
+  --f-display:"Marcellus","Cormorant Garamond",Georgia,serif;
+  --f-body:"Nunito Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --r:14px;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#171a16; --surface:#20241f; --ink:#ece6d6; --muted:#a8a28f; --line:#343a32;
+  --gold:#d3ad5c; --gold-soft:#3a3222; --pine:#9fbca4; --pine-soft:#26322a;
+  --todo:#e6b765; --todo-bg:#33291a;
+  --sky1:#3a3222; --sky2:#171a16; --hill1:#4a4535; --hill2:#34402f; --hill3:#22301f;
+  color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#171a16; --surface:#20241f; --ink:#ece6d6; --muted:#a8a28f; --line:#343a32;
+  --gold:#d3ad5c; --gold-soft:#3a3222; --pine:#9fbca4; --pine-soft:#26322a;
+  --todo:#e6b765; --todo-bg:#33291a;
+  --sky1:#3a3222; --sky2:#171a16; --hill1:#4a4535; --hill2:#34402f; --hill3:#22301f;
+  color-scheme:dark}
+
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+html,body{height:100%}
+body{background:var(--bg);color:var(--ink);font:400 15px/1.55 var(--f-body);margin:0}
+html{padding-top:env(safe-area-inset-top,0px)}
+.app{max-width:520px;margin:0 auto;min-height:100%;padding-inline:16px;padding-block:0 96px}
+h1,h2,h3{font-family:var(--f-display);font-weight:400;text-wrap:balance;margin:0}
+h2{font-size:1.6rem;line-height:1.2}
+h3{font-size:1.15rem}
+p{margin:0}
+a{color:var(--pine)}
+.eyebrow{font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);font-weight:700}
+.muted{color:var(--muted)}
+
+/* header */
+.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--bg);
+  display:flex;align-items:center;justify-content:space-between;padding-block:12px;border-bottom:1px solid var(--line);margin-inline:-16px;padding-inline:16px}
+.logo{font-family:var(--f-display);font-size:1.35rem;letter-spacing:.02em}
+.logo b{font-weight:400;color:var(--gold)}
+.lang{font-size:.75rem;color:var(--muted);border:1px solid var(--line);border-radius:99px;padding:3px 10px}
+
+/* hero */
+.hero{margin-inline:-16px;position:relative}
+.hero img{display:block;width:100%;aspect-ratio:3/2;object-fit:cover;max-width:100%}
+.hero::after{content:"";position:absolute;inset:25% 0 0 0;background:linear-gradient(to bottom,transparent,rgba(20,26,18,.72));pointer-events:none}
+.hero .txt{z-index:1}
+.hero .txt{position:absolute;left:16px;right:16px;bottom:16px;color:#f7f2e7;text-shadow:0 1px 10px rgba(20,28,18,.55)}
+.hero .txt h1{font-size:2rem;line-height:1.1}
+.hero .txt p{opacity:.9;font-size:.9rem}
+
+section.panel{display:grid;gap:18px;padding-block:20px}
+.stack{display:grid;gap:10px}
+
+.card{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:16px;display:grid;gap:8px;min-width:0}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+@media (max-width:360px){.grid2{grid-template-columns:1fr}}
+
+.key{display:grid;gap:4px}
+.key .label{font-size:.75rem;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;font-weight:700}
+.key .val{font-family:var(--f-display);font-size:1.5rem;font-variant-numeric:tabular-nums;letter-spacing:.04em}
+
+.todo{display:inline-flex;align-items:center;gap:6px;font-size:.78rem;font-weight:700;color:var(--todo);background:var(--todo-bg);
+  border:1px dashed var(--todo);border-radius:8px;padding:2px 8px;width:fit-content}
+.todo-block{border:1px dashed var(--todo);background:var(--todo-bg);color:var(--ink);border-radius:var(--r);padding:12px 14px;font-size:.9rem;display:grid;gap:4px}
+.todo-block strong{color:var(--todo)}
+
+.wx{display:grid;gap:12px}
+.wx-now{display:grid;grid-template-columns:auto 1fr;gap:4px 14px;align-items:center}
+.wx-now svg{width:52px;height:52px;color:var(--gold);grid-row:1/span 2}
+.wx-t{font-family:var(--f-display);font-size:2.4rem;line-height:1;font-variant-numeric:tabular-nums}
+.wx-d{color:var(--muted);font-size:.9rem}
+.wx-meta{display:flex;flex-wrap:wrap;gap:6px}
+.wx-days{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:4px;border-top:1px solid var(--line);padding-top:10px}
+.wx-day{display:grid;justify-items:center;gap:2px;font-size:.78rem;font-variant-numeric:tabular-nums}
+.wx-day svg{width:22px;height:22px;color:var(--pine)}
+.wx-day .dn{color:var(--muted);font-weight:700}
+.wx-day .lo{color:var(--muted)}
+.wx-note{font-size:.75rem;color:var(--muted)}
+.food{display:grid;gap:10px}
+.food .acts{display:flex;flex-wrap:wrap;gap:8px}
+.cta{display:inline-flex;align-items:center;gap:8px;background:var(--pine);color:var(--surface);text-decoration:none;font-weight:700;border-radius:99px;padding:10px 16px}
+.cta:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+.note{background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:10px 12px;font-size:.88rem;display:grid;gap:4px}
+.note .lbl{font-size:.7rem;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);font-weight:700}
+.food .btn{grid-row:auto;grid-column:auto}
+.row{display:flex;gap:12px;align-items:flex-start;padding-block:12px;border-top:1px solid var(--line)}
+.row:first-child{border-top:0;padding-top:0}
+.row .ic{flex:none;width:36px;height:36px;border-radius:10px;background:var(--pine-soft);color:var(--pine);display:grid;place-items:center}
+.row .ic svg{width:20px;height:20px}
+.row .body{min-width:0;display:grid;gap:2px}
+.row .body .t{font-weight:700}
+.row .body .s{color:var(--muted);font-size:.9rem}
+
+.facts{display:flex;flex-wrap:wrap;gap:6px}
+.chip{font-size:.82rem;background:var(--pine-soft);color:var(--pine);border-radius:99px;padding:4px 10px;font-weight:600}
+
+.steps{display:grid;gap:0;counter-reset:s;margin:0;padding:16px;list-style:none}
+.steps li{counter-increment:s;display:grid;grid-template-columns:32px 1fr;gap:12px;padding-block:12px;border-top:1px solid var(--line)}
+.steps li:first-child{border-top:0;padding-top:0}
+.steps li::before{content:counter(s);width:28px;height:28px;border-radius:50%;background:var(--gold);color:var(--surface);display:grid;place-items:center;font-weight:700;font-size:.85rem}
+.steps li > div{min-width:0;display:grid;gap:4px}
+
+.gal{display:flex;gap:10px;overflow-x:auto;scroll-snap-type:x mandatory;margin-inline:-16px;padding-inline:16px;padding-block:2px 6px}
+.gal figure{flex:none;width:78%;max-width:340px;margin:0;scroll-snap-align:start;display:grid;gap:6px}
+.gal img,.photo{width:100%;aspect-ratio:3/2;object-fit:cover;border-radius:12px;display:block;cursor:zoom-in;max-width:100%}
+.gal figcaption{font-size:.85rem;color:var(--muted)}
+.room .th{width:76px;height:56px;object-fit:cover;border-radius:8px;cursor:zoom-in}
+.lb{position:fixed;inset:0;z-index:30;background:rgba(10,12,9,.92);display:grid;place-items:center;padding:16px;cursor:zoom-out}
+.lb img{max-width:100%;max-height:90%;border-radius:8px}
+.room{display:grid;grid-template-columns:76px 1fr auto;gap:12px;align-items:center;padding-block:10px;border-top:1px solid var(--line)}
+.room:first-of-type{border-top:0}
+.room .n{font-family:var(--f-display);color:var(--gold)}
+.room .m{font-variant-numeric:tabular-nums;color:var(--muted);font-size:.85rem;white-space:nowrap}
+.room .d{min-width:0}
+.room .d small{display:block;color:var(--muted)}
+
+.pool{display:grid;gap:8px}
+.pool svg{width:100%;height:auto;display:block}
+
+details{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:12px 16px}
+details summary{cursor:pointer;font-weight:700;list-style:none;display:flex;justify-content:space-between;gap:8px}
+details summary::after{content:"+";color:var(--gold);font-weight:400;font-size:1.2rem;line-height:1}
+details[open] summary::after{content:"–"}
+details p{margin-top:8px;color:var(--muted)}
+
+.place{display:grid;grid-template-columns:1fr auto;gap:4px 12px;padding-block:12px;border-top:1px solid var(--line)}
+.place:first-child{border-top:0;padding-top:0}
+.place .nm{font-weight:700}
+.place .dist{font-variant-numeric:tabular-nums;color:var(--gold);font-weight:700;font-size:.85rem;white-space:nowrap}
+.place .ds{grid-column:1/-1;color:var(--muted);font-size:.9rem}
+.tag{font-size:.7rem;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);font-weight:700}
+
+.contact{display:grid;grid-template-columns:1fr auto;gap:2px 12px;align-items:center;padding-block:12px;border-top:1px solid var(--line)}
+.contact:first-child{border-top:0;padding-top:0}
+.contact .who{font-weight:700}
+.contact .what{color:var(--muted);font-size:.88rem;grid-column:1}
+.contact > .todo{grid-column:1}
+.contact .num{font-variant-numeric:tabular-nums;user-select:all;grid-column:1}
+.btn{font:inherit;font-size:.82rem;font-weight:700;border:1px solid var(--line);background:var(--bg);color:var(--ink);border-radius:99px;padding:6px 12px;cursor:pointer;grid-row:1/span 3;grid-column:2}
+.btn:hover{border-color:var(--gold)}
+.btn:focus-visible,.tabs button:focus-visible,summary:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+.sos{background:var(--pine);color:var(--surface);border:0}
+.sos .what,.sos .s{color:inherit;opacity:.85}
+.sos .big{font-family:var(--f-display);font-size:2.4rem;line-height:1}
+
+.linkbtn{display:inline-flex;gap:6px;align-items:center;font-weight:700;text-decoration:none;color:var(--pine);border:1px solid var(--line);border-radius:99px;padding:8px 14px;width:fit-content;background:var(--surface)}
+
+/* tab bar */
+.tabs{position:fixed;left:0;right:0;bottom:0;z-index:10;background:var(--surface);border-top:1px solid var(--line);
+  padding:6px 8px calc(6px + env(safe-area-inset-bottom,0px))}
+.tabs .in{max-width:520px;margin:0 auto;display:grid;grid-template-columns:repeat(5,1fr)}
+.tabs button{font:inherit;font-size:.7rem;font-weight:700;background:none;border:0;color:var(--muted);display:grid;justify-items:center;gap:2px;padding:6px 0;cursor:pointer;border-radius:10px}
+.tabs button svg{width:22px;height:22px}
+.tabs button[aria-selected="true"]{color:var(--gold)}
+.toast{position:fixed;left:50%;bottom:84px;transform:translateX(-50%);background:var(--ink);color:var(--bg);padding:8px 14px;border-radius:99px;font-size:.85rem;z-index:20}
+@media (prefers-reduced-motion:no-preference){section.panel{animation:in .25s ease-out}@keyframes in{from{transform:translateY(6px)}to{transform:none}}}
+.lang{appearance:none;-webkit-appearance:none;font:inherit;font-size:.8rem;color:var(--ink);background:var(--surface);border:1px solid var(--line);border-radius:99px;padding:5px 26px 5px 12px;cursor:pointer;
+  background-image:linear-gradient(45deg,transparent 50%,var(--muted) 50%),linear-gradient(135deg,var(--muted) 50%,transparent 50%);background-position:calc(100% - 14px) 52%,calc(100% - 10px) 52%;background-size:4px 4px;background-repeat:no-repeat}
+.lang:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+.fire{display:flex;gap:12px;align-items:flex-start;text-decoration:none;color:var(--ink);background:var(--todo-bg);border:1px solid var(--todo);border-radius:var(--r);padding:12px 14px;font-size:.88rem;line-height:1.45}
+.fire svg{flex:none;width:22px;height:22px;color:var(--todo);margin-top:2px}
+.fire strong{color:var(--todo)}
+details.how summary{align-items:center;justify-content:flex-start}
+details.how summary::after{margin-left:auto}
+details.how .hi{width:30px;height:30px;border-radius:8px;background:var(--pine-soft);color:var(--pine);display:grid;place-items:center;flex:none;margin-right:4px}
+details.how .hi svg{width:18px;height:18px}
+details.how ul{margin:10px 0 0;padding-left:20px;color:var(--muted);display:grid;gap:4px}
+details.how p{margin-top:8px}
+details.how:target,details.how[open]{border-color:var(--gold)}
+.safety{scroll-margin-top:72px}
+.safety h4{font-family:var(--f-display);font-weight:400;font-size:1.1rem;margin:6px 0 0}
+.safety ul,.safety ol{margin:0;padding-left:20px;display:grid;gap:6px;font-size:.92rem}
+.safety ol li::marker{color:var(--gold);font-weight:700}
+.season{background:var(--todo-bg);border:1px solid var(--todo);border-radius:10px;padding:10px 12px;display:grid;gap:4px;font-size:.92rem}
+.season .lbl{display:inline-flex;gap:6px;align-items:center;font-weight:700;color:var(--todo);font-size:.8rem;text-transform:uppercase;letter-spacing:.06em}
+#saadan details{scroll-margin-top:72px}
+.tabs button span{display:block}
+
+.golf ol{list-style:none;margin:0;padding:0;counter-reset:g}
+.golf li{counter-increment:g;display:grid;grid-template-columns:28px 1fr;column-gap:10px;row-gap:2px;padding-block:12px;border-top:1px solid var(--line)}
+.golf li:first-child{border-top:0;padding-top:4px}
+.golf li::before{content:counter(g);grid-row:1/span 4;width:24px;height:24px;border-radius:50%;background:var(--pine-soft);color:var(--pine);font-weight:700;font-size:.78rem;display:grid;place-items:center;margin-top:1px}
+.golf .gh{display:flex;justify-content:space-between;gap:10px;align-items:baseline;min-width:0}
+.golf .gn{font-weight:700}
+.golf .gm{color:var(--gold);font-weight:700;font-size:.85rem;white-space:nowrap;font-variant-numeric:tabular-nums}
+.golf .gs{color:var(--muted);font-size:.86rem;grid-column:2}
+.golf .gl{grid-column:2;display:flex;flex-wrap:wrap;gap:6px 14px;margin-top:4px;font-size:.85rem;font-weight:700}
+.golf .gl a{display:inline-flex;align-items:center;gap:4px;text-decoration:none;color:var(--pine)}
+.golf .gl a:hover{text-decoration:underline}
+
+details.place.golf{display:block;background:none;border:0;border-top:1px solid var(--line);border-radius:0;padding:12px 0}
+details.place.golf:first-child{border-top:0;padding-top:0}
+details.place.golf summary{display:grid;grid-template-columns:18px 1fr auto;gap:4px 8px;align-items:baseline;cursor:pointer;list-style:none;font-weight:400}
+details.place.golf summary::-webkit-details-marker{display:none}
+details.place.golf summary::before{content:"";width:0;height:0;border-left:7px solid var(--gold);border-top:5px solid transparent;border-bottom:5px solid transparent;transition:transform .15s;align-self:center;grid-row:1}
+details.place.golf[open] summary::before{transform:rotate(90deg)}
+details.place.golf summary::after{content:none}
+details.place.golf summary .nm{font-weight:700}
+details.place.golf summary .ds{grid-column:2/-1}
+details.place.golf .gi{font-size:.85rem;margin:10px 0 0 26px}
+details.place.golf ol{margin:6px 0 0 26px}
+details.place.golf li{grid-template-columns:24px 1fr}
+details.place.golf li::before{width:20px;height:20px;font-size:.72rem}
+
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-home" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l9-7 9 7"/><path d="M5 10v10h14V10"/><path d="M10 20v-6h4v6"/></symbol>
+  <symbol id="i-pin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-6.2-7-12a7 7 0 0114 0c0 5.8-7 12-7 12z"/><circle cx="12" cy="9" r="2.5"/></symbol>
+  <symbol id="i-key" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="15" r="4"/><path d="M11 12l9-9M17 6l3 3M15 8l2 2"/></symbol>
+  <symbol id="i-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></symbol>
+  <symbol id="i-phone" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 005 5L15 13l5 2v4a2 2 0 01-2 2A16 16 0 013 6a2 2 0 012-2"/></symbol>
+  <symbol id="i-wifi" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M2 9a15 15 0 0120 0M5 12.5a10 10 0 0114 0M8.5 16a5 5 0 017 0"/><circle cx="12" cy="19" r="1" fill="currentColor"/></symbol>
+  <symbol id="i-clock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></symbol>
+  <symbol id="i-car" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 16V11l2-5h10l2 5v5"/><path d="M3 16h18v3H3z"/><circle cx="7.5" cy="13.5" r=".8" fill="currentColor"/><circle cx="16.5" cy="13.5" r=".8" fill="currentColor"/></symbol>
+  <symbol id="i-gate" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M4 21V5M20 21V5M4 9h16M4 15h16M9 9v12M15 9v12"/></symbol>
+  <symbol id="i-flame" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3s5 4.5 5 10a5 5 0 01-10 0c0-2.5 1.5-4 1.5-4s.5 2 2 2c0-4 1.5-8 1.5-8z"/></symbol>
+  <symbol id="i-cart" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 4h2l2.5 11h11L21 7H6.5"/><circle cx="9" cy="19" r="1.4"/><circle cx="17" cy="19" r="1.4"/></symbol>
+  <symbol id="w-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2M12 19.5v2M2.5 12h2M19.5 12h2M5.3 5.3l1.4 1.4M17.3 17.3l1.4 1.4M5.3 18.7l1.4-1.4M17.3 6.7l1.4-1.4"/></symbol>
+  <symbol id="w-part" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3.5v1.2M3.5 8h1.2M4.8 4.8l.9.9M11.2 4.8l-.9.9"/><path d="M5.3 10.4A3.2 3.2 0 0110.6 7"/><path d="M8 19h9.5a3.5 3.5 0 00.4-7 5 5 0 00-9.6 1A3 3 0 008 19z"/></symbol>
+  <symbol id="w-cloud" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"><path d="M7 18h10.5a4 4 0 00.5-8 6 6 0 00-11.4 1.5A3.3 3.3 0 007 18z"/></symbol>
+  <symbol id="w-fog" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M4 9h16M3 13h18M5 17h14"/></symbol>
+  <symbol id="w-rain" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M7 14h10.5a4 4 0 00.5-8 6 6 0 00-11.4 1.5A3.3 3.3 0 007 14z"/><path d="M9 17l-1 3M13 17l-1 3M17 17l-1 3"/></symbol>
+  <symbol id="w-storm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M7 14h10.5a4 4 0 00.5-8 6 6 0 00-11.4 1.5A3.3 3.3 0 007 14z"/><path d="M12.5 15l-2 3.5h3l-2 3.5"/></symbol>
+  <symbol id="i-wave" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M2 9c2 0 2-1.5 4-1.5S8 9 10 9s2-1.5 4-1.5S16 9 18 9s2-1.5 4-1.5M2 15c2 0 2-1.5 4-1.5S8 15 10 15s2-1.5 4-1.5S16 15 18 15s2-1.5 4-1.5"/></symbol>
+  <symbol id="i-snow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M12 2v20M4 7l16 10M20 7L4 17M9 3.5l3 2.5 3-2.5M9 20.5l3-2.5 3 2.5"/></symbol>
+  <symbol id="i-blind" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M3 3h18M5 3v12h14V3M5 7h14M5 11h14M12 15v4"/><circle cx="12" cy="20" r="1"/></symbol>
+  <symbol id="i-tv" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="12" rx="2"/><path d="M8 21h8M12 17v4"/></symbol>
+  <symbol id="i-cup" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9h13v5a5 5 0 01-5 5H9a5 5 0 01-5-5z"/><path d="M17 11h1.5a2.5 2.5 0 010 5H17M8 3v3M12 3v3"/></symbol>
+  <symbol id="i-wash" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><rect x="4" y="3" width="16" height="18" rx="2"/><circle cx="12" cy="13" r="4.5"/><path d="M7 6.5h2"/></symbol>
+  <symbol id="i-bin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h16M9 7V4h6v3M6 7l1 14h10l1-14M10 11v6M14 11v6"/></symbol>
+</svg>
+<div class="app">
+  <header class="top">
+    <div class="logo">Villa<b>Mairena</b></div>
+    <select class="lang" id="lang"></select>
+  </header>
+  <section class="panel" id="hjem"></section>
+  <section class="panel" id="ankomst" hidden></section>
+  <section class="panel" id="huset" hidden></section>
+  <section class="panel" id="omraadet" hidden></section>
+  <section class="panel" id="kontakt" hidden></section>
+</div>
+<nav class="tabs" aria-label="Menu">
+  <div class="in" role="tablist">
+    <button role="tab" data-go="hjem" aria-selected="true"><svg aria-hidden="true"><use href="#i-home"/></svg><span>Hjem</span></button>
+    <button role="tab" data-go="ankomst" aria-selected="false"><svg aria-hidden="true"><use href="#i-car"/></svg><span>Ankomst</span></button>
+    <button role="tab" data-go="huset" aria-selected="false"><svg aria-hidden="true"><use href="#i-key"/></svg><span>Huset</span></button>
+    <button role="tab" data-go="omraadet" aria-selected="false"><svg aria-hidden="true"><use href="#i-sun"/></svg><span>Området</span></button>
+    <button role="tab" data-go="kontakt" aria-selected="false"><svg aria-hidden="true"><use href="#i-phone"/></svg><span>Kontakt</span></button>
+  </div>
+</nav>
+<div class="toast" id="toast" hidden></div>
+
+<script src="content.js"></script>
+<script src="app.js"></script>
+<script>if('serviceWorker' in navigator){addEventListener('load',function(){navigator.serviceWorker.register('sw.js').catch(function(){})})}</script>
+</body>
+</html>
