@@ -27,7 +27,7 @@
   function fireSeason(d) { var m = d.getMonth() + 1, day = d.getDate(); return (m > 6 && m < 10) || m === 6 || (m === 10 && day <= 15); }
 
   function renderHome() {
-    var h = T.home, w = T.weather;
+    var h = T.home, w = T.weather, W = window.VM_WIFI || { ssid: "VillaMairena", pass: "" };
     var banner = fireSeason(new Date()) ?
       '<a class="fire" href="#sikkerhed">' + ic("i-flame") + '<span><strong>' + esc(h.fireBanner.title) + "</strong><br>" + esc(h.fireBanner.body) + "</span></a>" : "";
     return '' +
@@ -36,7 +36,7 @@
       banner +
       '<div class="grid2">' +
       '<div class="card key"><span class="label">' + esc(h.gate) + '</span><span class="val">• • • •</span><span class="muted" style="font-size:.8rem">' + esc(h.gateNote) + "</span></div>" +
-      '<div class="card key"><span class="label">' + esc(h.wifi) + '</span><span class="val" style="font-size:1.05rem;letter-spacing:0">VillaMairena</span><span class="todo">' + esc(h.wifiTodo) + "</span></div>" +
+      '<div class="card key"><span class="label">' + esc(h.wifi) + '</span><span class="val" style="font-size:1.05rem;letter-spacing:0">' + esc(W.ssid) + '</span><span class="muted" style="font-size:.8rem">' + esc(h.wifiPassLabel) + ': <strong class="num" style="color:var(--ink)">' + esc(W.pass) + '</strong></span><button class="btn" style="width:fit-content;grid-row:auto;grid-column:auto" data-copy="' + esc(W.pass) + '">' + esc(T.ui.copy) + "</button></div>" +
       '<div class="card key"><span class="label">' + esc(h.checkin) + '</span><span class="val">--:--</span><span class="todo">' + esc(T.ui.todo) + "</span></div>" +
       '<div class="card key"><span class="label">' + esc(h.checkout) + '</span><span class="val">--:--</span><span class="todo">' + esc(T.ui.todo) + "</span></div>" +
       "</div>" +

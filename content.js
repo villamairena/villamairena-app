@@ -19,7 +19,7 @@ window.VM_CONTENT = {
       title: "Velkommen til VillaMairena",
       sub: "400 meter over havet, 8 minutter fra stranden i Elviria.",
       gate: "Portkode", gateNote: "Sendes til jer i beskeden før ankomst",
-      wifi: "Wi‑Fi", wifiTodo: "Kode udfyldes",
+      wifi: "Wi‑Fi", wifiPassLabel: "Kode",
       checkin: "Check-in", checkout: "Check-ud",
       fireBanner: { title: "Høj brandfare 1. juni – 15. oktober", body: "Ingen grill, bål eller åben ild i perioden. Læs mere under Kontakt.", link: "Brand og sikkerhed" },
       food: {
@@ -73,7 +73,7 @@ window.VM_CONTENT = {
       { id: "aircondition", icon: "i-snow", title: "Aircondition", body: ["Alle soveværelser har aircondition.", "Hold vinduer og døre lukket, når den kører, så køler den bedst."], todo: "Hvor fjernbetjeningen ligger, og anbefalet temperatur" },
       { id: "gulvvarme", icon: "i-sun", title: "Gulvvarme", body: ["Der er gulvvarme i hele huset, styret af termostater.", "Termostaterne er indstillet på forhånd."], todo: "Hvordan man skruer op og ned" },
       { id: "persienner", icon: "i-blind", title: "Rullepersienner", body: ["Værelse 1, 3, 4 og 5 har fjernstyrede udvendige rullepersienner, som kan mørklægge helt.", "Værelse 2 har ikke rullepersienner."], todo: "Hvor kontakten eller fjernbetjeningen sidder" },
-      { id: "wifi", icon: "i-wifi", title: "Wi‑Fi", body: ["Netværk: VillaMairena.", "Der er Wi‑Fi i hele huset og ude ved poolen."], todo: "Kode" },
+      { id: "wifi", icon: "i-wifi", title: "Wi‑Fi", body: ["Netværk: VillaMairena.", "Kode: VillaMairena2027", "Der er Wi‑Fi i hele huset og ude ved poolen."] },
       { id: "tv", icon: "i-tv", title: "TV", body: [], todo: "Hvordan man tænder, og hvilke tjenester der er" },
       { id: "kaffe", icon: "i-cup", title: "Kaffemaskine", body: [], todo: "Type maskine og hvor kapsler eller bønner står" },
       { id: "vask", icon: "i-wash", title: "Vask og tørretumbler", body: ["Vaskemaskine og tørretumbler er til fri afbenyttelse."], todo: "Hvor de står, og hvor vaskemiddel er" },
@@ -165,7 +165,7 @@ window.VM_CONTENT = {
       title: "Welcome to VillaMairena",
       sub: "400 metres above sea level, 8 minutes from the beach at Elviria.",
       gate: "Gate code", gateNote: "Sent to you in the message before arrival",
-      wifi: "Wi‑Fi", wifiTodo: "Password to be added",
+      wifi: "Wi‑Fi", wifiPassLabel: "Password",
       checkin: "Check-in", checkout: "Check-out",
       fireBanner: { title: "High fire risk 1 June – 15 October", body: "No barbecues, campfires or open flames during this period. More under Contact.", link: "Fire and safety" },
       food: {
@@ -219,7 +219,7 @@ window.VM_CONTENT = {
       { id: "aircondition", icon: "i-snow", title: "Air conditioning", body: ["All bedrooms have air conditioning.", "Keep windows and doors closed while it runs for the best cooling."], todo: "Where the remote is, and recommended temperature" },
       { id: "gulvvarme", icon: "i-sun", title: "Underfloor heating", body: ["Underfloor heating throughout the house, controlled by thermostats.", "The thermostats are set in advance."], todo: "How to turn it up or down" },
       { id: "persienner", icon: "i-blind", title: "Roller shutters", body: ["Rooms 1, 3, 4 and 5 have remote-controlled external roller shutters for full blackout.", "Room 2 has no shutters."], todo: "Where the switch or remote is" },
-      { id: "wifi", icon: "i-wifi", title: "Wi‑Fi", body: ["Network: VillaMairena.", "Wi‑Fi covers the whole house and the pool area."], todo: "Password" },
+      { id: "wifi", icon: "i-wifi", title: "Wi‑Fi", body: ["Network: VillaMairena.", "Password: VillaMairena2027", "Wi‑Fi covers the whole house and the pool area."] },
       { id: "tv", icon: "i-tv", title: "TV", body: [], todo: "How to switch on, and available services" },
       { id: "kaffe", icon: "i-cup", title: "Coffee machine", body: [], todo: "Machine type and where capsules or beans are" },
       { id: "vask", icon: "i-wash", title: "Washer and dryer", body: ["The washing machine and tumble dryer are free to use."], todo: "Where they are, and detergent" },
@@ -311,7 +311,7 @@ window.VM_CONTENT = {
       title: "Bienvenidos a VillaMairena",
       sub: "A 400 metros sobre el mar, a 8 minutos de la playa de Elviria.",
       gate: "Código de la puerta", gateNote: "Os lo enviamos en el mensaje antes de la llegada",
-      wifi: "Wi‑Fi", wifiTodo: "Contraseña pendiente",
+      wifi: "Wi‑Fi", wifiPassLabel: "Contraseña",
       checkin: "Entrada", checkout: "Salida",
       fireBanner: { title: "Peligro alto de incendios del 1 de junio al 15 de octubre", body: "Prohibidas las barbacoas, hogueras y el fuego abierto en este periodo. Más información en Contacto.", link: "Incendios y seguridad" },
       food: {
@@ -365,7 +365,7 @@ window.VM_CONTENT = {
       { id: "aircondition", icon: "i-snow", title: "Aire acondicionado", body: ["Todos los dormitorios tienen aire acondicionado.", "Mantened puertas y ventanas cerradas mientras funciona para que enfríe mejor."], todo: "Dónde está el mando y temperatura recomendada" },
       { id: "gulvvarme", icon: "i-sun", title: "Suelo radiante", body: ["Suelo radiante en toda la casa, con termostatos.", "Los termostatos ya están ajustados."], todo: "Cómo subir o bajar la temperatura" },
       { id: "persienner", icon: "i-blind", title: "Persianas", body: ["Los dormitorios 1, 3, 4 y 5 tienen persianas exteriores con mando para oscurecer del todo.", "El dormitorio 2 no tiene persianas."], todo: "Dónde está el interruptor o el mando" },
-      { id: "wifi", icon: "i-wifi", title: "Wi‑Fi", body: ["Red: VillaMairena.", "Hay Wi‑Fi en toda la casa y en la zona de la piscina."], todo: "Contraseña" },
+      { id: "wifi", icon: "i-wifi", title: "Wi‑Fi", body: ["Red: VillaMairena.", "Contraseña: VillaMairena2027", "Hay Wi‑Fi en toda la casa y en la zona de la piscina."] },
       { id: "tv", icon: "i-tv", title: "Televisión", body: [], todo: "Cómo encenderla y qué servicios hay" },
       { id: "kaffe", icon: "i-cup", title: "Cafetera", body: [], todo: "Tipo de cafetera y dónde están las cápsulas o el café" },
       { id: "vask", icon: "i-wash", title: "Lavadora y secadora", body: ["La lavadora y la secadora son de libre uso."], todo: "Dónde están y dónde está el detergente" },
@@ -457,7 +457,7 @@ window.VM_CONTENT = {
       title: "Willkommen in der VillaMairena",
       sub: "400 Meter über dem Meer, 8 Minuten vom Strand in Elviria.",
       gate: "Torcode", gateNote: "Kommt mit der Nachricht vor der Anreise",
-      wifi: "WLAN", wifiTodo: "Passwort folgt",
+      wifi: "WLAN", wifiPassLabel: "Passwort",
       checkin: "Check-in", checkout: "Check-out",
       fireBanner: { title: "Hohe Waldbrandgefahr 1. Juni – 15. Oktober", body: "In dieser Zeit kein Grillen, kein Lagerfeuer, kein offenes Feuer. Mehr unter Kontakt.", link: "Brand und Sicherheit" },
       food: {
@@ -511,7 +511,7 @@ window.VM_CONTENT = {
       { id: "aircondition", icon: "i-snow", title: "Klimaanlage", body: ["Alle Schlafzimmer haben eine Klimaanlage.", "Halten Sie Fenster und Türen geschlossen, solange sie läuft."], todo: "Wo die Fernbedienung ist, und empfohlene Temperatur" },
       { id: "gulvvarme", icon: "i-sun", title: "Fußbodenheizung", body: ["Fußbodenheizung im ganzen Haus, über Thermostate gesteuert.", "Die Thermostate sind voreingestellt."], todo: "Wie man sie höher oder niedriger stellt" },
       { id: "persienner", icon: "i-blind", title: "Rollläden", body: ["Zimmer 1, 3, 4 und 5 haben ferngesteuerte Außenrollläden zur vollständigen Verdunkelung.", "Zimmer 2 hat keine Rollläden."], todo: "Wo Schalter oder Fernbedienung sind" },
-      { id: "wifi", icon: "i-wifi", title: "WLAN", body: ["Netzwerk: VillaMairena.", "WLAN im ganzen Haus und am Pool."], todo: "Passwort" },
+      { id: "wifi", icon: "i-wifi", title: "WLAN", body: ["Netzwerk: VillaMairena.", "Passwort: VillaMairena2027", "WLAN im ganzen Haus und am Pool."] },
       { id: "tv", icon: "i-tv", title: "Fernseher", body: [], todo: "Einschalten und verfügbare Dienste" },
       { id: "kaffe", icon: "i-cup", title: "Kaffeemaschine", body: [], todo: "Maschinentyp und wo Kapseln oder Bohnen sind" },
       { id: "vask", icon: "i-wash", title: "Waschmaschine und Trockner", body: ["Waschmaschine und Trockner stehen zur freien Nutzung."], todo: "Wo sie stehen, und Waschmittel" },
@@ -623,3 +623,6 @@ window.VM_BEACH = [
   { name: "El Bombo", area: "La Cala de Mijas", len: 1100, min: 15, tags: ["kids", "food"] },
   { name: "La Cala (La Butibamba)", area: "La Cala de Mijas", len: 1300, min: 15, tags: ["kids", "food"] }
 ];
+
+/* Wi-Fi */
+window.VM_WIFI = { ssid: "VillaMairena", pass: "VillaMairena2027" };

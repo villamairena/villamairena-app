@@ -223,6 +223,13 @@ details.place.golf ol{margin:6px 0 0 26px}
 details.place.golf li{grid-template-columns:24px 1fr}
 details.place.golf li::before{width:20px;height:20px;font-size:.72rem}
 
+.logo{display:block;line-height:0}
+.logo img{height:30px;width:auto;max-width:60vw}
+.lg-dark{display:none}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .lg-light{display:none}:root:not([data-theme="light"]) .lg-dark{display:block}}
+:root[data-theme="dark"] .lg-light{display:none}
+:root[data-theme="dark"] .lg-dark{display:block}
+
 </style>
 </head>
 <body>
@@ -254,7 +261,7 @@ details.place.golf li::before{width:20px;height:20px;font-size:.72rem}
 </svg>
 <div class="app">
   <header class="top">
-    <div class="logo">Villa<b>Mairena</b></div>
+    <a class="logo" href="#hjem" aria-label="VillaMairena"><img class="lg-light" src="images/logo-light.png" alt="VillaMairena"><img class="lg-dark" src="images/logo-dark.png" alt="VillaMairena"></a>
     <select class="lang" id="lang"></select>
   </header>
   <section class="panel" id="hjem"></section>
