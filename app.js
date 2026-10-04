@@ -49,8 +49,7 @@
       '<div class="note"><span class="lbl">' + esc(h.food.note) + '</span><span id="drv">' + esc(DRIVER) + '</span><button class="btn" style="width:fit-content" data-copy="' + esc(DRIVER) + '">' + esc(h.food.copyNote) + "</button></div></div>" +
       '<div class="card"><h3>' + esc(h.importantTitle) + '</h3><div class="stack" style="gap:0">' +
       h.important.map(function (r) { return '<div class="row"><span class="ic">' + ic(r.icon) + '</span><div class="body"><span class="t">' + esc(r.t) + '</span><span class="s">' + esc(r.s) + "</span></div></div>"; }).join("") +
-      "</div></div>" +
-      '<div class="card sos"><span class="eyebrow" style="color:inherit">' + esc(h.sosLabel) + '</span><span class="big">112</span><span class="s">' + esc(h.sosText) + "</span></div>";
+      "</div></div>";
   }
 
   function renderArrival() {
@@ -218,13 +217,13 @@
   /* ---------- ejer (login + bookinger fra Lodgify via villamairena.com/ejer/api.php) ---------- */
   var OWNER_API = "https://villamairena.com/ejer/api.php";
   function renderOwnerShell() {
-    return '<div class="top-o" style="display:flex;justify-content:space-between;align-items:baseline"><h2>Ejer</h2><button class="btn" id="o-out" style="grid-row:auto;grid-column:auto" hidden>Log ud</button></div><div id="o-body"></div>';
+    return '<a class="backlink" href="#hjem">‹ Til gæsteappen</a><div class="top-o" style="display:flex;justify-content:space-between;align-items:baseline"><h2>Ejer</h2><button class="btn" id="o-out" style="grid-row:auto;grid-column:auto" hidden>Log ud</button></div><div id="o-body"></div>';
   }
   var ownerMem = null;
   function ownerToken() { return ownerMem || store("vm-owner-token"); }
   function ownerLogin(msg) {
     var b = document.getElementById("o-body"); if (!b) return;
-    document.getElementById("o-out").hidden = true;
+    document.getElementById("o-out").hidden = true; ownerTabs(false);
     b.innerHTML = '<form class="card owner-login" id="o-form"><p class="muted" style="font-size:.9rem">Kun for ejerne af VillaMairena.</p>' +
       (msg ? '<div class="err">' + esc(msg) + "</div>" : "") +
       '<label for="o-user" class="eyebrow" style="color:var(--muted)">Navn</label><input id="o-user" autocomplete="username" required>' +
@@ -252,6 +251,23 @@
     if (e.target.id === "o-out") { ownerMem = null; try { localStorage.removeItem("vm-owner-token"); } catch (x) {} ownerLogin(); }
     if (e.target.id === "o-reload") ownerLoad();
   });
+  var ownerSec = "oversigt";
+  function ownerTabs(on) {
+    var g = document.getElementById("gtabs"), o = document.getElementById("otabs");
+    if (g) g.hidden = !!on; if (o) o.hidden = !on;
+  }
+  function ownerShow(sec) {
+    ownerSec = sec;
+    document.querySelectorAll(".osec").forEach(function (s) { s.hidden = s.getAttribute("data-osec") !== sec; });
+    document.querySelectorAll("#otabs button[data-osec]").forEach(function (b) { b.setAttribute("aria-selected", b.getAttribute("data-osec") === sec ? "true" : "false"); });
+    window.scrollTo(0, 0);
+  }
+  document.addEventListener("click", function (e) {
+    var b = e.target.closest("#otabs button");
+    if (!b) return;
+    if (b.dataset.osec) ownerShow(b.dataset.osec);
+    else { ownerTabs(false); show("hjem"); try { history.replaceState(null, "", "#hjem"); } catch (x) {} }
+  });
   function ownerRender(data) {
     var DAY = 864e5, fmtD = new Intl.DateTimeFormat("da-DK", { day: "numeric", month: "short" }), fmtW = new Intl.DateTimeFormat("da-DK", { weekday: "short" }), fmtM = new Intl.DateTimeFormat("da-DK", { month: "long", year: "numeric" });
     function d(s) { return new Date(s + "T12:00:00"); }
@@ -262,16 +278,19 @@
     document.getElementById("o-out").hidden = false;
     var cur = B.filter(function (b) { return b.arrival <= todayS && b.departure > todayS; })[0];
     var fut = B.filter(function (b) { return b.arrival > todayS; });
-    var html = "";
+    var OCAM = '<div class="card cam"><div><h3>Kamera ved indkørslen</h3><p class="muted" style="font-size:.86rem">' + (data.camera_url ? "Åbner live-billedet fra kameraet." : "Kameraet er ikke sat op endnu.") + "</p></div>" + (data.camera_url ? '<a class="cta" href="' + esc(data.camera_url) + '" target="_blank" rel="noopener">Se live</a>' : "") + "</div>";
+    var html = '<div class="osec" data-osec="oversigt">';
     if (data.errors && data.errors.length) html += '<div class="err">Lodgify gav en fejl: ' + esc(data.errors.join(", ")) + "</div>";
     if (cur) html += '<div class="card now"><span class="pill">Optaget nu</span><span class="big">' + esc(cur.guest) + (cur.people > 1 ? " + " + (cur.people - 1) : "") + '</span><span class="muted">' + fmtD.format(d(cur.arrival)) + " – " + fmtD.format(d(cur.departure)) + " · " + cur.nights + ' nætter · <span class="ch">' + esc(cur.channel) + "</span></span></div>";
     else { var n = fut[0]; html += '<div class="card now"><span class="pill free">Ledigt nu</span><span class="big">' + (n ? "Næste gæst " + fmtW.format(d(n.arrival)) + " " + fmtD.format(d(n.arrival)) : "Ingen kommende bookinger") + "</span>" + (n ? '<span class="muted">' + esc(n.guest) + " · " + n.nights + ' nætter · <span class="ch">' + esc(n.channel) + "</span></span>" : "") + "</div>"; }
     function occ(days) { var s = d(todayS), o = 0; for (var i = 0; i < days; i++) { var x = iso(new Date(s.getTime() + i * DAY)); if (B.some(function (b) { return b.arrival <= x && b.departure > x; })) o++; } return Math.round(o / days * 100); }
     html += '<div class="stat"><div><b>' + occ(30) + "%</b><span>Belagt næste 30 dage</span></div><div><b>" + occ(90) + "%</b><span>Belagt næste 90 dage</span></div><div><b>" + fut.length + "</b><span>Kommende ophold</span></div></div>";
+    html += OCAM + '</div><div class="osec" data-osec="ophold" hidden>';
     html += '<div class="card"><h3>Næste ophold</h3><div>' + (fut.slice(0, 12).map(function (b) {
       return '<div class="bk"><span class="dt">' + fmtD.format(d(b.arrival)) + "<small>" + fmtW.format(d(b.arrival)) + '</small></span><span class="who">' + esc(b.guest) + '</span><span class="ch">' + esc(b.channel) + '</span><span class="meta">' + b.nights + " nætter til " + fmtD.format(d(b.departure)) + (b.people ? " · " + b.people + " gæster" : "") + (money(b) ? " · " + money(b) : "") + (b.status && b.status.toLowerCase() !== "booked" ? " · " + esc(b.status) : "") + "</span></div>";
     }).join("") || '<p class="muted">Ingen kommende ophold.</p>') + "</div></div>";
     var deps = B.slice().sort(function (a, b) { return a.departure < b.departure ? -1 : 1; }).filter(function (b) { return b.departure >= todayS; }).slice(0, 10);
+    html += '</div><div class="osec" data-osec="skift" hidden>';
     html += '<div class="card"><h3>Skiftedage</h3><p class="muted" style="font-size:.86rem">Til rengøring og administrator.</p><div>' + (deps.map(function (b) {
       var nxt = B.filter(function (x) { return x.arrival >= b.departure; }).sort(function (x, y) { return x.arrival < y.arrival ? -1 : 1; })[0];
       var same = nxt && nxt.arrival === b.departure;
@@ -285,10 +304,12 @@
       for (var day = 1; day <= dim; day++) { var x = iso(new Date(first.getFullYear(), first.getMonth(), day, 12)); var o = B.some(function (b) { return b.arrival <= x && b.departure > x; }); cal += '<span class="c' + (o ? " o" : "") + (x === todayS ? " t" : "") + '">' + day + "</span>"; }
       cal += "</div></div>";
     }
+    html += '</div><div class="osec" data-osec="kalender" hidden>';
     html += '<div class="card"><h3>Belægning</h3><div class="legend"><span><i></i>Optaget nat</span></div><div class="cal">' + cal + "</div></div>";
-    html += '<div class="card cam"><div><h3>Kamera ved indkørslen</h3><p class="muted" style="font-size:.86rem">' + (data.camera_url ? "Åbner live-billedet fra kameraet." : "Kameraet er ikke sat op endnu.") + "</p></div>" + (data.camera_url ? '<a class="cta" href="' + esc(data.camera_url) + '" target="_blank" rel="noopener">Se live</a>' : "") + "</div>";
+    html += '</div>';
     html += '<div class="foot"><span>Logget ind som ' + esc(data.user || "") + " · opdateret " + new Date(data.updated || Date.now()).toLocaleString("da-DK", { dateStyle: "short", timeStyle: "short" }) + '</span><button class="btn" id="o-reload" style="grid-row:auto;grid-column:auto">Opdater</button></div>';
     document.getElementById("o-body").innerHTML = html;
+    ownerTabs(true); ownerShow(ownerSec);
   }
 
   /* ---------- shell ---------- */
@@ -299,7 +320,7 @@
     document.documentElement.lang = lang;
     PANELS.forEach(function (id) { document.getElementById(id).innerHTML = panels[id](); });
     if (current === "ejer") ownerLoad();
-    document.querySelectorAll(".tabs button").forEach(function (b) { b.querySelector("span").textContent = T.ui.tabs[b.dataset.go]; });
+    document.querySelectorAll("#gtabs button").forEach(function (b) { b.querySelector("span").textContent = T.ui.tabs[b.dataset.go]; });
     var sel = document.getElementById("lang"); sel.value = lang; sel.setAttribute("aria-label", T.ui.language);
     loadWx();
   }
@@ -312,8 +333,8 @@
     if (PANELS.indexOf(tab) < 0) tab = "hjem";
     current = tab;
     PANELS.forEach(function (id) { document.getElementById(id).hidden = id !== tab; });
-    if (tab === "ejer") ownerLoad();
-    document.querySelectorAll(".tabs button").forEach(function (t) { t.setAttribute("aria-selected", t.dataset.go === tab ? "true" : "false"); });
+    if (tab === "ejer") ownerLoad(); else ownerTabs(false);
+    document.querySelectorAll("#gtabs button").forEach(function (t) { t.setAttribute("aria-selected", t.dataset.go === tab ? "true" : "false"); });
     if (focusEl) {
       var el = document.getElementById(focusEl);
       if (el) { if (el.tagName === "DETAILS") el.open = true; setTimeout(function () { el.scrollIntoView({ block: "start" }); }, 30); }
@@ -321,7 +342,7 @@
   }
 
   document.addEventListener("click", function (e) {
-    var t = e.target.closest(".tabs button");
+    var t = e.target.closest("#gtabs button");
     if (t) { show(t.dataset.go); try { history.replaceState(null, "", "#" + t.dataset.go); } catch (x) {} return; }
     var a = e.target.closest('a[href^="#"]');
     if (a) { e.preventDefault(); var id = a.getAttribute("href").slice(1); show(id); try { history.replaceState(null, "", "#" + id); } catch (x) {} return; }

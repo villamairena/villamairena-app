@@ -272,6 +272,9 @@ details.place.golf li::before{width:20px;height:20px;font-size:.72rem}
 .ownerlink{display:block;text-align:center;color:var(--muted);font-size:.82rem;padding:6px}
 #o-body{display:grid;gap:14px}
 
+.backlink{display:inline-block;color:var(--pine);font-weight:700;font-size:.88rem;text-decoration:none;margin-bottom:4px}
+.osec{display:grid;gap:14px}
+
 </style>
 </head>
 <body>
@@ -300,6 +303,8 @@ details.place.golf li::before{width:20px;height:20px;font-size:.72rem}
   <symbol id="i-cup" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9h13v5a5 5 0 01-5 5H9a5 5 0 01-5-5z"/><path d="M17 11h1.5a2.5 2.5 0 010 5H17M8 3v3M12 3v3"/></symbol>
   <symbol id="i-wash" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><rect x="4" y="3" width="16" height="18" rx="2"/><circle cx="12" cy="13" r="4.5"/><path d="M7 6.5h2"/></symbol>
   <symbol id="i-bin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h16M9 7V4h6v3M6 7l1 14h10l1-14M10 11v6M14 11v6"/></symbol>
+  <symbol id="i-cal" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></symbol>
+  <symbol id="i-back" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M10 6l-6 6 6 6M4 12h11a5 5 0 010 10h-2"/></symbol>
 </svg>
 <div class="app">
   <header class="top">
@@ -313,13 +318,22 @@ details.place.golf li::before{width:20px;height:20px;font-size:.72rem}
   <section class="panel" id="kontakt" hidden></section>
   <section class="panel" id="ejer" hidden></section>
 </div>
-<nav class="tabs" aria-label="Menu">
+<nav class="tabs" id="gtabs" aria-label="Menu">
   <div class="in" role="tablist">
     <button role="tab" data-go="hjem" aria-selected="true"><svg aria-hidden="true"><use href="#i-home"/></svg><span>Hjem</span></button>
     <button role="tab" data-go="ankomst" aria-selected="false"><svg aria-hidden="true"><use href="#i-car"/></svg><span>Ankomst</span></button>
     <button role="tab" data-go="huset" aria-selected="false"><svg aria-hidden="true"><use href="#i-key"/></svg><span>Huset</span></button>
     <button role="tab" data-go="omraadet" aria-selected="false"><svg aria-hidden="true"><use href="#i-sun"/></svg><span>Området</span></button>
     <button role="tab" data-go="kontakt" aria-selected="false"><svg aria-hidden="true"><use href="#i-phone"/></svg><span>Kontakt</span></button>
+  </div>
+</nav>
+<nav class="tabs" id="otabs" aria-label="Ejer-menu" hidden>
+  <div class="in" role="tablist">
+    <button role="tab" data-osec="oversigt" aria-selected="true"><svg aria-hidden="true"><use href="#i-home"/></svg><span>Oversigt</span></button>
+    <button role="tab" data-osec="ophold" aria-selected="false"><svg aria-hidden="true"><use href="#i-key"/></svg><span>Ophold</span></button>
+    <button role="tab" data-osec="skift" aria-selected="false"><svg aria-hidden="true"><use href="#i-wash"/></svg><span>Skiftedage</span></button>
+    <button role="tab" data-osec="kalender" aria-selected="false"><svg aria-hidden="true"><use href="#i-cal"/></svg><span>Kalender</span></button>
+    <button role="tab" aria-selected="false"><svg aria-hidden="true"><use href="#i-back"/></svg><span>Gæsteapp</span></button>
   </div>
 </nav>
 <div class="toast" id="toast" hidden></div>
