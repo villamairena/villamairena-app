@@ -651,15 +651,15 @@ window.VM_EXTRA = {
    },
    {
     "t": "Ro og naboer",
-    "todo": "Ro-tider om aftenen"
+    "s": "Respektér naboerne. Der skal være ro fra kl. 23:00."
    },
    {
-    "t": "Fester og arrangementer",
-    "todo": "Er fester tilladt?"
+    "t": "Ingen fester eller arrangementer",
+    "s": "Det er ikke tilladt at holde fester eller nogen former for arrangementer i huset."
    },
    {
-    "t": "Kæledyr",
-    "todo": "Er kæledyr tilladt?"
+    "t": "Ingen kæledyr",
+    "s": "Det er ikke tilladt at have kæledyr i eller uden for huset."
    }
   ],
   "pracTitle": "Praktisk i Spanien",
@@ -959,15 +959,15 @@ window.VM_EXTRA = {
    },
    {
     "t": "Quiet and neighbours",
-    "todo": "Quiet hours in the evening"
+    "s": "Please respect the neighbours. Quiet from 11 pm."
    },
    {
-    "t": "Parties and events",
-    "todo": "Are parties allowed?"
+    "t": "No parties or events",
+    "s": "Parties and events of any kind are not allowed at the house."
    },
    {
-    "t": "Pets",
-    "todo": "Are pets allowed?"
+    "t": "No pets",
+    "s": "Pets are not allowed inside or outside the house."
    }
   ],
   "pracTitle": "Practical tips for Spain",
@@ -1267,15 +1267,15 @@ window.VM_EXTRA = {
    },
    {
     "t": "Descanso y vecinos",
-    "todo": "Horario de silencio por la noche"
+    "s": "Respetad a los vecinos. Silencio a partir de las 23:00."
    },
    {
-    "t": "Fiestas y eventos",
-    "todo": "¿Se permiten fiestas?"
+    "t": "No se permiten fiestas ni eventos",
+    "s": "No está permitido celebrar fiestas ni ningún tipo de evento en la casa."
    },
    {
-    "t": "Mascotas",
-    "todo": "¿Se admiten mascotas?"
+    "t": "No se admiten mascotas",
+    "s": "No se permiten mascotas ni dentro ni fuera de la casa."
    }
   ],
   "pracTitle": "Consejos prácticos",
@@ -1575,15 +1575,15 @@ window.VM_EXTRA = {
    },
    {
     "t": "Ruhe und Nachbarn",
-    "todo": "Ruhezeiten am Abend"
+    "s": "Bitte nehmen Sie Rücksicht auf die Nachbarn. Ab 23:00 Uhr herrscht Ruhe."
    },
    {
-    "t": "Partys und Veranstaltungen",
-    "todo": "Sind Partys erlaubt?"
+    "t": "Keine Partys oder Veranstaltungen",
+    "s": "Partys und Veranstaltungen jeglicher Art sind im Haus nicht erlaubt."
    },
    {
-    "t": "Haustiere",
-    "todo": "Sind Haustiere erlaubt?"
+    "t": "Keine Haustiere",
+    "s": "Haustiere sind weder im Haus noch auf dem Grundstück erlaubt."
    }
   ],
   "pracTitle": "Praktisches für Spanien",

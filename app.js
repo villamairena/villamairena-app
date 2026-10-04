@@ -33,12 +33,17 @@
     var m = /[?&]g=([A-Za-z0-9_-]+)/.exec(location.search);
     if (m) { guestTok = m[1]; store("vm-guest", guestTok); try { history.replaceState(null, "", location.pathname + location.hash); } catch (e) {} }
     else guestTok = store("vm-guest");
+    if (!guestTok && window.VM_PREVIEW) guestTok = "demo-arrive";
   })();
+  document.addEventListener("click", function (e) {
+    var b = e.target.closest && e.target.closest("[data-demo]"); if (!b) return;
+    guestTok = b.getAttribute("data-demo"); store("vm-guest", guestTok); loadGuest();
+  });
   var GTXT = {
-    da: { hi: "Velkommen, ", before: function (n) { return n === 1 ? "I morgen ankommer I" : "Om " + n + " dage ankommer I"; }, today: "I dag ankommer I – vi glæder os", staying: "Jeres ophold", co: "Check-ud", gate: "Jeres portkode", gateBefore: "Portkoden vises her på ankomstdagen", demo: "Demo", guests: "gæster" },
-    en: { hi: "Welcome, ", before: function (n) { return n === 1 ? "You arrive tomorrow" : "You arrive in " + n + " days"; }, today: "You arrive today – we look forward to it", staying: "Your stay", co: "Check-out", gate: "Your gate code", gateBefore: "The gate code appears here on arrival day", demo: "Demo", guests: "guests" },
-    es: { hi: "Bienvenidos, ", before: function (n) { return n === 1 ? "Llegáis mañana" : "Llegáis en " + n + " días"; }, today: "Llegáis hoy – os esperamos", staying: "Vuestra estancia", co: "Salida", gate: "Vuestro código de la puerta", gateBefore: "El código aparecerá aquí el día de llegada", demo: "Demo", guests: "huéspedes" },
-    de: { hi: "Willkommen, ", before: function (n) { return n === 1 ? "Morgen kommen Sie an" : "In " + n + " Tagen kommen Sie an"; }, today: "Heute kommen Sie an – wir freuen uns", staying: "Ihr Aufenthalt", co: "Check-out", gate: "Ihr Torcode", gateBefore: "Der Torcode erscheint hier am Anreisetag", demo: "Demo", guests: "Gäste" }
+    da: { hi: "Velkommen, ", before: function (n) { return n === 1 ? "I morgen ankommer I" : "Om " + n + " dage ankommer I"; }, today: "I dag ankommer I – vi glæder os", staying: "Jeres ophold", co: "Check-ud", gate: "Jeres portkode", gateBefore: "Portkoden vises her på ankomstdagen", dArr: "Ankommer om 5 dage", dStay: "Bor i huset nu", demo: "Demo", guests: "gæster" },
+    en: { hi: "Welcome, ", before: function (n) { return n === 1 ? "You arrive tomorrow" : "You arrive in " + n + " days"; }, today: "You arrive today – we look forward to it", staying: "Your stay", co: "Check-out", gate: "Your gate code", gateBefore: "The gate code appears here on arrival day", dArr: "Arriving in 5 days", dStay: "Staying now", demo: "Demo", guests: "guests" },
+    es: { hi: "Bienvenidos, ", before: function (n) { return n === 1 ? "Llegáis mañana" : "Llegáis en " + n + " días"; }, today: "Llegáis hoy – os esperamos", staying: "Vuestra estancia", co: "Salida", gate: "Vuestro código de la puerta", gateBefore: "El código aparecerá aquí el día de llegada", dArr: "Llega en 5 días", dStay: "Alojado ahora", demo: "Demo", guests: "huéspedes" },
+    de: { hi: "Willkommen, ", before: function (n) { return n === 1 ? "Morgen kommen Sie an" : "In " + n + " Tagen kommen Sie an"; }, today: "Heute kommen Sie an – wir freuen uns", staying: "Ihr Aufenthalt", co: "Check-out", gate: "Ihr Torcode", gateBefore: "Der Torcode erscheint hier am Anreisetag", dArr: "Anreise in 5 Tagen", dStay: "Wohnt jetzt hier", demo: "Demo", guests: "Gäste" }
   };
   function isoDay(off) { var d = new Date(Date.now() + off * 864e5); return new Date(d.getTime() - d.getTimezoneOffset() * 6e4).toISOString().slice(0, 10); }
   function loadGuest() {
@@ -60,7 +65,8 @@
     return '<div class="card welcome">' + (guest.demo ? '<span class="pill free">' + G.demo + "</span>" : "") +
       '<span class="big">' + esc(G.hi + (guest.first || "")) + "</span>" +
       '<span class="muted">' + esc(line) + " · " + fd.format(dd(guest.arrival)) + " – " + fd.format(dd(guest.departure)) + (guest.people ? " · " + guest.people + " " + G.guests : "") + "</span>" +
-      (guest.state === "staying" ? '<span class="muted">' + esc(G.co) + " " + fd.format(dd(guest.departure)) + " · 10:00</span>" : "") + "</div>";
+      (guest.state === "staying" ? '<span class="muted">' + esc(G.co) + " " + fd.format(dd(guest.departure)) + " · 10:00</span>" : "") +
+      (guest.demo ? '<div class="antabs" style="margin-top:.6rem"><button class="chipbtn" aria-pressed="' + (guest.state === "before") + '" data-demo="demo-arrive">' + esc(G.dArr) + '</button><button class="chipbtn" aria-pressed="' + (guest.state === "staying") + '" data-demo="demo-stay">' + esc(G.dStay) + "</button></div>" : "") + "</div>";
   }
   function gateCard(h) {
     var G = GTXT[lang];
