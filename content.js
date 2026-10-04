@@ -78,6 +78,7 @@ window.VM_CONTENT = {
       { id: "kaffe", icon: "i-cup", title: "Kaffemaskine", body: [], todo: "Type maskine og hvor kapsler eller bønner står" },
       { id: "vask", icon: "i-wash", title: "Vask og tørretumbler", body: ["Vaskemaskine og tørretumbler er til fri afbenyttelse."], todo: "Hvor de står, og hvor vaskemiddel er" },
       { id: "affald", icon: "i-bin", title: "Affald og genbrug", body: ["I Spanien sorterer man affald i farvede containere ved vejen. Der er ingen afhentning ved huset, så tag skraldeposerne med til containerne.", "Smid aldrig glas, flasker eller fedt i toilettet eller køkkenvasken."], bins: [["#e9c443", "Gul", "Plastik, dåser, mælke- og juicekartoner, alufolie og bakker"], ["#3b6fb6", "Blå", "Papir, pap og papkasser (gerne foldet sammen)"], ["#3f8a4e", "Grøn (rund klokke)", "Glasflasker og glas uden låg"], ["#6b6b6b", "Grå eller mørkegrøn", "Restaffald og madrester i lukkede poser"], ["#8a5a2b", "Brun (hvis der er en)", "Madaffald og andet organisk affald"]], todo: "Hvor de nærmeste containere står" },
+      { id: "sikkerhedsudstyr", icon: "i-flame", title: "Brandslukker og førstehjælp", body: ["Der er en brandslukker og en førstehjælpskasse i huset.", "Begge står under trappen i stueetagen.", "Ved alvorlig skade eller brand: ring 112."] },
       { id: "afrejse", icon: "i-key", title: "Inden I rejser", body: ["I skal ikke gøre rent. Slutrengøring er inkluderet."], todo: "Hvor nøglerne skal lægges", checkTitle: "Tjekliste ved afrejse", check: ["Tag jeres friske madvarer med, eller smid dem ud. Salt, peber, kaffe, olie og lignende basisvarer må gerne blive stående til de næste gæster", "Sæt opvasken i opvaskemaskinen og start den", "Bring skrald, flasker og pap til containerne", "Læg brugte håndklæder samlet på badeværelserne", "Sluk aircondition, lys og TV", "Luk og lås alle vinduer og terrassedøre", "Rens grillen efter brug, så den er klar til de næste gæster", "Tjek skabe, skuffer, pengeskab og stikkontakter for glemte ting og opladere", "Check-ud senest kl. 10. Luk porten efter jer"], bye: "Tak for besøget – god rejse hjem!", leaveToday: "I rejser i dag", leaveTomorrow: "I rejser i morgen", leaveSee: "Se tjeklisten inden I tager af sted" }
     ],
     area: {
@@ -121,10 +122,7 @@ window.VM_CONTENT = {
         { who: "Rengøring", what: "Ekstra rengøring under opholdet", todo: "Navn og nummer" }
       ],
       healthTitle: "Sundhed",
-      health: [
-        { who: "Hospital Costa del Sol", what: "Offentligt hospital med skadestue i Marbella" },
-        { who: "Nærmeste apotek og læge", todo: "Navn og adresse" }
-      ]
+      health: [{"who": "Hospital Universitario Costa del Sol", "tag": "Skadestue døgnet rundt", "what": "Offentligt hospital mellem Elviria og Marbella. Her kan I bruge det blå EU-sygesikringskort.", "addr": "Autovía A-7, km 187, Marbella", "tel": "+34 951 976 669", "min": 15, "q": "Hospital Universitario Costa del Sol, Marbella"}, {"who": "Hospital Quirónsalud Marbella", "tag": "Privat · skadestue døgnet rundt", "what": "Privathospital i Marbella med engelsktalende personale. Kræver rejseforsikring eller betaling.", "addr": "Avenida Severo Ochoa 22, Marbella", "tel": "+34 952 774 200", "min": 20, "q": "Hospital Quirónsalud Marbella"}, {"who": "Consultorio Las Chapas", "tag": "Lægehus", "what": "Offentligt lægehus (sundhedscenter) tæt på huset til almindelig lægehjælp. Medbring det blå EU-sygesikringskort.", "addr": "Calle Pinsapo s/n, Las Chapas, Marbella", "tel": "+34 951 704 027", "min": 10, "q": "Consultorio Las Chapas, Calle Pinsapo, Marbella"}, {"who": "Salud Responde", "tag": "Sundhedstelefon", "what": "Andalusiens offentlige sundhedslinje. Ring for råd eller for at bestille tid hos lægen.", "tel": "+34 955 545 060"}, {"who": "Farmacia Elviria", "tag": "Apotek", "what": "Det nærmeste apotek, i Elviria. Apotekerne hjælper også med råd om lettere sygdom.", "addr": "Avenida de las Cumbres 4, Elviria, Marbella", "tel": "+34 952 831 457", "min": 8, "q": "Farmacia Elviria, Avenida de las Cumbres 4, Marbella"}, {"who": "Vagtapotek (farmacia de guardia)", "tag": "Aften, nat og helligdage", "what": "Apotekerne skiftes til at have vagt. Det nærmeste vagtapotek står på et skilt på alle apotekers dør, eller find det på kortet.", "search": "farmacia de guardia Marbella"}], healthIntro: "Ved livstruende situationer: ring 112. Medbring det blå EU-sygesikringskort og jeres rejseforsikring.", hCall: "Ring", hRoute: "Rute", hFind: "Find på kortet"
     },
     safety: {
       title: "Brand og sikkerhed",
@@ -144,7 +142,7 @@ window.VM_CONTENT = {
         "Myndighederne kan sende advarsler direkte til jeres telefon (ES-Alert). Følg dem."
       ],
       evacTodo: "Flugtvej og mødested ved evakuering",
-      extTodo: "Hvor brandslukker og brandtæppe står"
+      ext: "Brandslukker og førstehjælpskasse står under trappen i stueetagen."
     }
   },
 
@@ -224,6 +222,7 @@ window.VM_CONTENT = {
       { id: "kaffe", icon: "i-cup", title: "Coffee machine", body: [], todo: "Machine type and where capsules or beans are" },
       { id: "vask", icon: "i-wash", title: "Washer and dryer", body: ["The washing machine and tumble dryer are free to use."], todo: "Where they are, and detergent" },
       { id: "affald", icon: "i-bin", title: "Rubbish and recycling", body: ["In Spain rubbish is sorted into coloured containers by the road. There is no collection at the house, so please take the bags to the containers.", "Never put glass, bottles or fat down the toilet or kitchen sink."], bins: [["#e9c443", "Yellow", "Plastic, cans, milk and juice cartons, foil and trays"], ["#3b6fb6", "Blue", "Paper, cardboard and boxes (please flatten)"], ["#3f8a4e", "Green (round bell)", "Glass bottles and jars without lids"], ["#6b6b6b", "Grey or dark green", "General waste and food scraps in closed bags"], ["#8a5a2b", "Brown (if there is one)", "Food and other organic waste"]], todo: "Where the nearest containers are" },
+      { id: "sikkerhedsudstyr", icon: "i-flame", title: "Fire extinguisher and first aid", body: ["There is a fire extinguisher and a first aid kit in the house.", "Both are under the stairs on the ground floor.", "In case of serious injury or fire: call 112."] },
       { id: "afrejse", icon: "i-key", title: "Before you leave", body: ["No cleaning needed. Final cleaning is included."], todo: "Where to leave the keys", checkTitle: "Departure checklist", check: ["Take your fresh food with you or throw it away. Salt, pepper, coffee, oil and similar basics can be left for the next guests", "Load the dishwasher and start it", "Take rubbish, bottles and cardboard to the bins", "Leave used towels together in the bathrooms", "Switch off air conditioning, lights and TV", "Close and lock all windows and terrace doors", "Clean the barbecue after use so it's ready for the next guests", "Check cupboards, drawers, the safe and sockets for forgotten items and chargers", "Check out by 10 am. Close the gate behind you"], bye: "Thank you for staying – safe travels home!", leaveToday: "You leave today", leaveTomorrow: "You leave tomorrow", leaveSee: "See the checklist before you go" }
     ],
     area: {
@@ -267,10 +266,7 @@ window.VM_CONTENT = {
         { who: "Cleaning", what: "Extra cleaning during your stay", todo: "Name and number" }
       ],
       healthTitle: "Health",
-      health: [
-        { who: "Hospital Costa del Sol", what: "Public hospital with A&E in Marbella" },
-        { who: "Nearest pharmacy and doctor", todo: "Name and address" }
-      ]
+      health: [{"who": "Hospital Universitario Costa del Sol", "tag": "24-hour A&E", "what": "Public hospital between Elviria and Marbella. You can use your EHIC here.", "addr": "Autovía A-7, km 187, Marbella", "tel": "+34 951 976 669", "min": 15, "q": "Hospital Universitario Costa del Sol, Marbella"}, {"who": "Hospital Quirónsalud Marbella", "tag": "Private · 24-hour A&E", "what": "Private hospital in Marbella with English-speaking staff. Travel insurance or payment required.", "addr": "Avenida Severo Ochoa 22, Marbella", "tel": "+34 952 774 200", "min": 20, "q": "Hospital Quirónsalud Marbella"}, {"who": "Consultorio Las Chapas", "tag": "Doctor", "what": "Public health centre near the house for general medical care. Bring your EHIC.", "addr": "Calle Pinsapo s/n, Las Chapas, Marbella", "tel": "+34 951 704 027", "min": 10, "q": "Consultorio Las Chapas, Calle Pinsapo, Marbella"}, {"who": "Salud Responde", "tag": "Health line", "what": "Andalusia's public health line. Call for advice or to book a doctor's appointment.", "tel": "+34 955 545 060"}, {"who": "Farmacia Elviria", "tag": "Pharmacy", "what": "The nearest pharmacy, in Elviria. Pharmacists also advise on minor illnesses.", "addr": "Avenida de las Cumbres 4, Elviria, Marbella", "tel": "+34 952 831 457", "min": 8, "q": "Farmacia Elviria, Avenida de las Cumbres 4, Marbella"}, {"who": "Duty pharmacy (farmacia de guardia)", "tag": "Evenings, nights and holidays", "what": "Pharmacies take turns to be on duty. The nearest duty pharmacy is posted on every pharmacy door, or find it on the map.", "search": "farmacia de guardia Marbella"}], healthIntro: "In a life-threatening emergency: call 112. Bring your European Health Insurance Card (EHIC) and travel insurance details.", hCall: "Call", hRoute: "Route", hFind: "Find on map"
     },
     safety: {
       title: "Fire and safety",
@@ -290,7 +286,7 @@ window.VM_CONTENT = {
         "The authorities can send alerts directly to your phone (ES-Alert). Follow them."
       ],
       evacTodo: "Evacuation route and meeting point",
-      extTodo: "Where the fire extinguisher and fire blanket are"
+      ext: "The fire extinguisher and first aid kit are under the stairs on the ground floor."
     }
   },
 
@@ -370,6 +366,7 @@ window.VM_CONTENT = {
       { id: "kaffe", icon: "i-cup", title: "Cafetera", body: [], todo: "Tipo de cafetera y dónde están las cápsulas o el café" },
       { id: "vask", icon: "i-wash", title: "Lavadora y secadora", body: ["La lavadora y la secadora son de libre uso."], todo: "Dónde están y dónde está el detergente" },
       { id: "affald", icon: "i-bin", title: "Basura y reciclaje", body: ["En España la basura se separa en contenedores de colores junto a la carretera. No hay recogida en la casa, así que llevad las bolsas a los contenedores.", "No tiréis nunca vidrio, botellas ni grasa por el inodoro o el fregadero."], bins: [["#e9c443", "Amarillo", "Plásticos, latas, briks, papel de aluminio y bandejas"], ["#3b6fb6", "Azul", "Papel, cartón y cajas (plegadas, por favor)"], ["#3f8a4e", "Verde (iglú)", "Botellas y tarros de vidrio sin tapa"], ["#6b6b6b", "Gris o verde oscuro", "Resto y restos de comida en bolsas cerradas"], ["#8a5a2b", "Marrón (si lo hay)", "Residuos orgánicos"]], todo: "Dónde están los contenedores más cercanos" },
+      { id: "sikkerhedsudstyr", icon: "i-flame", title: "Extintor y botiquín", body: ["En la casa hay un extintor y un botiquín de primeros auxilios.", "Ambos están debajo de la escalera en la planta baja.", "En caso de lesión grave o incendio: llamad al 112."] },
       { id: "afrejse", icon: "i-key", title: "Antes de salir", body: ["No tenéis que limpiar. La limpieza final está incluida."], todo: "Dónde dejar las llaves", checkTitle: "Lista de salida", check: ["Llevaos la comida fresca o tiradla. La sal, pimienta, café, aceite y básicos similares se pueden dejar para los próximos huéspedes", "Cargad el lavavajillas y ponedlo en marcha", "Llevad la basura, botellas y cartón a los contenedores", "Dejad las toallas usadas juntas en los baños", "Apagad el aire acondicionado, las luces y la TV", "Cerrad con llave todas las ventanas y puertas de la terraza", "Limpiad la barbacoa después de usarla para que esté lista para los próximos huéspedes", "Revisad armarios, cajones, la caja fuerte y enchufes por si olvidáis algo o cargadores", "Salida antes de las 10:00. Cerrad la verja al salir"], bye: "¡Gracias por la visita y buen viaje!", leaveToday: "Os vais hoy", leaveTomorrow: "Os vais mañana", leaveSee: "Mirad la lista antes de salir" }
     ],
     area: {
@@ -413,10 +410,7 @@ window.VM_CONTENT = {
         { who: "Limpieza", what: "Limpieza extra durante la estancia", todo: "Nombre y teléfono" }
       ],
       healthTitle: "Salud",
-      health: [
-        { who: "Hospital Costa del Sol", what: "Hospital público con urgencias en Marbella" },
-        { who: "Farmacia y médico más cercanos", todo: "Nombre y dirección" }
-      ]
+      health: [{"who": "Hospital Universitario Costa del Sol", "tag": "Urgencias 24 h", "what": "Hospital público entre Elviria y Marbella. Aquí se puede usar la Tarjeta Sanitaria Europea.", "addr": "Autovía A-7, km 187, Marbella", "tel": "+34 951 976 669", "min": 15, "q": "Hospital Universitario Costa del Sol, Marbella"}, {"who": "Hospital Quirónsalud Marbella", "tag": "Privado · urgencias 24 h", "what": "Hospital privado en Marbella con personal que habla inglés. Requiere seguro de viaje o pago.", "addr": "Avenida Severo Ochoa 22, Marbella", "tel": "+34 952 774 200", "min": 20, "q": "Hospital Quirónsalud Marbella"}, {"who": "Consultorio Las Chapas", "tag": "Médico", "what": "Centro de salud público cerca de la casa para atención general. Llevad la Tarjeta Sanitaria Europea.", "addr": "Calle Pinsapo s/n, Las Chapas, Marbella", "tel": "+34 951 704 027", "min": 10, "q": "Consultorio Las Chapas, Calle Pinsapo, Marbella"}, {"who": "Salud Responde", "tag": "Teléfono de salud", "what": "Línea pública de salud de Andalucía, para consejo o cita con el médico.", "tel": "+34 955 545 060"}, {"who": "Farmacia Elviria", "tag": "Farmacia", "what": "La farmacia más cercana, en Elviria. También aconsejan en caso de dolencias leves.", "addr": "Avenida de las Cumbres 4, Elviria, Marbella", "tel": "+34 952 831 457", "min": 8, "q": "Farmacia Elviria, Avenida de las Cumbres 4, Marbella"}, {"who": "Farmacia de guardia", "tag": "Noches y festivos", "what": "Las farmacias hacen guardias por turnos. La más cercana aparece en la puerta de cualquier farmacia, o buscadla en el mapa.", "search": "farmacia de guardia Marbella"}], healthIntro: "En caso de emergencia vital: llamad al 112. Llevad la Tarjeta Sanitaria Europea y los datos del seguro de viaje.", hCall: "Llamar", hRoute: "Ruta", hFind: "Ver en el mapa"
     },
     safety: {
       title: "Incendios y seguridad",
@@ -436,7 +430,7 @@ window.VM_CONTENT = {
         "Las autoridades pueden enviar avisos directamente al móvil (ES-Alert). Seguidlos."
       ],
       evacTodo: "Ruta de evacuación y punto de encuentro",
-      extTodo: "Dónde están el extintor y la manta ignífuga"
+      ext: "El extintor y el botiquín están debajo de la escalera en la planta baja."
     }
   },
 
@@ -516,6 +510,7 @@ window.VM_CONTENT = {
       { id: "kaffe", icon: "i-cup", title: "Kaffeemaschine", body: [], todo: "Maschinentyp und wo Kapseln oder Bohnen sind" },
       { id: "vask", icon: "i-wash", title: "Waschmaschine und Trockner", body: ["Waschmaschine und Trockner stehen zur freien Nutzung."], todo: "Wo sie stehen, und Waschmittel" },
       { id: "affald", icon: "i-bin", title: "Müll und Recycling", body: ["In Spanien wird der Müll in farbigen Containern an der Straße getrennt. Am Haus gibt es keine Abholung, bitte bringen Sie die Beutel zu den Containern.", "Bitte niemals Glas, Flaschen oder Fett in Toilette oder Spüle werfen."], bins: [["#e9c443", "Gelb", "Plastik, Dosen, Getränkekartons, Alufolie und Schalen"], ["#3b6fb6", "Blau", "Papier, Pappe und Kartons (bitte zusammenfalten)"], ["#3f8a4e", "Grün (runde Glocke)", "Glasflaschen und Gläser ohne Deckel"], ["#6b6b6b", "Grau oder dunkelgrün", "Restmüll und Essensreste in geschlossenen Beuteln"], ["#8a5a2b", "Braun (falls vorhanden)", "Bio- und Essensabfälle"]], todo: "Wo die nächsten Container stehen" },
+      { id: "sikkerhedsudstyr", icon: "i-flame", title: "Feuerlöscher und Erste Hilfe", body: ["Im Haus gibt es einen Feuerlöscher und einen Erste-Hilfe-Kasten.", "Beide befinden sich unter der Treppe im Erdgeschoss.", "Bei schweren Verletzungen oder Feuer: 112 anrufen."] },
       { id: "afrejse", icon: "i-key", title: "Vor der Abreise", body: ["Kein Putzen nötig. Die Endreinigung ist inklusive."], todo: "Wo die Schlüssel hinterlegt werden", checkTitle: "Checkliste zur Abreise", check: ["Frische Lebensmittel bitte mitnehmen oder entsorgen. Salz, Pfeffer, Kaffee, Öl und ähnliche Grundvorräte dürfen für die nächsten Gäste bleiben", "Geschirrspüler einräumen und starten", "Müll, Flaschen und Karton zu den Containern bringen", "Benutzte Handtücher gesammelt in den Bädern lassen", "Klimaanlage, Licht und TV ausschalten", "Alle Fenster und Terrassentüren schließen und verriegeln", "Grill nach Benutzung reinigen, damit er für die nächsten Gäste bereit ist", "Schränke, Schubladen, Safe und Steckdosen auf Vergessenes und Ladegeräte prüfen", "Check-out bis 10 Uhr. Tor hinter sich schließen"], bye: "Danke für Ihren Besuch – gute Heimreise!", leaveToday: "Sie reisen heute ab", leaveTomorrow: "Sie reisen morgen ab", leaveSee: "Sehen Sie vor der Abreise die Checkliste an" }
     ],
     area: {
@@ -559,10 +554,7 @@ window.VM_CONTENT = {
         { who: "Reinigung", what: "Zusätzliche Reinigung während des Aufenthalts", todo: "Name und Nummer" }
       ],
       healthTitle: "Gesundheit",
-      health: [
-        { who: "Hospital Costa del Sol", what: "Öffentliches Krankenhaus mit Notaufnahme in Marbella" },
-        { who: "Nächste Apotheke und Arzt", todo: "Name und Adresse" }
-      ]
+      health: [{"who": "Hospital Universitario Costa del Sol", "tag": "Notaufnahme rund um die Uhr", "what": "Öffentliches Krankenhaus zwischen Elviria und Marbella. Hier gilt die EHIC.", "addr": "Autovía A-7, km 187, Marbella", "tel": "+34 951 976 669", "min": 15, "q": "Hospital Universitario Costa del Sol, Marbella"}, {"who": "Hospital Quirónsalud Marbella", "tag": "Privat · Notaufnahme rund um die Uhr", "what": "Privatklinik in Marbella mit englischsprachigem Personal. Reiseversicherung oder Bezahlung nötig.", "addr": "Avenida Severo Ochoa 22, Marbella", "tel": "+34 952 774 200", "min": 20, "q": "Hospital Quirónsalud Marbella"}, {"who": "Consultorio Las Chapas", "tag": "Arzt", "what": "Öffentliches Gesundheitszentrum nahe dem Haus für allgemeine ärztliche Hilfe. EHIC mitnehmen.", "addr": "Calle Pinsapo s/n, Las Chapas, Marbella", "tel": "+34 951 704 027", "min": 10, "q": "Consultorio Las Chapas, Calle Pinsapo, Marbella"}, {"who": "Salud Responde", "tag": "Gesundheitstelefon", "what": "Öffentliches Gesundheitstelefon Andalusiens, für Rat oder einen Arzttermin.", "tel": "+34 955 545 060"}, {"who": "Farmacia Elviria", "tag": "Apotheke", "what": "Die nächste Apotheke, in Elviria. Apotheker beraten auch bei leichten Beschwerden.", "addr": "Avenida de las Cumbres 4, Elviria, Marbella", "tel": "+34 952 831 457", "min": 8, "q": "Farmacia Elviria, Avenida de las Cumbres 4, Marbella"}, {"who": "Notdienstapotheke (farmacia de guardia)", "tag": "Abends, nachts und feiertags", "what": "Die Apotheken wechseln sich mit dem Notdienst ab. Die nächste steht an jeder Apothekentür, oder auf der Karte suchen.", "search": "farmacia de guardia Marbella"}], healthIntro: "Bei Lebensgefahr: 112 anrufen. Europäische Krankenversicherungskarte (EHIC) und Reiseversicherung mitnehmen.", hCall: "Anrufen", hRoute: "Route", hFind: "Auf der Karte"
     },
     safety: {
       title: "Brand und Sicherheit",
@@ -582,7 +574,7 @@ window.VM_CONTENT = {
         "Die Behörden können Warnungen direkt auf Ihr Handy senden (ES-Alert). Folgen Sie ihnen."
       ],
       evacTodo: "Fluchtweg und Treffpunkt bei Evakuierung",
-      extTodo: "Wo Feuerlöscher und Löschdecke sind"
+      ext: "Feuerlöscher und Erste-Hilfe-Kasten befinden sich unter der Treppe im Erdgeschoss."
     }
   }
 };
@@ -935,7 +927,7 @@ window.VM_EXTRA = {
   "backReview": "Skriv en anmeldelse",
   "backBook": "Book direkte",
   "backCode": "Rabatkode til direkte booking",
-  "backTodo": "Rabatkode og link til anmeldelser",
+  "backTodo": "Rabatkode til direkte booking",
   "mkTitle": "Markeder og begivenheder",
   "mkText": "Ugentlige markeder og årets fester i området. Markederne holder som regel lukket på helligdage og under byens feria.",
   "mkSum": "Ugentlige markeder",
@@ -944,6 +936,8 @@ window.VM_EXTRA = {
   "evSum": "Fester og begivenheder",
   "evSumD": "Hele året",
   "evIntro": "De præcise datoer skifter fra år til år. Listen starter med den aktuelle måned.",
+  "mkHome": "Markeder i dag",
+  "mkAll": "Se alle markeder",
   "mkToday": "I dag",
   "evNow": "Denne måned",
   "evNext": "Næste måned",
@@ -966,9 +960,15 @@ window.VM_EXTRA = {
     "when": "1. og 3. lørdag i måneden",
     "hours": "9–14",
     "s": "Økologiske grøntsager, brød, ost, olivenolie og honning fra lokale producenter.",
-    "dow": [],
+    "dow": [
+     6
+    ],
     "min": 10,
-    "q": "Pinares de Elviria, Marbella"
+    "q": "Pinares de Elviria, Marbella",
+    "nth": [
+     1,
+     3
+    ]
    },
    {
     "n": "Marbella-markedet",
@@ -1048,9 +1048,23 @@ window.VM_EXTRA = {
     "when": "Dagligt i juni–august",
     "hours": "Om aftenen",
     "s": "Sommermarked med smykker, kunst og håndlavede ting ved havnen.",
-    "dow": [],
+    "dow": [
+     0,
+     1,
+     2,
+     3,
+     4,
+     5,
+     6
+    ],
     "min": 30,
-    "q": "Plaza Antonio Banderas, Puerto Banús"
+    "q": "Plaza Antonio Banderas, Puerto Banús",
+    "season": [
+     6,
+     7,
+     8
+    ],
+    "eve": 1
    }
   ],
   "events": [
@@ -1164,10 +1178,11 @@ window.VM_EXTRA = {
   "rvAirbnb": "I har booket via Airbnb. Efter check-ud sender Airbnb jer en mail, hvor I kan anmelde opholdet. Det betyder rigtig meget for os.",
   "rvBooking": "I har booket via Booking.com. Efter check-ud sender Booking.com jer en mail, hvor I kan anmelde opholdet. Det betyder rigtig meget for os.",
   "rvVrbo": "I har booket via Vrbo. Efter check-ud sender Vrbo jer en mail, hvor I kan anmelde opholdet. Det betyder rigtig meget for os.",
-  "rvDirect": "Har I haft et godt ophold, vil vi blive rigtig glade for en anmeldelse på Google. Det tager kun et minut.",
-  "rvAny": "Har I booket via Airbnb eller Booking.com, får I en mail derfra efter check-ud, hvor I kan anmelde opholdet. Har I booket direkte hos os, må I meget gerne skrive en anmeldelse på Google.",
-  "rvBtn": "Anmeld os på Google",
-  "rvTodo": "Link til jeres Google-anmeldelser"
+  "rvDirect": "Tak fordi I boede hos os. Har I en idé til, hvordan huset kan blive endnu bedre, hører vi den meget gerne. Og næste gang kan I booke direkte hos os.",
+  "rvAny": "Har I booket via Airbnb eller Booking.com, sender de jer en mail efter check-ud, hvor I kan anmelde opholdet. Det betyder rigtig meget for os. Har I en idé til, hvordan huset kan blive endnu bedre, hører vi den også gerne.",
+  "rvIdea": "Giv et forslag",
+  "rvBook": "Book direkte næste gang",
+  "rvTitleDirect": "Tak for besøget"
  },
  "en": {
   "rulesTitle": "House rules",
@@ -1475,7 +1490,7 @@ window.VM_EXTRA = {
   "backReview": "Write a review",
   "backBook": "Book direct",
   "backCode": "Discount code for direct booking",
-  "backTodo": "Discount code and review link",
+  "backTodo": "Discount code for direct booking",
   "mkTitle": "Markets and events",
   "mkText": "Weekly markets and the year's fiestas nearby. Markets are usually closed on public holidays and during the town's feria.",
   "mkSum": "Weekly markets",
@@ -1484,6 +1499,8 @@ window.VM_EXTRA = {
   "evSum": "Fiestas and events",
   "evSumD": "All year",
   "evIntro": "Exact dates change from year to year. The list starts with the current month.",
+  "mkHome": "Markets today",
+  "mkAll": "See all markets",
   "mkToday": "Today",
   "evNow": "This month",
   "evNext": "Next month",
@@ -1506,9 +1523,15 @@ window.VM_EXTRA = {
     "when": "1st and 3rd Saturday of the month",
     "hours": "9–14",
     "s": "Organic vegetables, bread, cheese, olive oil and honey from local producers.",
-    "dow": [],
+    "dow": [
+     6
+    ],
     "min": 10,
-    "q": "Pinares de Elviria, Marbella"
+    "q": "Pinares de Elviria, Marbella",
+    "nth": [
+     1,
+     3
+    ]
    },
    {
     "n": "Marbella market",
@@ -1588,9 +1611,23 @@ window.VM_EXTRA = {
     "when": "Daily in June–August",
     "hours": "Evenings",
     "s": "Summer market with jewellery, art and handmade goods by the marina.",
-    "dow": [],
+    "dow": [
+     0,
+     1,
+     2,
+     3,
+     4,
+     5,
+     6
+    ],
     "min": 30,
-    "q": "Plaza Antonio Banderas, Puerto Banús"
+    "q": "Plaza Antonio Banderas, Puerto Banús",
+    "season": [
+     6,
+     7,
+     8
+    ],
+    "eve": 1
    }
   ],
   "events": [
@@ -1704,10 +1741,11 @@ window.VM_EXTRA = {
   "rvAirbnb": "You booked via Airbnb. After check-out, Airbnb will email you a link to review your stay. It means a lot to us.",
   "rvBooking": "You booked via Booking.com. After check-out, Booking.com will email you a link to review your stay. It means a lot to us.",
   "rvVrbo": "You booked via Vrbo. After check-out, Vrbo will email you a link to review your stay. It means a lot to us.",
-  "rvDirect": "If you enjoyed your stay, we would love a review on Google. It only takes a minute.",
-  "rvAny": "If you booked via Airbnb or Booking.com, you'll get an email from them after check-out to review your stay. If you booked directly with us, we'd love a review on Google.",
-  "rvBtn": "Review us on Google",
-  "rvTodo": "Link to your Google reviews"
+  "rvDirect": "Thank you for staying with us. If you have an idea for making the house even better, we'd love to hear it. Next time, you can book directly with us.",
+  "rvAny": "If you booked via Airbnb or Booking.com, they will email you after check-out so you can review your stay. It means a lot to us. If you have an idea for making the house even better, we'd love to hear it too.",
+  "rvIdea": "Share an idea",
+  "rvBook": "Book direct next time",
+  "rvTitleDirect": "Thank you for staying"
  },
  "es": {
   "rulesTitle": "Normas de la casa",
@@ -2015,7 +2053,7 @@ window.VM_EXTRA = {
   "backReview": "Escribir una reseña",
   "backBook": "Reservar directamente",
   "backCode": "Código de descuento",
-  "backTodo": "Código de descuento y enlace a reseñas",
+  "backTodo": "Código de descuento para reserva directa",
   "mkTitle": "Mercadillos y eventos",
   "mkText": "Mercadillos semanales y las fiestas del año en la zona. Los mercadillos suelen cerrar en festivos y durante la feria.",
   "mkSum": "Mercadillos semanales",
@@ -2024,6 +2062,8 @@ window.VM_EXTRA = {
   "evSum": "Fiestas y eventos",
   "evSumD": "Todo el año",
   "evIntro": "Las fechas exactas cambian cada año. La lista empieza por el mes actual.",
+  "mkHome": "Mercadillos hoy",
+  "mkAll": "Ver todos",
   "mkToday": "Hoy",
   "evNow": "Este mes",
   "evNext": "Próximo mes",
@@ -2046,9 +2086,15 @@ window.VM_EXTRA = {
     "when": "1.er y 3.er sábado del mes",
     "hours": "9–14",
     "s": "Verdura ecológica, pan, queso, aceite y miel de productores locales.",
-    "dow": [],
+    "dow": [
+     6
+    ],
     "min": 10,
-    "q": "Pinares de Elviria, Marbella"
+    "q": "Pinares de Elviria, Marbella",
+    "nth": [
+     1,
+     3
+    ]
    },
    {
     "n": "Mercadillo de Marbella",
@@ -2128,9 +2174,23 @@ window.VM_EXTRA = {
     "when": "A diario en junio–agosto",
     "hours": "Por la tarde-noche",
     "s": "Mercado de verano con joyas, arte y artesanía junto al puerto.",
-    "dow": [],
+    "dow": [
+     0,
+     1,
+     2,
+     3,
+     4,
+     5,
+     6
+    ],
     "min": 30,
-    "q": "Plaza Antonio Banderas, Puerto Banús"
+    "q": "Plaza Antonio Banderas, Puerto Banús",
+    "season": [
+     6,
+     7,
+     8
+    ],
+    "eve": 1
    }
   ],
   "events": [
@@ -2244,10 +2304,11 @@ window.VM_EXTRA = {
   "rvAirbnb": "Reservasteis por Airbnb. Tras la salida, Airbnb os enviará un correo para valorar la estancia. Significa mucho para nosotros.",
   "rvBooking": "Reservasteis por Booking.com. Tras la salida, Booking.com os enviará un correo para valorar la estancia. Significa mucho para nosotros.",
   "rvVrbo": "Reservasteis por Vrbo. Tras la salida, Vrbo os enviará un correo para valorar la estancia. Significa mucho para nosotros.",
-  "rvDirect": "Si habéis disfrutado, nos encantaría una reseña en Google. Solo lleva un minuto.",
-  "rvAny": "Si reservasteis por Airbnb o Booking.com, os llegará un correo tras la salida para valorar. Si reservasteis directamente, nos encantaría una reseña en Google.",
-  "rvBtn": "Valoradnos en Google",
-  "rvTodo": "Enlace a reseñas de Google"
+  "rvDirect": "Gracias por alojaros con nosotros. Si tenéis alguna idea para mejorar la casa, nos encantará oírla. La próxima vez podéis reservar directamente con nosotros.",
+  "rvAny": "Si reservasteis por Airbnb o Booking.com, os enviarán un correo tras la salida para valorar la estancia. Significa mucho para nosotros. Si tenéis una idea para mejorar la casa, también nos encantará oírla.",
+  "rvIdea": "Dejad una sugerencia",
+  "rvBook": "Reservad directamente",
+  "rvTitleDirect": "Gracias por la visita"
  },
  "de": {
   "rulesTitle": "Hausregeln",
@@ -2555,7 +2616,7 @@ window.VM_EXTRA = {
   "backReview": "Bewertung schreiben",
   "backBook": "Direkt buchen",
   "backCode": "Rabattcode für Direktbuchung",
-  "backTodo": "Rabattcode und Bewertungslink",
+  "backTodo": "Rabattcode für Direktbuchung",
   "mkTitle": "Märkte und Veranstaltungen",
   "mkText": "Wochenmärkte und die Feste des Jahres in der Umgebung. An Feiertagen und während der Feria finden die Märkte meist nicht statt.",
   "mkSum": "Wochenmärkte",
@@ -2564,6 +2625,8 @@ window.VM_EXTRA = {
   "evSum": "Feste und Veranstaltungen",
   "evSumD": "Ganzjährig",
   "evIntro": "Die genauen Termine ändern sich jedes Jahr. Die Liste beginnt mit dem aktuellen Monat.",
+  "mkHome": "Märkte heute",
+  "mkAll": "Alle Märkte",
   "mkToday": "Heute",
   "evNow": "Diesen Monat",
   "evNext": "Nächsten Monat",
@@ -2586,9 +2649,15 @@ window.VM_EXTRA = {
     "when": "1. und 3. Samstag im Monat",
     "hours": "9–14",
     "s": "Bio-Gemüse, Brot, Käse, Olivenöl und Honig von lokalen Erzeugern.",
-    "dow": [],
+    "dow": [
+     6
+    ],
     "min": 10,
-    "q": "Pinares de Elviria, Marbella"
+    "q": "Pinares de Elviria, Marbella",
+    "nth": [
+     1,
+     3
+    ]
    },
    {
     "n": "Markt Marbella",
@@ -2668,9 +2737,23 @@ window.VM_EXTRA = {
     "when": "Täglich Juni–August",
     "hours": "Abends",
     "s": "Sommermarkt mit Schmuck, Kunst und Handgemachtem am Hafen.",
-    "dow": [],
+    "dow": [
+     0,
+     1,
+     2,
+     3,
+     4,
+     5,
+     6
+    ],
     "min": 30,
-    "q": "Plaza Antonio Banderas, Puerto Banús"
+    "q": "Plaza Antonio Banderas, Puerto Banús",
+    "season": [
+     6,
+     7,
+     8
+    ],
+    "eve": 1
    }
   ],
   "events": [
@@ -2784,9 +2867,12 @@ window.VM_EXTRA = {
   "rvAirbnb": "Sie haben über Airbnb gebucht. Nach dem Check-out schickt Airbnb Ihnen eine E-Mail zur Bewertung. Das bedeutet uns sehr viel.",
   "rvBooking": "Sie haben über Booking.com gebucht. Nach dem Check-out schickt Booking.com Ihnen eine E-Mail zur Bewertung. Das bedeutet uns sehr viel.",
   "rvVrbo": "Sie haben über Vrbo gebucht. Nach dem Check-out schickt Vrbo Ihnen eine E-Mail zur Bewertung. Das bedeutet uns sehr viel.",
-  "rvDirect": "Wenn Ihnen der Aufenthalt gefallen hat, freuen wir uns sehr über eine Google-Bewertung. Es dauert nur eine Minute.",
-  "rvAny": "Bei Buchung über Airbnb oder Booking.com erhalten Sie nach dem Check-out eine E-Mail zur Bewertung. Bei Direktbuchung freuen wir uns über eine Google-Bewertung.",
-  "rvBtn": "Auf Google bewerten",
-  "rvTodo": "Link zu Google-Bewertungen"
+  "rvDirect": "Danke für Ihren Aufenthalt. Wenn Sie eine Idee haben, wie das Haus noch besser werden kann, freuen wir uns darauf. Beim nächsten Mal können Sie direkt bei uns buchen.",
+  "rvAny": "Wenn Sie über Airbnb oder Booking.com gebucht haben, erhalten Sie nach dem Check-out eine E-Mail zur Bewertung. Das bedeutet uns sehr viel. Wenn Sie eine Idee haben, wie das Haus noch besser werden kann, freuen wir uns auch darüber.",
+  "rvIdea": "Vorschlag senden",
+  "rvBook": "Nächstes Mal direkt buchen",
+  "rvTitleDirect": "Danke für Ihren Besuch"
  }
 };
+
+window.VM_WIFIQR="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%2037%2037%22%20shape-rendering%3D%22crispEdges%22%3E%3Crect%20width%3D%2237%22%20height%3D%2237%22%20fill%3D%22%23fff%22/%3E%3Cpath%20d%3D%22M2%202h1v1h-1zM3%202h1v1h-1zM4%202h1v1h-1zM5%202h1v1h-1zM6%202h1v1h-1zM7%202h1v1h-1zM8%202h1v1h-1zM11%202h1v1h-1zM14%202h1v1h-1zM15%202h1v1h-1zM18%202h1v1h-1zM19%202h1v1h-1zM21%202h1v1h-1zM22%202h1v1h-1zM24%202h1v1h-1zM28%202h1v1h-1zM29%202h1v1h-1zM30%202h1v1h-1zM31%202h1v1h-1zM32%202h1v1h-1zM33%202h1v1h-1zM34%202h1v1h-1zM2%203h1v1h-1zM8%203h1v1h-1zM11%203h1v1h-1zM15%203h1v1h-1zM16%203h1v1h-1zM17%203h1v1h-1zM19%203h1v1h-1zM22%203h1v1h-1zM26%203h1v1h-1zM28%203h1v1h-1zM34%203h1v1h-1zM2%204h1v1h-1zM4%204h1v1h-1zM5%204h1v1h-1zM6%204h1v1h-1zM8%204h1v1h-1zM10%204h1v1h-1zM11%204h1v1h-1zM14%204h1v1h-1zM15%204h1v1h-1zM18%204h1v1h-1zM19%204h1v1h-1zM20%204h1v1h-1zM23%204h1v1h-1zM24%204h1v1h-1zM25%204h1v1h-1zM26%204h1v1h-1zM28%204h1v1h-1zM30%204h1v1h-1zM31%204h1v1h-1zM32%204h1v1h-1zM34%204h1v1h-1zM2%205h1v1h-1zM4%205h1v1h-1zM5%205h1v1h-1zM6%205h1v1h-1zM8%205h1v1h-1zM10%205h1v1h-1zM12%205h1v1h-1zM13%205h1v1h-1zM16%205h1v1h-1zM17%205h1v1h-1zM18%205h1v1h-1zM21%205h1v1h-1zM22%205h1v1h-1zM25%205h1v1h-1zM28%205h1v1h-1zM30%205h1v1h-1zM31%205h1v1h-1zM32%205h1v1h-1zM34%205h1v1h-1zM2%206h1v1h-1zM4%206h1v1h-1zM5%206h1v1h-1zM6%206h1v1h-1zM8%206h1v1h-1zM10%206h1v1h-1zM13%206h1v1h-1zM15%206h1v1h-1zM17%206h1v1h-1zM20%206h1v1h-1zM23%206h1v1h-1zM24%206h1v1h-1zM25%206h1v1h-1zM26%206h1v1h-1zM28%206h1v1h-1zM30%206h1v1h-1zM31%206h1v1h-1zM32%206h1v1h-1zM34%206h1v1h-1zM2%207h1v1h-1zM8%207h1v1h-1zM10%207h1v1h-1zM11%207h1v1h-1zM12%207h1v1h-1zM13%207h1v1h-1zM17%207h1v1h-1zM18%207h1v1h-1zM19%207h1v1h-1zM20%207h1v1h-1zM22%207h1v1h-1zM24%207h1v1h-1zM28%207h1v1h-1zM34%207h1v1h-1zM2%208h1v1h-1zM3%208h1v1h-1zM4%208h1v1h-1zM5%208h1v1h-1zM6%208h1v1h-1zM7%208h1v1h-1zM8%208h1v1h-1zM10%208h1v1h-1zM12%208h1v1h-1zM14%208h1v1h-1zM16%208h1v1h-1zM18%208h1v1h-1zM20%208h1v1h-1zM22%208h1v1h-1zM24%208h1v1h-1zM26%208h1v1h-1zM28%208h1v1h-1zM29%208h1v1h-1zM30%208h1v1h-1zM31%208h1v1h-1zM32%208h1v1h-1zM33%208h1v1h-1zM34%208h1v1h-1zM10%209h1v1h-1zM12%209h1v1h-1zM14%209h1v1h-1zM16%209h1v1h-1zM17%209h1v1h-1zM20%209h1v1h-1zM23%209h1v1h-1zM25%209h1v1h-1zM2%2010h1v1h-1zM4%2010h1v1h-1zM5%2010h1v1h-1zM6%2010h1v1h-1zM7%2010h1v1h-1zM8%2010h1v1h-1zM11%2010h1v1h-1zM12%2010h1v1h-1zM13%2010h1v1h-1zM14%2010h1v1h-1zM15%2010h1v1h-1zM16%2010h1v1h-1zM17%2010h1v1h-1zM18%2010h1v1h-1zM19%2010h1v1h-1zM24%2010h1v1h-1zM28%2010h1v1h-1zM29%2010h1v1h-1zM30%2010h1v1h-1zM31%2010h1v1h-1zM32%2010h1v1h-1zM2%2011h1v1h-1zM3%2011h1v1h-1zM6%2011h1v1h-1zM9%2011h1v1h-1zM10%2011h1v1h-1zM11%2011h1v1h-1zM13%2011h1v1h-1zM17%2011h1v1h-1zM18%2011h1v1h-1zM20%2011h1v1h-1zM21%2011h1v1h-1zM22%2011h1v1h-1zM25%2011h1v1h-1zM26%2011h1v1h-1zM27%2011h1v1h-1zM2%2012h1v1h-1zM4%2012h1v1h-1zM5%2012h1v1h-1zM6%2012h1v1h-1zM8%2012h1v1h-1zM11%2012h1v1h-1zM13%2012h1v1h-1zM14%2012h1v1h-1zM17%2012h1v1h-1zM20%2012h1v1h-1zM22%2012h1v1h-1zM27%2012h1v1h-1zM28%2012h1v1h-1zM29%2012h1v1h-1zM30%2012h1v1h-1zM31%2012h1v1h-1zM32%2012h1v1h-1zM33%2012h1v1h-1zM4%2013h1v1h-1zM9%2013h1v1h-1zM10%2013h1v1h-1zM11%2013h1v1h-1zM12%2013h1v1h-1zM13%2013h1v1h-1zM14%2013h1v1h-1zM16%2013h1v1h-1zM23%2013h1v1h-1zM24%2013h1v1h-1zM25%2013h1v1h-1zM26%2013h1v1h-1zM28%2013h1v1h-1zM29%2013h1v1h-1zM30%2013h1v1h-1zM31%2013h1v1h-1zM32%2013h1v1h-1zM33%2013h1v1h-1zM2%2014h1v1h-1zM3%2014h1v1h-1zM5%2014h1v1h-1zM7%2014h1v1h-1zM8%2014h1v1h-1zM10%2014h1v1h-1zM14%2014h1v1h-1zM20%2014h1v1h-1zM23%2014h1v1h-1zM27%2014h1v1h-1zM29%2014h1v1h-1zM30%2014h1v1h-1zM32%2014h1v1h-1zM3%2015h1v1h-1zM5%2015h1v1h-1zM14%2015h1v1h-1zM16%2015h1v1h-1zM17%2015h1v1h-1zM18%2015h1v1h-1zM22%2015h1v1h-1zM25%2015h1v1h-1zM26%2015h1v1h-1zM28%2015h1v1h-1zM31%2015h1v1h-1zM5%2016h1v1h-1zM7%2016h1v1h-1zM8%2016h1v1h-1zM10%2016h1v1h-1zM14%2016h1v1h-1zM21%2016h1v1h-1zM23%2016h1v1h-1zM26%2016h1v1h-1zM27%2016h1v1h-1zM31%2016h1v1h-1zM32%2016h1v1h-1zM33%2016h1v1h-1zM3%2017h1v1h-1zM9%2017h1v1h-1zM10%2017h1v1h-1zM11%2017h1v1h-1zM13%2017h1v1h-1zM14%2017h1v1h-1zM15%2017h1v1h-1zM16%2017h1v1h-1zM18%2017h1v1h-1zM21%2017h1v1h-1zM22%2017h1v1h-1zM23%2017h1v1h-1zM24%2017h1v1h-1zM25%2017h1v1h-1zM26%2017h1v1h-1zM27%2017h1v1h-1zM28%2017h1v1h-1zM31%2017h1v1h-1zM32%2017h1v1h-1zM33%2017h1v1h-1zM34%2017h1v1h-1zM2%2018h1v1h-1zM3%2018h1v1h-1zM8%2018h1v1h-1zM11%2018h1v1h-1zM12%2018h1v1h-1zM14%2018h1v1h-1zM15%2018h1v1h-1zM16%2018h1v1h-1zM18%2018h1v1h-1zM19%2018h1v1h-1zM21%2018h1v1h-1zM24%2018h1v1h-1zM27%2018h1v1h-1zM30%2018h1v1h-1zM33%2018h1v1h-1zM2%2019h1v1h-1zM3%2019h1v1h-1zM6%2019h1v1h-1zM11%2019h1v1h-1zM12%2019h1v1h-1zM13%2019h1v1h-1zM16%2019h1v1h-1zM19%2019h1v1h-1zM20%2019h1v1h-1zM21%2019h1v1h-1zM22%2019h1v1h-1zM27%2019h1v1h-1zM29%2019h1v1h-1zM31%2019h1v1h-1zM32%2019h1v1h-1zM34%2019h1v1h-1zM2%2020h1v1h-1zM3%2020h1v1h-1zM4%2020h1v1h-1zM6%2020h1v1h-1zM8%2020h1v1h-1zM9%2020h1v1h-1zM11%2020h1v1h-1zM13%2020h1v1h-1zM14%2020h1v1h-1zM15%2020h1v1h-1zM16%2020h1v1h-1zM17%2020h1v1h-1zM19%2020h1v1h-1zM22%2020h1v1h-1zM24%2020h1v1h-1zM29%2020h1v1h-1zM33%2020h1v1h-1zM3%2021h1v1h-1zM5%2021h1v1h-1zM6%2021h1v1h-1zM7%2021h1v1h-1zM9%2021h1v1h-1zM11%2021h1v1h-1zM12%2021h1v1h-1zM14%2021h1v1h-1zM17%2021h1v1h-1zM19%2021h1v1h-1zM20%2021h1v1h-1zM22%2021h1v1h-1zM25%2021h1v1h-1zM26%2021h1v1h-1zM27%2021h1v1h-1zM31%2021h1v1h-1zM32%2021h1v1h-1zM3%2022h1v1h-1zM4%2022h1v1h-1zM5%2022h1v1h-1zM8%2022h1v1h-1zM10%2022h1v1h-1zM12%2022h1v1h-1zM13%2022h1v1h-1zM14%2022h1v1h-1zM15%2022h1v1h-1zM16%2022h1v1h-1zM17%2022h1v1h-1zM18%2022h1v1h-1zM21%2022h1v1h-1zM22%2022h1v1h-1zM23%2022h1v1h-1zM24%2022h1v1h-1zM25%2022h1v1h-1zM29%2022h1v1h-1zM30%2022h1v1h-1zM32%2022h1v1h-1zM33%2022h1v1h-1zM34%2022h1v1h-1zM2%2023h1v1h-1zM3%2023h1v1h-1zM7%2023h1v1h-1zM9%2023h1v1h-1zM12%2023h1v1h-1zM13%2023h1v1h-1zM17%2023h1v1h-1zM19%2023h1v1h-1zM20%2023h1v1h-1zM25%2023h1v1h-1zM26%2023h1v1h-1zM27%2023h1v1h-1zM28%2023h1v1h-1zM32%2023h1v1h-1zM33%2023h1v1h-1zM2%2024h1v1h-1zM5%2024h1v1h-1zM6%2024h1v1h-1zM7%2024h1v1h-1zM8%2024h1v1h-1zM14%2024h1v1h-1zM16%2024h1v1h-1zM17%2024h1v1h-1zM18%2024h1v1h-1zM19%2024h1v1h-1zM22%2024h1v1h-1zM23%2024h1v1h-1zM24%2024h1v1h-1zM26%2024h1v1h-1zM29%2024h1v1h-1zM30%2024h1v1h-1zM31%2024h1v1h-1zM32%2024h1v1h-1zM33%2024h1v1h-1zM2%2025h1v1h-1zM7%2025h1v1h-1zM9%2025h1v1h-1zM13%2025h1v1h-1zM14%2025h1v1h-1zM17%2025h1v1h-1zM20%2025h1v1h-1zM23%2025h1v1h-1zM26%2025h1v1h-1zM29%2025h1v1h-1zM31%2025h1v1h-1zM32%2025h1v1h-1zM34%2025h1v1h-1zM2%2026h1v1h-1zM4%2026h1v1h-1zM5%2026h1v1h-1zM8%2026h1v1h-1zM9%2026h1v1h-1zM12%2026h1v1h-1zM13%2026h1v1h-1zM14%2026h1v1h-1zM15%2026h1v1h-1zM17%2026h1v1h-1zM18%2026h1v1h-1zM19%2026h1v1h-1zM24%2026h1v1h-1zM26%2026h1v1h-1zM27%2026h1v1h-1zM28%2026h1v1h-1zM29%2026h1v1h-1zM30%2026h1v1h-1zM33%2026h1v1h-1zM34%2026h1v1h-1zM10%2027h1v1h-1zM11%2027h1v1h-1zM12%2027h1v1h-1zM16%2027h1v1h-1zM17%2027h1v1h-1zM18%2027h1v1h-1zM20%2027h1v1h-1zM22%2027h1v1h-1zM23%2027h1v1h-1zM25%2027h1v1h-1zM26%2027h1v1h-1zM30%2027h1v1h-1zM34%2027h1v1h-1zM2%2028h1v1h-1zM3%2028h1v1h-1zM4%2028h1v1h-1zM5%2028h1v1h-1zM6%2028h1v1h-1zM7%2028h1v1h-1zM8%2028h1v1h-1zM12%2028h1v1h-1zM14%2028h1v1h-1zM15%2028h1v1h-1zM16%2028h1v1h-1zM17%2028h1v1h-1zM18%2028h1v1h-1zM20%2028h1v1h-1zM22%2028h1v1h-1zM23%2028h1v1h-1zM25%2028h1v1h-1zM26%2028h1v1h-1zM28%2028h1v1h-1zM30%2028h1v1h-1zM31%2028h1v1h-1zM32%2028h1v1h-1zM33%2028h1v1h-1zM2%2029h1v1h-1zM8%2029h1v1h-1zM10%2029h1v1h-1zM12%2029h1v1h-1zM14%2029h1v1h-1zM16%2029h1v1h-1zM23%2029h1v1h-1zM24%2029h1v1h-1zM26%2029h1v1h-1zM30%2029h1v1h-1zM32%2029h1v1h-1zM2%2030h1v1h-1zM4%2030h1v1h-1zM5%2030h1v1h-1zM6%2030h1v1h-1zM8%2030h1v1h-1zM10%2030h1v1h-1zM11%2030h1v1h-1zM12%2030h1v1h-1zM14%2030h1v1h-1zM15%2030h1v1h-1zM20%2030h1v1h-1zM23%2030h1v1h-1zM26%2030h1v1h-1zM27%2030h1v1h-1zM28%2030h1v1h-1zM29%2030h1v1h-1zM30%2030h1v1h-1zM31%2030h1v1h-1zM33%2030h1v1h-1zM34%2030h1v1h-1zM2%2031h1v1h-1zM4%2031h1v1h-1zM5%2031h1v1h-1zM6%2031h1v1h-1zM8%2031h1v1h-1zM10%2031h1v1h-1zM12%2031h1v1h-1zM13%2031h1v1h-1zM16%2031h1v1h-1zM17%2031h1v1h-1zM18%2031h1v1h-1zM22%2031h1v1h-1zM24%2031h1v1h-1zM25%2031h1v1h-1zM26%2031h1v1h-1zM27%2031h1v1h-1zM34%2031h1v1h-1zM2%2032h1v1h-1zM4%2032h1v1h-1zM5%2032h1v1h-1zM6%2032h1v1h-1zM8%2032h1v1h-1zM10%2032h1v1h-1zM11%2032h1v1h-1zM13%2032h1v1h-1zM15%2032h1v1h-1zM16%2032h1v1h-1zM20%2032h1v1h-1zM21%2032h1v1h-1zM23%2032h1v1h-1zM24%2032h1v1h-1zM26%2032h1v1h-1zM31%2032h1v1h-1zM32%2032h1v1h-1zM2%2033h1v1h-1zM8%2033h1v1h-1zM18%2033h1v1h-1zM21%2033h1v1h-1zM22%2033h1v1h-1zM23%2033h1v1h-1zM25%2033h1v1h-1zM29%2033h1v1h-1zM30%2033h1v1h-1zM31%2033h1v1h-1zM32%2033h1v1h-1zM2%2034h1v1h-1zM3%2034h1v1h-1zM4%2034h1v1h-1zM5%2034h1v1h-1zM6%2034h1v1h-1zM7%2034h1v1h-1zM8%2034h1v1h-1zM10%2034h1v1h-1zM11%2034h1v1h-1zM13%2034h1v1h-1zM14%2034h1v1h-1zM15%2034h1v1h-1zM18%2034h1v1h-1zM19%2034h1v1h-1zM20%2034h1v1h-1zM21%2034h1v1h-1zM24%2034h1v1h-1zM26%2034h1v1h-1zM28%2034h1v1h-1zM29%2034h1v1h-1zM30%2034h1v1h-1zM31%2034h1v1h-1zM33%2034h1v1h-1z%22%20fill%3D%22%23000%22/%3E%3C/svg%3E";

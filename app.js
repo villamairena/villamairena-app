@@ -83,10 +83,10 @@
     return '' +
       '<div class="hero"><img src="' + img("ext") + '" alt="VillaMairena" data-zoom>' +
       '<div class="txt"><p class="eyebrow" style="color:inherit;opacity:.85">' + esc(h.eyebrow) + "</p><h1>" + esc(h.title) + "</h1><p>" + esc(h.sub) + "</p></div></div>" +
-      guestCard() + leaveCard() +
+      guestCard() + leaveCard() + marketsHome() +
       '<div class="grid2">' +
       gateCard(h) +
-      '<div class="card key"><span class="label">' + esc(h.wifi) + '</span><span class="val" style="font-size:1.05rem;letter-spacing:0">' + esc(W.ssid) + '</span><span class="muted" style="font-size:.8rem">' + esc(h.wifiPassLabel) + ': <strong class="num" style="color:var(--ink)">' + esc(W.pass) + '</strong></span><button class="btn" style="width:fit-content;grid-row:auto;grid-column:auto" data-copy="' + esc(W.pass) + '">' + esc(T.ui.copy) + "</button></div>" +
+      '<div class="card key"><span class="label">' + esc(h.wifi) + '</span><span class="val" style="font-size:1.05rem;letter-spacing:0">' + esc(W.ssid) + '</span><span class="muted" style="font-size:.8rem">' + esc(h.wifiPassLabel) + ': <strong class="num" style="color:var(--ink)">' + esc(W.pass) + '</strong></span><div class="wifirow"><button class="btn" style="width:fit-content;grid-row:auto;grid-column:auto" data-copy="' + esc(W.pass) + '">' + esc(T.ui.copy) + "</button>" + (window.VM_WIFIQR ? '<img class="wifiqr" src="' + window.VM_WIFIQR + '" alt="' + esc({ da: "QR-kode til Wi‑Fi – scan med kameraet", en: "Wi‑Fi QR code – scan with your camera", es: "Código QR del Wi‑Fi – escanéalo con la cámara", de: "WLAN-QR-Code – mit der Kamera scannen" }[lang]) + '" data-zoom>' : "") + "</div></div>" +
       '<div class="card key"><span class="label">' + esc(h.checkin) + '</span><span class="val">15:00</span><span class="muted" style="font-size:.8rem">' + esc(CI[lang][0]) + "</span></div>" +
       '<div class="card key"><span class="label">' + esc(h.checkout) + '</span><span class="val">10:00</span><span class="muted" style="font-size:.8rem">' + esc(CI[lang][1]) + "</span></div>" +
       "</div>" +
@@ -285,12 +285,26 @@
           (g.url ? '<a href="' + esc(g.url) + '" target="_blank" rel="noopener">' + esc(a.golfWeb) + " ↗</a>" : "") + gygLink(g.n) + "</span></li>";
       }).join("") + "</ol></details>";
   }
+  function mkToday(g, now) {
+    if (g.dow.indexOf(now.getDay()) < 0) return false;
+    if (g.nth && g.nth.indexOf(Math.ceil(now.getDate() / 7)) < 0) return false;
+    if (g.season && g.season.indexOf(now.getMonth() + 1) < 0) return false;
+    return true;
+  }
+  function marketsHome() {
+    var X = E(), now = new Date(), a = T.area; if (!X.markets) return "";
+    var open = X.markets.filter(function (g) { return mkToday(g, now) && (g.eve || now.getHours() < 14); });
+    if (!open.length) return "";
+    return '<a class="card mkhome" href="#markedsdage"><h3>' + ic("i-cart", 20) + " " + esc(X.mkHome) + "</h3>" +
+      open.map(function (g) { return '<div class="mkrow"><span><strong>' + esc(g.n) + '</strong><br><span class="muted">' + esc(g.hours) + " · " + esc(g.area) + '</span></span><span class="gm">ca. ' + g.min + " " + esc(a.golfMin) + "</span></div>"; }).join("") +
+      '<span class="mkall">' + esc(X.mkAll) + " →</span></a>";
+  }
   function renderMarkets() {
     var X = E(), a = T.area, origin = encodeURIComponent("Calle Navarra 5, 29612 La Mairena, Ojén"), now = new Date(), dow = now.getDay(), mo = now.getMonth() + 1;
     var nth = Math.ceil(now.getDate() / 7);
     if (!X.markets) return "";
     var mk = X.markets.map(function (g, i) {
-      var today = g.dow.indexOf(dow) >= 0 || (g.dow.length === 0 && i === 1 && dow === 6 && (nth === 1 || nth === 3));
+      var today = mkToday(g, now);
       var route = "https://www.google.com/maps/dir/?api=1&origin=" + origin + "&destination=" + encodeURIComponent(g.q) + "&travelmode=driving";
       return '<li><div class="gh"><span class="gn">' + esc(g.n) + (today ? ' <span class="pill free">' + esc(X.mkToday) + "</span>" : "") + '</span><span class="gm">ca. ' + g.min + " " + esc(a.golfMin) + "</span></div>" +
         '<span class="gs"><strong>' + esc(g.when) + "</strong> · " + esc(g.hours) + " · " + esc(g.area) + "</span>" + '<span class="gs">' + esc(g.s) + "</span>" +
@@ -306,13 +320,17 @@
       '<details class="place golf" id="begivenheder"><summary><span class="nm">' + esc(X.evSum) + '</span><span class="dist">' + esc(X.evSumD) + '</span></summary><p class="muted gi">' + esc(X.evIntro) + "</p><ol>" + ev + "</ol></details>" +
       "</div></div>";
   }
-  var REVIEW_GOOGLE = "";
   function reviewBlock() {
-    var X = E(), ch = guest && guest.ch, txt = ch === "airbnb" ? X.rvAirbnb : ch === "booking" ? X.rvBooking : ch === "vrbo" ? X.rvVrbo : ch === "direct" ? X.rvDirect : X.rvAny;
-    var showG = !ch || ch === "direct";
-    return '<div class="review"><strong>' + esc(X.rvTitle) + '</strong><p class="muted" style="font-size:.9rem;margin:.3rem 0 .6rem">' + esc(txt) + "</p>" +
-      (showG ? (REVIEW_GOOGLE ? '<a class="cta" href="' + esc(REVIEW_GOOGLE) + '" target="_blank" rel="noopener">★ ' + esc(X.rvBtn) + "</a>" : todo(X.rvTodo)) : "") + "</div>";
+    var X = E(), ch = guest && guest.ch, plat = ch === "airbnb" || ch === "booking" || ch === "vrbo";
+    var txt = ch === "airbnb" ? X.rvAirbnb : ch === "booking" ? X.rvBooking : ch === "vrbo" ? X.rvVrbo : ch === "direct" ? X.rvDirect : X.rvAny;
+    return '<div class="review"><strong>' + esc(ch === "direct" ? X.rvTitleDirect : X.rvTitle) + '</strong><p class="muted" style="font-size:.9rem;margin:.3rem 0 .6rem">' + esc(txt) + "</p>" +
+      (plat ? "" : '<div class="facts"><a class="btn" href="#meld" data-idea="1">' + esc(X.rvIdea) + "</a>" +
+        (ch === "direct" ? '<a class="btn" href="https://villamairena.com/booking/" target="_blank" rel="noopener">' + esc(X.rvBook) + " ↗</a>" : "") + "</div>") + "</div>";
   }
+  document.addEventListener("click", function (e) {
+    if (!e.target.closest || !e.target.closest("[data-idea]")) return;
+    setTimeout(function () { var r = document.querySelector('#meld input[value="idea"]'); if (r) { r.checked = true; r.dispatchEvent(new Event("change", { bubbles: true })); } }, 60);
+  });
   function infoList(rows) {
     return "<div>" + rows.map(function (r) { return '<div class="row"><div class="body"><span class="t">' + esc(r.t) + "</span>" + (r.s ? '<span class="s">' + esc(r.s) + "</span>" : "") + (r.todo ? todo(r.todo) : "") + "</div></div>"; }).join("") + "</div>";
   }
@@ -385,6 +403,18 @@
       .then(function () { rBlob = null; f.innerHTML = '<h3>' + esc(r.title) + '</h3><p class="ok">' + esc(r.thanks) + "</p>"; })
       .catch(function () { btn.disabled = false; btn.textContent = r.send; msg.textContent = r.error; });
   });
+  function renderHealth(c) {
+    var origin = encodeURIComponent("Calle Navarra 5, 29612 La Mairena, Ojén"), a = T.area;
+    return '<div class="card" id="sundhed"><h3>' + esc(c.healthTitle) + '</h3><p class="muted" style="font-size:.9rem">' + esc(c.healthIntro || "") + '</p><div class="health">' + c.health.map(function (l) {
+      var route = l.q ? "https://www.google.com/maps/dir/?api=1&origin=" + origin + "&destination=" + encodeURIComponent(l.q) + "&travelmode=driving" : "";
+      return '<div class="hitem"><div class="gh"><span class="gn">' + esc(l.who) + "</span>" + (l.min ? '<span class="gm">ca. ' + l.min + " " + esc(a.golfMin) + "</span>" : "") + "</div>" +
+        (l.tag ? '<span class="htag">' + esc(l.tag) + "</span>" : "") + '<span class="gs">' + esc(l.what || "") + "</span>" +
+        (l.addr ? '<span class="gs hrs">' + ic("i-pin", 13) + " " + esc(l.addr) + "</span>" : "") +
+        '<span class="hbtns">' + (l.tel ? '<a class="linkbtn" href="tel:' + l.tel.replace(/\s/g, "") + '">' + ic("i-phone", 16) + esc(c.hCall) + " " + esc(l.tel.replace("+34 ", "")) + "</a>" : "") +
+        (route ? '<a class="linkbtn" href="' + route + '" target="_blank" rel="noopener">' + ic("i-car", 16) + esc(c.hRoute) + "</a>" : "") +
+        (l.search ? '<a class="linkbtn" href="https://www.google.com/maps/search/' + encodeURIComponent(l.search) + '" target="_blank" rel="noopener">' + ic("i-pin", 16) + esc(c.hFind) + "</a>" : "") + "</span>" + todo(l.todo) + "</div>";
+    }).join("") + "</div></div>";
+  }
   function renderContact() {
     var c = T.contact, s = T.safety;
     return '<div class="stack"><p class="eyebrow">' + esc(c.eyebrow) + "</p><h2>" + esc(c.title) + "</h2></div>" +
@@ -394,14 +424,12 @@
       '<div class="card"><h3>' + esc(c.localTitle) + "</h3><div>" + c.local.map(function (l) {
         return '<div class="contact"><span class="who">' + esc(l.who) + '</span><span class="what">' + esc(l.what) + "</span>" + todo(l.todo) + "</div>";
       }).join("") + "</div></div>" +
-      '<div class="card"><h3>' + esc(c.healthTitle) + "</h3><div>" + c.health.map(function (l) {
-        return '<div class="contact"><span class="who">' + esc(l.who) + "</span>" + (l.what ? '<span class="what">' + esc(l.what) + "</span>" : "") + todo(l.todo) + "</div>";
-      }).join("") + "</div></div>" +
+      renderHealth(c) +
       '<section class="card safety" id="sikkerhed"><h3 style="font-size:1.35rem">' + esc(s.title) + '</h3><p class="muted" style="font-size:.9rem">' + esc(s.intro) + "</p>" +
       '<div class="season"><span class="lbl">' + ic("i-flame", 16) + esc(s.seasonLabel) + "</span><p>" + esc(s.season) + "</p></div>" +
       "<ul>" + s.rules.map(function (r) { return "<li>" + esc(r) + "</li>"; }).join("") + "</ul>" + todo(s.houseRuleTodo) +
       "<h4>" + esc(s.fireTitle) + '</h4><ol class="fire-steps">' + s.fire.map(function (r) { return "<li>" + esc(r) + "</li>"; }).join("") + "</ol>" +
-      todo(s.evacTodo) + todo(s.extTodo) + "</section>" +
+      todo(s.evacTodo) + (s.ext ? '<p class="extline">' + ic("i-flame", 18) + "<strong>" + esc(s.ext) + "</strong></p>" : "") + "</section>" +
       '<div class="card" id="kom-igen"><h3>' + esc(E().backTitle) + '</h3><p class="muted" style="font-size:.9rem">' + esc(E().backText) + '</p><div class="facts"><a class="cta" href="https://villamairena.com/booking/" target="_blank" rel="noopener">' + esc(E().backBook) + "</a></div>" + todo(E().backTodo) + "</div>" +
       '<a class="ownerlink" href="#ejer">Ejer-login</a>';
   }
@@ -636,7 +664,7 @@
     else if (target === "sikkerhed") { tab = "kontakt"; focusEl = target; }
     else if (target === "meld" || target === "regler") { tab = "huset"; focusEl = target; }
     else if (target === "transport") { tab = "ankomst"; focusEl = target; }
-    else if (target === "kom-igen") { tab = "kontakt"; focusEl = target; }
+    else if (target === "kom-igen" || target === "sundhed") { tab = "kontakt"; focusEl = target; }
     else if (target === "mad" || target === "vejr") { tab = "hjem"; focusEl = target; }
     else if (["golf","padel","strande","indkoeb","markeder","markedsdage","begivenheder","kultur","restauranter","dagsture","born","natur","praktisk"].indexOf(target) >= 0) { tab = "omraadet"; focusEl = target; }
     if (PANELS.indexOf(tab) < 0) tab = "hjem";
@@ -679,7 +707,8 @@
   document.addEventListener("click", function (e) {
     var im = e.target.closest("img[data-zoom]");
     if (im) { lb = document.createElement("div"); lb.className = "lb"; lb.setAttribute("role", "dialog"); lb.setAttribute("aria-label", im.alt);
-      var big = document.createElement("img"); big.src = im.src; big.alt = im.alt; lb.appendChild(big); document.body.appendChild(lb); return; }
+      var big = document.createElement("img"); big.src = im.src; big.alt = im.alt; lb.appendChild(big);
+      if (im.classList.contains("wifiqr")) { big.className = "qrbig"; var cap = document.createElement("p"); cap.className = "qrcap"; cap.textContent = im.alt; lb.appendChild(cap); } document.body.appendChild(lb); return; }
     if (lb && e.target.closest(".lb")) { lb.remove(); lb = null; }
   });
   document.addEventListener("keydown", function (e) { if (e.key === "Escape" && lb) { lb.remove(); lb = null; } });
