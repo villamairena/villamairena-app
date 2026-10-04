@@ -40,16 +40,17 @@
     guestTok = b.getAttribute("data-demo"); store("vm-guest", guestTok); loadGuest();
   });
   var GTXT = {
-    da: { hi: "Velkommen, ", before: function (n) { return n === 1 ? "I morgen ankommer I" : "Om " + n + " dage ankommer I"; }, today: "I dag ankommer I – vi glæder os", staying: "Jeres ophold", co: "Check-ud", gate: "Jeres portkode", gateBefore: "Portkoden vises her på ankomstdagen", dArr: "Ankommer om 5 dage", dStay: "Bor i huset nu", demo: "Demo", guests: "gæster" },
-    en: { hi: "Welcome, ", before: function (n) { return n === 1 ? "You arrive tomorrow" : "You arrive in " + n + " days"; }, today: "You arrive today – we look forward to it", staying: "Your stay", co: "Check-out", gate: "Your gate code", gateBefore: "The gate code appears here on arrival day", dArr: "Arriving in 5 days", dStay: "Staying now", demo: "Demo", guests: "guests" },
-    es: { hi: "Bienvenidos, ", before: function (n) { return n === 1 ? "Llegáis mañana" : "Llegáis en " + n + " días"; }, today: "Llegáis hoy – os esperamos", staying: "Vuestra estancia", co: "Salida", gate: "Vuestro código de la puerta", gateBefore: "El código aparecerá aquí el día de llegada", dArr: "Llega en 5 días", dStay: "Alojado ahora", demo: "Demo", guests: "huéspedes" },
-    de: { hi: "Willkommen, ", before: function (n) { return n === 1 ? "Morgen kommen Sie an" : "In " + n + " Tagen kommen Sie an"; }, today: "Heute kommen Sie an – wir freuen uns", staying: "Ihr Aufenthalt", co: "Check-out", gate: "Ihr Torcode", gateBefore: "Der Torcode erscheint hier am Anreisetag", dArr: "Anreise in 5 Tagen", dStay: "Wohnt jetzt hier", demo: "Demo", guests: "Gäste" }
+    da: { hi: "Velkommen, ", before: function (n) { return n === 1 ? "I morgen ankommer I" : "Om " + n + " dage ankommer I"; }, today: "I dag ankommer I – vi glæder os", staying: "Jeres ophold", co: "Check-ud", gate: "Jeres portkode", gateBefore: "Portkoden vises her på ankomstdagen", dLeave: "Rejser i morgen", dArr: "Ankommer om 5 dage", dStay: "Bor i huset nu", demo: "Demo", guests: "gæster" },
+    en: { hi: "Welcome, ", before: function (n) { return n === 1 ? "You arrive tomorrow" : "You arrive in " + n + " days"; }, today: "You arrive today – we look forward to it", staying: "Your stay", co: "Check-out", gate: "Your gate code", gateBefore: "The gate code appears here on arrival day", dLeave: "Leaving tomorrow", dArr: "Arriving in 5 days", dStay: "Staying now", demo: "Demo", guests: "guests" },
+    es: { hi: "Bienvenidos, ", before: function (n) { return n === 1 ? "Llegáis mañana" : "Llegáis en " + n + " días"; }, today: "Llegáis hoy – os esperamos", staying: "Vuestra estancia", co: "Salida", gate: "Vuestro código de la puerta", gateBefore: "El código aparecerá aquí el día de llegada", dLeave: "Se va mañana", dArr: "Llega en 5 días", dStay: "Alojado ahora", demo: "Demo", guests: "huéspedes" },
+    de: { hi: "Willkommen, ", before: function (n) { return n === 1 ? "Morgen kommen Sie an" : "In " + n + " Tagen kommen Sie an"; }, today: "Heute kommen Sie an – wir freuen uns", staying: "Ihr Aufenthalt", co: "Check-out", gate: "Ihr Torcode", gateBefore: "Der Torcode erscheint hier am Anreisetag", dLeave: "Reist morgen ab", dArr: "Anreise in 5 Tagen", dStay: "Wohnt jetzt hier", demo: "Demo", guests: "Gäste" }
   };
   function isoDay(off) { var d = new Date(Date.now() + off * 864e5); return new Date(d.getTime() - d.getTimezoneOffset() * 6e4).toISOString().slice(0, 10); }
   function loadGuest() {
     if (!guestTok) return;
     if (guestTok === "demo-arrive") { guest = { state: "before", first: "Peter", arrival: isoDay(5), departure: isoDay(12), people: 8, demo: true }; renderAll(); show(current, true); return; }
     if (guestTok === "demo-stay") { guest = { state: "staying", first: "Peter", arrival: isoDay(-2), departure: isoDay(5), people: 8, gate: "1234", demo: true }; renderAll(); show(current, true); return; }
+    if (guestTok === "demo-leave") { guest = { state: "staying", first: "Peter", arrival: isoDay(-6), departure: isoDay(1), people: 8, gate: "1234", demo: true }; renderAll(); show(current, true); return; }
     fetch(GUEST_API + "?g=" + encodeURIComponent(guestTok), { cache: "no-store" }).then(function (r) { return r.json(); }).then(function (d) {
       if (d && (d.state === "before" || d.state === "staying")) { guest = d; renderAll(); show(current, true); }
       else if (d && (d.state === "ended" || d.error)) { guest = null; try { localStorage.removeItem("vm-guest"); } catch (e) {} }
@@ -66,7 +67,7 @@
       '<span class="big">' + esc(G.hi + (guest.first || "")) + "</span>" +
       '<span class="muted">' + esc(line) + " · " + fd.format(dd(guest.arrival)) + " – " + fd.format(dd(guest.departure)) + (guest.people ? " · " + guest.people + " " + G.guests : "") + "</span>" +
       (guest.state === "staying" ? '<span class="muted">' + esc(G.co) + " " + fd.format(dd(guest.departure)) + " · 10:00</span>" : "") +
-      (guest.demo ? '<div class="antabs" style="margin-top:.6rem"><button class="chipbtn" aria-pressed="' + (guest.state === "before") + '" data-demo="demo-arrive">' + esc(G.dArr) + '</button><button class="chipbtn" aria-pressed="' + (guest.state === "staying") + '" data-demo="demo-stay">' + esc(G.dStay) + "</button></div>" : "") + "</div>";
+      (guest.demo ? '<div class="antabs" style="margin-top:.6rem"><button class="chipbtn" aria-pressed="' + (guest.state === "before") + '" data-demo="demo-arrive">' + esc(G.dArr) + '</button><button class="chipbtn" aria-pressed="' + (guestTok === "demo-stay") + '" data-demo="demo-stay">' + esc(G.dStay) + '</button><button class="chipbtn" aria-pressed="' + (guestTok === "demo-leave") + '" data-demo="demo-leave">' + esc(G.dLeave) + "</button></div>" : "") + "</div>";
   }
   function gateCard(h) {
     var G = GTXT[lang];
@@ -82,7 +83,7 @@
     return '' +
       '<div class="hero"><img src="' + img("ext") + '" alt="VillaMairena" data-zoom>' +
       '<div class="txt"><p class="eyebrow" style="color:inherit;opacity:.85">' + esc(h.eyebrow) + "</p><h1>" + esc(h.title) + "</h1><p>" + esc(h.sub) + "</p></div></div>" +
-      guestCard() +
+      guestCard() + leaveCard() +
       '<div class="grid2">' +
       gateCard(h) +
       '<div class="card key"><span class="label">' + esc(h.wifi) + '</span><span class="val" style="font-size:1.05rem;letter-spacing:0">' + esc(W.ssid) + '</span><span class="muted" style="font-size:.8rem">' + esc(h.wifiPassLabel) + ': <strong class="num" style="color:var(--ink)">' + esc(W.pass) + '</strong></span><button class="btn" style="width:fit-content;grid-row:auto;grid-column:auto" data-copy="' + esc(W.pass) + '">' + esc(T.ui.copy) + "</button></div>" +
@@ -116,6 +117,29 @@
       '<div class="todo-block"><strong>' + esc(a.missingLabel) + "</strong>" + esc(a.missing) + "</div>";
   }
 
+  function ckKey() { return "vm-check-" + (guest && guest.departure ? guest.departure : "x"); }
+  function ckGet() { try { return JSON.parse(store(ckKey()) || "[]"); } catch (e) { return []; } }
+  function checklist(x) {
+    var done = ckGet(), n = x.check.filter(function (_, i) { return done.indexOf(i) >= 0; }).length;
+    return '<div class="cklist"><div class="ckhead"><strong>' + esc(x.checkTitle) + '</strong><span class="ckcount">' + n + " / " + x.check.length + "</span></div>" +
+      '<div class="ckbar"><span style="width:' + Math.round(100 * n / x.check.length) + '%"></span></div>' +
+      x.check.map(function (c, i) { return '<label class="ckitem"><input type="checkbox" data-ck="' + i + '"' + (done.indexOf(i) >= 0 ? " checked" : "") + "><span>" + esc(c) + "</span></label>"; }).join("") +
+      (n === x.check.length ? '<p class="ckdone">' + esc(x.bye) + "</p>" : "") + "</div>";
+  }
+  document.addEventListener("change", function (e) {
+    var c = e.target.closest && e.target.closest("[data-ck]"); if (!c) return;
+    var i = +c.getAttribute("data-ck"), d = ckGet().filter(function (v) { return v !== i; });
+    if (c.checked) d.push(i); store(ckKey(), JSON.stringify(d));
+    var det = c.closest("details"), x = T.how.filter(function (h) { return h.check; })[0];
+    if (det && x) { var box = det.querySelector(".cklist"), tmp = document.createElement("div"); tmp.innerHTML = checklist(x); box.replaceWith(tmp.firstChild); }
+  });
+  function leaveCard() {
+    if (!guest || guest.state !== "staying") return "";
+    var x = T.how.filter(function (h) { return h.check; })[0]; if (!x) return "";
+    var d = Math.round((new Date(guest.departure + "T12:00:00") - new Date(isoDay(0) + "T12:00:00")) / 864e5);
+    if (d > 1) return "";
+    return '<a class="card leave" href="#afrejse">' + ic("i-key") + "<span><strong>" + esc(d <= 0 ? x.leaveToday : x.leaveTomorrow) + "</strong><br>" + esc(x.leaveSee) + "</span></a>";
+  }
   function renderHouse() {
     var h = T.house, keys = ["living", "kitchen", "bath", "closet"];
     return '<div class="stack"><p class="eyebrow">' + esc(h.eyebrow) + "</p><h2>" + esc(h.title) + '</h2><div class="facts">' +
@@ -134,7 +158,7 @@
       '<div class="stack" id="saadan"><h3 style="font-size:1.35rem">' + esc(h.howTitle) + '</h3><p class="muted" style="font-size:.9rem">' + esc(h.howIntro) + "</p>" +
       T.how.map(function (x) {
         return '<details class="how" id="' + x.id + '"><summary><span class="hi">' + ic(x.icon) + "</span>" + esc(x.title) + "</summary>" +
-          (x.body.length ? "<ul>" + x.body.map(function (b) { return "<li>" + esc(b) + "</li>"; }).join("") + "</ul>" : "") + (x.todo ? "<p>" + todo(x.todo) + "</p>" : "") + "</details>";
+          (x.body.length ? "<ul>" + x.body.map(function (b) { return "<li>" + esc(b) + "</li>"; }).join("") + "</ul>" : "") + (x.bins ? '<div class="bins">' + x.bins.map(function (b) { return '<div class="bin"><span class="dot" style="background:' + b[0] + '"></span><span><strong>' + esc(b[1]) + "</strong><br>" + esc(b[2]) + "</span></div>"; }).join("") + "</div>" : "") + (x.check ? checklist(x) + reviewBlock() : "") + (x.todo ? "<p>" + todo(x.todo) + "</p>" : "") + "</details>";
       }).join("") + "</div>" + renderReport();
   }
 
@@ -261,6 +285,34 @@
           (g.url ? '<a href="' + esc(g.url) + '" target="_blank" rel="noopener">' + esc(a.golfWeb) + " ↗</a>" : "") + gygLink(g.n) + "</span></li>";
       }).join("") + "</ol></details>";
   }
+  function renderMarkets() {
+    var X = E(), a = T.area, origin = encodeURIComponent("Calle Navarra 5, 29612 La Mairena, Ojén"), now = new Date(), dow = now.getDay(), mo = now.getMonth() + 1;
+    var nth = Math.ceil(now.getDate() / 7);
+    if (!X.markets) return "";
+    var mk = X.markets.map(function (g, i) {
+      var today = g.dow.indexOf(dow) >= 0 || (g.dow.length === 0 && i === 1 && dow === 6 && (nth === 1 || nth === 3));
+      var route = "https://www.google.com/maps/dir/?api=1&origin=" + origin + "&destination=" + encodeURIComponent(g.q) + "&travelmode=driving";
+      return '<li><div class="gh"><span class="gn">' + esc(g.n) + (today ? ' <span class="pill free">' + esc(X.mkToday) + "</span>" : "") + '</span><span class="gm">ca. ' + g.min + " " + esc(a.golfMin) + "</span></div>" +
+        '<span class="gs"><strong>' + esc(g.when) + "</strong> · " + esc(g.hours) + " · " + esc(g.area) + "</span>" + '<span class="gs">' + esc(g.s) + "</span>" +
+        '<span class="gl"><a href="' + route + '" target="_blank" rel="noopener">' + ic("i-pin", 14) + esc(a.golfRoute) + "</a></span></li>";
+    }).join("");
+    var ev = X.events.slice().sort(function (x, y) { return ((x.m - mo + 12) % 12) - ((y.m - mo + 12) % 12); }).map(function (g) {
+      var off = (g.m - mo + 12) % 12, tag = off === 0 ? X.evNow : off === 1 ? X.evNext : "";
+      return '<li><div class="gh"><span class="gn">' + esc(g.n) + (tag ? ' <span class="pill free">' + esc(tag) + "</span>" : "") + '</span><span class="gm">' + esc(g.when) + "</span></div>" +
+        '<span class="gs">' + esc(g.area) + "</span>" + '<span class="gs">' + esc(g.s) + "</span></li>";
+    }).join("");
+    return '<div class="card" id="markeder"><h3>' + esc(X.mkTitle) + '</h3><p class="muted" style="font-size:.9rem">' + esc(X.mkText) + "</p><div>" +
+      '<details class="place golf" id="markedsdage"><summary><span class="nm">' + esc(X.mkSum) + '</span><span class="dist">' + esc(X.mkSumD) + '</span></summary><p class="muted gi">' + esc(X.mkIntro) + "</p><ol>" + mk + "</ol></details>" +
+      '<details class="place golf" id="begivenheder"><summary><span class="nm">' + esc(X.evSum) + '</span><span class="dist">' + esc(X.evSumD) + '</span></summary><p class="muted gi">' + esc(X.evIntro) + "</p><ol>" + ev + "</ol></details>" +
+      "</div></div>";
+  }
+  var REVIEW_GOOGLE = "";
+  function reviewBlock() {
+    var X = E(), ch = guest && guest.ch, txt = ch === "airbnb" ? X.rvAirbnb : ch === "booking" ? X.rvBooking : ch === "vrbo" ? X.rvVrbo : ch === "direct" ? X.rvDirect : X.rvAny;
+    var showG = !ch || ch === "direct";
+    return '<div class="review"><strong>' + esc(X.rvTitle) + '</strong><p class="muted" style="font-size:.9rem;margin:.3rem 0 .6rem">' + esc(txt) + "</p>" +
+      (showG ? (REVIEW_GOOGLE ? '<a class="cta" href="' + esc(REVIEW_GOOGLE) + '" target="_blank" rel="noopener">★ ' + esc(X.rvBtn) + "</a>" : todo(X.rvTodo)) : "") + "</div>";
+  }
   function infoList(rows) {
     return "<div>" + rows.map(function (r) { return '<div class="row"><div class="body"><span class="t">' + esc(r.t) + "</span>" + (r.s ? '<span class="s">' + esc(r.s) + "</span>" : "") + (r.todo ? todo(r.todo) : "") + "</div></div>"; }).join("") + "</div>";
   }
@@ -270,6 +322,7 @@
       '<div class="card"><h3>' + esc(a.dailyTitle) + "</h3><div>" + renderShopItem() + renderRestItem() + "</div>" + places(a.daily) + todo(a.dailyTodo) + "</div>" +
       '<div class="card"><h3>' + esc(a.beachTitle) + '</h3><p class="muted" style="font-size:.9rem">' + esc(a.beachText) + "</p>" +
       "<div>" + renderBeachItem() + "</div></div>" +
+      renderMarkets() +
       '<div class="card"><h3>' + esc(a.expTitle) + "</h3>" + places(a.exp.concat(E().expExtra || []), a.suggestion) +
         '<div class="gyg"><p class="muted" style="font-size:.86rem">' + esc({ da: "Se alle ture og oplevelser i området, med guide og afhentning.", en: "See all tours and activities in the area, with guide and pick-up.", es: "Todos los tours y actividades de la zona, con guía y recogida.", de: "Alle Touren und Aktivitäten in der Umgebung, mit Guide und Abholung." }[lang]) + '</p><a class="cta" href="' + gygUrl("Marbella") + '" target="_blank" rel="noopener sponsored">' + esc({ da: "Find ture i området", en: "Find tours nearby", es: "Ver tours en la zona", de: "Touren in der Nähe" }[lang]) + " ↗</a></div>" + "</div>" +
       '<div class="card" id="praktisk"><h3>' + esc(E().pracTitle) + "</h3>" + infoList(E().prac || []) +
@@ -585,7 +638,7 @@
     else if (target === "transport") { tab = "ankomst"; focusEl = target; }
     else if (target === "kom-igen") { tab = "kontakt"; focusEl = target; }
     else if (target === "mad" || target === "vejr") { tab = "hjem"; focusEl = target; }
-    else if (["golf","padel","strande","indkoeb","kultur","restauranter","dagsture","born","natur","praktisk"].indexOf(target) >= 0) { tab = "omraadet"; focusEl = target; }
+    else if (["golf","padel","strande","indkoeb","markeder","markedsdage","begivenheder","kultur","restauranter","dagsture","born","natur","praktisk"].indexOf(target) >= 0) { tab = "omraadet"; focusEl = target; }
     if (PANELS.indexOf(tab) < 0) tab = "hjem";
     current = tab;
     PANELS.forEach(function (id) { document.getElementById(id).hidden = id !== tab; });

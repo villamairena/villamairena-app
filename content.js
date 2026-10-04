@@ -77,8 +77,8 @@ window.VM_CONTENT = {
       { id: "tv", icon: "i-tv", title: "TV", body: [], todo: "Hvordan man tænder, og hvilke tjenester der er" },
       { id: "kaffe", icon: "i-cup", title: "Kaffemaskine", body: [], todo: "Type maskine og hvor kapsler eller bønner står" },
       { id: "vask", icon: "i-wash", title: "Vask og tørretumbler", body: ["Vaskemaskine og tørretumbler er til fri afbenyttelse."], todo: "Hvor de står, og hvor vaskemiddel er" },
-      { id: "affald", icon: "i-bin", title: "Affald og genbrug", body: [], todo: "Hvor containerne står, og sortering" },
-      { id: "afrejse", icon: "i-key", title: "Inden I rejser", body: ["I skal ikke gøre rent. Slutrengøring er inkluderet."], todo: "Tjekliste ved afrejse (nøgler, vinduer, aircondition)" }
+      { id: "affald", icon: "i-bin", title: "Affald og genbrug", body: ["I Spanien sorterer man affald i farvede containere ved vejen. Der er ingen afhentning ved huset, så tag skraldeposerne med til containerne.", "Smid aldrig glas, flasker eller fedt i toilettet eller køkkenvasken."], bins: [["#e9c443", "Gul", "Plastik, dåser, mælke- og juicekartoner, alufolie og bakker"], ["#3b6fb6", "Blå", "Papir, pap og papkasser (gerne foldet sammen)"], ["#3f8a4e", "Grøn (rund klokke)", "Glasflasker og glas uden låg"], ["#6b6b6b", "Grå eller mørkegrøn", "Restaffald og madrester i lukkede poser"], ["#8a5a2b", "Brun (hvis der er en)", "Madaffald og andet organisk affald"]], todo: "Hvor de nærmeste containere står" },
+      { id: "afrejse", icon: "i-key", title: "Inden I rejser", body: ["I skal ikke gøre rent. Slutrengøring er inkluderet."], todo: "Hvor nøglerne skal lægges", checkTitle: "Tjekliste ved afrejse", check: ["Tag jeres friske madvarer med, eller smid dem ud. Salt, peber, kaffe, olie og lignende basisvarer må gerne blive stående til de næste gæster", "Sæt opvasken i opvaskemaskinen og start den", "Bring skrald, flasker og pap til containerne", "Læg brugte håndklæder samlet på badeværelserne", "Sluk aircondition, lys og TV", "Luk og lås alle vinduer og terrassedøre", "Rens grillen efter brug, så den er klar til de næste gæster", "Tjek skabe, skuffer, pengeskab og stikkontakter for glemte ting og opladere", "Check-ud senest kl. 10. Luk porten efter jer"], bye: "Tak for besøget – god rejse hjem!", leaveToday: "I rejser i dag", leaveTomorrow: "I rejser i morgen", leaveSee: "Se tjeklisten inden I tager af sted" }
     ],
     area: {
       eyebrow: "Området", title: "Guide til området",
@@ -223,8 +223,8 @@ window.VM_CONTENT = {
       { id: "tv", icon: "i-tv", title: "TV", body: [], todo: "How to switch on, and available services" },
       { id: "kaffe", icon: "i-cup", title: "Coffee machine", body: [], todo: "Machine type and where capsules or beans are" },
       { id: "vask", icon: "i-wash", title: "Washer and dryer", body: ["The washing machine and tumble dryer are free to use."], todo: "Where they are, and detergent" },
-      { id: "affald", icon: "i-bin", title: "Rubbish and recycling", body: [], todo: "Where the bins are, and sorting" },
-      { id: "afrejse", icon: "i-key", title: "Before you leave", body: ["No cleaning needed. Final cleaning is included."], todo: "Departure checklist (keys, windows, air conditioning)" }
+      { id: "affald", icon: "i-bin", title: "Rubbish and recycling", body: ["In Spain rubbish is sorted into coloured containers by the road. There is no collection at the house, so please take the bags to the containers.", "Never put glass, bottles or fat down the toilet or kitchen sink."], bins: [["#e9c443", "Yellow", "Plastic, cans, milk and juice cartons, foil and trays"], ["#3b6fb6", "Blue", "Paper, cardboard and boxes (please flatten)"], ["#3f8a4e", "Green (round bell)", "Glass bottles and jars without lids"], ["#6b6b6b", "Grey or dark green", "General waste and food scraps in closed bags"], ["#8a5a2b", "Brown (if there is one)", "Food and other organic waste"]], todo: "Where the nearest containers are" },
+      { id: "afrejse", icon: "i-key", title: "Before you leave", body: ["No cleaning needed. Final cleaning is included."], todo: "Where to leave the keys", checkTitle: "Departure checklist", check: ["Take your fresh food with you or throw it away. Salt, pepper, coffee, oil and similar basics can be left for the next guests", "Load the dishwasher and start it", "Take rubbish, bottles and cardboard to the bins", "Leave used towels together in the bathrooms", "Switch off air conditioning, lights and TV", "Close and lock all windows and terrace doors", "Clean the barbecue after use so it's ready for the next guests", "Check cupboards, drawers, the safe and sockets for forgotten items and chargers", "Check out by 10 am. Close the gate behind you"], bye: "Thank you for staying – safe travels home!", leaveToday: "You leave today", leaveTomorrow: "You leave tomorrow", leaveSee: "See the checklist before you go" }
     ],
     area: {
       eyebrow: "The area", title: "Guide to the area",
@@ -369,8 +369,8 @@ window.VM_CONTENT = {
       { id: "tv", icon: "i-tv", title: "Televisión", body: [], todo: "Cómo encenderla y qué servicios hay" },
       { id: "kaffe", icon: "i-cup", title: "Cafetera", body: [], todo: "Tipo de cafetera y dónde están las cápsulas o el café" },
       { id: "vask", icon: "i-wash", title: "Lavadora y secadora", body: ["La lavadora y la secadora son de libre uso."], todo: "Dónde están y dónde está el detergente" },
-      { id: "affald", icon: "i-bin", title: "Basura y reciclaje", body: [], todo: "Dónde están los contenedores y cómo separar" },
-      { id: "afrejse", icon: "i-key", title: "Antes de salir", body: ["No tenéis que limpiar. La limpieza final está incluida."], todo: "Lista de salida (llaves, ventanas, aire acondicionado)" }
+      { id: "affald", icon: "i-bin", title: "Basura y reciclaje", body: ["En España la basura se separa en contenedores de colores junto a la carretera. No hay recogida en la casa, así que llevad las bolsas a los contenedores.", "No tiréis nunca vidrio, botellas ni grasa por el inodoro o el fregadero."], bins: [["#e9c443", "Amarillo", "Plásticos, latas, briks, papel de aluminio y bandejas"], ["#3b6fb6", "Azul", "Papel, cartón y cajas (plegadas, por favor)"], ["#3f8a4e", "Verde (iglú)", "Botellas y tarros de vidrio sin tapa"], ["#6b6b6b", "Gris o verde oscuro", "Resto y restos de comida en bolsas cerradas"], ["#8a5a2b", "Marrón (si lo hay)", "Residuos orgánicos"]], todo: "Dónde están los contenedores más cercanos" },
+      { id: "afrejse", icon: "i-key", title: "Antes de salir", body: ["No tenéis que limpiar. La limpieza final está incluida."], todo: "Dónde dejar las llaves", checkTitle: "Lista de salida", check: ["Llevaos la comida fresca o tiradla. La sal, pimienta, café, aceite y básicos similares se pueden dejar para los próximos huéspedes", "Cargad el lavavajillas y ponedlo en marcha", "Llevad la basura, botellas y cartón a los contenedores", "Dejad las toallas usadas juntas en los baños", "Apagad el aire acondicionado, las luces y la TV", "Cerrad con llave todas las ventanas y puertas de la terraza", "Limpiad la barbacoa después de usarla para que esté lista para los próximos huéspedes", "Revisad armarios, cajones, la caja fuerte y enchufes por si olvidáis algo o cargadores", "Salida antes de las 10:00. Cerrad la verja al salir"], bye: "¡Gracias por la visita y buen viaje!", leaveToday: "Os vais hoy", leaveTomorrow: "Os vais mañana", leaveSee: "Mirad la lista antes de salir" }
     ],
     area: {
       eyebrow: "La zona", title: "Guía de la zona",
@@ -515,8 +515,8 @@ window.VM_CONTENT = {
       { id: "tv", icon: "i-tv", title: "Fernseher", body: [], todo: "Einschalten und verfügbare Dienste" },
       { id: "kaffe", icon: "i-cup", title: "Kaffeemaschine", body: [], todo: "Maschinentyp und wo Kapseln oder Bohnen sind" },
       { id: "vask", icon: "i-wash", title: "Waschmaschine und Trockner", body: ["Waschmaschine und Trockner stehen zur freien Nutzung."], todo: "Wo sie stehen, und Waschmittel" },
-      { id: "affald", icon: "i-bin", title: "Müll und Recycling", body: [], todo: "Wo die Container stehen, und Mülltrennung" },
-      { id: "afrejse", icon: "i-key", title: "Vor der Abreise", body: ["Kein Putzen nötig. Die Endreinigung ist inklusive."], todo: "Checkliste zur Abreise (Schlüssel, Fenster, Klimaanlage)" }
+      { id: "affald", icon: "i-bin", title: "Müll und Recycling", body: ["In Spanien wird der Müll in farbigen Containern an der Straße getrennt. Am Haus gibt es keine Abholung, bitte bringen Sie die Beutel zu den Containern.", "Bitte niemals Glas, Flaschen oder Fett in Toilette oder Spüle werfen."], bins: [["#e9c443", "Gelb", "Plastik, Dosen, Getränkekartons, Alufolie und Schalen"], ["#3b6fb6", "Blau", "Papier, Pappe und Kartons (bitte zusammenfalten)"], ["#3f8a4e", "Grün (runde Glocke)", "Glasflaschen und Gläser ohne Deckel"], ["#6b6b6b", "Grau oder dunkelgrün", "Restmüll und Essensreste in geschlossenen Beuteln"], ["#8a5a2b", "Braun (falls vorhanden)", "Bio- und Essensabfälle"]], todo: "Wo die nächsten Container stehen" },
+      { id: "afrejse", icon: "i-key", title: "Vor der Abreise", body: ["Kein Putzen nötig. Die Endreinigung ist inklusive."], todo: "Wo die Schlüssel hinterlegt werden", checkTitle: "Checkliste zur Abreise", check: ["Frische Lebensmittel bitte mitnehmen oder entsorgen. Salz, Pfeffer, Kaffee, Öl und ähnliche Grundvorräte dürfen für die nächsten Gäste bleiben", "Geschirrspüler einräumen und starten", "Müll, Flaschen und Karton zu den Containern bringen", "Benutzte Handtücher gesammelt in den Bädern lassen", "Klimaanlage, Licht und TV ausschalten", "Alle Fenster und Terrassentüren schließen und verriegeln", "Grill nach Benutzung reinigen, damit er für die nächsten Gäste bereit ist", "Schränke, Schubladen, Safe und Steckdosen auf Vergessenes und Ladegeräte prüfen", "Check-out bis 10 Uhr. Tor hinter sich schließen"], bye: "Danke für Ihren Besuch – gute Heimreise!", leaveToday: "Sie reisen heute ab", leaveTomorrow: "Sie reisen morgen ab", leaveSee: "Sehen Sie vor der Abreise die Checkliste an" }
     ],
     area: {
       eyebrow: "Die Umgebung", title: "Guide für die Umgebung",
@@ -935,7 +935,239 @@ window.VM_EXTRA = {
   "backReview": "Skriv en anmeldelse",
   "backBook": "Book direkte",
   "backCode": "Rabatkode til direkte booking",
-  "backTodo": "Rabatkode og link til anmeldelser"
+  "backTodo": "Rabatkode og link til anmeldelser",
+  "mkTitle": "Markeder og begivenheder",
+  "mkText": "Ugentlige markeder og årets fester i området. Markederne holder som regel lukket på helligdage og under byens feria.",
+  "mkSum": "Ugentlige markeder",
+  "mkSumD": "10–30 min",
+  "mkIntro": "Tidspunkter kan ændre sig, så tjek gerne før I kører. Kom tidligt, så er det nemmere at parkere.",
+  "evSum": "Fester og begivenheder",
+  "evSumD": "Hele året",
+  "evIntro": "De præcise datoer skifter fra år til år. Listen starter med den aktuelle måned.",
+  "mkToday": "I dag",
+  "evNow": "Denne måned",
+  "evNext": "Næste måned",
+  "markets": [
+   {
+    "n": "Las Chapas-markedet",
+    "area": "Elviria",
+    "when": "Fredag",
+    "hours": "9–14",
+    "s": "Lille lokalmarked med frugt, grønt, tøj og husholdning. Det nærmeste marked.",
+    "dow": [
+     5
+    ],
+    "min": 10,
+    "q": "Calle Pinsapo, Pinares de Elviria, Marbella"
+   },
+   {
+    "n": "Økologisk marked",
+    "area": "Elviria",
+    "when": "1. og 3. lørdag i måneden",
+    "hours": "9–14",
+    "s": "Økologiske grøntsager, brød, ost, olivenolie og honning fra lokale producenter.",
+    "dow": [],
+    "min": 10,
+    "q": "Pinares de Elviria, Marbella"
+   },
+   {
+    "n": "Marbella-markedet",
+    "area": "Marbella",
+    "when": "Mandag",
+    "hours": "9–14",
+    "s": "Byens store ugemarked med over 300 boder: frugt, tøj, sko, tasker og meget mere.",
+    "dow": [
+     1
+    ],
+    "min": 20,
+    "q": "Recinto Ferial Las Albarizas, Calle José Manuel Vallés, Marbella"
+   },
+   {
+    "n": "Fuengirola-markedet",
+    "area": "Fuengirola",
+    "when": "Tirsdag",
+    "hours": "9–14",
+    "s": "Et af Andalusiens største markeder med over 450 boder. Godt til en hel formiddag.",
+    "dow": [
+     2
+    ],
+    "min": 25,
+    "q": "Recinto Ferial, Fuengirola"
+   },
+   {
+    "n": "San Pedro-markedet",
+    "area": "San Pedro de Alcántara",
+    "when": "Torsdag",
+    "hours": "9–14",
+    "s": "Stort lokalmarked med frugt, grønt, tøj og sko.",
+    "dow": [
+     4
+    ],
+    "min": 30,
+    "q": "Calle Jorge Guillén, San Pedro de Alcántara"
+   },
+   {
+    "n": "Loppemarkedet i Puerto Banús",
+    "area": "Nueva Andalucía",
+    "when": "Lørdag",
+    "hours": "9–14",
+    "s": "Brugte ting, antikviteter, kunsthåndværk og lidt af hvert. Hyggeligt at gå rundt i.",
+    "dow": [
+     6
+    ],
+    "min": 30,
+    "q": "Avenida Pilar Calvo, Nueva Andalucía, Marbella"
+   },
+   {
+    "n": "Loppemarkedet i Fuengirola",
+    "area": "Fuengirola",
+    "when": "Lørdag",
+    "hours": "9–14",
+    "s": "Over 300 boder med antikviteter, brugte ting og kunsthåndværk.",
+    "dow": [
+     6
+    ],
+    "min": 25,
+    "q": "Recinto Ferial, Fuengirola"
+   },
+   {
+    "n": "Søndagsmarkedet i Fuengirola",
+    "area": "Fuengirola",
+    "when": "Søndag",
+    "hours": "9–14",
+    "s": "Lædervarer, sko, tekstiler og kunsthåndværk. Et af de få markeder om søndagen.",
+    "dow": [
+     0
+    ],
+    "min": 25,
+    "q": "Calle Méndez Núñez, Fuengirola"
+   },
+   {
+    "n": "Kunsthåndværksmarkedet i Puerto Banús",
+    "area": "Puerto Banús",
+    "when": "Dagligt i juni–august",
+    "hours": "Om aftenen",
+    "s": "Sommermarked med smykker, kunst og håndlavede ting ved havnen.",
+    "dow": [],
+    "min": 30,
+    "q": "Plaza Antonio Banderas, Puerto Banús"
+   }
+  ],
+  "events": [
+   {
+    "m": 1,
+    "area": "Marbella",
+    "when": "5. januar",
+    "n": "Helligtrekongers-optog",
+    "s": "Cabalgata de Reyes: optog med de tre vise mænd, der kaster slik til børnene."
+   },
+   {
+    "m": 2,
+    "area": "Marbella",
+    "when": "Februar eller marts",
+    "n": "Karneval",
+    "s": "Udklædning, musik og optog i gaderne."
+   },
+   {
+    "m": 3,
+    "area": "Málaga og Marbella",
+    "when": "Marts eller april",
+    "n": "Semana Santa (påskeugen)",
+    "s": "Store processioner med flotte figurer. Málaga har nogle af Spaniens mest berømte."
+   },
+   {
+    "m": 5,
+    "area": "Marbella – Juanar",
+    "when": "Maj",
+    "n": "Romería Cruz de Juanar",
+    "s": "Pilgrimsvandring med heste og vogne op i bjergene til korset ved Juanar, tæt på huset."
+   },
+   {
+    "m": 6,
+    "area": "Marbella",
+    "when": "Omkring 11. juni",
+    "n": "Feria de San Bernabé",
+    "s": "Marbellas store byfest i en uge med forlystelser, musik, flamenco og fest om natten."
+   },
+   {
+    "m": 6,
+    "area": "Strandene",
+    "when": "23. juni",
+    "n": "Noche de San Juan",
+    "s": "Sankthans på stranden med bål, musik og fest til langt ud på natten."
+   },
+   {
+    "m": 6,
+    "area": "Ojén",
+    "when": "Sidst i juni",
+    "n": "Ojeando Festival",
+    "s": "Lille, hyggelig musikfestival i Ojén med spanske bands."
+   },
+   {
+    "m": 7,
+    "area": "Marbella",
+    "when": "16. juli",
+    "n": "Virgen del Carmen",
+    "s": "Fiskernes fest med procession ned til havet og både på vandet."
+   },
+   {
+    "m": 7,
+    "area": "Marbella",
+    "when": "Juli–august",
+    "n": "Starlite Festival",
+    "s": "Koncerter med store internationale navne i et gammelt stenbrud. Køb billetter i god tid."
+   },
+   {
+    "m": 8,
+    "area": "Las Chapas / Elviria",
+    "when": "Først i august",
+    "n": "Feria de Las Chapas",
+    "s": "Lokal byfest i Elviria, den nærmeste feria fra huset."
+   },
+   {
+    "m": 8,
+    "area": "Málaga",
+    "when": "Midt i august",
+    "n": "Feria de Málaga",
+    "s": "En af Andalusiens største fester: dans, musik og fest i gaderne om dagen og på festpladsen om natten."
+   },
+   {
+    "m": 10,
+    "area": "Ojén",
+    "when": "Omkring 9. oktober",
+    "n": "Feria de Ojén",
+    "s": "Landsbyens fest for skytshelgenen San Dionisio med musik, dans og boder i fem dage."
+   },
+   {
+    "m": 10,
+    "area": "San Pedro de Alcántara",
+    "when": "Midt i oktober",
+    "n": "Feria de San Pedro",
+    "s": "Sæsonens sidste store feria på kysten."
+   },
+   {
+    "m": 11,
+    "area": "Ojén",
+    "when": "1. november",
+    "n": "Fiesta del Tostón",
+    "s": "Familier mødes i naturen og rister kastanjer over bål."
+   },
+   {
+    "m": 12,
+    "area": "Marbella og Málaga",
+    "when": "December",
+    "n": "Jul i byerne",
+    "s": "Julebelysning, julemarkeder og stemning i gamle bydel i Marbella og på Calle Larios i Málaga."
+   }
+  ],
+  "rvTitle": "Skriv en anmeldelse",
+  "rvAirbnb": "I har booket via Airbnb. Efter check-ud sender Airbnb jer en mail, hvor I kan anmelde opholdet. Det betyder rigtig meget for os.",
+  "rvBooking": "I har booket via Booking.com. Efter check-ud sender Booking.com jer en mail, hvor I kan anmelde opholdet. Det betyder rigtig meget for os.",
+  "rvVrbo": "I har booket via Vrbo. Efter check-ud sender Vrbo jer en mail, hvor I kan anmelde opholdet. Det betyder rigtig meget for os.",
+  "rvDirect": "Har I haft et godt ophold, vil vi blive rigtig glade for en anmeldelse på Google. Det tager kun et minut.",
+  "rvAny": "Har I booket via Airbnb eller Booking.com, får I en mail derfra efter check-ud, hvor I kan anmelde opholdet. Har I booket direkte hos os, må I meget gerne skrive en anmeldelse på Google.",
+  "rvBtn": "Anmeld os på Google",
+  "rvTodo": "Link til jeres Google-anmeldelser"
  },
  "en": {
   "rulesTitle": "House rules",
@@ -1243,7 +1475,239 @@ window.VM_EXTRA = {
   "backReview": "Write a review",
   "backBook": "Book direct",
   "backCode": "Discount code for direct booking",
-  "backTodo": "Discount code and review link"
+  "backTodo": "Discount code and review link",
+  "mkTitle": "Markets and events",
+  "mkText": "Weekly markets and the year's fiestas nearby. Markets are usually closed on public holidays and during the town's feria.",
+  "mkSum": "Weekly markets",
+  "mkSumD": "10–30 min",
+  "mkIntro": "Times can change, so check before you go. Arrive early for easier parking.",
+  "evSum": "Fiestas and events",
+  "evSumD": "All year",
+  "evIntro": "Exact dates change from year to year. The list starts with the current month.",
+  "mkToday": "Today",
+  "evNow": "This month",
+  "evNext": "Next month",
+  "markets": [
+   {
+    "n": "Las Chapas market",
+    "area": "Elviria",
+    "when": "Friday",
+    "hours": "9–14",
+    "s": "Small local market with fruit, veg, clothes and household goods. The nearest market.",
+    "dow": [
+     5
+    ],
+    "min": 10,
+    "q": "Calle Pinsapo, Pinares de Elviria, Marbella"
+   },
+   {
+    "n": "Organic market",
+    "area": "Elviria",
+    "when": "1st and 3rd Saturday of the month",
+    "hours": "9–14",
+    "s": "Organic vegetables, bread, cheese, olive oil and honey from local producers.",
+    "dow": [],
+    "min": 10,
+    "q": "Pinares de Elviria, Marbella"
+   },
+   {
+    "n": "Marbella market",
+    "area": "Marbella",
+    "when": "Monday",
+    "hours": "9–14",
+    "s": "The town's big weekly market with over 300 stalls: fruit, clothes, shoes, bags and more.",
+    "dow": [
+     1
+    ],
+    "min": 20,
+    "q": "Recinto Ferial Las Albarizas, Calle José Manuel Vallés, Marbella"
+   },
+   {
+    "n": "Fuengirola market",
+    "area": "Fuengirola",
+    "when": "Tuesday",
+    "hours": "9–14",
+    "s": "One of Andalusia's largest markets with over 450 stalls. Worth a whole morning.",
+    "dow": [
+     2
+    ],
+    "min": 25,
+    "q": "Recinto Ferial, Fuengirola"
+   },
+   {
+    "n": "San Pedro market",
+    "area": "San Pedro de Alcántara",
+    "when": "Thursday",
+    "hours": "9–14",
+    "s": "Large local market with fruit, veg, clothes and shoes.",
+    "dow": [
+     4
+    ],
+    "min": 30,
+    "q": "Calle Jorge Guillén, San Pedro de Alcántara"
+   },
+   {
+    "n": "Puerto Banús flea market",
+    "area": "Nueva Andalucía",
+    "when": "Saturday",
+    "hours": "9–14",
+    "s": "Second-hand goods, antiques, crafts and a bit of everything. Fun to browse.",
+    "dow": [
+     6
+    ],
+    "min": 30,
+    "q": "Avenida Pilar Calvo, Nueva Andalucía, Marbella"
+   },
+   {
+    "n": "Fuengirola flea market",
+    "area": "Fuengirola",
+    "when": "Saturday",
+    "hours": "9–14",
+    "s": "Over 300 stalls with antiques, second-hand goods and crafts.",
+    "dow": [
+     6
+    ],
+    "min": 25,
+    "q": "Recinto Ferial, Fuengirola"
+   },
+   {
+    "n": "Fuengirola Sunday market",
+    "area": "Fuengirola",
+    "when": "Sunday",
+    "hours": "9–14",
+    "s": "Leather goods, shoes, textiles and crafts. One of the few Sunday markets.",
+    "dow": [
+     0
+    ],
+    "min": 25,
+    "q": "Calle Méndez Núñez, Fuengirola"
+   },
+   {
+    "n": "Puerto Banús craft fair",
+    "area": "Puerto Banús",
+    "when": "Daily in June–August",
+    "hours": "Evenings",
+    "s": "Summer market with jewellery, art and handmade goods by the marina.",
+    "dow": [],
+    "min": 30,
+    "q": "Plaza Antonio Banderas, Puerto Banús"
+   }
+  ],
+  "events": [
+   {
+    "m": 1,
+    "area": "Marbella",
+    "when": "5 January",
+    "n": "Three Kings parade",
+    "s": "Cabalgata de Reyes: the Three Wise Men parade and throw sweets to the children."
+   },
+   {
+    "m": 2,
+    "area": "Marbella",
+    "when": "February or March",
+    "n": "Carnival",
+    "s": "Costumes, music and parades in the streets."
+   },
+   {
+    "m": 3,
+    "area": "Málaga and Marbella",
+    "when": "March or April",
+    "n": "Semana Santa (Holy Week)",
+    "s": "Grand processions with ornate floats. Málaga's are among Spain's most famous."
+   },
+   {
+    "m": 5,
+    "area": "Marbella – Juanar",
+    "when": "May",
+    "n": "Romería Cruz de Juanar",
+    "s": "Pilgrimage with horses and carts up into the mountains to the Juanar cross, close to the house."
+   },
+   {
+    "m": 6,
+    "area": "Marbella",
+    "when": "Around 11 June",
+    "n": "Feria de San Bernabé",
+    "s": "Marbella's big week-long fair with rides, music, flamenco and partying at night."
+   },
+   {
+    "m": 6,
+    "area": "The beaches",
+    "when": "23 June",
+    "n": "Noche de San Juan",
+    "s": "Midsummer on the beach with bonfires, music and partying late into the night."
+   },
+   {
+    "m": 6,
+    "area": "Ojén",
+    "when": "Late June",
+    "n": "Ojeando Festival",
+    "s": "Small, friendly music festival in Ojén with Spanish bands."
+   },
+   {
+    "m": 7,
+    "area": "Marbella",
+    "when": "16 July",
+    "n": "Virgen del Carmen",
+    "s": "The fishermen's fiesta with a procession to the sea and boats on the water."
+   },
+   {
+    "m": 7,
+    "area": "Marbella",
+    "when": "July–August",
+    "n": "Starlite Festival",
+    "s": "Concerts with big international names in an old quarry. Book tickets early."
+   },
+   {
+    "m": 8,
+    "area": "Las Chapas / Elviria",
+    "when": "Early August",
+    "n": "Feria de Las Chapas",
+    "s": "Local fair in Elviria, the nearest feria to the house."
+   },
+   {
+    "m": 8,
+    "area": "Málaga",
+    "when": "Mid August",
+    "n": "Feria de Málaga",
+    "s": "One of Andalusia's biggest fiestas: dancing and music in the streets by day and at the fairground by night."
+   },
+   {
+    "m": 10,
+    "area": "Ojén",
+    "when": "Around 9 October",
+    "n": "Feria de Ojén",
+    "s": "The village fiesta for its patron saint San Dionisio, with music, dancing and stalls for five days."
+   },
+   {
+    "m": 10,
+    "area": "San Pedro de Alcántara",
+    "when": "Mid October",
+    "n": "Feria de San Pedro",
+    "s": "The last big feria of the season on the coast."
+   },
+   {
+    "m": 11,
+    "area": "Ojén",
+    "when": "1 November",
+    "n": "Fiesta del Tostón",
+    "s": "Families gather in the countryside to roast chestnuts over a fire."
+   },
+   {
+    "m": 12,
+    "area": "Marbella and Málaga",
+    "when": "December",
+    "n": "Christmas in town",
+    "s": "Christmas lights, markets and atmosphere in Marbella's old town and on Calle Larios in Málaga."
+   }
+  ],
+  "rvTitle": "Write a review",
+  "rvAirbnb": "You booked via Airbnb. After check-out, Airbnb will email you a link to review your stay. It means a lot to us.",
+  "rvBooking": "You booked via Booking.com. After check-out, Booking.com will email you a link to review your stay. It means a lot to us.",
+  "rvVrbo": "You booked via Vrbo. After check-out, Vrbo will email you a link to review your stay. It means a lot to us.",
+  "rvDirect": "If you enjoyed your stay, we would love a review on Google. It only takes a minute.",
+  "rvAny": "If you booked via Airbnb or Booking.com, you'll get an email from them after check-out to review your stay. If you booked directly with us, we'd love a review on Google.",
+  "rvBtn": "Review us on Google",
+  "rvTodo": "Link to your Google reviews"
  },
  "es": {
   "rulesTitle": "Normas de la casa",
@@ -1551,7 +2015,239 @@ window.VM_EXTRA = {
   "backReview": "Escribir una reseña",
   "backBook": "Reservar directamente",
   "backCode": "Código de descuento",
-  "backTodo": "Código de descuento y enlace a reseñas"
+  "backTodo": "Código de descuento y enlace a reseñas",
+  "mkTitle": "Mercadillos y eventos",
+  "mkText": "Mercadillos semanales y las fiestas del año en la zona. Los mercadillos suelen cerrar en festivos y durante la feria.",
+  "mkSum": "Mercadillos semanales",
+  "mkSumD": "10–30 min",
+  "mkIntro": "Los horarios pueden cambiar; conviene comprobarlos. Llegad pronto para aparcar mejor.",
+  "evSum": "Fiestas y eventos",
+  "evSumD": "Todo el año",
+  "evIntro": "Las fechas exactas cambian cada año. La lista empieza por el mes actual.",
+  "mkToday": "Hoy",
+  "evNow": "Este mes",
+  "evNext": "Próximo mes",
+  "markets": [
+   {
+    "n": "Mercadillo de Las Chapas",
+    "area": "Elviria",
+    "when": "Viernes",
+    "hours": "9–14",
+    "s": "Pequeño mercadillo local con fruta, verdura, ropa y menaje. El más cercano.",
+    "dow": [
+     5
+    ],
+    "min": 10,
+    "q": "Calle Pinsapo, Pinares de Elviria, Marbella"
+   },
+   {
+    "n": "Mercadillo ecológico",
+    "area": "Elviria",
+    "when": "1.er y 3.er sábado del mes",
+    "hours": "9–14",
+    "s": "Verdura ecológica, pan, queso, aceite y miel de productores locales.",
+    "dow": [],
+    "min": 10,
+    "q": "Pinares de Elviria, Marbella"
+   },
+   {
+    "n": "Mercadillo de Marbella",
+    "area": "Marbella",
+    "when": "Lunes",
+    "hours": "9–14",
+    "s": "El gran mercadillo semanal con más de 300 puestos: fruta, ropa, calzado, bolsos y más.",
+    "dow": [
+     1
+    ],
+    "min": 20,
+    "q": "Recinto Ferial Las Albarizas, Calle José Manuel Vallés, Marbella"
+   },
+   {
+    "n": "Mercadillo de Fuengirola",
+    "area": "Fuengirola",
+    "when": "Martes",
+    "hours": "9–14",
+    "s": "Uno de los mayores de Andalucía, con más de 450 puestos. Para toda la mañana.",
+    "dow": [
+     2
+    ],
+    "min": 25,
+    "q": "Recinto Ferial, Fuengirola"
+   },
+   {
+    "n": "Mercadillo de San Pedro",
+    "area": "San Pedro de Alcántara",
+    "when": "Jueves",
+    "hours": "9–14",
+    "s": "Gran mercadillo local con fruta, verdura, ropa y calzado.",
+    "dow": [
+     4
+    ],
+    "min": 30,
+    "q": "Calle Jorge Guillén, San Pedro de Alcántara"
+   },
+   {
+    "n": "Rastro de Puerto Banús",
+    "area": "Nueva Andalucía",
+    "when": "Sábado",
+    "hours": "9–14",
+    "s": "Segunda mano, antigüedades, artesanía y un poco de todo.",
+    "dow": [
+     6
+    ],
+    "min": 30,
+    "q": "Avenida Pilar Calvo, Nueva Andalucía, Marbella"
+   },
+   {
+    "n": "Rastro de Fuengirola",
+    "area": "Fuengirola",
+    "when": "Sábado",
+    "hours": "9–14",
+    "s": "Más de 300 puestos de antigüedades, segunda mano y artesanía.",
+    "dow": [
+     6
+    ],
+    "min": 25,
+    "q": "Recinto Ferial, Fuengirola"
+   },
+   {
+    "n": "Mercadillo dominical de Fuengirola",
+    "area": "Fuengirola",
+    "when": "Domingo",
+    "hours": "9–14",
+    "s": "Piel, calzado, textil y artesanía. Uno de los pocos en domingo.",
+    "dow": [
+     0
+    ],
+    "min": 25,
+    "q": "Calle Méndez Núñez, Fuengirola"
+   },
+   {
+    "n": "Muestra de artesanía de Puerto Banús",
+    "area": "Puerto Banús",
+    "when": "A diario en junio–agosto",
+    "hours": "Por la tarde-noche",
+    "s": "Mercado de verano con joyas, arte y artesanía junto al puerto.",
+    "dow": [],
+    "min": 30,
+    "q": "Plaza Antonio Banderas, Puerto Banús"
+   }
+  ],
+  "events": [
+   {
+    "m": 1,
+    "area": "Marbella",
+    "when": "5 de enero",
+    "n": "Cabalgata de Reyes",
+    "s": "Los Reyes Magos recorren las calles y lanzan caramelos a los niños."
+   },
+   {
+    "m": 2,
+    "area": "Marbella",
+    "when": "Febrero o marzo",
+    "n": "Carnaval",
+    "s": "Disfraces, música y desfiles por las calles."
+   },
+   {
+    "m": 3,
+    "area": "Málaga y Marbella",
+    "when": "Marzo o abril",
+    "n": "Semana Santa",
+    "s": "Grandes procesiones; las de Málaga están entre las más famosas de España."
+   },
+   {
+    "m": 5,
+    "area": "Marbella – Juanar",
+    "when": "Mayo",
+    "n": "Romería Cruz de Juanar",
+    "s": "Romería con caballos y carretas hasta la Cruz de Juanar, cerca de la casa."
+   },
+   {
+    "m": 6,
+    "area": "Marbella",
+    "when": "Alrededor del 11 de junio",
+    "n": "Feria de San Bernabé",
+    "s": "La gran feria de Marbella: atracciones, música, flamenco y fiesta nocturna."
+   },
+   {
+    "m": 6,
+    "area": "Las playas",
+    "when": "23 de junio",
+    "n": "Noche de San Juan",
+    "s": "Hogueras, música y fiesta en la playa hasta muy tarde."
+   },
+   {
+    "m": 6,
+    "area": "Ojén",
+    "when": "Finales de junio",
+    "n": "Ojeando Festival",
+    "s": "Pequeño festival de música en Ojén con grupos españoles."
+   },
+   {
+    "m": 7,
+    "area": "Marbella",
+    "when": "16 de julio",
+    "n": "Virgen del Carmen",
+    "s": "Fiesta marinera con procesión hasta el mar y barcas en el agua."
+   },
+   {
+    "m": 7,
+    "area": "Marbella",
+    "when": "Julio–agosto",
+    "n": "Starlite Festival",
+    "s": "Conciertos de grandes artistas en una antigua cantera. Reservad pronto."
+   },
+   {
+    "m": 8,
+    "area": "Las Chapas / Elviria",
+    "when": "Principios de agosto",
+    "n": "Feria de Las Chapas",
+    "s": "Feria local en Elviria, la más cercana a la casa."
+   },
+   {
+    "m": 8,
+    "area": "Málaga",
+    "when": "Mediados de agosto",
+    "n": "Feria de Málaga",
+    "s": "Una de las grandes de Andalucía: feria de día en el centro y de noche en el real."
+   },
+   {
+    "m": 10,
+    "area": "Ojén",
+    "when": "Alrededor del 9 de octubre",
+    "n": "Feria de Ojén",
+    "s": "Fiestas en honor a San Dionisio con música, baile y puestos durante cinco días."
+   },
+   {
+    "m": 10,
+    "area": "San Pedro de Alcántara",
+    "when": "Mediados de octubre",
+    "n": "Feria de San Pedro",
+    "s": "La última gran feria de la temporada en la costa."
+   },
+   {
+    "m": 11,
+    "area": "Ojén",
+    "when": "1 de noviembre",
+    "n": "Fiesta del Tostón",
+    "s": "Las familias se reúnen en el campo para asar castañas."
+   },
+   {
+    "m": 12,
+    "area": "Marbella y Málaga",
+    "when": "Diciembre",
+    "n": "Navidad",
+    "s": "Luces, mercadillos navideños y ambiente en el casco antiguo de Marbella y la calle Larios de Málaga."
+   }
+  ],
+  "rvTitle": "Escribid una reseña",
+  "rvAirbnb": "Reservasteis por Airbnb. Tras la salida, Airbnb os enviará un correo para valorar la estancia. Significa mucho para nosotros.",
+  "rvBooking": "Reservasteis por Booking.com. Tras la salida, Booking.com os enviará un correo para valorar la estancia. Significa mucho para nosotros.",
+  "rvVrbo": "Reservasteis por Vrbo. Tras la salida, Vrbo os enviará un correo para valorar la estancia. Significa mucho para nosotros.",
+  "rvDirect": "Si habéis disfrutado, nos encantaría una reseña en Google. Solo lleva un minuto.",
+  "rvAny": "Si reservasteis por Airbnb o Booking.com, os llegará un correo tras la salida para valorar. Si reservasteis directamente, nos encantaría una reseña en Google.",
+  "rvBtn": "Valoradnos en Google",
+  "rvTodo": "Enlace a reseñas de Google"
  },
  "de": {
   "rulesTitle": "Hausregeln",
@@ -1859,6 +2555,238 @@ window.VM_EXTRA = {
   "backReview": "Bewertung schreiben",
   "backBook": "Direkt buchen",
   "backCode": "Rabattcode für Direktbuchung",
-  "backTodo": "Rabattcode und Bewertungslink"
+  "backTodo": "Rabattcode und Bewertungslink",
+  "mkTitle": "Märkte und Veranstaltungen",
+  "mkText": "Wochenmärkte und die Feste des Jahres in der Umgebung. An Feiertagen und während der Feria finden die Märkte meist nicht statt.",
+  "mkSum": "Wochenmärkte",
+  "mkSumD": "10–30 Min.",
+  "mkIntro": "Zeiten können sich ändern, bitte vorher prüfen. Früh kommen erleichtert das Parken.",
+  "evSum": "Feste und Veranstaltungen",
+  "evSumD": "Ganzjährig",
+  "evIntro": "Die genauen Termine ändern sich jedes Jahr. Die Liste beginnt mit dem aktuellen Monat.",
+  "mkToday": "Heute",
+  "evNow": "Diesen Monat",
+  "evNext": "Nächsten Monat",
+  "markets": [
+   {
+    "n": "Markt Las Chapas",
+    "area": "Elviria",
+    "when": "Freitag",
+    "hours": "9–14",
+    "s": "Kleiner lokaler Markt mit Obst, Gemüse, Kleidung und Haushaltswaren. Der nächste Markt.",
+    "dow": [
+     5
+    ],
+    "min": 10,
+    "q": "Calle Pinsapo, Pinares de Elviria, Marbella"
+   },
+   {
+    "n": "Bio-Markt",
+    "area": "Elviria",
+    "when": "1. und 3. Samstag im Monat",
+    "hours": "9–14",
+    "s": "Bio-Gemüse, Brot, Käse, Olivenöl und Honig von lokalen Erzeugern.",
+    "dow": [],
+    "min": 10,
+    "q": "Pinares de Elviria, Marbella"
+   },
+   {
+    "n": "Markt Marbella",
+    "area": "Marbella",
+    "when": "Montag",
+    "hours": "9–14",
+    "s": "Der große Wochenmarkt der Stadt mit über 300 Ständen: Obst, Kleidung, Schuhe, Taschen und mehr.",
+    "dow": [
+     1
+    ],
+    "min": 20,
+    "q": "Recinto Ferial Las Albarizas, Calle José Manuel Vallés, Marbella"
+   },
+   {
+    "n": "Markt Fuengirola",
+    "area": "Fuengirola",
+    "when": "Dienstag",
+    "hours": "9–14",
+    "s": "Einer der größten Märkte Andalusiens mit über 450 Ständen. Lohnt einen ganzen Vormittag.",
+    "dow": [
+     2
+    ],
+    "min": 25,
+    "q": "Recinto Ferial, Fuengirola"
+   },
+   {
+    "n": "Markt San Pedro",
+    "area": "San Pedro de Alcántara",
+    "when": "Donnerstag",
+    "hours": "9–14",
+    "s": "Großer lokaler Markt mit Obst, Gemüse, Kleidung und Schuhen.",
+    "dow": [
+     4
+    ],
+    "min": 30,
+    "q": "Calle Jorge Guillén, San Pedro de Alcántara"
+   },
+   {
+    "n": "Flohmarkt Puerto Banús",
+    "area": "Nueva Andalucía",
+    "when": "Samstag",
+    "hours": "9–14",
+    "s": "Gebrauchtes, Antiquitäten, Kunsthandwerk und von allem etwas.",
+    "dow": [
+     6
+    ],
+    "min": 30,
+    "q": "Avenida Pilar Calvo, Nueva Andalucía, Marbella"
+   },
+   {
+    "n": "Flohmarkt Fuengirola",
+    "area": "Fuengirola",
+    "when": "Samstag",
+    "hours": "9–14",
+    "s": "Über 300 Stände mit Antiquitäten, Gebrauchtem und Kunsthandwerk.",
+    "dow": [
+     6
+    ],
+    "min": 25,
+    "q": "Recinto Ferial, Fuengirola"
+   },
+   {
+    "n": "Sonntagsmarkt Fuengirola",
+    "area": "Fuengirola",
+    "when": "Sonntag",
+    "hours": "9–14",
+    "s": "Lederwaren, Schuhe, Textilien und Kunsthandwerk. Einer der wenigen Sonntagsmärkte.",
+    "dow": [
+     0
+    ],
+    "min": 25,
+    "q": "Calle Méndez Núñez, Fuengirola"
+   },
+   {
+    "n": "Kunsthandwerksmarkt Puerto Banús",
+    "area": "Puerto Banús",
+    "when": "Täglich Juni–August",
+    "hours": "Abends",
+    "s": "Sommermarkt mit Schmuck, Kunst und Handgemachtem am Hafen.",
+    "dow": [],
+    "min": 30,
+    "q": "Plaza Antonio Banderas, Puerto Banús"
+   }
+  ],
+  "events": [
+   {
+    "m": 1,
+    "area": "Marbella",
+    "when": "5. Januar",
+    "n": "Dreikönigsumzug",
+    "s": "Cabalgata de Reyes: Umzug der Heiligen Drei Könige, die Süßigkeiten an Kinder werfen."
+   },
+   {
+    "m": 2,
+    "area": "Marbella",
+    "when": "Februar oder März",
+    "n": "Karneval",
+    "s": "Kostüme, Musik und Umzüge in den Straßen."
+   },
+   {
+    "m": 3,
+    "area": "Málaga und Marbella",
+    "when": "März oder April",
+    "n": "Semana Santa (Karwoche)",
+    "s": "Große Prozessionen mit prächtigen Figuren. Die in Málaga zählen zu den berühmtesten Spaniens."
+   },
+   {
+    "m": 5,
+    "area": "Marbella – Juanar",
+    "when": "Mai",
+    "n": "Romería Cruz de Juanar",
+    "s": "Wallfahrt mit Pferden und Kutschen in die Berge zum Kreuz von Juanar, nahe dem Haus."
+   },
+   {
+    "m": 6,
+    "area": "Marbella",
+    "when": "Um den 11. Juni",
+    "n": "Feria de San Bernabé",
+    "s": "Marbellas großes einwöchiges Stadtfest mit Fahrgeschäften, Musik, Flamenco und Party."
+   },
+   {
+    "m": 6,
+    "area": "Die Strände",
+    "when": "23. Juni",
+    "n": "Noche de San Juan",
+    "s": "Johannisnacht am Strand mit Feuern, Musik und Feiern bis spät in die Nacht."
+   },
+   {
+    "m": 6,
+    "area": "Ojén",
+    "when": "Ende Juni",
+    "n": "Ojeando Festival",
+    "s": "Kleines, gemütliches Musikfestival in Ojén mit spanischen Bands."
+   },
+   {
+    "m": 7,
+    "area": "Marbella",
+    "when": "16. Juli",
+    "n": "Virgen del Carmen",
+    "s": "Fest der Fischer mit Prozession zum Meer und Booten auf dem Wasser."
+   },
+   {
+    "m": 7,
+    "area": "Marbella",
+    "when": "Juli–August",
+    "n": "Starlite Festival",
+    "s": "Konzerte großer internationaler Stars in einem alten Steinbruch. Tickets früh buchen."
+   },
+   {
+    "m": 8,
+    "area": "Las Chapas / Elviria",
+    "when": "Anfang August",
+    "n": "Feria de Las Chapas",
+    "s": "Lokales Fest in Elviria, die nächste Feria vom Haus aus."
+   },
+   {
+    "m": 8,
+    "area": "Málaga",
+    "when": "Mitte August",
+    "n": "Feria de Málaga",
+    "s": "Eines der größten Feste Andalusiens: tagsüber in den Gassen, nachts auf dem Festplatz."
+   },
+   {
+    "m": 10,
+    "area": "Ojén",
+    "when": "Um den 9. Oktober",
+    "n": "Feria de Ojén",
+    "s": "Dorffest zu Ehren des Schutzheiligen San Dionisio mit Musik, Tanz und Ständen an fünf Tagen."
+   },
+   {
+    "m": 10,
+    "area": "San Pedro de Alcántara",
+    "when": "Mitte Oktober",
+    "n": "Feria de San Pedro",
+    "s": "Die letzte große Feria der Saison an der Küste."
+   },
+   {
+    "m": 11,
+    "area": "Ojén",
+    "when": "1. November",
+    "n": "Fiesta del Tostón",
+    "s": "Familien treffen sich in der Natur und rösten Kastanien am Feuer."
+   },
+   {
+    "m": 12,
+    "area": "Marbella und Málaga",
+    "when": "Dezember",
+    "n": "Weihnachten",
+    "s": "Weihnachtsbeleuchtung, Märkte und Stimmung in Marbellas Altstadt und auf der Calle Larios in Málaga."
+   }
+  ],
+  "rvTitle": "Bewertung schreiben",
+  "rvAirbnb": "Sie haben über Airbnb gebucht. Nach dem Check-out schickt Airbnb Ihnen eine E-Mail zur Bewertung. Das bedeutet uns sehr viel.",
+  "rvBooking": "Sie haben über Booking.com gebucht. Nach dem Check-out schickt Booking.com Ihnen eine E-Mail zur Bewertung. Das bedeutet uns sehr viel.",
+  "rvVrbo": "Sie haben über Vrbo gebucht. Nach dem Check-out schickt Vrbo Ihnen eine E-Mail zur Bewertung. Das bedeutet uns sehr viel.",
+  "rvDirect": "Wenn Ihnen der Aufenthalt gefallen hat, freuen wir uns sehr über eine Google-Bewertung. Es dauert nur eine Minute.",
+  "rvAny": "Bei Buchung über Airbnb oder Booking.com erhalten Sie nach dem Check-out eine E-Mail zur Bewertung. Bei Direktbuchung freuen wir uns über eine Google-Bewertung.",
+  "rvBtn": "Auf Google bewerten",
+  "rvTodo": "Link zu Google-Bewertungen"
  }
 };

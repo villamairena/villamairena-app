@@ -339,6 +339,25 @@ details.words .tbl div{grid-template-columns:1fr 0 1fr}
 .welcome .big{font-family:var(--f-display);font-size:1.6rem;line-height:1.15}
 .gate-on{border-color:var(--pine)}
 .gate-on .val{color:var(--pine)}
+.cklist{margin-top:.7rem;border-top:1px solid var(--line);padding-top:.7rem}
+.ckhead{display:flex;justify-content:space-between;align-items:baseline;gap:8px}
+.ckcount{font-weight:700;color:var(--pine);font-size:.9rem}
+.ckbar{height:6px;border-radius:99px;background:var(--line);margin:.5rem 0 .4rem;overflow:hidden}
+.ckbar span{display:block;height:100%;background:var(--pine);transition:width .2s}
+.ckitem{display:flex;gap:10px;align-items:flex-start;padding:9px 0;border-bottom:1px solid var(--line);cursor:pointer;font-size:.95rem}
+.ckitem:last-of-type{border-bottom:0}
+.ckitem input{width:20px;height:20px;flex:none;margin:1px 0 0;accent-color:var(--pine)}
+.ckitem input:checked+span{color:var(--muted);text-decoration:line-through}
+.ckdone{margin:.6rem 0 0;font-weight:700;color:var(--pine)}
+.card.leave{display:flex;gap:12px;align-items:center;text-decoration:none;color:var(--ink);border-color:var(--pine)}
+.card.leave svg{width:26px;height:26px;flex:none;color:var(--pine)}
+.antabs{flex-wrap:wrap}
+.bins{display:grid;gap:2px;margin:.4rem 0}
+.bin{display:flex;gap:12px;align-items:flex-start;padding:8px 0;border-bottom:1px solid var(--line);font-size:.95rem}
+.bin:last-child{border-bottom:0}
+.bin .dot{width:22px;height:22px;border-radius:6px;flex:none;margin-top:2px;box-shadow:inset 0 0 0 1px rgba(0,0,0,.15)}
+.review{margin-top:.9rem;padding:.9rem;border-radius:14px;background:var(--pine-soft)}
+.gn .pill{font-size:.7rem;vertical-align:middle;margin-left:4px}
 
 </style>
 </head>
