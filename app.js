@@ -84,7 +84,7 @@
       T.how.map(function (x) {
         return '<details class="how" id="' + x.id + '"><summary><span class="hi">' + ic(x.icon) + "</span>" + esc(x.title) + "</summary>" +
           (x.body.length ? "<ul>" + x.body.map(function (b) { return "<li>" + esc(b) + "</li>"; }).join("") + "</ul>" : "") + (x.todo ? "<p>" + todo(x.todo) + "</p>" : "") + "</details>";
-      }).join("") + "</div>";
+      }).join("") + "</div>" + renderReport();
   }
 
   function places(list, sug) {
@@ -195,6 +195,59 @@
   function contactRow(who, num, copyVal) {
     return '<div class="contact"><span class="who">' + esc(who) + '</span><span class="num">' + esc(num) + '</span><button class="btn" data-copy="' + esc(copyVal) + '">' + esc(T.ui.copy) + "</button></div>";
   }
+  var REPORT_API = "https://villamairena.com/ejer/report.php";
+  function renderReport() {
+    var r = T.contact.report;
+    return '<form class="card report" id="meld" novalidate><h3>' + esc(r.title) + '</h3><p class="muted" style="font-size:.9rem">' + esc(r.intro) + "</p>" +
+      '<div class="seg" role="radiogroup"><label><input type="radio" name="type" value="issue" checked><span>' + esc(r.issue) + '</span></label><label><input type="radio" name="type" value="idea"><span>' + esc(r.idea) + "</span></label></div>" +
+      '<label class="fl" for="r-where">' + esc(r.where) + '</label><select id="r-where" name="where" class="sel"><option value="">' + esc(r.choose) + '</option><optgroup label="' + esc(r.inside) + '">' + r.roomsIn.map(function (x) { return "<option>" + esc(x) + "</option>"; }).join("") + '</optgroup><optgroup label="' + esc(r.outside) + '">' + r.roomsOut.map(function (x) { return "<option>" + esc(x) + "</option>"; }).join("") + "</optgroup><option>" + esc(r.other) + "</option></select>" +
+      '<label class="fl" for="r-text">' + esc(r.text) + '</label><textarea id="r-text" name="text" rows="4" maxlength="2000"></textarea>' +
+      '<label class="photobtn" for="r-photo"><svg aria-hidden="true"><use href="#i-cam"/></svg><span id="r-photo-l">' + esc(r.photo) + '</span><input id="r-photo" type="file" accept="image/*" capture="environment"></label>' +
+      '<img id="r-prev" alt="" hidden>' +
+      '<label class="fl" for="r-name">' + esc(r.name) + ' *</label><input id="r-name" name="name" maxlength="120" autocomplete="name" required>' +
+      '<input class="hp" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">' +
+      '<div id="r-msg" class="muted" style="font-size:.88rem" role="status"></div>' +
+      '<button class="cta" type="submit" style="border:0;cursor:pointer;justify-content:center">' + esc(r.send) + "</button>" +
+      '<p class="muted" style="font-size:.8rem">' + esc(r.urgent) + "</p></form>";
+  }
+  var rBlob = null;
+  function shrink(file) {
+    return new Promise(function (res) {
+      var img = new Image(), url = URL.createObjectURL(file);
+      img.onload = function () {
+        var m = 1600, w = img.naturalWidth, h = img.naturalHeight, k = Math.min(1, m / Math.max(w, h));
+        var c = document.createElement("canvas"); c.width = Math.round(w * k); c.height = Math.round(h * k);
+        c.getContext("2d").drawImage(img, 0, 0, c.width, c.height);
+        c.toBlob(function (b) { URL.revokeObjectURL(url); res(b || file); }, "image/jpeg", 0.82);
+      };
+      img.onerror = function () { URL.revokeObjectURL(url); res(file); };
+      img.src = url;
+    });
+  }
+  document.addEventListener("change", function (e) {
+    if (e.target.id !== "r-photo" || !e.target.files[0]) return;
+    shrink(e.target.files[0]).then(function (b) {
+      rBlob = b; var p = document.getElementById("r-prev"); p.src = URL.createObjectURL(b); p.hidden = false;
+      document.getElementById("r-photo-l").textContent = T.contact.report.photoAdded;
+    });
+  });
+  document.addEventListener("submit", function (e) {
+    if (e.target.id !== "meld") return;
+    e.preventDefault();
+    var f = e.target, r = T.contact.report, msg = document.getElementById("r-msg"), btn = f.querySelector('button[type="submit"]');
+    var text = f.querySelector("#r-text").value.trim();
+    if (!f.querySelector("#r-name").value.trim()) { msg.textContent = r.nameReq; f.querySelector("#r-name").focus(); return; }
+    if (!text && !rBlob) { msg.textContent = r.empty; return; }
+    var fd = new FormData();
+    fd.append("type", f.querySelector('input[name="type"]:checked').value);
+    fd.append("where", f.querySelector("#r-where").value); fd.append("text", text);
+    fd.append("name", f.querySelector("#r-name").value); fd.append("website", f.querySelector(".hp").value); fd.append("lang", lang);
+    if (rBlob) fd.append("photo", rBlob, "foto.jpg");
+    btn.disabled = true; btn.textContent = r.sending; msg.textContent = "";
+    fetch(REPORT_API, { method: "POST", body: fd }).then(function (res) { if (!res.ok) throw 0; return res.json(); })
+      .then(function () { rBlob = null; f.innerHTML = '<h3>' + esc(r.title) + '</h3><p class="ok">' + esc(r.thanks) + "</p>"; })
+      .catch(function () { btn.disabled = false; btn.textContent = r.send; msg.textContent = r.error; });
+  });
   function renderContact() {
     var c = T.contact, s = T.safety;
     return '<div class="stack"><p class="eyebrow">' + esc(c.eyebrow) + "</p><h2>" + esc(c.title) + "</h2></div>" +
@@ -360,6 +413,29 @@
     box.innerHTML = h;
   }
   document.addEventListener("click", function (e) { if (e.target.id === "an-reload") { anData = null; anLoad(true); } });
+  function repLoad() {
+    var box = document.getElementById("o-rep"); if (!box) return;
+    var H = { Authorization: "Bearer " + ownerToken() };
+    fetch(OWNER_API + "?view=reports", { headers: H, cache: "no-store" }).then(function (r) { return r.json(); }).then(function (d) {
+      var L = d.reports || [], open = L.filter(function (x) { return !x.done; });
+      var fmt = new Intl.DateTimeFormat("da-DK", { day: "numeric", month: "short", hour: "2-digit", minute: "2-digit" });
+      box.innerHTML = "<h3>Henvendelser fra gæster" + (open.length ? ' <span class="pill free">' + open.length + " nye</span>" : "") + "</h3>" +
+        (L.length ? L.slice(0, 20).map(function (x) {
+          return '<div class="rep' + (x.done ? " done" : "") + '"><div class="rh"><span class="ch">' + (x.type === "idea" ? "Forslag" : "Fejl") + "</span><span class=\"muted\">" + fmt.format(new Date(x.time)) + "</span></div>" +
+            (x.where ? "<strong>" + esc(x.where) + "</strong>" : "") + (x.text ? "<p>" + esc(x.text) + "</p>" : "") +
+            (x.photo ? '<img class="rimg" data-rid="' + esc(x.id) + '" alt="Foto fra gæst" data-zoom>' : "") +
+            (x.booking ? '<span class="muted" style="font-size:.82rem">Ophold: ' + esc(x.booking.guest) + " · " + esc(x.booking.arrival) + " – " + esc(x.booking.departure) + " · " + esc(x.booking.channel) + "</span>" : "") +
+            '<div class="rf"><span class="muted">' + (x.name ? esc(x.name) : "Uden navn") + (x.lang ? " · " + esc(x.lang.toUpperCase()) : "") + '</span><button class="btn" data-rdone="' + esc(x.id) + '" style="grid-row:auto;grid-column:auto">' + (x.done ? "Genåbn" : "Markér som klaret") + "</button></div></div>";
+        }).join("") : '<p class="muted">Ingen henvendelser endnu.</p>');
+      box.querySelectorAll("img[data-rid]").forEach(function (im) {
+        fetch(OWNER_API + "?action=img&id=" + encodeURIComponent(im.dataset.rid), { headers: H }).then(function (r) { return r.blob(); }).then(function (b) { im.src = URL.createObjectURL(b); });
+      });
+    }).catch(function () { box.innerHTML = '<h3>Henvendelser fra gæster</h3><p class="muted">Kunne ikke hentes.</p>'; });
+  }
+  document.addEventListener("click", function (e) {
+    var b = e.target.closest("[data-rdone]"); if (!b) return;
+    fetch(OWNER_API + "?action=done&id=" + encodeURIComponent(b.dataset.rdone), { headers: { Authorization: "Bearer " + ownerToken() } }).then(repLoad);
+  });
   function ownerRender(data) {
     var DAY = 864e5, fmtD = new Intl.DateTimeFormat("da-DK", { day: "numeric", month: "short" }), fmtW = new Intl.DateTimeFormat("da-DK", { weekday: "short" }), fmtM = new Intl.DateTimeFormat("da-DK", { month: "long", year: "numeric" });
     function d(s) { return new Date(s + "T12:00:00"); }
@@ -377,6 +453,7 @@
     else { var n = fut[0]; html += '<div class="card now"><span class="pill free">Ledigt nu</span><span class="big">' + (n ? "Næste gæst " + fmtW.format(d(n.arrival)) + " " + fmtD.format(d(n.arrival)) : "Ingen kommende bookinger") + "</span>" + (n ? '<span class="muted">' + esc(n.guest) + " · " + n.nights + ' nætter · <span class="ch">' + esc(n.channel) + "</span></span>" : "") + "</div>"; }
     function occ(days) { var s = d(todayS), o = 0; for (var i = 0; i < days; i++) { var x = iso(new Date(s.getTime() + i * DAY)); if (B.some(function (b) { return b.arrival <= x && b.departure > x; })) o++; } return Math.round(o / days * 100); }
     html += '<div class="stat"><div><b>' + occ(30) + "%</b><span>Belagt næste 30 dage</span></div><div><b>" + occ(90) + "%</b><span>Belagt næste 90 dage</span></div><div><b>" + fut.length + "</b><span>Kommende ophold</span></div></div>";
+    html += '<div class="card" id="o-rep"><h3>Henvendelser fra gæster</h3><p class="muted">Henter …</p></div>';
     html += OCAM + '</div><div class="osec" data-osec="ophold" hidden>';
     html += '<div class="card"><h3>Næste ophold</h3><div>' + (fut.slice(0, 12).map(function (b) {
       return '<div class="bk"><span class="dt">' + fmtD.format(d(b.arrival)) + "<small>" + fmtW.format(d(b.arrival)) + '</small></span><span class="who">' + esc(b.guest) + '</span><span class="ch">' + esc(b.channel) + '</span><span class="meta">' + b.nights + " nætter til " + fmtD.format(d(b.departure)) + (b.people ? " · " + b.people + " gæster" : "") + (money(b) ? " · " + money(b) : "") + (b.status && b.status.toLowerCase() !== "booked" ? " · " + esc(b.status) : "") + "</span></div>";
@@ -400,7 +477,7 @@
     html += '</div><div class="osec" data-osec="analyse" hidden><div id="o-an"><div class="card"><span class="muted">Henter alle bookinger til analyse …</span></div></div></div>';
     html += '<div class="foot"><span>Logget ind som ' + esc(data.user || "") + " · opdateret " + new Date(data.updated || Date.now()).toLocaleString("da-DK", { dateStyle: "short", timeStyle: "short" }) + '</span><button class="btn" id="o-reload" style="grid-row:auto;grid-column:auto">Opdater</button></div>';
     document.getElementById("o-body").innerHTML = html;
-    ownerTabs(true); ownerShow(ownerSec);
+    ownerTabs(true); ownerShow(ownerSec); repLoad();
   }
 
   /* ---------- shell ---------- */
@@ -419,6 +496,7 @@
     var tab = target, focusEl = null;
     if (HOW_IDS.indexOf(target) >= 0) { tab = "huset"; focusEl = target; }
     else if (target === "sikkerhed") { tab = "kontakt"; focusEl = target; }
+    else if (target === "meld") { tab = "huset"; focusEl = target; }
     else if (target === "mad" || target === "vejr") { tab = "hjem"; focusEl = target; }
     else if (target === "golf" || target === "padel" || target === "strande" || target === "indkoeb" || target === "kultur" || target === "restauranter") { tab = "omraadet"; focusEl = target; }
     if (PANELS.indexOf(tab) < 0) tab = "hjem";
