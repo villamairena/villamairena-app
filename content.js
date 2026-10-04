@@ -83,12 +83,12 @@ window.VM_CONTENT = {
     area: {
       eyebrow: "Området", title: "Guide til området",
       intro: "Her er vores guide til området omkring villaen: strande, indkøb og restauranter, sport, kultur og andre oplevelser. Tryk på et punkt med en trekant for at folde listen ud.",
-      beachTitle: "Strandene",
+      beachTitle: "Strande",
       beachText: "Gyldent sand, klart vand, chiringuitos, restauranter og beach clubs. Den nærmeste strand ligger ca. 8 minutter fra huset.",
       beaches: [["Las Chapas", "ca. 750 m strand"], ["La Víbora", "ca. 850 m strand"], ["Real de Zaragoza", "ca. 1,7 km strand"]],
       dailyTitle: "Indkøb og restauranter",
       daily: [
-        { n: "Takeaway", d: "Levering", s: "Uber Eats leverer til huset. Se \"Bestil mad til huset\" på forsiden." }
+        { url: "https://www.ubereats.com/es", n: "Takeaway", d: "Levering", s: "Uber Eats leverer til huset. Se \"Bestil mad til huset\" på forsiden." }
       ],
       dailyTodo: "Tilføj jeres foretrukne supermarked og bager",
       expTitle: "Oplevelser", suggestion: "Forslag",
@@ -233,7 +233,7 @@ window.VM_CONTENT = {
       beaches: [["Las Chapas", "approx. 750 m of beach"], ["La Víbora", "approx. 850 m of beach"], ["Real de Zaragoza", "approx. 1.7 km of beach"]],
       dailyTitle: "Shopping and restaurants",
       daily: [
-        { n: "Takeaway", d: "Delivery", s: "Uber Eats delivers to the villa. See \"Order food to the villa\" on the home screen." }
+        { url: "https://www.ubereats.com/es", n: "Takeaway", d: "Delivery", s: "Uber Eats delivers to the villa. See \"Order food to the villa\" on the home screen." }
       ],
       dailyTodo: "Your favourite supermarket and bakery",
       expTitle: "Things to do", suggestion: "Suggestion",
@@ -378,7 +378,7 @@ window.VM_CONTENT = {
       beaches: [["Las Chapas", "aprox. 750 m de playa"], ["La Víbora", "aprox. 850 m de playa"], ["Real de Zaragoza", "aprox. 1,7 km de playa"]],
       dailyTitle: "Compras y restaurantes",
       daily: [
-        { n: "Comida a domicilio", d: "Entrega", s: "Uber Eats entrega en la villa. Ver \"Pedir comida a la villa\" en Inicio." }
+        { url: "https://www.ubereats.com/es", n: "Comida a domicilio", d: "Entrega", s: "Uber Eats entrega en la villa. Ver \"Pedir comida a la villa\" en Inicio." }
       ],
       dailyTodo: "Vuestro supermercado y panadería favoritos",
       expTitle: "Qué hacer", suggestion: "Sugerencia",
@@ -523,7 +523,7 @@ window.VM_CONTENT = {
       beaches: [["Las Chapas", "ca. 750 m Strand"], ["La Víbora", "ca. 850 m Strand"], ["Real de Zaragoza", "ca. 1,7 km Strand"]],
       dailyTitle: "Einkaufen und Restaurants",
       daily: [
-        { n: "Essen bestellen", d: "Lieferung", s: "Uber Eats liefert zur Villa. Siehe \"Essen zur Villa bestellen\" auf der Startseite." }
+        { url: "https://www.ubereats.com/es", n: "Essen bestellen", d: "Lieferung", s: "Uber Eats liefert zur Villa. Siehe \"Essen zur Villa bestellen\" auf der Startseite." }
       ],
       dailyTodo: "Ihr Lieblingssupermarkt und Ihre Lieblingsbäckerei",
       expTitle: "Erlebnisse", suggestion: "Vorschlag",

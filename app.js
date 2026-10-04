@@ -26,6 +26,7 @@
   var img = function (k) { return IMG[k] || ("images/" + k + ".jpg"); };
   function fireSeason(d) { var m = d.getMonth() + 1, day = d.getDate(); return (m > 6 && m < 10) || m === 6 || (m === 10 && day <= 15); }
 
+  var CI = { da: ["Fra kl. 15", "Senest kl. 10"], en: ["From 3 pm", "By 10 am"], es: ["A partir de las 15:00", "Antes de las 10:00"], de: ["Ab 15 Uhr", "Bis 10 Uhr"] };
   function renderHome() {
     var h = T.home, w = T.weather, W = window.VM_WIFI || { ssid: "VillaMairena", pass: "" };
     var banner = fireSeason(new Date()) ?
@@ -37,8 +38,8 @@
       '<div class="grid2">' +
       '<div class="card key"><span class="label">' + esc(h.gate) + '</span><span class="val">• • • •</span><span class="muted" style="font-size:.8rem">' + esc(h.gateNote) + "</span></div>" +
       '<div class="card key"><span class="label">' + esc(h.wifi) + '</span><span class="val" style="font-size:1.05rem;letter-spacing:0">' + esc(W.ssid) + '</span><span class="muted" style="font-size:.8rem">' + esc(h.wifiPassLabel) + ': <strong class="num" style="color:var(--ink)">' + esc(W.pass) + '</strong></span><button class="btn" style="width:fit-content;grid-row:auto;grid-column:auto" data-copy="' + esc(W.pass) + '">' + esc(T.ui.copy) + "</button></div>" +
-      '<div class="card key"><span class="label">' + esc(h.checkin) + '</span><span class="val">--:--</span><span class="todo">' + esc(T.ui.todo) + "</span></div>" +
-      '<div class="card key"><span class="label">' + esc(h.checkout) + '</span><span class="val">--:--</span><span class="todo">' + esc(T.ui.todo) + "</span></div>" +
+      '<div class="card key"><span class="label">' + esc(h.checkin) + '</span><span class="val">15:00</span><span class="muted" style="font-size:.8rem">' + esc(CI[lang][0]) + "</span></div>" +
+      '<div class="card key"><span class="label">' + esc(h.checkout) + '</span><span class="val">10:00</span><span class="muted" style="font-size:.8rem">' + esc(CI[lang][1]) + "</span></div>" +
       "</div>" +
       '<div class="card wx" id="vejr" aria-live="polite"><div style="display:flex;justify-content:space-between;align-items:baseline;gap:8px;flex-wrap:wrap"><h3>' + esc(w.title) + '</h3><span class="wx-note" id="wx-src"></span></div>' +
       '<div class="wx-now"><svg aria-hidden="true"><use id="wx-ic" href="#w-sun"/></svg><span class="wx-t" id="wx-t">--°</span><span class="wx-d" id="wx-d">' + esc(w.loading) + '</span></div>' +
@@ -92,7 +93,8 @@
       if (p.key === "padel") return renderPadelItem(p);
       if (p.key === "kultur") return renderCultItem(p);
       return '<div class="place">' + (p.tag ? '<span class="tag">' + esc(sug) + "</span><span></span>" : "") +
-        '<span class="nm" style="grid-column:1">' + esc(p.n) + '</span><span class="dist">' + esc(p.d || "") + "</span>" + (p.s ? '<span class="ds">' + esc(p.s) + "</span>" : "") + "</div>";
+        '<span class="nm" style="grid-column:1">' + esc(p.n) + '</span><span class="dist">' + esc(p.d || "") + "</span>" + (p.s ? '<span class="ds">' + esc(p.s) + "</span>" : "") +
+        (p.url ? '<span class="gl" style="grid-column:1/-1;margin-top:4px"><a class="linkbtn" href="' + esc(p.url) + '" target="_blank" rel="noopener">' + ic("i-cart", 16) + esc(T.home.food.open) + "</a></span>" : "") + "</div>";
     }).join("") + "</div>";
   }
   function renderGolfItem(p) {
@@ -265,9 +267,99 @@
   document.addEventListener("click", function (e) {
     var b = e.target.closest("#otabs button");
     if (!b) return;
-    if (b.dataset.osec) ownerShow(b.dataset.osec);
+    if (b.dataset.osec) { ownerShow(b.dataset.osec); if (b.dataset.osec === "analyse") anLoad(); }
     else { ownerTabs(false); show("hjem"); try { history.replaceState(null, "", "#hjem"); } catch (x) {} }
   });
+
+  /* ---------- ejer: analyse ---------- */
+  var anData = null, anTab = "betalinger", anYear = null;
+  function anLoad(force) {
+    var box = document.getElementById("o-an"); if (!box) return;
+    if (anData && !force) { anRender(); return; }
+    fetch(OWNER_API + "?view=all", { headers: { Authorization: "Bearer " + ownerToken() }, cache: "no-store" })
+      .then(function (r) { if (r.status === 401) throw "login"; return r.json(); })
+      .then(function (d) { anData = d; anRender(); })
+      .catch(function (e) { if (e === "login") ownerLogin("Log ind igen."); else box.innerHTML = '<div class="err">Kunne ikke hente data til analyse.</div>'; });
+  }
+  document.addEventListener("click", function (e) {
+    var t = e.target.closest("[data-antab]"); if (t) { anTab = t.dataset.antab; anRender(); return; }
+  });
+  document.addEventListener("change", function (e) { if (e.target.id === "an-year") { anYear = +e.target.value; anRender(); } });
+  function anRender() {
+    var box = document.getElementById("o-an"); if (!box || !anData) return;
+    var DAY = 864e5, B = (anData.bookings || []).filter(function (b) { return b.arrival && b.departure; });
+    var cur = (B[0] && B[0].currency) || "EUR";
+    var nf = new Intl.NumberFormat("da-DK", { style: "currency", currency: cur, maximumFractionDigits: 0 });
+    var pf = function (x) { return Math.round(x) + "%"; };
+    var fmtD = new Intl.DateTimeFormat("da-DK", { day: "numeric", month: "short", year: "numeric" });
+    var MON = ["jan", "feb", "mar", "apr", "maj", "jun", "jul", "aug", "sep", "okt", "nov", "dec"];
+    var dd = function (s) { return new Date(s + "T12:00:00"); };
+    var years = {}; B.forEach(function (b) { years[+b.arrival.slice(0, 4)] = 1; years[+b.departure.slice(0, 4)] = 1; });
+    var ys = Object.keys(years).map(Number).sort(); var thisY = new Date().getFullYear();
+    if (!anYear) anYear = ys.indexOf(thisY) >= 0 ? thisY : (ys[ys.length - 1] || thisY);
+    // nætter og omsætning fordelt pr. måned (omsætning pro rata pr. nat)
+    var mN = Array(12).fill(0), mR = Array(12).fill(0), yN = 0, yR = 0;
+    B.forEach(function (b) {
+      var n = Math.max(1, b.nights || 1), per = (+b.amount || 0) / n;
+      for (var i = 0; i < n; i++) { var x = new Date(dd(b.arrival).getTime() + i * DAY); if (x.getFullYear() !== anYear) continue; mN[x.getMonth()]++; mR[x.getMonth()] += per; yN++; yR += per; }
+    });
+    var daysIn = function (m) { return new Date(anYear, m + 1, 0).getDate(); };
+    var yDays = (anYear % 4 === 0 && anYear % 100 !== 0) || anYear % 400 === 0 ? 366 : 365;
+    var inYear = B.filter(function (b) { return b.arrival.slice(0, 4) == anYear; });
+    function bars(vals, fmt, max) {
+      max = max || Math.max.apply(null, vals.concat([1]));
+      var top = vals.indexOf(Math.max.apply(null, vals));
+      return '<div class="bars" role="img" aria-label="Søjlediagram pr. måned">' + vals.map(function (v, i) {
+        var h = Math.round(v / max * 100);
+        return '<div class="bar" title="' + MON[i] + ": " + esc(fmt(v)) + '"><span class="bv">' + (i === top && v > 0 ? esc(fmt(v)) : "") + '</span><span class="bf" style="height:' + h + '%"></span><span class="bl">' + MON[i] + "</span></div>";
+      }).join("") + "</div>";
+    }
+    function hbars(rows, fmt) {
+      var max = Math.max.apply(null, rows.map(function (r) { return r[1]; }).concat([1]));
+      return '<div class="hbars">' + rows.map(function (r) {
+        return '<div class="hb" title="' + esc(r[0]) + ": " + esc(fmt(r[1])) + '"><span class="hl">' + esc(r[0]) + '</span><span class="ht"><span class="hf" style="width:' + Math.round(r[1] / max * 100) + '%"></span></span><span class="hv">' + esc(fmt(r[1])) + "</span></div>";
+      }).join("") + "</div>";
+    }
+    function tiles(list) { return '<div class="stat">' + list.map(function (t) { return "<div><b>" + t[0] + "</b><span>" + t[1] + "</span></div>"; }).join("") + "</div>"; }
+    var tabs = [["betalinger", "Betalinger"], ["omsaetning", "Omsætning"], ["belaegning", "Belægning"], ["kanaler", "Kanaler"], ["gaester", "Gæster"]];
+    var h = '<div class="antabs">' + tabs.map(function (t) { return '<button class="chipbtn" data-antab="' + t[0] + '" aria-pressed="' + (anTab === t[0]) + '">' + t[1] + "</button>"; }).join("") + "</div>";
+    h += '<div class="anyear"><label for="an-year">År</label><select id="an-year" class="lang">' + ys.map(function (y) { return '<option value="' + y + '"' + (y === anYear ? " selected" : "") + ">" + y + "</option>"; }).join("") + "</select></div>";
+    if (!B.length) h += '<div class="card"><p class="muted">Ingen bookinger at analysere endnu.</p></div>';
+    else if (anTab === "betalinger") {
+      var paid = 0, due = 0, tot = 0;
+      inYear.forEach(function (b) { paid += +b.paid || 0; due += +b.due || 0; tot += +b.amount || 0; });
+      var open = B.filter(function (b) { return (+b.due || 0) > 0.5; }).sort(function (x, y) { return x.arrival < y.arrival ? -1 : 1; });
+      h += tiles([[nf.format(paid), "Modtaget (ankomst " + anYear + ")"], [nf.format(due), "Udestående"], [nf.format(tot), "Samlet bookingværdi"]]);
+      h += '<div class="card"><h3>Mangler betaling</h3><div>' + (open.map(function (b) {
+        return '<div class="turn"><span class="d">' + esc(b.guest) + '</span><span class="warn">' + nf.format(b.due) + '</span><span class="s">Ankomst ' + fmtD.format(dd(b.arrival)) + " · betalt " + nf.format(+b.paid || 0) + " af " + nf.format(+b.amount || 0) + " · " + esc(b.channel) + "</span></div>";
+      }).join("") || '<p class="muted">Alt er betalt.</p>') + "</div></div>";
+      h += '<p class="muted note-s">Beløb er som registreret i Lodgify. Ved Airbnb og Booking.com kan det være før platformens gebyr.</p>';
+    } else if (anTab === "omsaetning") {
+      h += tiles([[nf.format(yR), "Omsætning " + anYear], [nf.format(yN ? yR / yN : 0), "Gns. pris pr. nat"], [nf.format(yR / yDays), "Pr. dag i året"]]);
+      h += '<div class="card"><h3>Omsætning pr. måned</h3>' + bars(mR, function (v) { return nf.format(v); }) + '<p class="muted note-s">Fordelt efter de nætter, gæsterne bor.</p></div>';
+      h += '<div class="card"><h3>Tabel</h3><div class="tbl">' + MON.map(function (m, i) { return "<div><span>" + m + "</span><span>" + mN[i] + " nætter</span><span>" + nf.format(mR[i]) + "</span></div>"; }).join("") + "</div></div>";
+    } else if (anTab === "belaegning") {
+      var occ = mN.map(function (n, i) { return n / daysIn(i) * 100; });
+      h += tiles([[pf(yN / yDays * 100), "Belægning " + anYear], [String(yN), "Udlejede nætter"], [String(inYear.length), "Ophold"]]);
+      h += '<div class="card"><h3>Belægning pr. måned</h3>' + bars(occ, pf, 100) + "</div>";
+    } else if (anTab === "kanaler") {
+      var ch = {}; inYear.forEach(function (b) { ch[b.channel] = ch[b.channel] || [0, 0]; ch[b.channel][0]++; ch[b.channel][1] += +b.amount || 0; });
+      var rows = Object.keys(ch).map(function (k) { return [k, ch[k][0], ch[k][1]]; }).sort(function (x, y) { return y[2] - x[2]; });
+      h += '<div class="card"><h3>Omsætning pr. kanal</h3>' + hbars(rows.map(function (r) { return [r[0], r[2]]; }), function (v) { return nf.format(v); }) + "</div>";
+      h += '<div class="card"><h3>Antal ophold pr. kanal</h3>' + hbars(rows.map(function (r) { return [r[0], r[1]]; }), function (v) { return v + " ophold"; }) + "</div>";
+    } else if (anTab === "gaester") {
+      var nights = 0, ppl = 0, lead = [], cc = {};
+      inYear.forEach(function (b) { nights += b.nights || 0; ppl += b.people || 0; if (b.created) lead.push((dd(b.arrival) - dd(b.created)) / DAY); var c = (b.country || "?").toUpperCase(); cc[c] = (cc[c] || 0) + 1; });
+      var n = inYear.length || 1; lead.sort(function (x, y) { return x - y; });
+      var med = lead.length ? Math.round(lead[Math.floor(lead.length / 2)]) : 0;
+      h += tiles([[(nights / n).toFixed(1).replace(".", ","), "Nætter pr. ophold"], [(ppl / n).toFixed(1).replace(".", ","), "Gæster pr. ophold"], [med + " d", "Bookes før ankomst (median)"]]);
+      var rows2 = Object.keys(cc).map(function (k) { return [k, cc[k]]; }).sort(function (x, y) { return y[1] - x[1]; }).slice(0, 10);
+      h += '<div class="card"><h3>Gæsternes lande</h3>' + hbars(rows2, function (v) { return v + " ophold"; }) + "</div>";
+    }
+    h += '<div class="foot"><span>' + B.length + ' bookinger i alt fra Lodgify</span><button class="btn" id="an-reload" style="grid-row:auto;grid-column:auto">Opdater</button></div>';
+    box.innerHTML = h;
+  }
+  document.addEventListener("click", function (e) { if (e.target.id === "an-reload") { anData = null; anLoad(true); } });
   function ownerRender(data) {
     var DAY = 864e5, fmtD = new Intl.DateTimeFormat("da-DK", { day: "numeric", month: "short" }), fmtW = new Intl.DateTimeFormat("da-DK", { weekday: "short" }), fmtM = new Intl.DateTimeFormat("da-DK", { month: "long", year: "numeric" });
     function d(s) { return new Date(s + "T12:00:00"); }
@@ -290,7 +382,6 @@
       return '<div class="bk"><span class="dt">' + fmtD.format(d(b.arrival)) + "<small>" + fmtW.format(d(b.arrival)) + '</small></span><span class="who">' + esc(b.guest) + '</span><span class="ch">' + esc(b.channel) + '</span><span class="meta">' + b.nights + " nætter til " + fmtD.format(d(b.departure)) + (b.people ? " · " + b.people + " gæster" : "") + (money(b) ? " · " + money(b) : "") + (b.status && b.status.toLowerCase() !== "booked" ? " · " + esc(b.status) : "") + "</span></div>";
     }).join("") || '<p class="muted">Ingen kommende ophold.</p>') + "</div></div>";
     var deps = B.slice().sort(function (a, b) { return a.departure < b.departure ? -1 : 1; }).filter(function (b) { return b.departure >= todayS; }).slice(0, 10);
-    html += '</div><div class="osec" data-osec="skift" hidden>';
     html += '<div class="card"><h3>Skiftedage</h3><p class="muted" style="font-size:.86rem">Til rengøring og administrator.</p><div>' + (deps.map(function (b) {
       var nxt = B.filter(function (x) { return x.arrival >= b.departure; }).sort(function (x, y) { return x.arrival < y.arrival ? -1 : 1; })[0];
       var same = nxt && nxt.arrival === b.departure;
@@ -306,7 +397,7 @@
     }
     html += '</div><div class="osec" data-osec="kalender" hidden>';
     html += '<div class="card"><h3>Belægning</h3><div class="legend"><span><i></i>Optaget nat</span></div><div class="cal">' + cal + "</div></div>";
-    html += '</div>';
+    html += '</div><div class="osec" data-osec="analyse" hidden><div id="o-an"><div class="card"><span class="muted">Henter alle bookinger til analyse …</span></div></div></div>';
     html += '<div class="foot"><span>Logget ind som ' + esc(data.user || "") + " · opdateret " + new Date(data.updated || Date.now()).toLocaleString("da-DK", { dateStyle: "short", timeStyle: "short" }) + '</span><button class="btn" id="o-reload" style="grid-row:auto;grid-column:auto">Opdater</button></div>';
     document.getElementById("o-body").innerHTML = html;
     ownerTabs(true); ownerShow(ownerSec);
