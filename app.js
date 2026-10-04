@@ -20,12 +20,54 @@
     return "en";
   }
   var lang = pickLang(), T = C[lang];
+  function E() { return (window.VM_EXTRA || {})[lang] || (window.VM_EXTRA || {}).da || {}; }
   var esc = function (s) { return String(s == null ? "" : s).replace(/[&<>"]/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]; }); };
   var ic = function (id, w) { return '<svg' + (w ? ' width="' + w + '" height="' + w + '"' : "") + ' aria-hidden="true"><use href="#' + id + '"/></svg>'; };
   var todo = function (t) { return t ? '<span class="todo">' + esc(T.ui.todo) + ": " + esc(t) + "</span>" : ""; };
   var img = function (k) { return IMG[k] || ("images/" + k + ".jpg"); };
   function fireSeason(d) { var m = d.getMonth() + 1, day = d.getDate(); return (m > 6 && m < 10) || m === 6 || (m === 10 && day <= 15); }
 
+  /* ---------- personligt gæstelink (?g=...) ---------- */
+  var GUEST_API = "https://villamairena.com/ejer/guest.php", guest = null, guestTok = null;
+  (function () {
+    var m = /[?&]g=([A-Za-z0-9_-]+)/.exec(location.search);
+    if (m) { guestTok = m[1]; store("vm-guest", guestTok); try { history.replaceState(null, "", location.pathname + location.hash); } catch (e) {} }
+    else guestTok = store("vm-guest");
+  })();
+  var GTXT = {
+    da: { hi: "Velkommen, ", before: function (n) { return n === 1 ? "I morgen ankommer I" : "Om " + n + " dage ankommer I"; }, today: "I dag ankommer I – vi glæder os", staying: "Jeres ophold", co: "Check-ud", gate: "Jeres portkode", gateBefore: "Portkoden vises her på ankomstdagen", demo: "Demo", guests: "gæster" },
+    en: { hi: "Welcome, ", before: function (n) { return n === 1 ? "You arrive tomorrow" : "You arrive in " + n + " days"; }, today: "You arrive today – we look forward to it", staying: "Your stay", co: "Check-out", gate: "Your gate code", gateBefore: "The gate code appears here on arrival day", demo: "Demo", guests: "guests" },
+    es: { hi: "Bienvenidos, ", before: function (n) { return n === 1 ? "Llegáis mañana" : "Llegáis en " + n + " días"; }, today: "Llegáis hoy – os esperamos", staying: "Vuestra estancia", co: "Salida", gate: "Vuestro código de la puerta", gateBefore: "El código aparecerá aquí el día de llegada", demo: "Demo", guests: "huéspedes" },
+    de: { hi: "Willkommen, ", before: function (n) { return n === 1 ? "Morgen kommen Sie an" : "In " + n + " Tagen kommen Sie an"; }, today: "Heute kommen Sie an – wir freuen uns", staying: "Ihr Aufenthalt", co: "Check-out", gate: "Ihr Torcode", gateBefore: "Der Torcode erscheint hier am Anreisetag", demo: "Demo", guests: "Gäste" }
+  };
+  function isoDay(off) { var d = new Date(Date.now() + off * 864e5); return new Date(d.getTime() - d.getTimezoneOffset() * 6e4).toISOString().slice(0, 10); }
+  function loadGuest() {
+    if (!guestTok) return;
+    if (guestTok === "demo-arrive") { guest = { state: "before", first: "Peter", arrival: isoDay(5), departure: isoDay(12), people: 8, demo: true }; renderAll(); show(current, true); return; }
+    if (guestTok === "demo-stay") { guest = { state: "staying", first: "Peter", arrival: isoDay(-2), departure: isoDay(5), people: 8, gate: "1234", demo: true }; renderAll(); show(current, true); return; }
+    fetch(GUEST_API + "?g=" + encodeURIComponent(guestTok), { cache: "no-store" }).then(function (r) { return r.json(); }).then(function (d) {
+      if (d && (d.state === "before" || d.state === "staying")) { guest = d; renderAll(); show(current, true); }
+      else if (d && (d.state === "ended" || d.error)) { guest = null; try { localStorage.removeItem("vm-guest"); } catch (e) {} }
+    }).catch(function () {});
+  }
+  function guestCard() {
+    if (!guest) return "";
+    var G = GTXT[lang], loc = { da: "da-DK", en: "en-GB", es: "es-ES", de: "de-DE" }[lang];
+    var fd = new Intl.DateTimeFormat(loc, { weekday: "short", day: "numeric", month: "short" });
+    var dd = function (s) { return new Date(s + "T12:00:00"); };
+    var days = Math.round((dd(guest.arrival) - dd(isoDay(0))) / 864e5);
+    var line = guest.state === "before" ? (days <= 0 ? G.today : G.before(days)) : G.staying;
+    return '<div class="card welcome">' + (guest.demo ? '<span class="pill free">' + G.demo + "</span>" : "") +
+      '<span class="big">' + esc(G.hi + (guest.first || "")) + "</span>" +
+      '<span class="muted">' + esc(line) + " · " + fd.format(dd(guest.arrival)) + " – " + fd.format(dd(guest.departure)) + (guest.people ? " · " + guest.people + " " + G.guests : "") + "</span>" +
+      (guest.state === "staying" ? '<span class="muted">' + esc(G.co) + " " + fd.format(dd(guest.departure)) + " · 10:00</span>" : "") + "</div>";
+  }
+  function gateCard(h) {
+    var G = GTXT[lang];
+    if (guest && guest.state === "staying" && guest.gate) return '<div class="card key gate-on"><span class="label">' + esc(G.gate) + '</span><span class="val">' + esc(guest.gate) + '</span><button class="btn" style="width:fit-content;grid-row:auto;grid-column:auto" data-copy="' + esc(guest.gate) + '">' + esc(T.ui.copy) + "</button></div>";
+    var note = guest && guest.state === "before" ? G.gateBefore : h.gateNote;
+    return '<div class="card key"><span class="label">' + esc(h.gate) + '</span><span class="val">• • • •</span><span class="muted" style="font-size:.8rem">' + esc(note) + "</span></div>";
+  }
   var CI = { da: ["Fra kl. 15", "Senest kl. 10"], en: ["From 3 pm", "By 10 am"], es: ["A partir de las 15:00", "Antes de las 10:00"], de: ["Ab 15 Uhr", "Bis 10 Uhr"] };
   function renderHome() {
     var h = T.home, w = T.weather, W = window.VM_WIFI || { ssid: "VillaMairena", pass: "" };
@@ -34,9 +76,9 @@
     return '' +
       '<div class="hero"><img src="' + img("ext") + '" alt="VillaMairena" data-zoom>' +
       '<div class="txt"><p class="eyebrow" style="color:inherit;opacity:.85">' + esc(h.eyebrow) + "</p><h1>" + esc(h.title) + "</h1><p>" + esc(h.sub) + "</p></div></div>" +
-      banner +
+      guestCard() +
       '<div class="grid2">' +
-      '<div class="card key"><span class="label">' + esc(h.gate) + '</span><span class="val">• • • •</span><span class="muted" style="font-size:.8rem">' + esc(h.gateNote) + "</span></div>" +
+      gateCard(h) +
       '<div class="card key"><span class="label">' + esc(h.wifi) + '</span><span class="val" style="font-size:1.05rem;letter-spacing:0">' + esc(W.ssid) + '</span><span class="muted" style="font-size:.8rem">' + esc(h.wifiPassLabel) + ': <strong class="num" style="color:var(--ink)">' + esc(W.pass) + '</strong></span><button class="btn" style="width:fit-content;grid-row:auto;grid-column:auto" data-copy="' + esc(W.pass) + '">' + esc(T.ui.copy) + "</button></div>" +
       '<div class="card key"><span class="label">' + esc(h.checkin) + '</span><span class="val">15:00</span><span class="muted" style="font-size:.8rem">' + esc(CI[lang][0]) + "</span></div>" +
       '<div class="card key"><span class="label">' + esc(h.checkout) + '</span><span class="val">10:00</span><span class="muted" style="font-size:.8rem">' + esc(CI[lang][1]) + "</span></div>" +
@@ -61,8 +103,10 @@
       '<div class="facts" style="margin-top:4px"><a class="linkbtn" href="https://www.google.com/maps/search/?api=1&amp;query=Calle+Navarra+5,+29612+La+Mairena,+Oj%C3%A9n,+M%C3%A1laga" target="_blank" rel="noopener">' + ic("i-pin", 18) + esc(T.ui.openMaps) + "</a>" +
       '<button class="btn" style="grid-row:auto" data-copy="' + esc(ADDR) + '">' + esc(T.ui.copyAddress) + "</button></div></div>" +
       '<ol class="steps card">' + a.steps.map(function (s) {
-        return "<li><div><strong>" + esc(s.t) + "</strong>" + (s.d ? '<span class="muted">' + esc(s.d) + "</span>" : "") + todo(s.todo) + "</div></li>";
+        var rt = s.route === "airport" ? '<a class="linkbtn" style="margin-top:4px" href="https://www.google.com/maps/dir/?api=1&amp;origin=' + encodeURIComponent("Aeropuerto de Málaga-Costa del Sol (AGP)") + '&amp;destination=' + encodeURIComponent("Calle Navarra 5, 29612 La Mairena, Ojén, Málaga") + '&amp;travelmode=driving" target="_blank" rel="noopener">' + ic("i-car", 18) + esc({ da: "Vis kørevejen fra lufthavnen", en: "Show the route from the airport", es: "Ver la ruta desde el aeropuerto", de: "Route vom Flughafen anzeigen" }[lang]) + "</a>" : "";
+        return "<li><div><strong>" + esc(s.t) + "</strong>" + (s.d ? '<span class="muted">' + esc(s.d) + "</span>" : "") + rt + todo(s.todo) + "</div></li>";
       }).join("") + "</ol>" +
+      '<div class="card" id="transport"><h3>' + esc(E().trTitle) + '</h3><p class="muted" style="font-size:.9rem">' + esc(E().trIntro) + "</p>" + infoList(E().tr || []) + "</div>" +
       '<div class="todo-block"><strong>' + esc(a.missingLabel) + "</strong>" + esc(a.missing) + "</div>";
   }
 
@@ -80,6 +124,7 @@
       '<svg viewBox="0 0 320 120" role="img" aria-label="' + esc(h.poolDiagram.alt) + '"><path d="M20 30 H300 V82 L20 58 Z" fill="var(--pine-soft)" stroke="var(--pine)" stroke-width="1.5"/><line x1="20" y1="30" x2="300" y2="30" stroke="var(--pine)" stroke-width="2.5"/>' +
       '<text x="160" y="20" text-anchor="middle" font-size="12" fill="var(--ink)" font-family="Nunito Sans, sans-serif" font-weight="700">' + esc(h.poolDiagram.size) + '</text><text x="20" y="76" font-size="11" fill="var(--muted)" font-family="Nunito Sans, sans-serif">1,10 m</text><text x="300" y="100" text-anchor="end" font-size="11" fill="var(--muted)" font-family="Nunito Sans, sans-serif">1,70 m</text></svg>' +
       '<p class="muted" style="font-size:.9rem">' + esc(h.poolText) + "</p></div>" +
+      '<div class="card" id="regler"><h3>' + esc(E().rulesTitle) + '</h3><p class="muted" style="font-size:.9rem">' + esc(E().rulesIntro) + "</p>" + infoList(E().rules || []) + "</div>" +
       '<div class="stack" id="saadan"><h3 style="font-size:1.35rem">' + esc(h.howTitle) + '</h3><p class="muted" style="font-size:.9rem">' + esc(h.howIntro) + "</p>" +
       T.how.map(function (x) {
         return '<details class="how" id="' + x.id + '"><summary><span class="hi">' + ic(x.icon) + "</span>" + esc(x.title) + "</summary>" +
@@ -92,6 +137,9 @@
       if (p.key === "golf") return renderGolfItem(p);
       if (p.key === "padel") return renderPadelItem(p);
       if (p.key === "kultur") return renderCultItem(p);
+      if (p.key === "dagsture") return xlistItem("dagsture", p.n, p.d, p.s, E().listIntro, E().trips);
+      if (p.key === "born") return xlistItem("born", p.n, p.d, p.s, E().listIntro, E().kidsList, E().kidsHouse);
+      if (p.key === "natur") return xlistItem("natur", p.n, p.d, p.s, E().listIntro, E().natureList);
       return '<div class="place">' + (p.tag ? '<span class="tag">' + esc(sug) + "</span><span></span>" : "") +
         '<span class="nm" style="grid-column:1">' + esc(p.n) + '</span><span class="dist">' + esc(p.d || "") + "</span>" + (p.s ? '<span class="ds">' + esc(p.s) + "</span>" : "") +
         (p.url ? '<span class="gl" style="grid-column:1/-1;margin-top:4px"><a class="linkbtn" href="' + esc(p.url) + '" target="_blank" rel="noopener">' + ic("i-cart", 16) + esc(T.home.food.open) + "</a></span>" : "") + "</div>";
@@ -166,7 +214,7 @@
           '<span class="gs">' + esc(g.s) + "</span>" +
           (g.hours ? '<span class="gs hrs">' + ic("i-clock", 13) + " " + esc(g.hours) + "</span>" : "") +
           '<span class="gl"><a href="' + route + '" target="_blank" rel="noopener">' + ic("i-pin", 14) + esc(a.golfRoute) + "</a>" +
-          (g.url ? '<a href="' + esc(g.url) + '" target="_blank" rel="noopener">' + esc(a.golfWeb) + " ↗</a>" : "") + "</span></li>";
+          (g.url ? '<a href="' + esc(g.url) + '" target="_blank" rel="noopener">' + esc(a.golfWeb) + " ↗</a>" : "") + gygLink(g.n) + "</span></li>";
       }).join("") + "</ol></details>";
   }
   function renderRestItem() {
@@ -183,13 +231,43 @@
           (g.url ? '<a href="' + esc(g.url) + '" target="_blank" rel="noopener">' + esc(a.golfWeb) + " ↗</a>" : "") + "</span></li>";
       }).join("") + "</ol></details>";
   }
+  /* GetYourGuide (partner) */
+  var GYG_PARTNER = "P3XKZFF";
+  var GYG_Q = {
+    "Málaga": "Malaga", "Ronda": "Ronda day trip from Marbella", "Caminito del Rey": "Caminito del Rey", "Gibraltar": "Gibraltar day trip from Marbella",
+    "Nerja": "Nerja Frigiliana", "Setenil de las Bodegas": "Setenil de las Bodegas", "Granada – Alhambra": "Alhambra Granada from Marbella",
+    "Bioparc Fuengirola": "Bioparc Fuengirola", "Selwo Aventura": "Selwo Aventura", "Selwo Marina": "Selwo Marina", "Sea Life Benalmádena": "Sea Life Benalmadena", "Aquamijas": "Aquamijas",
+    "Casco Antiguo": "Marbella old town walking tour", "Mijas Pueblo": "Mijas", "Parque Nacional Sierra de las Nieves": "Sierra de las Nieves", "La Concha": "Marbella hiking", "Refugio de Juanar": "Marbella hiking"
+  };
+  function gygUrl(q) { return "https://www.getyourguide.com/s/?q=" + encodeURIComponent(q) + "&partner_id=" + GYG_PARTNER + "&cmp=villamairena-app&locale_autoset=true"; }
+  function gygLink(name) { var q = GYG_Q[name]; return q ? '<a href="' + gygUrl(q) + '" target="_blank" rel="noopener sponsored">' + esc({ da: "Find ture", en: "Find tours", es: "Ver tours", de: "Touren finden" }[lang]) + " ↗</a>" : ""; }
+  function xlistItem(key, title, d, s, intro, list, note) {
+    var a = T.area, origin = encodeURIComponent("Calle Navarra 5, 29612 La Mairena, Ojén");
+    return '<details class="place golf" id="' + key + '"><summary><span class="nm">' + esc(title) + '</span><span class="dist">' + esc(d || "") + "</span>" + (s ? '<span class="ds">' + esc(s) + "</span>" : "") + "</summary>" +
+      (note ? '<p class="gi" style="font-weight:600">' + esc(note) + "</p>" : "") + '<p class="muted gi">' + esc(intro) + "</p><ol>" +
+      (list || []).map(function (g) {
+        var route = "https://www.google.com/maps/dir/?api=1&origin=" + origin + "&destination=" + encodeURIComponent(g.q || g.n) + "&travelmode=driving";
+        var hU = { da: "t", en: "h", es: "h", de: "Std." }[lang], hh = Math.floor(g.min / 60), mm = g.min % 60;
+        var mins = g.min >= 60 ? "ca. " + hh + " " + hU + (mm ? " " + mm + " " + esc(a.golfMin) : "") : "ca. " + g.min + " " + esc(a.golfMin);
+        return '<li><div class="gh"><span class="gn">' + esc(g.n) + '</span><span class="gm">' + mins + "</span></div>" +
+          '<span class="gs">' + esc(g.type) + " · " + esc(g.area) + "</span>" + '<span class="gs">' + esc(g.s) + "</span>" +
+          '<span class="gl"><a href="' + route + '" target="_blank" rel="noopener">' + ic("i-pin", 14) + esc(a.golfRoute) + "</a>" +
+          (g.url ? '<a href="' + esc(g.url) + '" target="_blank" rel="noopener">' + esc(a.golfWeb) + " ↗</a>" : "") + gygLink(g.n) + "</span></li>";
+      }).join("") + "</ol></details>";
+  }
+  function infoList(rows) {
+    return "<div>" + rows.map(function (r) { return '<div class="row"><div class="body"><span class="t">' + esc(r.t) + "</span>" + (r.s ? '<span class="s">' + esc(r.s) + "</span>" : "") + (r.todo ? todo(r.todo) : "") + "</div></div>"; }).join("") + "</div>";
+  }
   function renderArea() {
     var a = T.area;
     return '<div class="stack"><p class="eyebrow">' + esc(a.eyebrow) + "</p><h2>" + esc(a.title) + '</h2><p class="muted">' + esc(a.intro) + "</p></div>" +
       '<div class="card"><h3>' + esc(a.dailyTitle) + "</h3><div>" + renderShopItem() + renderRestItem() + "</div>" + places(a.daily) + todo(a.dailyTodo) + "</div>" +
       '<div class="card"><h3>' + esc(a.beachTitle) + '</h3><p class="muted" style="font-size:.9rem">' + esc(a.beachText) + "</p>" +
       "<div>" + renderBeachItem() + "</div></div>" +
-      '<div class="card"><h3>' + esc(a.expTitle) + "</h3>" + places(a.exp, a.suggestion) + "</div>";
+      '<div class="card"><h3>' + esc(a.expTitle) + "</h3>" + places(a.exp.concat(E().expExtra || []), a.suggestion) +
+        '<div class="gyg"><p class="muted" style="font-size:.86rem">' + esc({ da: "Se alle ture og oplevelser i området, med guide og afhentning.", en: "See all tours and activities in the area, with guide and pick-up.", es: "Todos los tours y actividades de la zona, con guía y recogida.", de: "Alle Touren und Aktivitäten in der Umgebung, mit Guide und Abholung." }[lang]) + '</p><a class="cta" href="' + gygUrl("Marbella") + '" target="_blank" rel="noopener sponsored">' + esc({ da: "Find ture i området", en: "Find tours nearby", es: "Ver tours en la zona", de: "Touren in der Nähe" }[lang]) + " ↗</a></div>" + "</div>" +
+      '<div class="card" id="praktisk"><h3>' + esc(E().pracTitle) + "</h3>" + infoList(E().prac || []) +
+      '<details class="words"><summary>' + esc(E().wordsTitle) + '</summary><div class="tbl">' + (E().words || []).map(function (w) { return '<div><span lang="es"><strong>' + esc(w.es) + "</strong></span><span></span><span>" + esc(w.x) + "</span></div>"; }).join("") + "</div></details></div>";
   }
 
   function contactRow(who, num, copyVal) {
@@ -265,6 +343,7 @@
       "<ul>" + s.rules.map(function (r) { return "<li>" + esc(r) + "</li>"; }).join("") + "</ul>" + todo(s.houseRuleTodo) +
       "<h4>" + esc(s.fireTitle) + '</h4><ol class="fire-steps">' + s.fire.map(function (r) { return "<li>" + esc(r) + "</li>"; }).join("") + "</ol>" +
       todo(s.evacTodo) + todo(s.extTodo) + "</section>" +
+      '<div class="card" id="kom-igen"><h3>' + esc(E().backTitle) + '</h3><p class="muted" style="font-size:.9rem">' + esc(E().backText) + '</p><div class="facts"><a class="cta" href="https://villamairena.com/booking/" target="_blank" rel="noopener">' + esc(E().backBook) + "</a></div>" + todo(E().backTodo) + "</div>" +
       '<a class="ownerlink" href="#ejer">Ejer-login</a>';
   }
 
@@ -449,14 +528,14 @@
     var OCAM = '<div class="card cam"><div><h3>Kamera ved indkørslen</h3><p class="muted" style="font-size:.86rem">' + (data.camera_url ? "Åbner live-billedet fra kameraet." : "Kameraet er ikke sat op endnu.") + "</p></div>" + (data.camera_url ? '<a class="cta" href="' + esc(data.camera_url) + '" target="_blank" rel="noopener">Se live</a>' : "") + "</div>";
     var html = '<div class="osec" data-osec="oversigt">';
     if (data.errors && data.errors.length) html += '<div class="err">Lodgify gav en fejl: ' + esc(data.errors.join(", ")) + "</div>";
-    if (cur) html += '<div class="card now"><span class="pill">Optaget nu</span><span class="big">' + esc(cur.guest) + (cur.people > 1 ? " + " + (cur.people - 1) : "") + '</span><span class="muted">' + fmtD.format(d(cur.arrival)) + " – " + fmtD.format(d(cur.departure)) + " · " + cur.nights + ' nætter · <span class="ch">' + esc(cur.channel) + "</span></span></div>";
+    if (cur) html += '<div class="card now"><span class="pill">Optaget nu</span><span class="big">' + esc(cur.guest) + (cur.people > 1 ? " + " + (cur.people - 1) : "") + '</span><span class="muted">' + fmtD.format(d(cur.arrival)) + " – " + fmtD.format(d(cur.departure)) + " · " + cur.nights + ' nætter · <span class="ch">' + esc(cur.channel) + "</span></span>" + (cur.g ? '<button class="btn" style="width:fit-content;grid-row:auto;grid-column:auto" data-copy="https://app.villamairena.com/?g=' + esc(cur.g) + '">Kopiér gæstelink</button>' : "") + "</div>";
     else { var n = fut[0]; html += '<div class="card now"><span class="pill free">Ledigt nu</span><span class="big">' + (n ? "Næste gæst " + fmtW.format(d(n.arrival)) + " " + fmtD.format(d(n.arrival)) : "Ingen kommende bookinger") + "</span>" + (n ? '<span class="muted">' + esc(n.guest) + " · " + n.nights + ' nætter · <span class="ch">' + esc(n.channel) + "</span></span>" : "") + "</div>"; }
     function occ(days) { var s = d(todayS), o = 0; for (var i = 0; i < days; i++) { var x = iso(new Date(s.getTime() + i * DAY)); if (B.some(function (b) { return b.arrival <= x && b.departure > x; })) o++; } return Math.round(o / days * 100); }
     html += '<div class="stat"><div><b>' + occ(30) + "%</b><span>Belagt næste 30 dage</span></div><div><b>" + occ(90) + "%</b><span>Belagt næste 90 dage</span></div><div><b>" + fut.length + "</b><span>Kommende ophold</span></div></div>";
     html += '<div class="card" id="o-rep"><h3>Henvendelser fra gæster</h3><p class="muted">Henter …</p></div>';
     html += OCAM + '</div><div class="osec" data-osec="ophold" hidden>';
     html += '<div class="card"><h3>Næste ophold</h3><div>' + (fut.slice(0, 12).map(function (b) {
-      return '<div class="bk"><span class="dt">' + fmtD.format(d(b.arrival)) + "<small>" + fmtW.format(d(b.arrival)) + '</small></span><span class="who">' + esc(b.guest) + '</span><span class="ch">' + esc(b.channel) + '</span><span class="meta">' + b.nights + " nætter til " + fmtD.format(d(b.departure)) + (b.people ? " · " + b.people + " gæster" : "") + (money(b) ? " · " + money(b) : "") + (b.status && b.status.toLowerCase() !== "booked" ? " · " + esc(b.status) : "") + "</span></div>";
+      return '<div class="bk"><span class="dt">' + fmtD.format(d(b.arrival)) + "<small>" + fmtW.format(d(b.arrival)) + '</small></span><span class="who">' + esc(b.guest) + '</span><span class="ch">' + esc(b.channel) + '</span><span class="meta">' + b.nights + " nætter til " + fmtD.format(d(b.departure)) + (b.people ? " · " + b.people + " gæster" : "") + (money(b) ? " · " + money(b) : "") + (b.status && b.status.toLowerCase() !== "booked" ? " · " + esc(b.status) : "") + "</span>" + (b.g ? '<span class="meta"><button class="btn" style="grid-row:auto;grid-column:auto" data-copy="https://app.villamairena.com/?g=' + esc(b.g) + '">Kopiér gæstelink</button></span>' : "") + "</div>";
     }).join("") || '<p class="muted">Ingen kommende ophold.</p>') + "</div></div>";
     var deps = B.slice().sort(function (a, b) { return a.departure < b.departure ? -1 : 1; }).filter(function (b) { return b.departure >= todayS; }).slice(0, 10);
     html += '<div class="card"><h3>Skiftedage</h3><p class="muted" style="font-size:.86rem">Til rengøring og administrator.</p><div>' + (deps.map(function (b) {
@@ -496,9 +575,11 @@
     var tab = target, focusEl = null;
     if (HOW_IDS.indexOf(target) >= 0) { tab = "huset"; focusEl = target; }
     else if (target === "sikkerhed") { tab = "kontakt"; focusEl = target; }
-    else if (target === "meld") { tab = "huset"; focusEl = target; }
+    else if (target === "meld" || target === "regler") { tab = "huset"; focusEl = target; }
+    else if (target === "transport") { tab = "ankomst"; focusEl = target; }
+    else if (target === "kom-igen") { tab = "kontakt"; focusEl = target; }
     else if (target === "mad" || target === "vejr") { tab = "hjem"; focusEl = target; }
-    else if (target === "golf" || target === "padel" || target === "strande" || target === "indkoeb" || target === "kultur" || target === "restauranter") { tab = "omraadet"; focusEl = target; }
+    else if (["golf","padel","strande","indkoeb","kultur","restauranter","dagsture","born","natur","praktisk"].indexOf(target) >= 0) { tab = "omraadet"; focusEl = target; }
     if (PANELS.indexOf(tab) < 0) tab = "hjem";
     current = tab;
     PANELS.forEach(function (id) { document.getElementById(id).hidden = id !== tab; });
@@ -600,4 +681,5 @@
   sel.innerHTML = LANGS.map(function (l) { return '<option value="' + l + '">' + C[l].langName + "</option>"; }).join("");
   renderAll();
   show((location.hash || "").slice(1));
+  loadGuest();
 })();

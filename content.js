@@ -38,7 +38,7 @@ window.VM_CONTENT = {
     arrival: {
       eyebrow: "Ankomst", title: "Sådan finder I huset", addressLabel: "Adresse",
       steps: [
-        { t: "Fra Málaga lufthavn", d: "Kør mod Marbella langs kysten. Turen tager ca. 45 minutter.", todo: "Tilføj præcis rute og frakørsel" },
+        { t: "Fra Málaga lufthavn", d: "Kør mod Marbella langs kysten. Turen tager ca. 45 minutter.", route: "airport" },
         { t: "Op til La Mairena", d: "Fra kysten ved Elviria kører I op i bjergene. Det tager ca. 8 minutter.", todo: "Tilføj vejbeskrivelse og kendetegn" },
         { t: "Ved porten", d: "Grunden er lukket med en port med dørtelefon og kamera. Tast portkoden for at åbne.", todo: "Beskriv hvor tastaturet sidder" },
         { t: "Parkering", d: "Der er privat parkering til 4 biler på grunden." },
@@ -184,7 +184,7 @@ window.VM_CONTENT = {
     arrival: {
       eyebrow: "Arrival", title: "How to find the villa", addressLabel: "Address",
       steps: [
-        { t: "From Málaga airport", d: "Drive towards Marbella along the coast. The trip takes about 45 minutes.", todo: "Exact route and exit" },
+        { t: "From Málaga airport", d: "Drive towards Marbella along the coast. The trip takes about 45 minutes.", route: "airport" },
         { t: "Up to La Mairena", d: "From the coast at Elviria you drive up into the hills. It takes about 8 minutes.", todo: "Directions and landmarks" },
         { t: "At the gate", d: "The property has a gate with intercom and camera. Enter the gate code to open it.", todo: "Where the keypad is" },
         { t: "Parking", d: "Private parking for 4 cars on the property." },
@@ -330,7 +330,7 @@ window.VM_CONTENT = {
     arrival: {
       eyebrow: "Llegada", title: "Cómo llegar a la villa", addressLabel: "Dirección",
       steps: [
-        { t: "Desde el aeropuerto de Málaga", d: "Conducid hacia Marbella por la costa. El trayecto dura unos 45 minutos.", todo: "Ruta exacta y salida" },
+        { t: "Desde el aeropuerto de Málaga", d: "Conducid hacia Marbella por la costa. El trayecto dura unos 45 minutos.", route: "airport" },
         { t: "Subida a La Mairena", d: "Desde la costa en Elviria se sube a la montaña. Son unos 8 minutos.", todo: "Indicaciones y referencias" },
         { t: "En la puerta", d: "La parcela tiene puerta con interfono y cámara. Introducid el código para abrir.", todo: "Dónde está el teclado" },
         { t: "Aparcamiento", d: "Aparcamiento privado para 4 coches en la parcela." },
@@ -476,7 +476,7 @@ window.VM_CONTENT = {
     arrival: {
       eyebrow: "Anreise", title: "So finden Sie die Villa", addressLabel: "Adresse",
       steps: [
-        { t: "Vom Flughafen Málaga", d: "Fahren Sie an der Küste entlang Richtung Marbella. Die Fahrt dauert etwa 45 Minuten.", todo: "Genaue Route und Ausfahrt" },
+        { t: "Vom Flughafen Málaga", d: "Fahren Sie an der Küste entlang Richtung Marbella. Die Fahrt dauert etwa 45 Minuten.", route: "airport" },
         { t: "Hinauf nach La Mairena", d: "Von der Küste bei Elviria geht es hinauf in die Berge. Etwa 8 Minuten.", todo: "Wegbeschreibung und Orientierungspunkte" },
         { t: "Am Tor", d: "Das Grundstück hat ein Tor mit Gegensprechanlage und Kamera. Geben Sie den Torcode ein.", todo: "Wo das Tastenfeld ist" },
         { t: "Parken", d: "Private Parkplätze für 4 Autos auf dem Grundstück." },
@@ -626,3 +626,1239 @@ window.VM_BEACH = [
 
 /* Wi-Fi */
 window.VM_WIFI = { ssid: "VillaMairena", pass: "VillaMairena2027" };
+
+/* Ekstra indhold: husregler, praktisk Spanien, transport, dagsture, børn, natur, kom igen */
+window.VM_EXTRA = {
+ "da": {
+  "rulesTitle": "Husregler",
+  "rulesIntro": "Så alle får et godt ophold, og huset er klar til de næste gæster.",
+  "rules": [
+   {
+    "t": "Maks. 12 personer",
+    "s": "Huset er til 10–12 gæster. Der er 5 soveværelser, 2 ekstra gæstesenge og 1 babyseng."
+   },
+   {
+    "t": "Rygning forbudt indendørs",
+    "s": "Ryg gerne udenfor, og brug et askebæger."
+   },
+   {
+    "t": "Børn ved poolen",
+    "s": "Børn skal altid være under opsyn ved poolen. Ingen glas ved poolkanten."
+   },
+   {
+    "t": "Skader",
+    "s": "Er noget gået i stykker, så meld det i appen under Huset. Det er helt i orden, vi vil bare gerne vide det."
+   },
+   {
+    "t": "Ro og naboer",
+    "todo": "Ro-tider om aftenen"
+   },
+   {
+    "t": "Fester og arrangementer",
+    "todo": "Er fester tilladt?"
+   },
+   {
+    "t": "Kæledyr",
+    "todo": "Er kæledyr tilladt?"
+   }
+  ],
+  "pracTitle": "Praktisk i Spanien",
+  "prac": [
+   {
+    "t": "Spisetider",
+    "s": "Frokost spises typisk kl. 14–16 og aftensmad fra kl. 21. Mange restauranter åbner først køkkenet til aften omkring kl. 20."
+   },
+   {
+    "t": "Butikker og søndage",
+    "s": "Mange mindre butikker holder lukket om søndagen og nogle steder midt på dagen. Større supermarkeder har længere åbent."
+   },
+   {
+    "t": "Apotek",
+    "s": "Apoteker har et grønt kors. Uden for åbningstid har et vagtapotek (farmacia de guardia) åbent. Hvilket det er, står på døren af alle apoteker."
+   },
+   {
+    "t": "Drikkepenge",
+    "s": "Ikke et krav. Det er almindeligt at runde op eller give 5–10 % for god service på restaurant."
+   },
+   {
+    "t": "Vand fra hanen",
+    "s": "Vandet kan drikkes, men mange foretrækker flaskevand på grund af smagen."
+   },
+   {
+    "t": "Strøm",
+    "s": "230 volt og de samme stikkontakter som i Danmark og det meste af Nordeuropa. Gæster fra UK og USA skal bruge en adapter."
+   },
+   {
+    "t": "Betaling",
+    "s": "Kort accepteres næsten overalt. Hav lidt kontanter til markeder og chiringuitos."
+   }
+  ],
+  "wordsTitle": "10 nyttige spanske ord",
+  "words": [
+   {
+    "es": "Hola",
+    "x": "Hej"
+   },
+   {
+    "es": "Buenos días",
+    "x": "Godmorgen"
+   },
+   {
+    "es": "Por favor",
+    "x": "Vær så venlig"
+   },
+   {
+    "es": "Gracias",
+    "x": "Tak"
+   },
+   {
+    "es": "Perdón",
+    "x": "Undskyld"
+   },
+   {
+    "es": "¿Cuánto cuesta?",
+    "x": "Hvad koster det?"
+   },
+   {
+    "es": "La cuenta, por favor",
+    "x": "Regningen, tak"
+   },
+   {
+    "es": "Agua",
+    "x": "Vand"
+   },
+   {
+    "es": "¡Ayuda!",
+    "x": "Hjælp!"
+   },
+   {
+    "es": "Adiós",
+    "x": "Farvel"
+   }
+  ],
+  "trTitle": "Transport",
+  "trIntro": "Der kører ingen offentlig transport op til La Mairena, så bil er klart det nemmeste.",
+  "tr": [
+   {
+    "t": "Lejebil",
+    "s": "Lej bilen i Málaga lufthavn. Der er god plads til 4 biler på grunden."
+   },
+   {
+    "t": "Taxa og Uber",
+    "s": "Uber og Cabify kører i Marbella-området. Til La Mairena er det en god idé at bestille i god tid."
+   },
+   {
+    "t": "Lufthavnstransfer",
+    "todo": "Jeres foretrukne transferselskab og pris"
+   },
+   {
+    "t": "Tog til Málaga",
+    "s": "Fra Fuengirola kører nærtoget (Cercanías C1) til Málaga lufthavn og centrum, ca. 45 min."
+   },
+   {
+    "t": "Bus",
+    "s": "Busser kører langs kysten fra Elviria til Marbella og Fuengirola, men ikke op til huset."
+   },
+   {
+    "t": "Parkering i Marbella",
+    "s": "Brug en af de underjordiske parkeringskældre i centrum. Det er nemmere end at lede efter plads på gaden."
+   }
+  ],
+  "trips": [
+   {
+    "n": "Málaga",
+    "area": "Málaga",
+    "min": 45,
+    "q": "Málaga centro",
+    "s": "Picasso-museet, katedralen, borgen Alcazaba og en god indkøbsgade.",
+    "type": "By"
+   },
+   {
+    "n": "Ronda",
+    "area": "Ronda",
+    "min": 75,
+    "q": "Ronda",
+    "s": "Byen på klippen med den berømte bro Puente Nuevo over kløften.",
+    "type": "By"
+   },
+   {
+    "n": "Caminito del Rey",
+    "area": "Ardales",
+    "min": 75,
+    "q": "Caminito del Rey",
+    "url": "https://www.caminitodelrey.info",
+    "s": "Gangsti langs klippevæggen højt over en kløft. Billetter skal bookes i forvejen.",
+    "type": "Natur"
+   },
+   {
+    "n": "Gibraltar",
+    "area": "Gibraltar",
+    "min": 75,
+    "q": "Gibraltar",
+    "s": "Klippen med aberne, udsigt over Afrika og britisk stemning. Husk pas.",
+    "type": "Udflugt"
+   },
+   {
+    "n": "Nerja",
+    "area": "Nerja",
+    "min": 75,
+    "q": "Cueva de Nerja",
+    "s": "Hyggelig kystby med udsigtspunktet Balcón de Europa og store drypstenshuler.",
+    "type": "By og huler"
+   },
+   {
+    "n": "Setenil de las Bodegas",
+    "area": "Cádiz",
+    "min": 90,
+    "q": "Setenil de las Bodegas",
+    "s": "Landsby bygget ind under klippeudhæng.",
+    "type": "Hvid landsby"
+   },
+   {
+    "n": "Granada – Alhambra",
+    "area": "Granada",
+    "min": 120,
+    "q": "Alhambra, Granada",
+    "url": "https://tickets.alhambra-patronato.es",
+    "s": "Det mauriske palads Alhambra. Billetter skal bookes i god tid.",
+    "type": "Kultur"
+   }
+  ],
+  "kidsList": [
+   {
+    "n": "Aquamijas",
+    "area": "Mijas Costa",
+    "min": 20,
+    "q": "Aquamijas",
+    "s": "Vandland med rutsjebaner. Kun åbent om sommeren.",
+    "type": "Vandland"
+   },
+   {
+    "n": "Bioparc Fuengirola",
+    "area": "Fuengirola",
+    "min": 25,
+    "q": "Bioparc Fuengirola",
+    "s": "Moderne zoo med dyr fra regnskoven i naturlige omgivelser.",
+    "type": "Zoo"
+   },
+   {
+    "n": "Sea Life Benalmádena",
+    "area": "Benalmádena",
+    "min": 35,
+    "q": "Sea Life Benalmádena",
+    "s": "Akvarium ved lystbådehavnen med hajer og skildpadder.",
+    "type": "Akvarium"
+   },
+   {
+    "n": "Selwo Marina",
+    "area": "Benalmádena",
+    "min": 35,
+    "q": "Selwo Marina Benalmádena",
+    "s": "Delfiner, søløver og pingviner.",
+    "type": "Delfiner og dyr"
+   },
+   {
+    "n": "Selwo Aventura",
+    "area": "Estepona",
+    "min": 40,
+    "q": "Selwo Aventura Estepona",
+    "s": "Safaripark hvor man kører rundt blandt dyrene.",
+    "type": "Safaripark"
+   }
+  ],
+  "kidsHouse": "I huset: 1 babyseng og 2 ekstra gæstesenge. Børn skal være under opsyn ved poolen.",
+  "natureList": [
+   {
+    "n": "Hofsaess Tennis Academy",
+    "area": "La Mairena",
+    "min": 3,
+    "q": "Hofsaess Tennis Academy, La Mairena",
+    "s": "Tennisakademi i La Mairena med grus- og hardcourtbaner, åbent for alle.",
+    "type": "Tennis"
+   },
+   {
+    "n": "Refugio de Juanar",
+    "area": "Sierra Blanca, Ojén",
+    "min": 30,
+    "q": "Refugio de Juanar, Ojén",
+    "s": "Startsted for vandreture i pinjeskov, bl.a. op til udsigtspunktet Mirador del Macho Montés.",
+    "type": "Vandring"
+   },
+   {
+    "n": "Parque Nacional Sierra de las Nieves",
+    "area": "Sierra de las Nieves",
+    "min": 45,
+    "q": "Parque Nacional Sierra de las Nieves",
+    "s": "Nationalpark med bjerge, skove og hvide landsbyer. Mange afmærkede ruter.",
+    "type": "Nationalpark"
+   },
+   {
+    "n": "La Concha",
+    "area": "Marbella",
+    "min": 30,
+    "q": "La Concha, Marbella",
+    "s": "Marbellas eget bjerg. Hård tur, men en fantastisk udsigt. Start tidligt om sommeren.",
+    "type": "Bjergtur"
+   },
+   {
+    "n": "Istán og Río Verde",
+    "area": "Istán",
+    "min": 35,
+    "q": "Istán",
+    "s": "Lille bjerglandsby ved en sø med ture langs floden Río Verde.",
+    "type": "Natur"
+   }
+  ],
+  "expExtra": [
+   {
+    "key": "dagsture",
+    "n": "Dagsture",
+    "d": "45 min – 2 t",
+    "s": "Málaga, Ronda, Gibraltar, Alhambra og mere."
+   },
+   {
+    "key": "born",
+    "n": "For børn",
+    "d": "20–40 min",
+    "s": "Vandland, zoo, akvarium og safaripark."
+   },
+   {
+    "key": "natur",
+    "n": "Natur, vandring og tennis",
+    "d": "3–45 min",
+    "s": "Vandreture i bjergene og tennis i La Mairena."
+   }
+  ],
+  "listIntro": "Køretider er omtrentlige. Tjek åbningstider og book billetter, hvor det er nødvendigt.",
+  "backTitle": "Kom igen",
+  "backText": "Tak fordi I boede hos os. En anmeldelse betyder meget for os. Og næste gang kan I booke direkte hos os, så får I den bedste pris.",
+  "backReview": "Skriv en anmeldelse",
+  "backBook": "Book direkte",
+  "backCode": "Rabatkode til direkte booking",
+  "backTodo": "Rabatkode og link til anmeldelser"
+ },
+ "en": {
+  "rulesTitle": "House rules",
+  "rulesIntro": "So everyone has a good stay and the house is ready for the next guests.",
+  "rules": [
+   {
+    "t": "Max. 12 people",
+    "s": "The house sleeps 10–12. There are 5 bedrooms, 2 extra guest beds and 1 baby cot."
+   },
+   {
+    "t": "No smoking indoors",
+    "s": "You are welcome to smoke outside – please use an ashtray."
+   },
+   {
+    "t": "Children at the pool",
+    "s": "Children must always be supervised at the pool. No glass at the pool edge."
+   },
+   {
+    "t": "Damage",
+    "s": "If something breaks, please report it in the app under House. That is completely fine – we just want to know."
+   },
+   {
+    "t": "Quiet and neighbours",
+    "todo": "Quiet hours in the evening"
+   },
+   {
+    "t": "Parties and events",
+    "todo": "Are parties allowed?"
+   },
+   {
+    "t": "Pets",
+    "todo": "Are pets allowed?"
+   }
+  ],
+  "pracTitle": "Practical tips for Spain",
+  "prac": [
+   {
+    "t": "Meal times",
+    "s": "Lunch is usually 2–4 pm and dinner from 9 pm. Many restaurants open their kitchens for dinner around 8 pm."
+   },
+   {
+    "t": "Shops and Sundays",
+    "s": "Many smaller shops close on Sundays and some at midday. Larger supermarkets open longer."
+   },
+   {
+    "t": "Pharmacy",
+    "s": "Pharmacies have a green cross. Outside opening hours a duty pharmacy (farmacia de guardia) is open – it is posted on every pharmacy door."
+   },
+   {
+    "t": "Tipping",
+    "s": "Not required. It is common to round up or leave 5–10% for good service in restaurants."
+   },
+   {
+    "t": "Tap water",
+    "s": "Tap water is safe to drink, but many prefer bottled water for the taste."
+   },
+   {
+    "t": "Electricity",
+    "s": "230 V with European two-pin sockets. Guests from the UK and US need an adapter."
+   },
+   {
+    "t": "Payment",
+    "s": "Cards are accepted almost everywhere. Keep some cash for markets and chiringuitos."
+   }
+  ],
+  "wordsTitle": "10 useful Spanish words",
+  "words": [
+   {
+    "es": "Hola",
+    "x": "Hello"
+   },
+   {
+    "es": "Buenos días",
+    "x": "Good morning"
+   },
+   {
+    "es": "Por favor",
+    "x": "Please"
+   },
+   {
+    "es": "Gracias",
+    "x": "Thank you"
+   },
+   {
+    "es": "Perdón",
+    "x": "Sorry"
+   },
+   {
+    "es": "¿Cuánto cuesta?",
+    "x": "How much is it?"
+   },
+   {
+    "es": "La cuenta, por favor",
+    "x": "The bill, please"
+   },
+   {
+    "es": "Agua",
+    "x": "Water"
+   },
+   {
+    "es": "¡Ayuda!",
+    "x": "Help!"
+   },
+   {
+    "es": "Adiós",
+    "x": "Goodbye"
+   }
+  ],
+  "trTitle": "Getting around",
+  "trIntro": "There is no public transport up to La Mairena, so a car is by far the easiest option.",
+  "tr": [
+   {
+    "t": "Rental car",
+    "s": "Pick up a car at Málaga airport. There is room for 4 cars on the property."
+   },
+   {
+    "t": "Taxi and Uber",
+    "s": "Uber and Cabify operate in the Marbella area. Book in good time to La Mairena."
+   },
+   {
+    "t": "Airport transfer",
+    "todo": "Your preferred transfer company and price"
+   },
+   {
+    "t": "Train to Málaga",
+    "s": "From Fuengirola the local train (Cercanías C1) runs to Málaga airport and centre, about 45 min."
+   },
+   {
+    "t": "Bus",
+    "s": "Buses run along the coast from Elviria to Marbella and Fuengirola, but not up to the house."
+   },
+   {
+    "t": "Parking in Marbella",
+    "s": "Use one of the underground car parks in the centre – easier than street parking."
+   }
+  ],
+  "trips": [
+   {
+    "n": "Málaga",
+    "area": "Málaga",
+    "min": 45,
+    "q": "Málaga centro",
+    "s": "The Picasso Museum, the cathedral, the Alcazaba fortress and good shopping.",
+    "type": "City"
+   },
+   {
+    "n": "Ronda",
+    "area": "Ronda",
+    "min": 75,
+    "q": "Ronda",
+    "s": "The clifftop town with the famous Puente Nuevo bridge over the gorge.",
+    "type": "Town"
+   },
+   {
+    "n": "Caminito del Rey",
+    "area": "Ardales",
+    "min": 75,
+    "q": "Caminito del Rey",
+    "url": "https://www.caminitodelrey.info",
+    "s": "Walkway along the cliff high above a gorge. Book tickets in advance.",
+    "type": "Nature"
+   },
+   {
+    "n": "Gibraltar",
+    "area": "Gibraltar",
+    "min": 75,
+    "q": "Gibraltar",
+    "s": "The Rock with its monkeys, views to Africa and a British feel. Bring your passport.",
+    "type": "Day trip"
+   },
+   {
+    "n": "Nerja",
+    "area": "Nerja",
+    "min": 75,
+    "q": "Cueva de Nerja",
+    "s": "Charming coastal town with the Balcón de Europa viewpoint and huge caves.",
+    "type": "Town and caves"
+   },
+   {
+    "n": "Setenil de las Bodegas",
+    "area": "Cádiz",
+    "min": 90,
+    "q": "Setenil de las Bodegas",
+    "s": "A village built under overhanging rocks.",
+    "type": "White village"
+   },
+   {
+    "n": "Granada – Alhambra",
+    "area": "Granada",
+    "min": 120,
+    "q": "Alhambra, Granada",
+    "url": "https://tickets.alhambra-patronato.es",
+    "s": "The Moorish Alhambra palace. Book tickets well ahead.",
+    "type": "Culture"
+   }
+  ],
+  "kidsList": [
+   {
+    "n": "Aquamijas",
+    "area": "Mijas Costa",
+    "min": 20,
+    "q": "Aquamijas",
+    "s": "Water park with slides. Summer only.",
+    "type": "Water park"
+   },
+   {
+    "n": "Bioparc Fuengirola",
+    "area": "Fuengirola",
+    "min": 25,
+    "q": "Bioparc Fuengirola",
+    "s": "Modern zoo with rainforest animals in natural settings.",
+    "type": "Zoo"
+   },
+   {
+    "n": "Sea Life Benalmádena",
+    "area": "Benalmádena",
+    "min": 35,
+    "q": "Sea Life Benalmádena",
+    "s": "Aquarium by the marina with sharks and turtles.",
+    "type": "Aquarium"
+   },
+   {
+    "n": "Selwo Marina",
+    "area": "Benalmádena",
+    "min": 35,
+    "q": "Selwo Marina Benalmádena",
+    "s": "Dolphins, sea lions and penguins.",
+    "type": "Dolphins and animals"
+   },
+   {
+    "n": "Selwo Aventura",
+    "area": "Estepona",
+    "min": 40,
+    "q": "Selwo Aventura Estepona",
+    "s": "Safari park where you drive among the animals.",
+    "type": "Safari park"
+   }
+  ],
+  "kidsHouse": "In the house: 1 baby cot and 2 extra guest beds. Children must be supervised at the pool.",
+  "natureList": [
+   {
+    "n": "Hofsaess Tennis Academy",
+    "area": "La Mairena",
+    "min": 3,
+    "q": "Hofsaess Tennis Academy, La Mairena",
+    "s": "Tennis academy in La Mairena with clay and hard courts, open to everyone.",
+    "type": "Tennis"
+   },
+   {
+    "n": "Refugio de Juanar",
+    "area": "Sierra Blanca, Ojén",
+    "min": 30,
+    "q": "Refugio de Juanar, Ojén",
+    "s": "Starting point for walks in the pine forest, e.g. up to the Mirador del Macho Montés viewpoint.",
+    "type": "Hiking"
+   },
+   {
+    "n": "Parque Nacional Sierra de las Nieves",
+    "area": "Sierra de las Nieves",
+    "min": 45,
+    "q": "Parque Nacional Sierra de las Nieves",
+    "s": "National park with mountains, forests and white villages. Many marked trails.",
+    "type": "National park"
+   },
+   {
+    "n": "La Concha",
+    "area": "Marbella",
+    "min": 30,
+    "q": "La Concha, Marbella",
+    "s": "Marbella's own mountain. A hard hike with fantastic views. Start early in summer.",
+    "type": "Mountain hike"
+   },
+   {
+    "n": "Istán og Río Verde",
+    "area": "Istán",
+    "min": 35,
+    "q": "Istán",
+    "s": "Small mountain village by a lake with walks along the Río Verde river.",
+    "type": "Nature"
+   }
+  ],
+  "expExtra": [
+   {
+    "key": "dagsture",
+    "n": "Day trips",
+    "d": "45 min – 2 h",
+    "s": "Málaga, Ronda, Gibraltar, the Alhambra and more."
+   },
+   {
+    "key": "born",
+    "n": "For children",
+    "d": "20–40 min",
+    "s": "Water park, zoo, aquarium and safari park."
+   },
+   {
+    "key": "natur",
+    "n": "Nature, hiking and tennis",
+    "d": "3–45 min",
+    "s": "Mountain walks and tennis in La Mairena."
+   }
+  ],
+  "listIntro": "Drive times are approximate. Check opening hours and book tickets where needed.",
+  "backTitle": "Come back",
+  "backText": "Thank you for staying with us. A review means a lot to us. Next time, book directly with us for the best price.",
+  "backReview": "Write a review",
+  "backBook": "Book direct",
+  "backCode": "Discount code for direct booking",
+  "backTodo": "Discount code and review link"
+ },
+ "es": {
+  "rulesTitle": "Normas de la casa",
+  "rulesIntro": "Para que todos disfruten y la casa esté lista para los próximos huéspedes.",
+  "rules": [
+   {
+    "t": "Máx. 12 personas",
+    "s": "La casa es para 10–12 huéspedes. Hay 5 dormitorios, 2 camas supletorias y 1 cuna."
+   },
+   {
+    "t": "Prohibido fumar dentro",
+    "s": "Se puede fumar fuera; usad un cenicero, por favor."
+   },
+   {
+    "t": "Niños en la piscina",
+    "s": "Los niños siempre deben estar vigilados en la piscina. Nada de vidrio junto a la piscina."
+   },
+   {
+    "t": "Daños",
+    "s": "Si algo se rompe, avisad en la app en La casa. No pasa nada, solo queremos saberlo."
+   },
+   {
+    "t": "Descanso y vecinos",
+    "todo": "Horario de silencio por la noche"
+   },
+   {
+    "t": "Fiestas y eventos",
+    "todo": "¿Se permiten fiestas?"
+   },
+   {
+    "t": "Mascotas",
+    "todo": "¿Se admiten mascotas?"
+   }
+  ],
+  "pracTitle": "Consejos prácticos",
+  "prac": [
+   {
+    "t": "Horarios de comidas",
+    "s": "Se come normalmente de 14 a 16 h y se cena a partir de las 21 h."
+   },
+   {
+    "t": "Tiendas y domingos",
+    "s": "Muchas tiendas pequeñas cierran los domingos y algunas a mediodía. Los supermercados grandes abren más horas."
+   },
+   {
+    "t": "Farmacia",
+    "s": "Las farmacias tienen una cruz verde. Fuera de horario hay una farmacia de guardia, indicada en la puerta de todas las farmacias."
+   },
+   {
+    "t": "Propinas",
+    "s": "No son obligatorias. Es habitual redondear o dejar un 5–10 % si el servicio es bueno."
+   },
+   {
+    "t": "Agua del grifo",
+    "s": "Es potable, aunque mucha gente prefiere agua embotellada por el sabor."
+   },
+   {
+    "t": "Electricidad",
+    "s": "230 V y enchufes europeos. Los huéspedes de Reino Unido y EE. UU. necesitan adaptador."
+   },
+   {
+    "t": "Pago",
+    "s": "Se acepta tarjeta casi en todas partes. Llevad algo de efectivo para mercadillos y chiringuitos."
+   }
+  ],
+  "wordsTitle": "10 palabras útiles",
+  "words": [
+   {
+    "es": "Hola",
+    "x": "Hello"
+   },
+   {
+    "es": "Buenos días",
+    "x": "Good morning"
+   },
+   {
+    "es": "Por favor",
+    "x": "Please"
+   },
+   {
+    "es": "Gracias",
+    "x": "Thank you"
+   },
+   {
+    "es": "Perdón",
+    "x": "Sorry"
+   },
+   {
+    "es": "¿Cuánto cuesta?",
+    "x": "How much is it?"
+   },
+   {
+    "es": "La cuenta, por favor",
+    "x": "The bill, please"
+   },
+   {
+    "es": "Agua",
+    "x": "Water"
+   },
+   {
+    "es": "¡Ayuda!",
+    "x": "Help!"
+   },
+   {
+    "es": "Adiós",
+    "x": "Goodbye"
+   }
+  ],
+  "trTitle": "Transporte",
+  "trIntro": "No hay transporte público hasta La Mairena, así que el coche es lo más cómodo.",
+  "tr": [
+   {
+    "t": "Coche de alquiler",
+    "s": "Recogedlo en el aeropuerto de Málaga. Hay sitio para 4 coches en la parcela."
+   },
+   {
+    "t": "Taxi y Uber",
+    "s": "Uber y Cabify funcionan en la zona de Marbella. Mejor reservar con tiempo hasta La Mairena."
+   },
+   {
+    "t": "Traslado al aeropuerto",
+    "todo": "Vuestra empresa de traslados preferida y precio"
+   },
+   {
+    "t": "Tren a Málaga",
+    "s": "Desde Fuengirola el Cercanías C1 va al aeropuerto y al centro de Málaga, unos 45 min."
+   },
+   {
+    "t": "Autobús",
+    "s": "Hay autobuses por la costa de Elviria a Marbella y Fuengirola, pero no suben a la casa."
+   },
+   {
+    "t": "Aparcar en Marbella",
+    "s": "Usad un parking subterráneo del centro; es más fácil que buscar sitio en la calle."
+   }
+  ],
+  "trips": [
+   {
+    "n": "Málaga",
+    "area": "Málaga",
+    "min": 45,
+    "q": "Málaga centro",
+    "s": "Museo Picasso, catedral, Alcazaba y buenas compras.",
+    "type": "Ciudad"
+   },
+   {
+    "n": "Ronda",
+    "area": "Ronda",
+    "min": 75,
+    "q": "Ronda",
+    "s": "La ciudad sobre el tajo con el famoso Puente Nuevo.",
+    "type": "Pueblo"
+   },
+   {
+    "n": "Caminito del Rey",
+    "area": "Ardales",
+    "min": 75,
+    "q": "Caminito del Rey",
+    "url": "https://www.caminitodelrey.info",
+    "s": "Pasarela colgada sobre el desfiladero. Hay que reservar entrada.",
+    "type": "Naturaleza"
+   },
+   {
+    "n": "Gibraltar",
+    "area": "Gibraltar",
+    "min": 75,
+    "q": "Gibraltar",
+    "s": "El Peñón con sus monos y vistas a África. Llevad pasaporte.",
+    "type": "Excursión"
+   },
+   {
+    "n": "Nerja",
+    "area": "Nerja",
+    "min": 75,
+    "q": "Cueva de Nerja",
+    "s": "Pueblo costero con el Balcón de Europa y la Cueva de Nerja.",
+    "type": "Pueblo y cuevas"
+   },
+   {
+    "n": "Setenil de las Bodegas",
+    "area": "Cádiz",
+    "min": 90,
+    "q": "Setenil de las Bodegas",
+    "s": "Pueblo construido bajo las rocas.",
+    "type": "Pueblo blanco"
+   },
+   {
+    "n": "Granada – Alhambra",
+    "area": "Granada",
+    "min": 120,
+    "q": "Alhambra, Granada",
+    "url": "https://tickets.alhambra-patronato.es",
+    "s": "La Alhambra. Reservad la entrada con mucha antelación.",
+    "type": "Cultura"
+   }
+  ],
+  "kidsList": [
+   {
+    "n": "Aquamijas",
+    "area": "Mijas Costa",
+    "min": 20,
+    "q": "Aquamijas",
+    "s": "Parque acuático con toboganes. Solo en verano.",
+    "type": "Parque acuático"
+   },
+   {
+    "n": "Bioparc Fuengirola",
+    "area": "Fuengirola",
+    "min": 25,
+    "q": "Bioparc Fuengirola",
+    "s": "Zoo moderno con animales de selva.",
+    "type": "Zoo"
+   },
+   {
+    "n": "Sea Life Benalmádena",
+    "area": "Benalmádena",
+    "min": 35,
+    "q": "Sea Life Benalmádena",
+    "s": "Acuario junto al puerto con tiburones y tortugas.",
+    "type": "Acuario"
+   },
+   {
+    "n": "Selwo Marina",
+    "area": "Benalmádena",
+    "min": 35,
+    "q": "Selwo Marina Benalmádena",
+    "s": "Delfines, leones marinos y pingüinos.",
+    "type": "Delfines y animales"
+   },
+   {
+    "n": "Selwo Aventura",
+    "area": "Estepona",
+    "min": 40,
+    "q": "Selwo Aventura Estepona",
+    "s": "Parque safari entre los animales.",
+    "type": "Safari"
+   }
+  ],
+  "kidsHouse": "En la casa: 1 cuna y 2 camas supletorias. Los niños deben estar vigilados en la piscina.",
+  "natureList": [
+   {
+    "n": "Hofsaess Tennis Academy",
+    "area": "La Mairena",
+    "min": 3,
+    "q": "Hofsaess Tennis Academy, La Mairena",
+    "s": "Academia de tenis en La Mairena con pistas de tierra y duras, abierta a todos.",
+    "type": "Tenis"
+   },
+   {
+    "n": "Refugio de Juanar",
+    "area": "Sierra Blanca, Ojén",
+    "min": 30,
+    "q": "Refugio de Juanar, Ojén",
+    "s": "Punto de partida de rutas por el pinar, como el Mirador del Macho Montés.",
+    "type": "Senderismo"
+   },
+   {
+    "n": "Parque Nacional Sierra de las Nieves",
+    "area": "Sierra de las Nieves",
+    "min": 45,
+    "q": "Parque Nacional Sierra de las Nieves",
+    "s": "Parque nacional con montañas, bosques y pueblos blancos. Muchas rutas señalizadas.",
+    "type": "Parque nacional"
+   },
+   {
+    "n": "La Concha",
+    "area": "Marbella",
+    "min": 30,
+    "q": "La Concha, Marbella",
+    "s": "La montaña de Marbella. Ruta dura con vistas espectaculares. Salid temprano en verano.",
+    "type": "Ruta de montaña"
+   },
+   {
+    "n": "Istán og Río Verde",
+    "area": "Istán",
+    "min": 35,
+    "q": "Istán",
+    "s": "Pueblo junto a un embalse con rutas por el Río Verde.",
+    "type": "Naturaleza"
+   }
+  ],
+  "expExtra": [
+   {
+    "key": "dagsture",
+    "n": "Excursiones",
+    "d": "45 min – 2 h",
+    "s": "Málaga, Ronda, Gibraltar, la Alhambra y más."
+   },
+   {
+    "key": "born",
+    "n": "Para niños",
+    "d": "20–40 min",
+    "s": "Parque acuático, zoo, acuario y safari."
+   },
+   {
+    "key": "natur",
+    "n": "Naturaleza, senderismo y tenis",
+    "d": "3–45 min",
+    "s": "Rutas de montaña y tenis en La Mairena."
+   }
+  ],
+  "listIntro": "Los tiempos son aproximados. Consultad horarios y reservad entradas cuando haga falta.",
+  "backTitle": "Volved pronto",
+  "backText": "Gracias por alojaros con nosotros. Una reseña significa mucho. La próxima vez, reservad directamente para el mejor precio.",
+  "backReview": "Escribir una reseña",
+  "backBook": "Reservar directamente",
+  "backCode": "Código de descuento",
+  "backTodo": "Código de descuento y enlace a reseñas"
+ },
+ "de": {
+  "rulesTitle": "Hausregeln",
+  "rulesIntro": "Damit alle einen schönen Aufenthalt haben und das Haus für die nächsten Gäste bereit ist.",
+  "rules": [
+   {
+    "t": "Max. 12 Personen",
+    "s": "Das Haus ist für 10–12 Gäste. Es gibt 5 Schlafzimmer, 2 Zustellbetten und 1 Babybett."
+   },
+   {
+    "t": "Rauchen im Haus verboten",
+    "s": "Rauchen ist draußen erlaubt – bitte einen Aschenbecher benutzen."
+   },
+   {
+    "t": "Kinder am Pool",
+    "s": "Kinder müssen am Pool immer beaufsichtigt werden. Kein Glas am Beckenrand."
+   },
+   {
+    "t": "Schäden",
+    "s": "Wenn etwas kaputtgeht, melden Sie es bitte in der App unter Haus. Das ist völlig in Ordnung – wir möchten es nur wissen."
+   },
+   {
+    "t": "Ruhe und Nachbarn",
+    "todo": "Ruhezeiten am Abend"
+   },
+   {
+    "t": "Partys und Veranstaltungen",
+    "todo": "Sind Partys erlaubt?"
+   },
+   {
+    "t": "Haustiere",
+    "todo": "Sind Haustiere erlaubt?"
+   }
+  ],
+  "pracTitle": "Praktisches für Spanien",
+  "prac": [
+   {
+    "t": "Essenszeiten",
+    "s": "Mittagessen meist 14–16 Uhr, Abendessen ab 21 Uhr. Viele Restaurantküchen öffnen abends erst gegen 20 Uhr."
+   },
+   {
+    "t": "Geschäfte und Sonntage",
+    "s": "Viele kleinere Geschäfte sind sonntags und teils mittags geschlossen. Größere Supermärkte haben länger geöffnet."
+   },
+   {
+    "t": "Apotheke",
+    "s": "Apotheken haben ein grünes Kreuz. Außerhalb der Öffnungszeiten hat eine Notdienst-Apotheke (farmacia de guardia) geöffnet – sie steht an jeder Apothekentür."
+   },
+   {
+    "t": "Trinkgeld",
+    "s": "Nicht Pflicht. Üblich ist Aufrunden oder 5–10 % bei gutem Service."
+   },
+   {
+    "t": "Leitungswasser",
+    "s": "Trinkbar, viele bevorzugen aber wegen des Geschmacks Flaschenwasser."
+   },
+   {
+    "t": "Strom",
+    "s": "230 V mit europäischen Steckdosen. Gäste aus UK und USA brauchen einen Adapter."
+   },
+   {
+    "t": "Bezahlen",
+    "s": "Karten werden fast überall akzeptiert. Etwas Bargeld für Märkte und Chiringuitos mitnehmen."
+   }
+  ],
+  "wordsTitle": "10 nützliche spanische Wörter",
+  "words": [
+   {
+    "es": "Hola",
+    "x": "Hallo"
+   },
+   {
+    "es": "Buenos días",
+    "x": "Guten Morgen"
+   },
+   {
+    "es": "Por favor",
+    "x": "Bitte"
+   },
+   {
+    "es": "Gracias",
+    "x": "Danke"
+   },
+   {
+    "es": "Perdón",
+    "x": "Entschuldigung"
+   },
+   {
+    "es": "¿Cuánto cuesta?",
+    "x": "Was kostet das?"
+   },
+   {
+    "es": "La cuenta, por favor",
+    "x": "Die Rechnung, bitte"
+   },
+   {
+    "es": "Agua",
+    "x": "Wasser"
+   },
+   {
+    "es": "¡Ayuda!",
+    "x": "Hilfe!"
+   },
+   {
+    "es": "Adiós",
+    "x": "Tschüss"
+   }
+  ],
+  "trTitle": "Unterwegs",
+  "trIntro": "Es gibt keine öffentlichen Verkehrsmittel nach La Mairena, ein Auto ist daher am einfachsten.",
+  "tr": [
+   {
+    "t": "Mietwagen",
+    "s": "Am Flughafen Málaga abholen. Auf dem Grundstück ist Platz für 4 Autos."
+   },
+   {
+    "t": "Taxi und Uber",
+    "s": "Uber und Cabify fahren im Raum Marbella. Nach La Mairena rechtzeitig bestellen."
+   },
+   {
+    "t": "Flughafentransfer",
+    "todo": "Ihr bevorzugtes Transferunternehmen und Preis"
+   },
+   {
+    "t": "Zug nach Málaga",
+    "s": "Ab Fuengirola fährt die S-Bahn (Cercanías C1) zum Flughafen und ins Zentrum von Málaga, ca. 45 Min."
+   },
+   {
+    "t": "Bus",
+    "s": "Busse fahren entlang der Küste von Elviria nach Marbella und Fuengirola, aber nicht zum Haus."
+   },
+   {
+    "t": "Parken in Marbella",
+    "s": "Am besten eines der Tiefgaragen im Zentrum nutzen."
+   }
+  ],
+  "trips": [
+   {
+    "n": "Málaga",
+    "area": "Málaga",
+    "min": 45,
+    "q": "Málaga centro",
+    "s": "Picasso-Museum, Kathedrale, Festung Alcazaba und gute Einkaufsstraßen.",
+    "type": "Stadt"
+   },
+   {
+    "n": "Ronda",
+    "area": "Ronda",
+    "min": 75,
+    "q": "Ronda",
+    "s": "Die Stadt auf dem Felsen mit der berühmten Brücke Puente Nuevo.",
+    "type": "Stadt"
+   },
+   {
+    "n": "Caminito del Rey",
+    "area": "Ardales",
+    "min": 75,
+    "q": "Caminito del Rey",
+    "url": "https://www.caminitodelrey.info",
+    "s": "Steg an der Felswand hoch über einer Schlucht. Tickets vorab buchen.",
+    "type": "Natur"
+   },
+   {
+    "n": "Gibraltar",
+    "area": "Gibraltar",
+    "min": 75,
+    "q": "Gibraltar",
+    "s": "Der Felsen mit den Affen und Blick nach Afrika. Reisepass mitnehmen.",
+    "type": "Ausflug"
+   },
+   {
+    "n": "Nerja",
+    "area": "Nerja",
+    "min": 75,
+    "q": "Cueva de Nerja",
+    "s": "Hübscher Küstenort mit dem Balcón de Europa und großen Tropfsteinhöhlen.",
+    "type": "Stadt und Höhlen"
+   },
+   {
+    "n": "Setenil de las Bodegas",
+    "area": "Cádiz",
+    "min": 90,
+    "q": "Setenil de las Bodegas",
+    "s": "Ein Dorf unter Felsüberhängen gebaut.",
+    "type": "Weißes Dorf"
+   },
+   {
+    "n": "Granada – Alhambra",
+    "area": "Granada",
+    "min": 120,
+    "q": "Alhambra, Granada",
+    "url": "https://tickets.alhambra-patronato.es",
+    "s": "Der maurische Palast Alhambra. Tickets früh buchen.",
+    "type": "Kultur"
+   }
+  ],
+  "kidsList": [
+   {
+    "n": "Aquamijas",
+    "area": "Mijas Costa",
+    "min": 20,
+    "q": "Aquamijas",
+    "s": "Wasserpark mit Rutschen. Nur im Sommer.",
+    "type": "Wasserpark"
+   },
+   {
+    "n": "Bioparc Fuengirola",
+    "area": "Fuengirola",
+    "min": 25,
+    "q": "Bioparc Fuengirola",
+    "s": "Moderner Zoo mit Regenwaldtieren.",
+    "type": "Zoo"
+   },
+   {
+    "n": "Sea Life Benalmádena",
+    "area": "Benalmádena",
+    "min": 35,
+    "q": "Sea Life Benalmádena",
+    "s": "Aquarium am Hafen mit Haien und Schildkröten.",
+    "type": "Aquarium"
+   },
+   {
+    "n": "Selwo Marina",
+    "area": "Benalmádena",
+    "min": 35,
+    "q": "Selwo Marina Benalmádena",
+    "s": "Delfine, Seelöwen und Pinguine.",
+    "type": "Delfine und Tiere"
+   },
+   {
+    "n": "Selwo Aventura",
+    "area": "Estepona",
+    "min": 40,
+    "q": "Selwo Aventura Estepona",
+    "s": "Safaripark, in dem man zwischen den Tieren fährt.",
+    "type": "Safaripark"
+   }
+  ],
+  "kidsHouse": "Im Haus: 1 Babybett und 2 Zustellbetten. Kinder am Pool beaufsichtigen.",
+  "natureList": [
+   {
+    "n": "Hofsaess Tennis Academy",
+    "area": "La Mairena",
+    "min": 3,
+    "q": "Hofsaess Tennis Academy, La Mairena",
+    "s": "Tennisakademie in La Mairena mit Sand- und Hartplätzen, für alle offen.",
+    "type": "Tennis"
+   },
+   {
+    "n": "Refugio de Juanar",
+    "area": "Sierra Blanca, Ojén",
+    "min": 30,
+    "q": "Refugio de Juanar, Ojén",
+    "s": "Ausgangspunkt für Wanderungen im Pinienwald, z. B. zum Mirador del Macho Montés.",
+    "type": "Wandern"
+   },
+   {
+    "n": "Parque Nacional Sierra de las Nieves",
+    "area": "Sierra de las Nieves",
+    "min": 45,
+    "q": "Parque Nacional Sierra de las Nieves",
+    "s": "Nationalpark mit Bergen, Wäldern und weißen Dörfern. Viele markierte Wege.",
+    "type": "Nationalpark"
+   },
+   {
+    "n": "La Concha",
+    "area": "Marbella",
+    "min": 30,
+    "q": "La Concha, Marbella",
+    "s": "Marbellas Hausberg. Anstrengend, aber tolle Aussicht. Im Sommer früh starten.",
+    "type": "Bergtour"
+   },
+   {
+    "n": "Istán og Río Verde",
+    "area": "Istán",
+    "min": 35,
+    "q": "Istán",
+    "s": "Kleines Bergdorf am Stausee mit Wegen am Río Verde.",
+    "type": "Natur"
+   }
+  ],
+  "expExtra": [
+   {
+    "key": "dagsture",
+    "n": "Tagesausflüge",
+    "d": "45 Min. – 2 Std.",
+    "s": "Málaga, Ronda, Gibraltar, Alhambra und mehr."
+   },
+   {
+    "key": "born",
+    "n": "Für Kinder",
+    "d": "20–40 Min.",
+    "s": "Wasserpark, Zoo, Aquarium und Safaripark."
+   },
+   {
+    "key": "natur",
+    "n": "Natur, Wandern und Tennis",
+    "d": "3–45 Min.",
+    "s": "Bergwanderungen und Tennis in La Mairena."
+   }
+  ],
+  "listIntro": "Fahrzeiten sind ungefähr. Öffnungszeiten prüfen und Tickets wo nötig buchen.",
+  "backTitle": "Kommen Sie wieder",
+  "backText": "Danke für Ihren Aufenthalt. Eine Bewertung bedeutet uns viel. Buchen Sie beim nächsten Mal direkt bei uns zum besten Preis.",
+  "backReview": "Bewertung schreiben",
+  "backBook": "Direkt buchen",
+  "backCode": "Rabattcode für Direktbuchung",
+  "backTodo": "Rabattcode und Bewertungslink"
+ }
+};
