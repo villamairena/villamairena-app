@@ -31,6 +31,8 @@
   var GUEST_API = "https://villamairena.com/ejer/guest.php", guest = null, guestTok = null;
   (function () {
     var m = /[?&]g=([A-Za-z0-9_-]+)/.exec(location.search);
+    var mb = /[?&]b=(\d+)/.exec(location.search), mn = /[?&]n=([^&#]+)/.exec(location.search);
+    if (!m && mb && mn) { var nm = ""; try { nm = decodeURIComponent(mn[1].replace(/\+/g, " ")); } catch (e) { nm = mn[1]; } m = [0, "b" + mb[1] + "~" + nm]; }
     if (m) { guestTok = m[1]; store("vm-guest", guestTok); try { history.replaceState(null, "", location.pathname + location.hash); } catch (e) {} }
     else guestTok = store("vm-guest");
     if (!guestTok && window.VM_PREVIEW) guestTok = "demo-arrive";
@@ -51,7 +53,8 @@
     if (guestTok === "demo-arrive") { guest = { state: "before", first: "Peter", arrival: isoDay(5), departure: isoDay(12), people: 8, demo: true }; renderAll(); show(current, true); return; }
     if (guestTok === "demo-stay") { guest = { state: "staying", first: "Peter", arrival: isoDay(-2), departure: isoDay(5), people: 8, gate: "1234", demo: true }; renderAll(); show(current, true); return; }
     if (guestTok === "demo-leave") { guest = { state: "staying", first: "Peter", arrival: isoDay(-6), departure: isoDay(1), people: 8, gate: "1234", demo: true }; renderAll(); show(current, true); return; }
-    fetch(GUEST_API + "?g=" + encodeURIComponent(guestTok), { cache: "no-store" }).then(function (r) { return r.json(); }).then(function (d) {
+    var bm = /^b(\d+)~(.+)$/.exec(guestTok);
+    fetch(GUEST_API + (bm ? "?b=" + bm[1] + "&n=" + encodeURIComponent(bm[2]) : "?g=" + encodeURIComponent(guestTok)), { cache: "no-store" }).then(function (r) { return r.json(); }).then(function (d) {
       if (d && (d.state === "before" || d.state === "staying")) { guest = d; renderAll(); show(current, true); }
       else if (d && (d.state === "ended" || d.error)) { guest = null; try { localStorage.removeItem("vm-guest"); } catch (e) {} }
     }).catch(function () {});
