@@ -68,7 +68,7 @@
     var line = guest.state === "before" ? (days <= 0 ? G.today : G.before(days)) : G.staying;
     return '<div class="card welcome">' + (guest.demo ? '<span class="pill free">' + G.demo + "</span>" : "") +
       '<span class="big">' + esc(G.hi + (guest.first || "")) + "</span>" +
-      '<span class="muted">' + esc(line) + " · " + fd.format(dd(guest.arrival)) + " – " + fd.format(dd(guest.departure)) + (guest.people ? " · " + guest.people + " " + G.guests : "") + "</span>" +
+      '<span class="muted">' + esc(line) + " · " + fd.format(dd(guest.arrival)) + " – " + fd.format(dd(guest.departure)) + "</span>" + (guest.people ? '<span class="muted">' + guest.people + " " + G.guests + "</span>" : "") +
       (guest.state === "staying" ? '<span class="muted">' + esc(G.co) + " " + fd.format(dd(guest.departure)) + " · 10:00</span>" : "") +
       (guest.demo ? '<div class="antabs" style="margin-top:.6rem"><button class="chipbtn" aria-pressed="' + (guest.state === "before") + '" data-demo="demo-arrive">' + esc(G.dArr) + '</button><button class="chipbtn" aria-pressed="' + (guestTok === "demo-stay") + '" data-demo="demo-stay">' + esc(G.dStay) + '</button><button class="chipbtn" aria-pressed="' + (guestTok === "demo-leave") + '" data-demo="demo-leave">' + esc(G.dLeave) + "</button></div>" : "") + "</div>";
   }
