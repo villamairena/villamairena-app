@@ -42,17 +42,17 @@
     guestTok = b.getAttribute("data-demo"); store("vm-guest", guestTok); loadGuest();
   });
   var GTXT = {
-    da: { hi: "Velkommen, ", before: function (n) { return n === 1 ? "I morgen ankommer I" : "Om " + n + " dage ankommer I"; }, today: "I dag ankommer I – vi glæder os", staying: "Jeres ophold", co: "Check-ud", gate: "Jeres portkode", gateBefore: "Portkoden vises her på ankomstdagen", dLeave: "Rejser i morgen", dArr: "Ankommer om 5 dage", dStay: "Bor i huset nu", demo: "Demo", guests: "gæster" },
-    en: { hi: "Welcome, ", before: function (n) { return n === 1 ? "You arrive tomorrow" : "You arrive in " + n + " days"; }, today: "You arrive today – we look forward to it", staying: "Your stay", co: "Check-out", gate: "Your gate code", gateBefore: "The gate code appears here on arrival day", dLeave: "Leaving tomorrow", dArr: "Arriving in 5 days", dStay: "Staying now", demo: "Demo", guests: "guests" },
-    es: { hi: "Bienvenidos, ", before: function (n) { return n === 1 ? "Llegáis mañana" : "Llegáis en " + n + " días"; }, today: "Llegáis hoy – os esperamos", staying: "Vuestra estancia", co: "Salida", gate: "Vuestro código de la puerta", gateBefore: "El código aparecerá aquí el día de llegada", dLeave: "Se va mañana", dArr: "Llega en 5 días", dStay: "Alojado ahora", demo: "Demo", guests: "huéspedes" },
-    de: { hi: "Willkommen, ", before: function (n) { return n === 1 ? "Morgen kommen Sie an" : "In " + n + " Tagen kommen Sie an"; }, today: "Heute kommen Sie an – wir freuen uns", staying: "Ihr Aufenthalt", co: "Check-out", gate: "Ihr Torcode", gateBefore: "Der Torcode erscheint hier am Anreisetag", dLeave: "Reist morgen ab", dArr: "Anreise in 5 Tagen", dStay: "Wohnt jetzt hier", demo: "Demo", guests: "Gäste" }
+    da: { hi: "Velkommen, ", before: function (n) { return n === 1 ? "I morgen ankommer I" : "Om " + n + " dage ankommer I"; }, today: "I dag ankommer I – vi glæder os", staying: "Jeres ophold", co: "Check-ud", gate: "Jeres portkode", gateBefore: "Portkoden vises her på ankomstdagen", dLbl: "Dørkode", door: "Jeres dørkode", doorBefore: "Jeres personlige dørkode vises her på ankomstdagen", doorNote: "Personlig kode – vises her og i beskeden før ankomst", ioLbl: "Tider", dLeave: "Rejser i morgen", dArr: "Ankommer om 5 dage", dStay: "Bor i huset nu", demo: "Demo", guests: "gæster" },
+    en: { hi: "Welcome, ", before: function (n) { return n === 1 ? "You arrive tomorrow" : "You arrive in " + n + " days"; }, today: "You arrive today – we look forward to it", staying: "Your stay", co: "Check-out", gate: "Your gate code", gateBefore: "The gate code appears here on arrival day", dLbl: "Door code", door: "Your door code", doorBefore: "Your personal door code appears here on arrival day", doorNote: "Personal code – shown here and in the message before arrival", ioLbl: "Times", dLeave: "Leaving tomorrow", dArr: "Arriving in 5 days", dStay: "Staying now", demo: "Demo", guests: "guests" },
+    es: { hi: "Bienvenidos, ", before: function (n) { return n === 1 ? "Llegáis mañana" : "Llegáis en " + n + " días"; }, today: "Llegáis hoy – os esperamos", staying: "Vuestra estancia", co: "Salida", gate: "Vuestro código del portón", gateBefore: "El código del portón aparecerá aquí el día de llegada", dLbl: "Código de la puerta", door: "Vuestro código de la puerta", doorBefore: "Vuestro código personal aparecerá aquí el día de llegada", doorNote: "Código personal – aquí y en el mensaje antes de la llegada", ioLbl: "Horario", dLeave: "Se va mañana", dArr: "Llega en 5 días", dStay: "Alojado ahora", demo: "Demo", guests: "huéspedes" },
+    de: { hi: "Willkommen, ", before: function (n) { return n === 1 ? "Morgen kommen Sie an" : "In " + n + " Tagen kommen Sie an"; }, today: "Heute kommen Sie an – wir freuen uns", staying: "Ihr Aufenthalt", co: "Check-out", gate: "Ihr Torcode", gateBefore: "Der Torcode erscheint hier am Anreisetag", dLbl: "Türcode", door: "Ihr Türcode", doorBefore: "Ihr persönlicher Türcode erscheint hier am Anreisetag", doorNote: "Persönlicher Code – hier und in der Nachricht vor der Anreise", ioLbl: "Zeiten", dLeave: "Reist morgen ab", dArr: "Anreise in 5 Tagen", dStay: "Wohnt jetzt hier", demo: "Demo", guests: "Gäste" }
   };
   function isoDay(off) { var d = new Date(Date.now() + off * 864e5); return new Date(d.getTime() - d.getTimezoneOffset() * 6e4).toISOString().slice(0, 10); }
   function loadGuest() {
     if (!guestTok) return;
     if (guestTok === "demo-arrive") { guest = { state: "before", first: "Peter", arrival: isoDay(5), departure: isoDay(12), people: 8, demo: true }; renderAll(); show(current, true); return; }
-    if (guestTok === "demo-stay") { guest = { state: "staying", first: "Peter", arrival: isoDay(-2), departure: isoDay(5), people: 8, gate: "1234", demo: true }; renderAll(); show(current, true); return; }
-    if (guestTok === "demo-leave") { guest = { state: "staying", first: "Peter", arrival: isoDay(-6), departure: isoDay(1), people: 8, gate: "1234", demo: true }; renderAll(); show(current, true); return; }
+    if (guestTok === "demo-stay") { guest = { state: "staying", first: "Peter", arrival: isoDay(-2), departure: isoDay(5), people: 8, gate: "1212", door: "4826", demo: true }; renderAll(); show(current, true); return; }
+    if (guestTok === "demo-leave") { guest = { state: "staying", first: "Peter", arrival: isoDay(-6), departure: isoDay(1), people: 8, gate: "1212", door: "4826", demo: true }; renderAll(); show(current, true); return; }
     var bm = /^b(\d+)~(.+)$/.exec(guestTok);
     fetch(GUEST_API + (bm ? "?b=" + bm[1] + "&n=" + encodeURIComponent(bm[2]) : "?g=" + encodeURIComponent(guestTok)), { cache: "no-store" }).then(function (r) { return r.json(); }).then(function (d) {
       if (d && (d.state === "before" || d.state === "staying")) { guest = d; renderAll(); show(current, true); }
@@ -72,11 +72,12 @@
       (guest.state === "staying" ? '<span class="muted">' + esc(G.co) + " " + fd.format(dd(guest.departure)) + " · 10:00</span>" : "") +
       (guest.demo ? '<div class="antabs" style="margin-top:.6rem"><button class="chipbtn" aria-pressed="' + (guest.state === "before") + '" data-demo="demo-arrive">' + esc(G.dArr) + '</button><button class="chipbtn" aria-pressed="' + (guestTok === "demo-stay") + '" data-demo="demo-stay">' + esc(G.dStay) + '</button><button class="chipbtn" aria-pressed="' + (guestTok === "demo-leave") + '" data-demo="demo-leave">' + esc(G.dLeave) + "</button></div>" : "") + "</div>";
   }
-  function gateCard(h) {
-    var G = GTXT[lang];
-    if (guest && guest.state === "staying" && guest.gate) return '<div class="card key gate-on"><span class="label">' + esc(G.gate) + '</span><span class="val">' + esc(guest.gate) + '</span><button class="btn" style="width:fit-content;grid-row:auto;grid-column:auto" data-copy="' + esc(guest.gate) + '">' + esc(T.ui.copy) + "</button></div>";
-    var note = guest && guest.state === "before" ? G.gateBefore : h.gateNote;
-    return '<div class="card key"><span class="label">' + esc(h.gate) + '</span><span class="val">• • • •</span><span class="muted" style="font-size:.8rem">' + esc(note) + "</span></div>";
+  function codeCard(kind, h) {
+    var G = GTXT[lang], val = guest && guest.state === "staying" ? guest[kind] : "";
+    var lbl = kind === "gate" ? G.gate : G.door, plain = kind === "gate" ? h.gate : G.dLbl;
+    if (val) return '<div class="card key gate-on"><span class="label">' + esc(lbl) + '</span><span class="val">' + esc(val) + '</span><button class="btn" style="width:fit-content;grid-row:auto;grid-column:auto" data-copy="' + esc(val) + '">' + esc(T.ui.copy) + "</button></div>";
+    var note = kind === "gate" ? (guest && guest.state === "before" ? G.gateBefore : h.gateNote) : (guest && guest.state === "before" ? G.doorBefore : G.doorNote);
+    return '<div class="card key"><span class="label">' + esc(plain) + '</span><span class="val">• • • •</span><span class="muted" style="font-size:.8rem">' + esc(note) + "</span></div>";
   }
   var CI = { da: ["Fra kl. 15", "Senest kl. 10"], en: ["From 3 pm", "By 10 am"], es: ["A partir de las 15:00", "Antes de las 10:00"], de: ["Ab 15 Uhr", "Bis 10 Uhr"] };
   function renderHome() {
@@ -88,10 +89,9 @@
       '<div class="txt"><p class="eyebrow" style="color:inherit;opacity:.85">' + esc(h.eyebrow) + "</p><h1>" + esc(h.title) + "</h1><p>" + esc(h.sub) + "</p></div></div>" +
       guestCard() + leaveCard() + marketsHome() +
       '<div class="grid2">' +
-      gateCard(h) +
+      codeCard("gate", h) + codeCard("door", h) +
       '<div class="card key"><span class="label">' + esc(h.wifi) + '</span><span class="val" style="font-size:1.05rem;letter-spacing:0">' + esc(W.ssid) + '</span><span class="muted" style="font-size:.8rem">' + esc(h.wifiPassLabel) + ': <strong class="num" style="color:var(--ink)">' + esc(W.pass) + '</strong></span><div class="wifirow"><button class="btn" style="width:fit-content;grid-row:auto;grid-column:auto" data-copy="' + esc(W.pass) + '">' + esc(T.ui.copy) + "</button>" + (window.VM_WIFIQR ? '<img class="wifiqr" src="' + window.VM_WIFIQR + '" alt="' + esc({ da: "QR-kode til Wi‑Fi – scan med kameraet", en: "Wi‑Fi QR code – scan with your camera", es: "Código QR del Wi‑Fi – escanéalo con la cámara", de: "WLAN-QR-Code – mit der Kamera scannen" }[lang]) + '" data-zoom>' : "") + "</div></div>" +
-      '<div class="card key"><span class="label">' + esc(h.checkin) + '</span><span class="val">15:00</span><span class="muted" style="font-size:.8rem">' + esc(CI[lang][0]) + "</span></div>" +
-      '<div class="card key"><span class="label">' + esc(h.checkout) + '</span><span class="val">10:00</span><span class="muted" style="font-size:.8rem">' + esc(CI[lang][1]) + "</span></div>" +
+      '<div class="card key io"><span class="label">' + esc(GTXT[lang].ioLbl) + '</span><span class="iorow"><span class="iok">' + esc(h.checkin) + '</span><span class="val">15:00</span></span><span class="iorow"><span class="iok">' + esc(h.checkout) + '</span><span class="val">10:00</span></span></div>' +
       "</div>" +
       '<div class="card wx" id="vejr" aria-live="polite"><div style="display:flex;justify-content:space-between;align-items:baseline;gap:8px;flex-wrap:wrap"><h3>' + esc(w.title) + '</h3><span class="wx-note" id="wx-src"></span></div>' +
       '<div class="wx-now"><svg aria-hidden="true"><use id="wx-ic" href="#w-sun"/></svg><span class="wx-t" id="wx-t">--°</span><span class="wx-d" id="wx-d">' + esc(w.loading) + '</span></div>' +

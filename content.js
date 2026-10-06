@@ -306,7 +306,7 @@ window.VM_CONTENT = {
       eyebrow: "La Mairena · Ojén · Costa del Sol",
       title: "Bienvenidos a VillaMairena",
       sub: "A 400 metros sobre el mar, a 8 minutos de la playa de Elviria.",
-      gate: "Código de la puerta", gateNote: "Os lo enviamos en el mensaje antes de la llegada",
+      gate: "Código del portón", gateNote: "Os lo enviamos en el mensaje antes de la llegada",
       wifi: "Wi‑Fi", wifiPassLabel: "Contraseña",
       checkin: "Entrada", checkout: "Salida",
       fireBanner: { title: "Peligro alto de incendios del 1 de junio al 15 de octubre", body: "Prohibidas las barbacoas, hogueras y el fuego abierto en este periodo. Más información en Contacto.", link: "Incendios y seguridad" },
