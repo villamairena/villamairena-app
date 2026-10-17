@@ -94,11 +94,11 @@ window.VM_CONTENT = {
       dailyTodo: "Tilføj jeres foretrukne supermarked og bager",
       expTitle: "Oplevelser", suggestion: "Forslag",
       exp: [
-        { key: "golf", n: "Golf", d: "Inden for 30 min", s: "Mere end 10 golfbaner i verdensklasse." },
+        { key: "golf", n: "Golf", d: "5–35 min", s: "Mere end 10 golfbaner i verdensklasse." },
         { key: "padel", n: "Padel", d: "Inden for 15 min", s: "Padelbaner i området." },
         { key: "kultur", n: "Seværdigheder og kultur", d: "20–25 min", s: "Museer, kirker, gamle bydele og historiske steder." }
       ],
-      golfTitle: "Golfbaner tæt på", golfIntro: "De 10 nærmeste baner. Køretiderne er omtrentlige. Tryk på Rute for præcis afstand i Google Maps.", golfHoles: "huller", golfRoute: "Rute", golfWeb: "Hjemmeside", golfMin: "min",
+      golfTitle: "Golfbaner tæt på", golfIntro: "De 16 nærmeste baner. Køretiderne er omtrentlige. Tryk på Rute for præcis afstand i Google Maps.", golfHoles: "huller", golfRoute: "Rute", golfWeb: "Hjemmeside", golfMin: "min",
       golfNotes: { marbellagolf: "Ombygges til Higuerón Marbella Golf Resort", lacala: "La Cala har 3 baner med 18 huller og en par 3-bane" },
       padelIntro: "De 5 nærmeste steder med padelbaner. Køretiderne er omtrentlige. Book direkte hos klubben.", padelCourts: "baner", padelBook: "Book bane", padelNotes: { light: "Lys til aftenspil" },
       beachSum: "De 19 nærmeste strande", beachSumD: "8–25 min", beachIntro: "Køretiderne er omtrentlige. Tryk på Rute for præcis vej i Google Maps.", beachM: "m", beachTags: {"golden": "Gyldent sand", "dark": "Mørkt sand", "dunes": "Klitter (naturmonument)", "nudist": "Nudistområde", "port": "Ved lystbådehavn", "food": "Restauranter og chiringuitos", "kids": "Børneområde", "long": "Lang strand", "quiet": "Mere stille"},
@@ -238,11 +238,11 @@ window.VM_CONTENT = {
       dailyTodo: "Your favourite supermarket and bakery",
       expTitle: "Things to do", suggestion: "Suggestion",
       exp: [
-        { key: "golf", n: "Golf", d: "Within 30 min", s: "More than 10 world-class golf courses." },
+        { key: "golf", n: "Golf", d: "5–35 min", s: "More than 10 world-class golf courses." },
         { key: "padel", n: "Padel", d: "Within 15 min", s: "Padel courts in the area." },
         { key: "kultur", n: "Sights and culture", d: "20–25 min", s: "Museums, churches, old towns and historic sites." }
       ],
-      golfTitle: "Golf courses nearby", golfIntro: "The 10 closest courses. Drive times are approximate. Tap Route for the exact distance in Google Maps.", golfHoles: "holes", golfRoute: "Route", golfWeb: "Website", golfMin: "min",
+      golfTitle: "Golf courses nearby", golfIntro: "The 16 closest courses. Drive times are approximate. Tap Route for the exact distance in Google Maps.", golfHoles: "holes", golfRoute: "Route", golfWeb: "Website", golfMin: "min",
       golfNotes: { marbellagolf: "Being redeveloped as Higuerón Marbella Golf Resort", lacala: "La Cala has three 18-hole courses and a par-3 course" },
       padelIntro: "The 5 closest places with padel courts. Drive times are approximate. Book directly with the club.", padelCourts: "courts", padelBook: "Book a court", padelNotes: { light: "Floodlit for evening play" },
       beachSum: "The 19 closest beaches", beachSumD: "8–25 min", beachIntro: "Drive times are approximate. Tap Route for directions in Google Maps.", beachM: "m", beachTags: {"golden": "Golden sand", "dark": "Dark sand", "dunes": "Dunes (protected)", "nudist": "Nudist area", "port": "By the marina", "food": "Restaurants and chiringuitos", "kids": "Children's area", "long": "Long beach", "quiet": "Quieter"},
@@ -382,11 +382,11 @@ window.VM_CONTENT = {
       dailyTodo: "Vuestro supermercado y panadería favoritos",
       expTitle: "Qué hacer", suggestion: "Sugerencia",
       exp: [
-        { key: "golf", n: "Golf", d: "A menos de 30 min", s: "Más de 10 campos de golf de primer nivel." },
+        { key: "golf", n: "Golf", d: "5–35 min", s: "Más de 10 campos de golf de primer nivel." },
         { key: "padel", n: "Pádel", d: "A menos de 15 min", s: "Pistas de pádel en la zona." },
         { key: "kultur", n: "Monumentos y cultura", d: "20–25 min", s: "Museos, iglesias, cascos antiguos y lugares históricos." }
       ],
-      golfTitle: "Campos de golf cercanos", golfIntro: "Los 10 campos más cercanos. Los tiempos son aproximados. Pulsa Ruta para ver la distancia exacta en Google Maps.", golfHoles: "hoyos", golfRoute: "Ruta", golfWeb: "Web", golfMin: "min",
+      golfTitle: "Campos de golf cercanos", golfIntro: "Los 16 campos más cercanos. Los tiempos son aproximados. Pulsa Ruta para ver la distancia exacta en Google Maps.", golfHoles: "hoyos", golfRoute: "Ruta", golfWeb: "Web", golfMin: "min",
       golfNotes: { marbellagolf: "En transformación como Higuerón Marbella Golf Resort", lacala: "La Cala tiene tres campos de 18 hoyos y uno de par 3" },
       padelIntro: "Los 5 lugares más cercanos con pistas de pádel. Los tiempos son aproximados. Reserva directamente con el club.", padelCourts: "pistas", padelBook: "Reservar pista", padelNotes: { light: "Con luz para jugar de noche" },
       beachSum: "Las 19 playas más cercanas", beachSumD: "8–25 min", beachIntro: "Los tiempos son aproximados. Pulsa Ruta para ver el camino en Google Maps.", beachM: "m", beachTags: {"golden": "Arena dorada", "dark": "Arena oscura", "dunes": "Dunas (monumento natural)", "nudist": "Zona nudista", "port": "Junto al puerto deportivo", "food": "Restaurantes y chiringuitos", "kids": "Zona infantil", "long": "Playa larga", "quiet": "Más tranquila"},
@@ -526,11 +526,11 @@ window.VM_CONTENT = {
       dailyTodo: "Ihr Lieblingssupermarkt und Ihre Lieblingsbäckerei",
       expTitle: "Erlebnisse", suggestion: "Vorschlag",
       exp: [
-        { key: "golf", n: "Golf", d: "Innerhalb von 30 Min.", s: "Mehr als 10 Golfplätze der Spitzenklasse." },
+        { key: "golf", n: "Golf", d: "5–35 Min.", s: "Mehr als 10 Golfplätze der Spitzenklasse." },
         { key: "padel", n: "Padel", d: "Innerhalb von 15 Min.", s: "Padelplätze in der Umgebung." },
         { key: "kultur", n: "Sehenswürdigkeiten und Kultur", d: "20–25 Min.", s: "Museen, Kirchen, Altstädte und historische Orte." }
       ],
-      golfTitle: "Golfplätze in der Nähe", golfIntro: "Die 10 nächstgelegenen Plätze. Fahrzeiten sind ungefähr. Tippen Sie auf Route für die genaue Entfernung in Google Maps.", golfHoles: "Löcher", golfRoute: "Route", golfWeb: "Website", golfMin: "Min.",
+      golfTitle: "Golfplätze in der Nähe", golfIntro: "Die 16 nächstgelegenen Plätze. Fahrzeiten sind ungefähr. Tippen Sie auf Route für die genaue Entfernung in Google Maps.", golfHoles: "Löcher", golfRoute: "Route", golfWeb: "Website", golfMin: "Min.",
       golfNotes: { marbellagolf: "Wird zum Higuerón Marbella Golf Resort umgebaut", lacala: "La Cala hat drei 18-Loch-Plätze und einen Par-3-Platz" },
       padelIntro: "Die 5 nächstgelegenen Orte mit Padelplätzen. Fahrzeiten sind ungefähr. Direkt beim Club buchen.", padelCourts: "Plätze", padelBook: "Platz buchen", padelNotes: { light: "Mit Flutlicht für abends" },
       beachSum: "Die 19 nächsten Strände", beachSumD: "8–25 Min.", beachIntro: "Fahrzeiten sind ungefähr. Tippen Sie auf Route für den Weg in Google Maps.", beachM: "m", beachTags: {"golden": "Goldener Sand", "dark": "Dunkler Sand", "dunes": "Dünen (Naturdenkmal)", "nudist": "FKK-Bereich", "port": "Am Yachthafen", "food": "Restaurants und Chiringuitos", "kids": "Kinderbereich", "long": "Langer Strand", "quiet": "Ruhiger"},
@@ -581,16 +581,22 @@ window.VM_CONTENT = {
 
 /* Golfbaner (fælles for alle sprog). min = omtrentlig køretid fra villaen. */
 window.VM_GOLF = [
-  { name: "El Soto Golf", area: "El Soto de Marbella, Ojén", holes: "9", par3: true, min: 5, url: "https://www.andalucia.com/golf/el-soto/home.htm" },
-  { name: "Greenlife Golf", area: "Elviria", holes: "9", par3: true, min: 10, url: "https://greenlife-golf.com/" },
-  { name: "Santa María Golf & Country Club", area: "Elviria", holes: "18", min: 10, url: "https://santamariagolfclub.com/" },
-  { name: "La Cala Resort", area: "Mijas", holes: "3 × 18 + 9", min: 15, url: "https://www.lacala.com", note: "lacala" },
-  { name: "Cabopino Golf Marbella", area: "Artola, Cabopino", holes: "18", min: 15, url: "https://www.cabopinogolfmarbella.com" },
-  { name: "Club de Golf La Siesta", area: "Calahonda", holes: "9", min: 15, url: "https://www.clubdegolflasiesta.com/" },
-  { name: "Miraflores Golf", area: "Riviera del Sol, Mijas", holes: "18", min: 15, url: "https://www.miraflores-golf.com" },
-  { name: "Marbella Golf & Country Club", area: "Los Monteros, Marbella", holes: "18", min: 15, url: "https://andalucia.com/golf/clubmarbella/home.htm", note: "marbellagolf" },
-  { name: "Santa Clara Golf Marbella", area: "Los Monteros, Marbella", holes: "18", min: 15, url: "https://santaclaragolfmarbella.com/" },
-  { name: "Calanova Golf Club", area: "La Cala de Mijas", holes: "18", min: 20, url: "https://www.andalucia.com/golf/calanova/home.htm" }
+  {"name": "El Soto Golf", "area": "El Soto de Marbella, Ojén", "holes": "9", "min": 5, "url": "https://www.andalucia.com/golf/el-soto/home.htm", "tags": ["h9", "par3", "rest", "range"], "par": "par 27"},
+  {"name": "Greenlife Golf", "area": "Elviria", "holes": "9", "min": 10, "url": "https://greenlife-golf.com/", "tags": ["h9", "par3", "rest", "range", "school"], "par": "par 27"},
+  {"name": "Santa María Golf & Country Club", "area": "Elviria", "holes": "18", "min": 10, "url": "https://santamariagolfclub.com/", "tags": ["h18", "rest"], "book": "https://open.teeone.golf/es/santamaria/disponibilidad"},
+  {"name": "Río Real Golf", "area": "Río Real, Marbella", "holes": "18", "min": 15, "url": "https://www.rioreal.com", "tags": ["h18", "rest", "range", "school"], "par": "par 72"},
+  {"name": "Santa Clara Golf Marbella", "area": "Los Monteros, Marbella", "holes": "18", "min": 15, "url": "https://santaclaragolfmarbella.com/", "tags": ["h18", "rest", "range", "school"], "par": "par 71", "book": "https://open.teeone.golf/es/santaclaramarbella/disponibilidad"},
+  {"name": "Marbella Golf & Country Club", "area": "Los Monteros, Marbella", "holes": "18", "min": 15, "url": "https://andalucia.com/golf/clubmarbella/home.htm", "tags": ["h18", "rest", "range", "school"], "par": "par 72", "note": "marbellagolf"},
+  {"name": "Cabopino Golf Marbella", "area": "Artola, Cabopino", "holes": "18", "min": 15, "url": "https://www.cabopinogolfmarbella.com", "tags": ["h18", "rest", "range", "school"], "par": "par 70", "book": "https://booking.cabopinogolfmarbella.com/golf/"},
+  {"name": "Club de Golf La Siesta", "area": "Calahonda", "holes": "9", "min": 15, "url": "https://www.clubdegolflasiesta.com/", "tags": ["h9", "rest", "range"]},
+  {"name": "El Chaparral Golf Club", "area": "Calahonda, Mijas Costa", "holes": "18", "min": 15, "url": "https://www.golfelchaparral.com", "tags": ["h18", "rest", "range", "school"], "par": "par 72"},
+  {"name": "Miraflores Golf", "area": "Riviera del Sol, Mijas", "holes": "18", "min": 15, "url": "https://www.miraflores-golf.com", "tags": ["h18", "rest", "range", "school"], "par": "par 71"},
+  {"name": "La Noria Golf", "area": "La Cala de Mijas", "holes": "9", "min": 15, "url": "https://www.lanoriagolf.net", "tags": ["h9", "rest", "range"], "par": "par 33"},
+  {"name": "La Cala Resort", "area": "Mijas", "holes": "3 × 18 + 9", "min": 15, "url": "https://www.lacala.com", "tags": ["h18", "h9", "par3", "rest", "range", "school"], "note": "lacala"},
+  {"name": "Calanova Golf Club", "area": "La Cala de Mijas", "holes": "18", "min": 20, "url": "https://www.andalucia.com/golf/calanova/home.htm", "tags": ["h18", "rest", "range", "school"], "par": "par 72"},
+  {"name": "Santana Golf", "area": "La Cala de Mijas", "holes": "18", "min": 20, "url": "https://www.santanagolf.com", "tags": ["h18", "rest", "range"], "par": "par 72"},
+  {"name": "Mijas Golf", "area": "Mijas Costa", "holes": "2 × 18", "min": 25, "url": "https://www.mijasgolf.org", "tags": ["h18", "rest", "range", "school"], "par": "par 72"},
+  {"name": "Alhaurín Golf", "area": "Alhaurín el Grande", "holes": "18 + 9", "min": 35, "url": "https://www.alhauringolf.com", "tags": ["h18", "h9", "par3", "rest", "range", "school"], "par": "par 72"}
 ];
 
 /* Padel (fælles for alle sprog). */
@@ -3300,7 +3306,7 @@ window.VM_CONTENT.fr = {
    {
     "key": "golf",
     "n": "Golf",
-    "d": "À moins de 30 min",
+    "d": "5–35 min",
     "s": "Plus de 10 parcours de golf de classe mondiale."
    },
    {
@@ -3317,7 +3323,7 @@ window.VM_CONTENT.fr = {
    }
   ],
   "golfTitle": "Golfs à proximité",
-  "golfIntro": "Les 10 parcours les plus proches. Les temps de trajet sont approximatifs. Touchez Itinéraire pour la distance exacte dans Google Maps.",
+  "golfIntro": "Les 16 parcours les plus proches. Les temps de trajet sont approximatifs. Touchez Itinéraire pour la distance exacte dans Google Maps.",
   "golfHoles": "trous",
   "golfRoute": "Itinéraire",
   "golfWeb": "Site web",
@@ -4761,7 +4767,7 @@ window.VM_CONTENT.sv = {
    {
     "key": "golf",
     "n": "Golf",
-    "d": "Inom 30 min",
+    "d": "5–35 min",
     "s": "Fler än 10 golfbanor i världsklass."
    },
    {
@@ -4778,7 +4784,7 @@ window.VM_CONTENT.sv = {
    }
   ],
   "golfTitle": "Golfbanor i närheten",
-  "golfIntro": "De 10 närmaste banorna. Körtiderna är ungefärliga. Tryck på Rutt för exakt avstånd i Google Maps.",
+  "golfIntro": "De 16 närmaste banorna. Körtiderna är ungefärliga. Tryck på Rutt för exakt avstånd i Google Maps.",
   "golfHoles": "hål",
   "golfRoute": "Rutt",
   "golfWeb": "Webbplats",
@@ -6222,7 +6228,7 @@ window.VM_CONTENT.no = {
    {
     "key": "golf",
     "n": "Golf",
-    "d": "Innen 30 min",
+    "d": "5–35 min",
     "s": "Mer enn 10 golfbaner i verdensklasse."
    },
    {
@@ -6239,7 +6245,7 @@ window.VM_CONTENT.no = {
    }
   ],
   "golfTitle": "Golfbaner i nærheten",
-  "golfIntro": "De 10 nærmeste banene. Kjøretidene er omtrentlige. Trykk på Rute for nøyaktig avstand i Google Maps.",
+  "golfIntro": "De 16 nærmeste banene. Kjøretidene er omtrentlige. Trykk på Rute for nøyaktig avstand i Google Maps.",
   "golfHoles": "hull",
   "golfRoute": "Rute",
   "golfWeb": "Nettsted",

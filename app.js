@@ -182,17 +182,33 @@
         (p.url ? '<span class="gl" style="grid-column:1/-1;margin-top:4px"><a class="linkbtn" href="' + esc(p.url) + '" target="_blank" rel="noopener">' + ic("i-cart", 16) + esc(T.home.food.open) + "</a></span>" : "") + "</div>";
     }).join("") + "</div>";
   }
+  var GFILT = ["h18", "h9", "par3", "rest", "range", "school"];
+  var GTAGS = {
+    da: { all: "Alle baner", none: "Ingen baner har alle de valgte. Fjern et filter.", h18: "18 huller", h9: "9 huller", par3: "Par 3-bane", rest: "Restaurant", range: "Driving range", school: "Golfskole", book: "Book tid" },
+    en: { all: "All courses", none: "No course has all the selected features. Remove a filter.", h18: "18 holes", h9: "9 holes", par3: "Par 3 course", rest: "Restaurant", range: "Driving range", school: "Golf school", book: "Book a tee time" },
+    es: { all: "Todos los campos", none: "Ningún campo tiene todo lo seleccionado. Quita un filtro.", h18: "18 hoyos", h9: "9 hoyos", par3: "Campo par 3", rest: "Restaurante", range: "Campo de prácticas", school: "Escuela de golf", book: "Reservar salida" },
+    de: { all: "Alle Plätze", none: "Kein Platz hat alle gewählten Merkmale. Entfernen Sie einen Filter.", h18: "18 Löcher", h9: "9 Löcher", par3: "Par-3-Platz", rest: "Restaurant", range: "Driving Range", school: "Golfschule", book: "Startzeit buchen" },
+    fr: { all: "Tous les parcours", none: "Aucun parcours ne réunit tous ces critères. Retirez un filtre.", h18: "18 trous", h9: "9 trous", par3: "Parcours par 3", rest: "Restaurant", range: "Practice", school: "École de golf", book: "Réserver un départ" },
+    sv: { all: "Alla banor", none: "Ingen bana har allt som valts. Ta bort ett filter.", h18: "18 hål", h9: "9 hål", par3: "Par 3-bana", rest: "Restaurang", range: "Drivingrange", school: "Golfskola", book: "Boka starttid" },
+    no: { all: "Alle baner", none: "Ingen baner har alt som er valgt. Fjern et filter.", h18: "18 hull", h9: "9 hull", par3: "Par 3-bane", rest: "Restaurant", range: "Drivingrange", school: "Golfskole", book: "Bestill starttid" }
+  };
   function renderGolfItem(p) {
-    var a = T.area, G = window.VM_GOLF || [];
+    var a = T.area, G = window.VM_GOLF || [], X = GTAGS[lang] || GTAGS.en;
     var origin = encodeURIComponent("Calle Navarra 5, 29612 La Mairena, Ojén");
     return '<details class="place golf" id="golf"><summary><span class="nm">' + esc(p.n) + '</span><span class="dist">' + esc(p.d || "") + '</span><span class="ds">' + esc(p.s) + "</span></summary>" +
-      '<p class="muted gi">' + esc(a.golfIntro) + "</p><ol>" +
+      '<p class="muted gi">' + esc(a.golfIntro) + "</p>" +
+      '<div class="antabs bfilter" role="group">' + ["all"].concat(GFILT).map(function (t) { return '<button class="chipbtn" type="button" data-bf="' + t + '" aria-pressed="' + (t === "all") + '">' + esc(X[t]) + "</button>"; }).join("") + "</div>" +
+      '<p class="muted bempty" hidden>' + esc(X.none) + "</p><ol>" +
       G.map(function (g) {
         var route = "https://www.google.com/maps/dir/?api=1&origin=" + origin + "&destination=" + encodeURIComponent(g.name + ", " + g.area) + "&travelmode=driving";
-        return '<li><div class="gh"><span class="gn">' + esc(g.name) + '</span><span class="gm">' + CA() + ' ' + g.min + " " + esc(a.golfMin) + "</span></div>" +
-          '<span class="gs">' + esc(g.area) + " · " + esc(g.holes) + " " + esc(a.golfHoles) + (g.par3 ? " · par 3" : "") + "</span>" +
+        var tags = (g.tags || []).filter(function (t) { return t !== "h18" && t !== "h9"; });
+        return '<li data-tags="' + (g.tags || []).join(" ") + '"><div class="gh"><span class="gn">' + esc(g.name) + '</span><span class="gm">' + CA() + " " + g.min + " " + esc(a.golfMin) + "</span></div>" +
+          '<span class="gs">' + esc(g.area) + " · " + esc(g.holes) + " " + esc(a.golfHoles) + (g.par ? " · " + esc(g.par) : "") + "</span>" +
+          (tags.length ? '<span class="gs">' + tags.map(function (t) { return esc(X[t]); }).join(" · ") + "</span>" : "") +
           (g.note && a.golfNotes[g.note] ? '<span class="gs">' + esc(a.golfNotes[g.note]) + "</span>" : "") +
-          '<span class="gl"><a href="' + route + '" target="_blank" rel="noopener">' + ic("i-pin", 14) + esc(a.golfRoute) + '</a><a href="' + esc(g.url) + '" target="_blank" rel="noopener">' + esc(a.golfWeb) + " ↗</a></span></li>";
+          '<span class="gl"><a href="' + route + '" target="_blank" rel="noopener">' + ic("i-pin", 14) + esc(a.golfRoute) + "</a>" +
+          (g.book ? '<a href="' + esc(g.book) + '" target="_blank" rel="noopener">' + esc(X.book) + " ↗</a>" : "") +
+          '<a href="' + esc(g.url) + '" target="_blank" rel="noopener">' + esc(a.golfWeb) + " ↗</a></span></li>";
       }).join("") + "</ol></details>";
   }
   function renderPadelItem(p) {
