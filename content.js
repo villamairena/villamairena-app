@@ -1,6 +1,6 @@
 /* VillaMairena – alt indhold i appen, på alle sprog.
    Ret tekster her. TODO-felter vises som gule "udfyldes"-mærker, indtil de er udfyldt.
-   Sprog: da (dansk), en (engelsk), es (spansk), de (tysk). Fransk ligger i content_fr.js. */
+   Sprog: da (dansk), en (engelsk), es (spansk), de (tysk). Fransk, svensk og norsk ligger i content_fr.js, content_sv.js og content_no.js. */
 window.VM_CONTENT = {
   da: {
     langName: "Dansk",
@@ -4334,6 +4334,2928 @@ window.VM_EXTRA.fr = {
  "rvIdea": "Proposer une idée",
  "rvBook": "Réservez en direct la prochaine fois",
  "rvTitleDirect": "Merci de votre visite"
+};
+/* Svensk (sv) – al tekst i appen. Ret tekster her. */
+window.VM_CONTENT.sv = {
+ "langName": "Svenska",
+ "ui": {
+  "tabs": {
+   "hjem": "Hem",
+   "ankomst": "Ankomst",
+   "huset": "Huset",
+   "omraadet": "Området",
+   "kontakt": "Kontakt"
+  },
+  "todo": "Fylls i",
+  "copy": "Kopiera",
+  "copied": "Kopierat",
+  "selected": "Markerat. Kopiera manuellt",
+  "copyAddress": "Kopiera adress",
+  "openMaps": "Öppna i Google Maps",
+  "language": "Språk"
+ },
+ "weather": {
+  "title": "Vädret i La Mairena",
+  "loading": "Hämtar prognos …",
+  "feels": "känns som",
+  "wind": "vind",
+  "kmh": "km/h",
+  "today": "I dag",
+  "uv": "UV",
+  "sun": "Sol",
+  "sea": "Havet vid Elviria",
+  "sample": "Exempel · live i appen",
+  "updated": "Uppdaterad",
+  "kinds": {
+   "clear": "Klart",
+   "mostly": "Mestadels klart",
+   "partly": "Växlande molnighet",
+   "overcast": "Mulet",
+   "fog": "Dimma",
+   "rain": "Regn",
+   "showers": "Skurar",
+   "storm": "Åska",
+   "cloudy": "Molnigt"
+  }
+ },
+ "home": {
+  "eyebrow": "La Mairena · Ojén · Costa del Sol",
+  "title": "Välkommen till VillaMairena",
+  "sub": "400 meter över havet, 8 minuter från stranden i Elviria.",
+  "gate": "Grindkod",
+  "gateNote": "Skickas till er i meddelandet före ankomst",
+  "wifi": "Wi‑Fi",
+  "wifiPassLabel": "Lösenord",
+  "checkin": "Incheckning",
+  "checkout": "Utcheckning",
+  "fireBanner": {
+   "title": "Hög brandrisk 1 juni – 15 oktober",
+   "body": "Ingen grillning, lägereld eller öppen eld under perioden. Mer under Kontakt.",
+   "link": "Brand och säkerhet"
+  },
+  "food": {
+   "title": "Beställ mat till huset",
+   "body": "Uber Eats levererar till VillaMairena. Använd adressen nedan och klistra in meddelandet till budet så att de hittar grinden.",
+   "open": "Öppna Uber Eats",
+   "note": "Meddelande till budet (på spanska)",
+   "copyNote": "Kopiera meddelandet"
+  },
+  "importantTitle": "Det viktigaste under vistelsen",
+  "important": [
+   {
+    "icon": "i-flame",
+    "t": "Rökning förbjuden inomhus",
+    "s": "Ni får gärna röka utomhus, med hänsyn till naturen runt huset."
+   },
+   {
+    "icon": "i-sun",
+    "t": "Golvvärme och luftkonditionering",
+    "s": "Termostaterna är inställda i förväg. Alla sovrum har luftkonditionering."
+   },
+   {
+    "icon": "i-home",
+    "t": "Ni behöver inte städa",
+    "s": "Professionella städare sköter slutstädningen när ni har rest."
+   }
+  ],
+  "sosLabel": "Nödsituation",
+  "sosText": "Det europeiska larmnumret. Fungerar överallt i Spanien, även utan SIM-kort."
+ },
+ "arrival": {
+  "eyebrow": "Ankomst",
+  "title": "Så hittar ni till huset",
+  "addressLabel": "Adress",
+  "steps": [
+   {
+    "t": "Från Málaga flygplats",
+    "d": "Kör mot Marbella längs kusten. Resan tar cirka 45 minuter.",
+    "route": "airport"
+   },
+   {
+    "t": "Upp till La Mairena",
+    "d": "Från kusten vid Elviria kör ni upp i bergen. Det tar cirka 8 minuter.",
+    "todo": "Vägbeskrivning och kännetecken"
+   },
+   {
+    "t": "Vid grinden",
+    "d": "Fastigheten har en grind med porttelefon och kamera. Slå grindkoden för att öppna.",
+    "todo": "Var knappsatsen sitter"
+   },
+   {
+    "t": "Parkering",
+    "d": "Privat parkering för 4 bilar på tomten."
+   },
+   {
+    "t": "In i huset",
+    "todo": "Nyckelbox eller kodlås"
+   }
+  ],
+  "missing": "Bilder på grinden och uppfarten gör ankomsten mycket enklare för gäster som kommer efter mörkrets inbrott.",
+  "missingLabel": "Saknas ännu"
+ },
+ "house": {
+  "eyebrow": "Huset",
+  "title": "314 m² för 10–12 gäster",
+  "chips": [
+   "5 sovrum",
+   "3+1 badrum",
+   "Luftkonditionering",
+   "Golvvärme",
+   "Wi‑Fi och TV",
+   "Tomt på 2 500 m²",
+   "Havsutsikt"
+  ],
+  "gallery": {
+   "living": "Vardagsrum och matbord för 12",
+   "kitchen": "Köket",
+   "bath": "Huvudsovrum med eget badrum",
+   "closet": "Walk-in-closet"
+  },
+  "roomsTitle": "Sovrum",
+  "roomsIntro": "Alla rum har luftkonditionering och utsikt mot bergen. Rum 1, 3, 4 och 5 har fjärrstyrda utvändiga rullgardiner som mörklägger helt.",
+  "rooms": [
+   {
+    "name": "Huvudsovrum",
+    "meta": "Bottenvåning · walk-in-closet · eget badrum · utsikt mot poolen"
+   },
+   {
+    "name": "Extrarummet",
+    "meta": "Bottenvåning · delat badrum · utan rullgardiner"
+   },
+   {
+    "name": "Utsikt med balkong",
+    "meta": "Övervåning · balkong · badrum delas med rum 4"
+   },
+   {
+    "name": "Utsikt från övervåningen",
+    "meta": "Övervåning · badrum delas med rum 3"
+   },
+   {
+    "name": "Mini-huvudsovrum",
+    "meta": "Övervåning · eget badrum · balkong · havs- och bergsutsikt"
+   }
+  ],
+  "roomWord": "Rum",
+  "extraBeds": "Extra: 2 gästsängar och 1 babysäng.",
+  "poolTitle": "Pool",
+  "poolText": "Uppvärmd året runt, cirka 40 m². Solsängar och loungeområde runt poolen, med direkt utgång från vardagsrummet och sovrummen.",
+  "poolDiagram": {
+   "size": "11 m × 3,5 m",
+   "alt": "Poolen från sidan: 11 meter lång, 1,10 till 1,70 meter djup"
+  },
+  "howTitle": "Så fungerar huset",
+  "howIntro": "Korta guider till husets utrustning. QR-klistermärkena i huset leder direkt hit."
+ },
+ "how": [
+  {
+   "id": "pool",
+   "icon": "i-wave",
+   "title": "Poolvärme",
+   "body": [
+    "Poolen är uppvärmd året runt.",
+    "Djupet är 1,10 m i ena änden och 1,70 m i den andra."
+   ],
+   "todo": "Hur temperaturen ställs in, och poolregler"
+  },
+  {
+   "id": "aircondition",
+   "icon": "i-snow",
+   "title": "Luftkonditionering",
+   "body": [
+    "Alla sovrum har luftkonditionering.",
+    "Håll fönster och dörrar stängda när den är på för bäst kyla."
+   ],
+   "todo": "Var fjärrkontrollen finns, och rekommenderad temperatur"
+  },
+  {
+   "id": "gulvvarme",
+   "icon": "i-sun",
+   "title": "Golvvärme",
+   "body": [
+    "Golvvärme i hela huset, styrd av termostater.",
+    "Termostaterna är inställda i förväg."
+   ],
+   "todo": "Hur man höjer och sänker"
+  },
+  {
+   "id": "persienner",
+   "icon": "i-blind",
+   "title": "Rullgardiner",
+   "body": [
+    "Rum 1, 3, 4 och 5 har fjärrstyrda utvändiga rullgardiner som mörklägger helt.",
+    "Rum 2 har inga rullgardiner."
+   ],
+   "todo": "Var strömbrytaren eller fjärrkontrollen finns"
+  },
+  {
+   "id": "wifi",
+   "icon": "i-wifi",
+   "title": "Wi‑Fi",
+   "body": [
+    "Nätverk: VillaMairena.",
+    "Lösenord: VillaMairena2027",
+    "Det finns Wi‑Fi i hela huset och vid poolen."
+   ]
+  },
+  {
+   "id": "tv",
+   "icon": "i-tv",
+   "title": "TV",
+   "body": [],
+   "todo": "Hur man sätter på den, och vilka tjänster som finns"
+  },
+  {
+   "id": "kaffe",
+   "icon": "i-cup",
+   "title": "Kaffemaskin",
+   "body": [],
+   "todo": "Typ av maskin och var kapslar eller bönor finns"
+  },
+  {
+   "id": "vask",
+   "icon": "i-wash",
+   "title": "Tvättmaskin och torktumlare",
+   "body": [
+    "Tvättmaskin och torktumlare får användas fritt."
+   ],
+   "todo": "Var de står, och tvättmedel"
+  },
+  {
+   "id": "affald",
+   "icon": "i-bin",
+   "title": "Sopor och återvinning",
+   "body": [
+    "I Spanien sorteras soporna i färgade containrar vid vägen. Det finns ingen hämtning vid huset, så ta soppåsarna till containrarna.",
+    "Släng aldrig glas, flaskor eller fett i toaletten eller diskhon."
+   ],
+   "bins": [
+    [
+     "#e9c443",
+     "Gul",
+     "Plast, burkar, mjölk- och juicekartonger, folie och tråg"
+    ],
+    [
+     "#3b6fb6",
+     "Blå",
+     "Papper, kartong och lådor (gärna hopvikta)"
+    ],
+    [
+     "#3f8a4e",
+     "Grön (rund klocka)",
+     "Glasflaskor och burkar utan lock"
+    ],
+    [
+     "#6b6b6b",
+     "Grå eller mörkgrön",
+     "Restavfall och matrester i stängda påsar"
+    ],
+    [
+     "#8a5a2b",
+     "Brun (om den finns)",
+     "Matavfall och annat organiskt avfall"
+    ]
+   ],
+   "todo": "Var de närmaste containrarna står"
+  },
+  {
+   "id": "sikkerhedsudstyr",
+   "icon": "i-flame",
+   "title": "Brandsläckare och första hjälpen",
+   "body": [
+    "Det finns en brandsläckare och en förbandslåda i huset.",
+    "Båda finns under trappan på bottenvåningen.",
+    "Vid allvarlig skada eller brand: ring 112."
+   ]
+  },
+  {
+   "id": "afrejse",
+   "icon": "i-key",
+   "title": "Innan ni åker",
+   "body": [
+    "Ni behöver inte städa. Slutstädning ingår."
+   ],
+   "todo": "Var nycklarna ska lämnas",
+   "checkTitle": "Checklista vid avresa",
+   "check": [
+    "Ta med er färska matvaror eller släng dem. Salt, peppar, kaffe, olja och liknande baslivsmedel får gärna stå kvar till nästa gäster",
+    "Ställ in disken i diskmaskinen och starta den",
+    "Ta sopor, flaskor och kartong till containrarna",
+    "Lägg använda handdukar samlat i badrummen",
+    "Stäng av luftkonditionering, lampor och TV",
+    "Stäng och lås alla fönster och altandörrar",
+    "Rengör grillen efter användning så att den är redo för nästa gäster",
+    "Kontrollera skåp, lådor, kassaskåp och eluttag efter kvarglömda saker och laddare",
+    "Utcheckning senast kl. 10. Stäng grinden efter er"
+   ],
+   "bye": "Tack för besöket – trevlig resa hem!",
+   "leaveToday": "Ni reser i dag",
+   "leaveTomorrow": "Ni reser i morgon",
+   "leaveSee": "Se checklistan innan ni åker"
+  }
+ ],
+ "area": {
+  "eyebrow": "Området",
+  "title": "Guide till området",
+  "intro": "Här är vår guide till området runt huset: stränder, inköp och restauranger, sport, kultur och mer. Tryck på en punkt med en triangel för att öppna listan.",
+  "beachTitle": "Stränderna",
+  "beachText": "Gyllene sand, klart vatten, chiringuitos, restauranger och beach clubs. Närmaste strand ligger cirka 8 minuter från huset.",
+  "beaches": [
+   [
+    "Las Chapas",
+    "cirka 750 m strand"
+   ],
+   [
+    "La Víbora",
+    "cirka 850 m strand"
+   ],
+   [
+    "Real de Zaragoza",
+    "cirka 1,7 km strand"
+   ]
+  ],
+  "dailyTitle": "Inköp och restauranger",
+  "daily": [
+   {
+    "url": "https://www.ubereats.com/es",
+    "n": "Takeaway",
+    "d": "Leverans",
+    "s": "Uber Eats levererar till huset. Se ”Beställ mat till huset” på startsidan."
+   }
+  ],
+  "dailyTodo": "Er favoritmataffär och ert favoritbageri",
+  "expTitle": "Upplevelser",
+  "suggestion": "Förslag",
+  "exp": [
+   {
+    "key": "golf",
+    "n": "Golf",
+    "d": "Inom 30 min",
+    "s": "Fler än 10 golfbanor i världsklass."
+   },
+   {
+    "key": "padel",
+    "n": "Padel",
+    "d": "Inom 15 min",
+    "s": "Padelbanor i området."
+   },
+   {
+    "key": "kultur",
+    "n": "Sevärdheter och kultur",
+    "d": "20–25 min",
+    "s": "Museer, kyrkor, gamla stadskärnor och historiska platser."
+   }
+  ],
+  "golfTitle": "Golfbanor i närheten",
+  "golfIntro": "De 10 närmaste banorna. Körtiderna är ungefärliga. Tryck på Rutt för exakt avstånd i Google Maps.",
+  "golfHoles": "hål",
+  "golfRoute": "Rutt",
+  "golfWeb": "Webbplats",
+  "golfMin": "min",
+  "golfNotes": {
+   "marbellagolf": "Byggs om till Higuerón Marbella Golf Resort",
+   "lacala": "La Cala har tre 18-hålsbanor och en par 3-bana"
+  },
+  "padelIntro": "De 5 närmaste platserna med padelbanor. Körtiderna är ungefärliga. Boka direkt hos klubben.",
+  "padelCourts": "banor",
+  "padelBook": "Boka bana",
+  "padelNotes": {
+   "light": "Belysning för spel på kvällen"
+  },
+  "beachSum": "De 10 närmaste stränderna",
+  "beachSumD": "8–15 min",
+  "beachIntro": "Körtiderna är ungefärliga. Tryck på Rutt för vägbeskrivning i Google Maps.",
+  "beachM": "m",
+  "beachTags": {
+   "golden": "Gyllene sand",
+   "dark": "Mörk sand",
+   "dunes": "Sanddyner (skyddade)",
+   "nudist": "Naturistområde",
+   "port": "Vid hamnen",
+   "food": "Restauranger och chiringuitos",
+   "kids": "Barnområde",
+   "long": "Lång strand",
+   "quiet": "Lugnare"
+  },
+  "shopSum": "Livsmedel",
+  "shopSumD": "8–20 min",
+  "shopIntro": "Körtiderna är ungefärliga. Många mataffärer har stängt eller kortare öppettider på söndagar, så kontrollera innan ni åker.",
+  "shopHours": "Öppettider",
+  "shops": [
+   {
+    "n": "Carrefour Market Elviria",
+    "area": "Elviria",
+    "min": 8,
+    "type": "Mataffär",
+    "s": "Vanlig mataffär med frukt, grönt, kött, fisk och vin. Närmaste större butik.",
+    "q": "Carrefour Market Elviria, Marbella",
+    "hours": "Mån–lör 9–22",
+    "url": "https://www.carrefour.es/tiendas-carrefour/supermercados/carrefour-market/elviria-marbella-s.aspx"
+   },
+   {
+    "n": "Mercadillo de Las Chapas",
+    "area": "Parking Elviria",
+    "min": 8,
+    "type": "Marknad",
+    "s": "Lokal fredagsmarknad med cirka 30 stånd: frukt och grönt, kläder, väskor och hantverk.",
+    "q": "Pinar de Elviria, 29604 Marbella",
+    "hours": "Fredag 9–14",
+    "url": "https://mercadillos.org/es/marbella/mercadillo-las-chapas"
+   },
+   {
+    "n": "Elviria Centro",
+    "area": "Elviria",
+    "min": 8,
+    "type": "Butiker och service",
+    "s": "Elvirias lilla centrum med bagerier, apotek, banker, kaféer och restauranger.",
+    "q": "Centro Comercial Elviria, Marbella"
+   },
+   {
+    "n": "Mercadona",
+    "area": "La Cala de Mijas",
+    "min": 15,
+    "type": "Mataffär",
+    "s": "Spaniens största matkedja. Stort utbud och bra priser.",
+    "q": "Mercadona La Cala de Mijas",
+    "hours": "De flesta dagar till 21"
+   },
+   {
+    "n": "Lidl",
+    "area": "La Cala de Mijas",
+    "min": 15,
+    "type": "Lågpris",
+    "s": "Lågprisbutik med veckans erbjudanden.",
+    "q": "Lidl La Cala de Mijas"
+   },
+   {
+    "n": "Aldi",
+    "area": "La Cala de Mijas",
+    "min": 15,
+    "type": "Lågpris",
+    "s": "Lågprisbutik med det viktigaste.",
+    "q": "Aldi La Cala de Mijas"
+   },
+   {
+    "n": "Mercadillo de La Cala",
+    "area": "La Cala de Mijas",
+    "min": 15,
+    "type": "Marknad",
+    "s": "Stor marknad med över 100 stånd: råvaror, lokala specialiteter, kläder och hushållsartiklar. Kom före kl. 10 för de bästa råvarorna.",
+    "q": "Mercadillo La Cala de Mijas",
+    "hours": "Onsdag och lördag 9–14"
+   },
+   {
+    "n": "La Cañada",
+    "area": "Marbella",
+    "min": 20,
+    "type": "Köpcentrum",
+    "s": "Stort köpcentrum med stormarknad (Alcampo) och många kända butiker.",
+    "q": "Centro Comercial La Cañada, Marbella"
+   }
+  ],
+  "cultIntro": "Körtiderna är ungefärliga och öppettiderna kan ändras, så kontrollera innan ni åker. De flesta platser har fri entré.",
+  "cults": [
+   {
+    "n": "Iglesia de la Encarnación",
+    "area": "Ojén",
+    "min": 20,
+    "type": "Kyrka",
+    "s": "Byns kyrka från 1400-talet med ett vackert trätak i morisk (mudéjar) stil från 1500–1600-talet.",
+    "q": "Iglesia Nuestra Señora de la Encarnación, Ojén"
+   },
+   {
+    "n": "Museo del Molino y del Aguardiente",
+    "area": "Ojén",
+    "min": 20,
+    "type": "Museum",
+    "s": "Vattenkvarn från 1700-talet med ursprungliga maskiner för olivolja. På övervåningen: museum om Ojéns berömda brännvin, aguardiente.",
+    "q": "Museo del Molino, Calle Charcas 60, Ojén",
+    "url": "https://sierradelasnieves.es/en/?p=6605"
+   },
+   {
+    "n": "Casco Antiguo",
+    "area": "Marbella",
+    "min": 20,
+    "type": "Gamla stan",
+    "s": "Marbellas vita gamla stad med Plaza de los Naranjos, smala gränder och kyrkan Iglesia de la Encarnación.",
+    "q": "Plaza de los Naranjos, Marbella",
+    "hours": "Alltid öppet"
+   },
+   {
+    "n": "Museo del Grabado Español Contemporáneo",
+    "area": "Marbella",
+    "min": 20,
+    "type": "Konstmuseum",
+    "s": "Spaniens första museum för grafik med cirka 2 000 verk, bl.a. av Picasso, Miró och Dalí, i ett sjukhus från 1600-talet. Gratis.",
+    "q": "Museo del Grabado Español Contemporáneo, Marbella",
+    "hours": "Mån–lör 10–20, sön 10–14"
+   },
+   {
+    "n": "Colección Arqueológica Municipal",
+    "area": "Marbella",
+    "min": 20,
+    "type": "Museum",
+    "s": "Arkeologiska fynd från området, bl.a. romerska villor, i en byggnad från 1500-talet. Gratis.",
+    "q": "Plaza Altamirano, Marbella",
+    "hours": "Mån–fre 9–14"
+   },
+   {
+    "n": "Cortijo Miraflores",
+    "area": "Marbella",
+    "min": 20,
+    "type": "Kulturhus",
+    "s": "Historisk gård med olivoljemuseum och arkeologiska utställningar. Gratis.",
+    "q": "Cortijo Miraflores, Marbella",
+    "hours": "Dagligen 9–20.30"
+   },
+   {
+    "n": "Museo Ralli",
+    "area": "Golden Mile, Marbella",
+    "min": 25,
+    "type": "Konstmuseum",
+    "s": "En av Europas viktigaste samlingar av latinamerikansk konst, 50 m från stranden. Gratis.",
+    "q": "Museo Ralli, Marbella",
+    "hours": "Tis–fre 10–17, lör 10–15 (stängt 21/12–14/2)",
+    "url": "https://museoralli.es/en/museum-ralli-and-its-surroundings/"
+   },
+   {
+    "n": "Villa Romana de Río Verde",
+    "area": "Marbella",
+    "min": 25,
+    "type": "Romersk ruin",
+    "s": "Romersk villa från 100–200-talet med ovanliga svartvita mosaiker. Gratis.",
+    "q": "Villa Romana de Río Verde, Marbella",
+    "hours": "Fre–sön 10.30–13.30",
+    "url": "https://www.historyhit.com/locations/rio-verde-roman-villa/"
+   },
+   {
+    "n": "Mijas Pueblo",
+    "area": "Mijas",
+    "min": 25,
+    "type": "Vit by",
+    "s": "Bergsby med kyrkor, kapellet Virgen de la Peña, en oval tjurfäktningsarena från 1900 och ett miniatyrmuseum.",
+    "q": "Mijas Pueblo"
+   },
+   {
+    "n": "Castillo Sohail",
+    "area": "Fuengirola",
+    "min": 25,
+    "type": "Borg",
+    "s": "Morisk borg från 1100-talet vid kusten med fin utsikt. Gratis.",
+    "q": "Castillo Sohail, Fuengirola",
+    "hours": "Tis–fre 10–14, helger 10–18"
+   }
+  ],
+  "restSum": "Restauranger",
+  "restSumD": "3–30 min",
+  "restIntro": "20 restauranger från La Mairena och ner längs kusten. Körtiderna är ungefärliga. Boka gärna bord, särskilt på sommaren.",
+  "rests": [
+   {
+    "n": "Kudu Bar",
+    "area": "La Mairena",
+    "min": 3,
+    "type": "Internationellt",
+    "s": "Populärt ställe i La Mairena med terrass och fin utsikt. Känt för curry, lax och revbensspjäll. Boka bord.",
+    "q": "Kudu Bar, La Mairena, Ojén",
+    "price": "€€",
+    "url": "https://thekudubar.com"
+   },
+   {
+    "n": "El Soto de Marbella",
+    "area": "La Mairena",
+    "min": 5,
+    "type": "Bar och restaurang",
+    "s": "Bar och restaurang vid golfbanan El Soto. Öppen för alla, med livemusik under året.",
+    "q": "El Soto de Marbella club house, Ojén"
+   },
+   {
+    "n": "El Lago",
+    "area": "Elviria Hills",
+    "min": 10,
+    "type": "Fine dining",
+    "s": "Fine dining vid en sjö i Elviria Hills med andalusiska råvaror. Har haft en Michelinstjärna.",
+    "q": "Restaurante El Lago, Elviria, Marbella"
+   },
+   {
+    "n": "Ombú",
+    "area": "Don Carlos Resort, Elviria",
+    "min": 10,
+    "type": "Medelhavskök",
+    "s": "Restaurang i tropiska trädgårdar på Don Carlos Resort.",
+    "q": "Ombú, Don Carlos Resort, Marbella"
+   },
+   {
+    "n": "La Scala Marbella",
+    "area": "Elviria",
+    "min": 10,
+    "type": "Italienskt",
+    "s": "Högt rankad italiensk restaurang.",
+    "q": "La Scala Marbella, Elviria",
+    "price": "€€€€"
+   },
+   {
+    "n": "Nikki Beach Marbella",
+    "area": "Elviria",
+    "min": 10,
+    "type": "Beach club",
+    "s": "Känd helvit beach club med musik och internationell publik.",
+    "q": "Nikki Beach Marbella",
+    "price": "€€€€"
+   },
+   {
+    "n": "The Beach House",
+    "area": "Elviria",
+    "min": 10,
+    "type": "Medelhavskök",
+    "s": "Restaurang vid stranden med medelhavsmat och havsutsikt.",
+    "q": "The Beach House Marbella, Elviria",
+    "price": "€€–€€€"
+   },
+   {
+    "n": "La Plage Casanis",
+    "area": "Elviria",
+    "min": 10,
+    "type": "Beach club",
+    "s": "Elegant beach club med medelhavskök.",
+    "q": "La Plage Casanis, Marbella"
+   },
+   {
+    "n": "Chiringuito Tony's",
+    "area": "Elviria",
+    "min": 10,
+    "type": "Skaldjur",
+    "s": "Mycket populär strand-chiringuito med skaldjur.",
+    "q": "Chiringuito Tonys, Elviria, Marbella",
+    "price": "€€–€€€"
+   },
+   {
+    "n": "Restaurante Merendero Cristina",
+    "area": "Elviria",
+    "min": 10,
+    "type": "Skaldjur",
+    "s": "Klassisk strandrestaurang med fisk och skaldjur.",
+    "q": "Merendero Cristina, Elviria, Marbella",
+    "price": "€€–€€€"
+   },
+   {
+    "n": "Alma de Papagayo",
+    "area": "Elviria",
+    "min": 10,
+    "type": "Internationellt",
+    "s": "Högt rankad restaurang med internationellt kök.",
+    "q": "Alma de Papagayo, Elviria, Marbella",
+    "price": "€€–€€€"
+   },
+   {
+    "n": "Zumaque",
+    "area": "Elviria",
+    "min": 10,
+    "type": "Grill och skaldjur",
+    "s": "Kött och fisk, mycket uppskattat av gästerna.",
+    "q": "Zumaque, Elviria, Marbella",
+    "price": "€€–€€€"
+   },
+   {
+    "n": "Mini India Elviria",
+    "area": "Elviria",
+    "min": 10,
+    "type": "Indiskt",
+    "s": "Indisk restaurang, mycket populär bland besökare.",
+    "q": "Mini India Elviria, Marbella",
+    "price": "€€–€€€"
+   },
+   {
+    "n": "Nosso Summer Club",
+    "area": "Las Chapas",
+    "min": 12,
+    "type": "Beach club",
+    "s": "Snygg beach club på stranden Las Chapas med asiatisk-medelhavsmat.",
+    "q": "Nosso Summer Club, Las Chapas, Marbella"
+   },
+   {
+    "n": "Siroko Beach",
+    "area": "Las Chapas",
+    "min": 12,
+    "type": "Beach club",
+    "s": "Strandrestaurang och lounge med solsängar och musik.",
+    "q": "Siroko Beach, Las Chapas, Marbella"
+   },
+   {
+    "n": "Simbad",
+    "area": "Marbesa",
+    "min": 12,
+    "type": "Skaldjur",
+    "s": "Avslappnad strandbar med espetos (grillade sardiner) och bra vinlista.",
+    "q": "Simbad Restaurant Beach Bar, Marbesa, Marbella"
+   },
+   {
+    "n": "Andy's Beach",
+    "area": "Cabopino",
+    "min": 12,
+    "type": "Skaldjur",
+    "s": "Restaurang direkt på sanden med skaldjur och havsutsikt.",
+    "q": "Andy's Beach, Cabopino, Marbella"
+   },
+   {
+    "n": "Mesón Lorente",
+    "area": "Ojén",
+    "min": 20,
+    "type": "Andalusiskt",
+    "s": "Andalusisk mat i Ojén med generösa portioner. Känd för sin fiskgryta.",
+    "q": "Mesón Lorente, Ojén"
+   },
+   {
+    "n": "El Fogón de Flore",
+    "area": "Ojén",
+    "min": 20,
+    "type": "Spanskt och europeiskt",
+    "s": "Restaurang högt upp i Ojén med utsikt över dalen.",
+    "q": "El Fogón de Flore, Ojén"
+   },
+   {
+    "n": "El Refugio de Juanar",
+    "area": "Sierra Blanca, Ojén",
+    "min": 30,
+    "type": "Andalusiskt",
+    "s": "Mysig bergsrestaurang med hemlagad andalusisk mat. En vacker tur upp i bergen.",
+    "q": "El Refugio de Juanar, Ojén"
+   }
+  ]
+ },
+ "contact": {
+  "report": {
+   "title": "Anmäl ett fel eller ge ett förslag",
+   "intro": "Har något gått sönder, eller har ni en idé om hur huset kan bli bättre? Skriv till oss här, gärna med en bild. Det går direkt till ägarna.",
+   "issue": "Något har gått sönder",
+   "idea": "Förslag till förbättring",
+   "where": "Var?",
+   "text": "Beskriv kort",
+   "photo": "Ta eller välj en bild",
+   "photoAdded": "Bild tillagd",
+   "name": "Namn på den som bokade",
+   "send": "Skicka",
+   "sending": "Skickar …",
+   "thanks": "Tack! Vi har fått ert meddelande och återkommer vid behov.",
+   "error": "Meddelandet skickades inte. Försök igen eller ring oss.",
+   "empty": "Skriv en kort beskrivning eller lägg till en bild.",
+   "urgent": "Om det är brådskande, ring oss på +45 51 59 30 50.",
+   "choose": "Välj plats",
+   "inside": "Inne i huset",
+   "outside": "Utomhus",
+   "nameReq": "Skriv namnet på den som bokade vistelsen.",
+   "roomsIn": [
+    "Rum 1 (huvudsovrum)",
+    "Rum 2",
+    "Rum 3",
+    "Rum 4",
+    "Rum 5",
+    "Badrum",
+    "Gästtoalett",
+    "Walk-in-closet",
+    "Kök",
+    "Vardagsrum och matplats",
+    "Hall och trappa",
+    "Tvättmaskin och torktumlare"
+   ],
+   "roomsOut": [
+    "Pool",
+    "Terrass och solsängar",
+    "Balkong",
+    "Trädgård",
+    "Uppfart och grind",
+    "Parkering"
+   ],
+   "other": "Annat"
+  },
+  "eyebrow": "Kontakt",
+  "title": "Vem ringer man",
+  "sos": "Nödsituation: polis, ambulans, brandkår",
+  "ownersTitle": "Ägarna",
+  "ownersText": "Pernille, Jens, Christina och Thomas. Vi svarar mellan 08.00 och 23.00, ofta inom några timmar.",
+  "phone": "Telefon",
+  "email": "E-post",
+  "localTitle": "På plats",
+  "local": [
+   {
+    "who": "Lokal värd / förvaltare",
+    "what": "Nycklar, grind och allt praktiskt",
+    "todo": "Namn och nummer"
+   },
+   {
+    "who": "Poolservice",
+    "what": "Om något är fel med poolen",
+    "todo": "Namn och nummer"
+   },
+   {
+    "who": "Elektriker / rörmokare",
+    "what": "El, vatten, luftkonditionering",
+    "todo": "Namn och nummer"
+   },
+   {
+    "who": "Städning",
+    "what": "Extra städning under vistelsen",
+    "todo": "Namn och nummer"
+   }
+  ],
+  "healthTitle": "Hälsa",
+  "health": [
+   {
+    "who": "Hospital Universitario Costa del Sol",
+    "tag": "Akutmottagning dygnet runt",
+    "what": "Offentligt sjukhus mellan Elviria och Marbella. Här kan ni använda det europeiska sjukförsäkringskortet.",
+    "addr": "Autovía A-7, km 187, Marbella",
+    "tel": "+34 951 976 669",
+    "min": 15,
+    "q": "Hospital Universitario Costa del Sol, Marbella"
+   },
+   {
+    "who": "Hospital Quirónsalud Marbella",
+    "tag": "Privat · akutmottagning dygnet runt",
+    "what": "Privatsjukhus i Marbella med engelsktalande personal. Kräver reseförsäkring eller betalning.",
+    "addr": "Avenida Severo Ochoa 22, Marbella",
+    "tel": "+34 952 774 200",
+    "min": 20,
+    "q": "Hospital Quirónsalud Marbella"
+   },
+   {
+    "who": "Consultorio Las Chapas",
+    "tag": "Vårdcentral",
+    "what": "Offentlig vårdcentral nära huset för vanlig läkarvård. Ta med det europeiska sjukförsäkringskortet.",
+    "addr": "Calle Pinsapo s/n, Las Chapas, Marbella",
+    "tel": "+34 951 704 027",
+    "min": 10,
+    "q": "Consultorio Las Chapas, Calle Pinsapo, Marbella"
+   },
+   {
+    "who": "Salud Responde",
+    "tag": "Sjukvårdsupplysning",
+    "what": "Andalusiens offentliga sjukvårdslinje. Ring för råd eller för att boka tid hos läkare.",
+    "tel": "+34 955 545 060"
+   },
+   {
+    "who": "Farmacia Elviria",
+    "tag": "Apotek",
+    "what": "Närmaste apotek, i Elviria. Apoteket ger också råd vid lättare sjukdom.",
+    "addr": "Avenida de las Cumbres 4, Elviria, Marbella",
+    "tel": "+34 952 831 457",
+    "min": 8,
+    "q": "Farmacia Elviria, Avenida de las Cumbres 4, Marbella"
+   },
+   {
+    "who": "Jourapotek (farmacia de guardia)",
+    "tag": "Kväll, natt och helgdagar",
+    "what": "Apoteken turas om att ha jour. Närmaste jourapotek står på en skylt på alla apotek, eller hitta det på kartan.",
+    "search": "farmacia de guardia Marbella"
+   }
+  ],
+  "healthIntro": "Vid livshotande situationer: ring 112. Ta med det blå europeiska sjukförsäkringskortet och er reseförsäkring.",
+  "hCall": "Ring",
+  "hRoute": "Rutt",
+  "hFind": "Hitta på kartan"
+ },
+ "safety": {
+  "title": "Brand och säkerhet",
+  "intro": "Huset ligger intill skogen. Skogsbrand är den största risken i området, särskilt på sommaren.",
+  "seasonLabel": "1 juni – 15 oktober",
+  "season": "I Andalusien är det förbjudet att grilla, göra upp eld och använda öppen eld i skogsområden och inom 400 meter från skog. Det gäller även vid huset.",
+  "rules": [
+   "Släng aldrig fimpar i naturen. Använd en askkopp.",
+   "Parkera inte bilen på torrt gräs. Ett varmt avgasrör kan antända det.",
+   "Inga fyrverkerier eller rislyktor."
+  ],
+  "houseRuleTodo": "Husets egna regler för grillning (t.ex. om gasgrill på terrassen är tillåten)",
+  "fireTitle": "Om ni ser rök eller eld",
+  "fire": [
+   "Ring 112 direkt och uppge adressen: Calle Navarra 5, La Mairena.",
+   "Följ anvisningar från polis, räddningstjänst och Guardia Civil.",
+   "Myndigheterna kan skicka varningar direkt till er telefon (ES-Alert). Följ dem."
+  ],
+  "evacTodo": "Utrymningsväg och samlingsplats",
+  "ext": "Brandsläckare och förbandslåda finns under trappan på bottenvåningen."
+ }
+};
+window.VM_EXTRA.sv = {
+ "rulesTitle": "Husregler",
+ "rulesIntro": "Så att alla får en bra vistelse och huset är redo för nästa gäster.",
+ "rules": [
+  {
+   "t": "Max 12 personer",
+   "s": "Huset är för 10–12 gäster. Det finns 5 sovrum, 2 extra gästsängar och 1 babysäng."
+  },
+  {
+   "t": "Rökning förbjuden inomhus",
+   "s": "Rök gärna utomhus, och använd en askkopp."
+  },
+  {
+   "t": "Barn vid poolen",
+   "s": "Barn ska alltid ha tillsyn vid poolen. Inget glas vid poolkanten."
+  },
+  {
+   "t": "Skador",
+   "s": "Har något gått sönder, anmäl det i appen under Huset. Det är helt i sin ordning, vi vill bara veta."
+  },
+  {
+   "t": "Lugn och grannar",
+   "s": "Visa hänsyn till grannarna. Det ska vara tyst från kl. 23."
+  },
+  {
+   "t": "Inga fester eller evenemang",
+   "s": "Det är inte tillåtet att ha fester eller någon form av evenemang i huset."
+  },
+  {
+   "t": "Inga husdjur",
+   "s": "Husdjur är inte tillåtna i eller utanför huset."
+  }
+ ],
+ "pracTitle": "Praktiskt i Spanien",
+ "prac": [
+  {
+   "t": "Mattider",
+   "s": "Lunch äts oftast kl. 14–16 och middag från kl. 21. Många restauranger öppnar köket för middag runt kl. 20."
+  },
+  {
+   "t": "Butiker och söndagar",
+   "s": "Många mindre butiker har stängt på söndagar och en del mitt på dagen. Större mataffärer har längre öppettider."
+  },
+  {
+   "t": "Apotek",
+   "s": "Apotek har ett grönt kors. Utanför öppettiderna har ett jourapotek (farmacia de guardia) öppet – det står på dörren till alla apotek."
+  },
+  {
+   "t": "Dricks",
+   "s": "Inget krav. Det är vanligt att avrunda uppåt eller lämna 5–10 % för bra service på restaurang."
+  },
+  {
+   "t": "Kranvatten",
+   "s": "Kranvattnet går att dricka, men många föredrar flaskvatten för smakens skull."
+  },
+  {
+   "t": "El",
+   "s": "230 V med europeiska tvåpoliga uttag. Gäster från Storbritannien och USA behöver adapter."
+  },
+  {
+   "t": "Betalning",
+   "s": "Kort fungerar nästan överallt. Ha lite kontanter till marknader och chiringuitos."
+  }
+ ],
+ "wordsTitle": "10 bra spanska ord",
+ "words": [
+  {
+   "es": "Hola",
+   "x": "Hej"
+  },
+  {
+   "es": "Buenos días",
+   "x": "God morgon"
+  },
+  {
+   "es": "Por favor",
+   "x": "Tack (snälla)"
+  },
+  {
+   "es": "Gracias",
+   "x": "Tack"
+  },
+  {
+   "es": "Perdón",
+   "x": "Förlåt"
+  },
+  {
+   "es": "¿Cuánto cuesta?",
+   "x": "Vad kostar det?"
+  },
+  {
+   "es": "La cuenta, por favor",
+   "x": "Notan, tack"
+  },
+  {
+   "es": "Agua",
+   "x": "Vatten"
+  },
+  {
+   "es": "¡Ayuda!",
+   "x": "Hjälp!"
+  },
+  {
+   "es": "Adiós",
+   "x": "Hej då"
+  }
+ ],
+ "trTitle": "Transport",
+ "trIntro": "Det finns ingen kollektivtrafik upp till La Mairena, så bil är absolut enklast.",
+ "tr": [
+  {
+   "t": "Hyrbil",
+   "s": "Hämta en bil på Málaga flygplats. Det finns plats för 4 bilar på tomten."
+  },
+  {
+   "t": "Taxi och Uber",
+   "s": "Uber och Cabify kör i Marbella-området. Boka i god tid till La Mairena."
+  },
+  {
+   "t": "Flygplatstransfer",
+   "todo": "Ert föredragna transferbolag och pris"
+  },
+  {
+   "t": "Tåg till Málaga",
+   "s": "Från Fuengirola går pendeltåget (Cercanías C1) till Málaga flygplats och centrum, cirka 45 min."
+  },
+  {
+   "t": "Buss",
+   "s": "Bussar går längs kusten från Elviria till Marbella och Fuengirola, men inte upp till huset."
+  },
+  {
+   "t": "Parkering i Marbella",
+   "s": "Använd ett av parkeringshusen under jord i centrum – enklare än gatuparkering."
+  }
+ ],
+ "trips": [
+  {
+   "n": "Málaga",
+   "area": "Málaga",
+   "min": 45,
+   "q": "Málaga centro",
+   "s": "Picassomuseet, katedralen, fästningen Alcazaba och bra shopping.",
+   "type": "Stad"
+  },
+  {
+   "n": "Ronda",
+   "area": "Ronda",
+   "min": 75,
+   "q": "Ronda",
+   "s": "Staden på klippan med den berömda bron Puente Nuevo över ravinen.",
+   "type": "Stad"
+  },
+  {
+   "n": "Caminito del Rey",
+   "area": "Ardales",
+   "min": 75,
+   "q": "Caminito del Rey",
+   "url": "https://www.caminitodelrey.info",
+   "s": "Gångväg längs klippväggen högt över en ravin. Boka biljett i förväg.",
+   "type": "Natur"
+  },
+  {
+   "n": "Gibraltar",
+   "area": "Gibraltar",
+   "min": 75,
+   "q": "Gibraltar",
+   "s": "Klippan med aporna, utsikt mot Afrika och brittisk stämning. Ta med pass.",
+   "type": "Dagsutflykt"
+  },
+  {
+   "n": "Nerja",
+   "area": "Nerja",
+   "min": 75,
+   "q": "Cueva de Nerja",
+   "s": "Charmig kuststad med utsiktsplatsen Balcón de Europa och enorma grottor.",
+   "type": "Stad och grottor"
+  },
+  {
+   "n": "Setenil de las Bodegas",
+   "area": "Cádiz",
+   "min": 90,
+   "q": "Setenil de las Bodegas",
+   "s": "En by byggd under överhängande klippor.",
+   "type": "Vit by"
+  },
+  {
+   "n": "Granada – Alhambra",
+   "area": "Granada",
+   "min": 120,
+   "q": "Alhambra, Granada",
+   "url": "https://tickets.alhambra-patronato.es",
+   "s": "Det moriska palatset Alhambra. Boka biljett i god tid.",
+   "type": "Kultur"
+  }
+ ],
+ "kidsList": [
+  {
+   "n": "Aquamijas",
+   "area": "Mijas Costa",
+   "min": 20,
+   "q": "Aquamijas",
+   "s": "Vattenpark med rutschkanor. Endast på sommaren.",
+   "type": "Vattenpark"
+  },
+  {
+   "n": "Bioparc Fuengirola",
+   "area": "Fuengirola",
+   "min": 25,
+   "q": "Bioparc Fuengirola",
+   "s": "Modern djurpark med regnskogsdjur i naturliga miljöer.",
+   "type": "Djurpark"
+  },
+  {
+   "n": "Sea Life Benalmádena",
+   "area": "Benalmádena",
+   "min": 35,
+   "q": "Sea Life Benalmádena",
+   "s": "Akvarium vid hamnen med hajar och sköldpaddor.",
+   "type": "Akvarium"
+  },
+  {
+   "n": "Selwo Marina",
+   "area": "Benalmádena",
+   "min": 35,
+   "q": "Selwo Marina Benalmádena",
+   "s": "Delfiner, sjölejon och pingviner.",
+   "type": "Delfiner och djur"
+  },
+  {
+   "n": "Selwo Aventura",
+   "area": "Estepona",
+   "min": 40,
+   "q": "Selwo Aventura Estepona",
+   "s": "Safaripark där man åker bland djuren.",
+   "type": "Safaripark"
+  }
+ ],
+ "kidsHouse": "I huset: 1 babysäng och 2 extra gästsängar. Barn ska ha tillsyn vid poolen.",
+ "natureList": [
+  {
+   "n": "Hofsaess Tennis Academy",
+   "area": "La Mairena",
+   "min": 3,
+   "q": "Hofsaess Tennis Academy, La Mairena",
+   "s": "Tennisakademi i La Mairena med grus- och hardcourtbanor, öppen för alla.",
+   "type": "Tennis"
+  },
+  {
+   "n": "Refugio de Juanar",
+   "area": "Sierra Blanca, Ojén",
+   "min": 30,
+   "q": "Refugio de Juanar, Ojén",
+   "s": "Startpunkt för vandringar i tallskogen, t.ex. upp till utsiktsplatsen Mirador del Macho Montés.",
+   "type": "Vandring"
+  },
+  {
+   "n": "Parque Nacional Sierra de las Nieves",
+   "area": "Sierra de las Nieves",
+   "min": 45,
+   "q": "Parque Nacional Sierra de las Nieves",
+   "s": "Nationalpark med berg, skogar och vita byar. Många markerade leder.",
+   "type": "Nationalpark"
+  },
+  {
+   "n": "La Concha",
+   "area": "Marbella",
+   "min": 30,
+   "q": "La Concha, Marbella",
+   "s": "Marbellas eget berg. En tuff vandring med fantastisk utsikt. Starta tidigt på sommaren.",
+   "type": "Bergsvandring"
+  },
+  {
+   "n": "Istán och Río Verde",
+   "area": "Istán",
+   "min": 35,
+   "q": "Istán",
+   "s": "Liten bergsby vid en sjö med promenader längs floden Río Verde.",
+   "type": "Natur"
+  }
+ ],
+ "expExtra": [
+  {
+   "key": "dagsture",
+   "n": "Dagsutflykter",
+   "d": "45 min – 2 tim",
+   "s": "Málaga, Ronda, Gibraltar, Alhambra och mer."
+  },
+  {
+   "key": "born",
+   "n": "För barn",
+   "d": "20–40 min",
+   "s": "Vattenpark, djurpark, akvarium och safaripark."
+  },
+  {
+   "key": "natur",
+   "n": "Natur, vandring och tennis",
+   "d": "3–45 min",
+   "s": "Bergsvandringar och tennis i La Mairena."
+  }
+ ],
+ "listIntro": "Körtiderna är ungefärliga. Kontrollera öppettider och boka biljetter där det behövs.",
+ "backTitle": "Kom tillbaka",
+ "backText": "Tack för att ni bodde hos oss. En recension betyder mycket för oss. Och nästa gång kan ni boka direkt hos oss för bästa pris.",
+ "backReview": "Skriv en recension",
+ "backBook": "Boka direkt",
+ "backCode": "Rabattkod för direktbokning",
+ "backTodo": "Rabattkod för direktbokning",
+ "mkTitle": "Marknader och evenemang",
+ "mkText": "Veckomarknader och årets fester i området. Marknaderna har oftast stängt på helgdagar och under stadens feria.",
+ "mkSum": "Veckomarknader",
+ "mkSumD": "10–30 min",
+ "mkIntro": "Tiderna kan ändras, så kontrollera innan ni åker. Kom tidigt, då är det lättare att parkera.",
+ "evSum": "Fester och evenemang",
+ "evSumD": "Hela året",
+ "evIntro": "De exakta datumen ändras från år till år. Listan börjar med innevarande månad.",
+ "mkHome": "Marknader i dag",
+ "mkAll": "Se alla marknader",
+ "mkToday": "I dag",
+ "evNow": "Denna månad",
+ "evNext": "Nästa månad",
+ "markets": [
+  {
+   "n": "Las Chapas-marknaden",
+   "area": "Elviria",
+   "when": "Fredag",
+   "hours": "9–14",
+   "s": "Liten lokal marknad med frukt, grönt, kläder och hushållsartiklar. Den närmaste marknaden.",
+   "dow": [
+    5
+   ],
+   "min": 10,
+   "q": "Calle Pinsapo, Pinares de Elviria, Marbella"
+  },
+  {
+   "n": "Ekologisk marknad",
+   "area": "Elviria",
+   "when": "1:a och 3:e lördagen i månaden",
+   "hours": "9–14",
+   "s": "Ekologiska grönsaker, bröd, ost, olivolja och honung från lokala producenter.",
+   "dow": [
+    6
+   ],
+   "min": 10,
+   "q": "Pinares de Elviria, Marbella",
+   "nth": [
+    1,
+    3
+   ]
+  },
+  {
+   "n": "Marbella-marknaden",
+   "area": "Marbella",
+   "when": "Måndag",
+   "hours": "9–14",
+   "s": "Stadens stora veckomarknad med över 300 stånd: frukt, kläder, skor, väskor och mycket mer.",
+   "dow": [
+    1
+   ],
+   "min": 20,
+   "q": "Recinto Ferial Las Albarizas, Calle José Manuel Vallés, Marbella"
+  },
+  {
+   "n": "Fuengirola-marknaden",
+   "area": "Fuengirola",
+   "when": "Tisdag",
+   "hours": "9–14",
+   "s": "En av Andalusiens största marknader med över 450 stånd. Värd en hel förmiddag.",
+   "dow": [
+    2
+   ],
+   "min": 25,
+   "q": "Recinto Ferial, Fuengirola"
+  },
+  {
+   "n": "San Pedro-marknaden",
+   "area": "San Pedro de Alcántara",
+   "when": "Torsdag",
+   "hours": "9–14",
+   "s": "Stor lokal marknad med frukt, grönt, kläder och skor.",
+   "dow": [
+    4
+   ],
+   "min": 30,
+   "q": "Calle Jorge Guillén, San Pedro de Alcántara"
+  },
+  {
+   "n": "Loppmarknaden i Puerto Banús",
+   "area": "Nueva Andalucía",
+   "when": "Lördag",
+   "hours": "9–14",
+   "s": "Begagnat, antikviteter, hantverk och lite av varje. Trevligt att strosa runt i.",
+   "dow": [
+    6
+   ],
+   "min": 30,
+   "q": "Avenida Pilar Calvo, Nueva Andalucía, Marbella"
+  },
+  {
+   "n": "Loppmarknaden i Fuengirola",
+   "area": "Fuengirola",
+   "when": "Lördag",
+   "hours": "9–14",
+   "s": "Över 300 stånd med antikviteter, begagnat och hantverk.",
+   "dow": [
+    6
+   ],
+   "min": 25,
+   "q": "Recinto Ferial, Fuengirola"
+  },
+  {
+   "n": "Söndagsmarknaden i Fuengirola",
+   "area": "Fuengirola",
+   "when": "Söndag",
+   "hours": "9–14",
+   "s": "Lädervaror, skor, textilier och hantverk. En av få marknader på söndagar.",
+   "dow": [
+    0
+   ],
+   "min": 25,
+   "q": "Calle Méndez Núñez, Fuengirola"
+  },
+  {
+   "n": "Hantverksmarknaden i Puerto Banús",
+   "area": "Puerto Banús",
+   "when": "Dagligen juni–augusti",
+   "hours": "På kvällen",
+   "s": "Sommarmarknad med smycken, konst och handgjorda saker vid hamnen.",
+   "dow": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6
+   ],
+   "min": 30,
+   "q": "Plaza Antonio Banderas, Puerto Banús",
+   "season": [
+    6,
+    7,
+    8
+   ],
+   "eve": 1
+  }
+ ],
+ "events": [
+  {
+   "m": 1,
+   "area": "Marbella",
+   "when": "5 januari",
+   "n": "Trettondagståget",
+   "s": "Cabalgata de Reyes: tåg med de tre vise männen som kastar godis till barnen."
+  },
+  {
+   "m": 2,
+   "area": "Marbella",
+   "when": "Februari eller mars",
+   "n": "Karneval",
+   "s": "Utklädnad, musik och parader på gatorna."
+  },
+  {
+   "m": 3,
+   "area": "Málaga och Marbella",
+   "when": "Mars eller april",
+   "n": "Semana Santa (påskveckan)",
+   "s": "Stora processioner med vackra figurer. Málagas hör till Spaniens mest kända."
+  },
+  {
+   "m": 5,
+   "area": "Marbella – Juanar",
+   "when": "Maj",
+   "n": "Romería Cruz de Juanar",
+   "s": "Pilgrimsvandring med hästar och vagnar upp i bergen till korset vid Juanar, nära huset."
+  },
+  {
+   "m": 6,
+   "area": "Marbella",
+   "when": "Runt 11 juni",
+   "n": "Feria de San Bernabé",
+   "s": "Marbellas stora stadsfest i en vecka med åkattraktioner, musik, flamenco och fest på natten."
+  },
+  {
+   "m": 6,
+   "area": "Stränderna",
+   "when": "23 juni",
+   "n": "Noche de San Juan",
+   "s": "Midsommar på stranden med brasor, musik och fest till långt in på natten."
+  },
+  {
+   "m": 6,
+   "area": "Ojén",
+   "when": "Slutet av juni",
+   "n": "Ojeando Festival",
+   "s": "Liten, trivsam musikfestival i Ojén med spanska band."
+  },
+  {
+   "m": 7,
+   "area": "Marbella",
+   "when": "16 juli",
+   "n": "Virgen del Carmen",
+   "s": "Fiskarnas fest med procession ner till havet och båtar på vattnet."
+  },
+  {
+   "m": 7,
+   "area": "Marbella",
+   "when": "Juli–augusti",
+   "n": "Starlite Festival",
+   "s": "Konserter med stora internationella namn i ett gammalt stenbrott. Köp biljetter i god tid."
+  },
+  {
+   "m": 8,
+   "area": "Las Chapas / Elviria",
+   "when": "Början av augusti",
+   "n": "Feria de Las Chapas",
+   "s": "Lokal stadsfest i Elviria, den närmaste ferian från huset."
+  },
+  {
+   "m": 8,
+   "area": "Málaga",
+   "when": "Mitten av augusti",
+   "n": "Feria de Málaga",
+   "s": "En av Andalusiens största fester: dans och musik på gatorna på dagen och på festplatsen på natten."
+  },
+  {
+   "m": 10,
+   "area": "Ojén",
+   "when": "Runt 9 oktober",
+   "n": "Feria de Ojén",
+   "s": "Byns fest för skyddshelgonet San Dionisio med musik, dans och stånd i fem dagar."
+  },
+  {
+   "m": 10,
+   "area": "San Pedro de Alcántara",
+   "when": "Mitten av oktober",
+   "n": "Feria de San Pedro",
+   "s": "Säsongens sista stora feria på kusten."
+  },
+  {
+   "m": 11,
+   "area": "Ojén",
+   "when": "1 november",
+   "n": "Fiesta del Tostón",
+   "s": "Familjer samlas i naturen och rostar kastanjer över öppen eld."
+  },
+  {
+   "m": 12,
+   "area": "Marbella och Málaga",
+   "when": "December",
+   "n": "Jul i städerna",
+   "s": "Julbelysning, julmarknader och stämning i Marbellas gamla stad och på Calle Larios i Málaga."
+  }
+ ],
+ "rvTitle": "Skriv en recension",
+ "rvAirbnb": "Ni har bokat via Airbnb. Efter utcheckning skickar Airbnb ett mejl där ni kan recensera vistelsen. Det betyder väldigt mycket för oss.",
+ "rvBooking": "Ni har bokat via Booking.com. Efter utcheckning skickar Booking.com ett mejl där ni kan recensera vistelsen. Det betyder väldigt mycket för oss.",
+ "rvVrbo": "Ni har bokat via Vrbo. Efter utcheckning skickar Vrbo ett mejl där ni kan recensera vistelsen. Det betyder väldigt mycket för oss.",
+ "rvDirect": "Tack för att ni bodde hos oss. Har ni en idé om hur huset kan bli ännu bättre vill vi gärna höra den. Och nästa gång kan ni boka direkt hos oss.",
+ "rvAny": "Har ni bokat via Airbnb eller Booking.com skickar de ett mejl efter utcheckning där ni kan recensera vistelsen. Det betyder väldigt mycket för oss. Har ni en idé om hur huset kan bli ännu bättre vill vi också gärna höra den.",
+ "rvIdea": "Ge ett förslag",
+ "rvBook": "Boka direkt nästa gång",
+ "rvTitleDirect": "Tack för besöket"
+};
+/* Norsk (no) – al tekst i appen. Ret tekster her. */
+window.VM_CONTENT.no = {
+ "langName": "Norsk",
+ "ui": {
+  "tabs": {
+   "hjem": "Hjem",
+   "ankomst": "Ankomst",
+   "huset": "Huset",
+   "omraadet": "Området",
+   "kontakt": "Kontakt"
+  },
+  "todo": "Fylles ut",
+  "copy": "Kopier",
+  "copied": "Kopiert",
+  "selected": "Markert. Kopier manuelt",
+  "copyAddress": "Kopier adresse",
+  "openMaps": "Åpne i Google Maps",
+  "language": "Språk"
+ },
+ "weather": {
+  "title": "Været i La Mairena",
+  "loading": "Henter værvarsel …",
+  "feels": "føles som",
+  "wind": "vind",
+  "kmh": "km/t",
+  "today": "I dag",
+  "uv": "UV",
+  "sun": "Sol",
+  "sea": "Havet ved Elviria",
+  "sample": "Eksempel · live i appen",
+  "updated": "Oppdatert",
+  "kinds": {
+   "clear": "Klarvær",
+   "mostly": "Stort sett klart",
+   "partly": "Delvis skyet",
+   "overcast": "Overskyet",
+   "fog": "Tåke",
+   "rain": "Regn",
+   "showers": "Byger",
+   "storm": "Torden",
+   "cloudy": "Skyet"
+  }
+ },
+ "home": {
+  "eyebrow": "La Mairena · Ojén · Costa del Sol",
+  "title": "Velkommen til VillaMairena",
+  "sub": "400 meter over havet, 8 minutter fra stranden i Elviria.",
+  "gate": "Portkode",
+  "gateNote": "Sendes til dere i meldingen før ankomst",
+  "wifi": "Wi‑Fi",
+  "wifiPassLabel": "Passord",
+  "checkin": "Innsjekk",
+  "checkout": "Utsjekk",
+  "fireBanner": {
+   "title": "Høy brannfare 1. juni – 15. oktober",
+   "body": "Ingen grilling, bål eller åpen ild i perioden. Mer under Kontakt.",
+   "link": "Brann og sikkerhet"
+  },
+  "food": {
+   "title": "Bestill mat til huset",
+   "body": "Uber Eats leverer til VillaMairena. Bruk adressen nedenfor og lim inn beskjeden til sjåføren, så finner de porten.",
+   "open": "Åpne Uber Eats",
+   "note": "Beskjed til sjåføren (på spansk)",
+   "copyNote": "Kopier beskjed"
+  },
+  "importantTitle": "Det viktigste under oppholdet",
+  "important": [
+   {
+    "icon": "i-flame",
+    "t": "Røyking forbudt innendørs",
+    "s": "Dere kan gjerne røyke ute, med hensyn til naturen rundt huset."
+   },
+   {
+    "icon": "i-sun",
+    "t": "Gulvvarme og aircondition",
+    "s": "Termostatene er stilt inn på forhånd. Alle soverom har aircondition."
+   },
+   {
+    "icon": "i-home",
+    "t": "Dere trenger ikke vaske",
+    "s": "Profesjonelle rengjørere tar seg av sluttrengjøringen når dere har reist."
+   }
+  ],
+  "sosLabel": "Nødnummer",
+  "sosText": "Det europeiske nødnummeret. Virker overalt i Spania, også uten SIM-kort."
+ },
+ "arrival": {
+  "eyebrow": "Ankomst",
+  "title": "Slik finner dere huset",
+  "addressLabel": "Adresse",
+  "steps": [
+   {
+    "t": "Fra Málaga lufthavn",
+    "d": "Kjør mot Marbella langs kysten. Turen tar ca. 45 minutter.",
+    "route": "airport"
+   },
+   {
+    "t": "Opp til La Mairena",
+    "d": "Fra kysten ved Elviria kjører dere opp i fjellene. Det tar ca. 8 minutter.",
+    "todo": "Veibeskrivelse og kjennetegn"
+   },
+   {
+    "t": "Ved porten",
+    "d": "Eiendommen har en port med porttelefon og kamera. Tast portkoden for å åpne.",
+    "todo": "Hvor tastaturet sitter"
+   },
+   {
+    "t": "Parkering",
+    "d": "Privat parkering til 4 biler på tomten."
+   },
+   {
+    "t": "Inn i huset",
+    "todo": "Nøkkelboks eller kodelås"
+   }
+  ],
+  "missing": "Bilder av porten og innkjørselen gjør ankomsten mye enklere for gjester som kommer etter mørkets frembrudd.",
+  "missingLabel": "Mangler fortsatt"
+ },
+ "house": {
+  "eyebrow": "Huset",
+  "title": "314 m² for 10–12 gjester",
+  "chips": [
+   "5 soverom",
+   "3+1 bad",
+   "Aircondition",
+   "Gulvvarme",
+   "Wi‑Fi og TV",
+   "Tomt på 2 500 m²",
+   "Havutsikt"
+  ],
+  "gallery": {
+   "living": "Stue og spisebord til 12",
+   "kitchen": "Kjøkkenet",
+   "bath": "Hovedsoverom med eget bad",
+   "closet": "Walk-in-closet"
+  },
+  "roomsTitle": "Soverom",
+  "roomsIntro": "Alle rom har aircondition og utsikt mot fjellene. Rom 1, 3, 4 og 5 har fjernstyrte utvendige rullegardiner som mørklegger helt.",
+  "rooms": [
+   {
+    "name": "Hovedsoverom",
+    "meta": "1. etasje · walk-in-closet · eget bad · utsikt mot bassenget"
+   },
+   {
+    "name": "Ekstrarommet",
+    "meta": "1. etasje · delt bad · uten rullegardiner"
+   },
+   {
+    "name": "Utsikt med balkong",
+    "meta": "2. etasje · balkong · bad deles med rom 4"
+   },
+   {
+    "name": "Utsikt fra 2. etasje",
+    "meta": "2. etasje · bad deles med rom 3"
+   },
+   {
+    "name": "Mini-hovedsoverom",
+    "meta": "2. etasje · eget bad · balkong · utsikt mot hav og fjell"
+   }
+  ],
+  "roomWord": "Rom",
+  "extraBeds": "Ekstra: 2 gjestesenger og 1 babyseng.",
+  "poolTitle": "Svømmebasseng",
+  "poolText": "Oppvarmet hele året, ca. 40 m². Solsenger og loungeområde rundt bassenget, med direkte utgang fra stuen og soverommene.",
+  "poolDiagram": {
+   "size": "11 m × 3,5 m",
+   "alt": "Bassenget fra siden: 11 meter langt, 1,10 til 1,70 meter dypt"
+  },
+  "howTitle": "Slik fungerer huset",
+  "howIntro": "Korte guider til husets utstyr. QR-klistremerkene i huset leder rett hit."
+ },
+ "how": [
+  {
+   "id": "pool",
+   "icon": "i-wave",
+   "title": "Bassengvarme",
+   "body": [
+    "Bassenget er oppvarmet hele året.",
+    "Dybden er 1,10 m i den ene enden og 1,70 m i den andre."
+   ],
+   "todo": "Hvordan temperaturen stilles inn, og bassengregler"
+  },
+  {
+   "id": "aircondition",
+   "icon": "i-snow",
+   "title": "Aircondition",
+   "body": [
+    "Alle soverom har aircondition.",
+    "Hold vinduer og dører lukket mens den står på, for best kjøling."
+   ],
+   "todo": "Hvor fjernkontrollen er, og anbefalt temperatur"
+  },
+  {
+   "id": "gulvvarme",
+   "icon": "i-sun",
+   "title": "Gulvvarme",
+   "body": [
+    "Det er gulvvarme i hele huset, styrt av termostater.",
+    "Termostatene er stilt inn på forhånd."
+   ],
+   "todo": "Hvordan man skrur opp og ned"
+  },
+  {
+   "id": "persienner",
+   "icon": "i-blind",
+   "title": "Rullegardiner",
+   "body": [
+    "Rom 1, 3, 4 og 5 har fjernstyrte utvendige rullegardiner som mørklegger helt.",
+    "Rom 2 har ikke rullegardiner."
+   ],
+   "todo": "Hvor bryteren eller fjernkontrollen er"
+  },
+  {
+   "id": "wifi",
+   "icon": "i-wifi",
+   "title": "Wi‑Fi",
+   "body": [
+    "Nettverk: VillaMairena.",
+    "Passord: VillaMairena2027",
+    "Det er Wi‑Fi i hele huset og ute ved bassenget."
+   ]
+  },
+  {
+   "id": "tv",
+   "icon": "i-tv",
+   "title": "TV",
+   "body": [],
+   "todo": "Hvordan man slår den på, og hvilke tjenester som finnes"
+  },
+  {
+   "id": "kaffe",
+   "icon": "i-cup",
+   "title": "Kaffemaskin",
+   "body": [],
+   "todo": "Type maskin og hvor kapsler eller bønner står"
+  },
+  {
+   "id": "vask",
+   "icon": "i-wash",
+   "title": "Vaskemaskin og tørketrommel",
+   "body": [
+    "Vaskemaskin og tørketrommel kan brukes fritt."
+   ],
+   "todo": "Hvor de står, og vaskemiddel"
+  },
+  {
+   "id": "affald",
+   "icon": "i-bin",
+   "title": "Søppel og gjenvinning",
+   "body": [
+    "I Spania sorteres søppel i fargede containere ved veien. Det er ingen henting ved huset, så ta søppelposene med til containerne.",
+    "Kast aldri glass, flasker eller fett i toalettet eller kjøkkenvasken."
+   ],
+   "bins": [
+    [
+     "#e9c443",
+     "Gul",
+     "Plast, bokser, melke- og juicekartonger, folie og brett"
+    ],
+    [
+     "#3b6fb6",
+     "Blå",
+     "Papir, papp og pappesker (gjerne brettet sammen)"
+    ],
+    [
+     "#3f8a4e",
+     "Grønn (rund klokke)",
+     "Glassflasker og glass uten lokk"
+    ],
+    [
+     "#6b6b6b",
+     "Grå eller mørkegrønn",
+     "Restavfall og matrester i lukkede poser"
+    ],
+    [
+     "#8a5a2b",
+     "Brun (hvis det finnes en)",
+     "Matavfall og annet organisk avfall"
+    ]
+   ],
+   "todo": "Hvor de nærmeste containerne står"
+  },
+  {
+   "id": "sikkerhedsudstyr",
+   "icon": "i-flame",
+   "title": "Brannslukker og førstehjelp",
+   "body": [
+    "Det finnes et brannslukningsapparat og et førstehjelpsskrin i huset.",
+    "Begge står under trappen i 1. etasje.",
+    "Ved alvorlig skade eller brann: ring 112."
+   ]
+  },
+  {
+   "id": "afrejse",
+   "icon": "i-key",
+   "title": "Før dere reiser",
+   "body": [
+    "Dere trenger ikke vaske. Sluttrengjøring er inkludert."
+   ],
+   "todo": "Hvor nøklene skal legges",
+   "checkTitle": "Sjekkliste ved avreise",
+   "check": [
+    "Ta med dere ferske matvarer eller kast dem. Salt, pepper, kaffe, olje og lignende basisvarer kan gjerne bli stående til de neste gjestene",
+    "Sett oppvasken i oppvaskmaskinen og start den",
+    "Ta søppel, flasker og papp med til containerne",
+    "Legg brukte håndklær samlet på badene",
+    "Slå av aircondition, lys og TV",
+    "Lukk og lås alle vinduer og terrassedører",
+    "Rengjør grillen etter bruk, så den er klar til de neste gjestene",
+    "Sjekk skap, skuffer, safe og stikkontakter for gjenglemte ting og ladere",
+    "Utsjekk senest kl. 10. Lukk porten etter dere"
+   ],
+   "bye": "Takk for besøket – god tur hjem!",
+   "leaveToday": "Dere reiser i dag",
+   "leaveTomorrow": "Dere reiser i morgen",
+   "leaveSee": "Se sjekklisten før dere drar"
+  }
+ ],
+ "area": {
+  "eyebrow": "Området",
+  "title": "Guide til området",
+  "intro": "Her er vår guide til området rundt huset: strender, innkjøp og restauranter, sport, kultur og mer. Trykk på et punkt med en trekant for å åpne listen.",
+  "beachTitle": "Strendene",
+  "beachText": "Gyllen sand, klart vann, chiringuitos, restauranter og beach clubs. Nærmeste strand ligger ca. 8 minutter fra huset.",
+  "beaches": [
+   [
+    "Las Chapas",
+    "ca. 750 m strand"
+   ],
+   [
+    "La Víbora",
+    "ca. 850 m strand"
+   ],
+   [
+    "Real de Zaragoza",
+    "ca. 1,7 km strand"
+   ]
+  ],
+  "dailyTitle": "Innkjøp og restauranter",
+  "daily": [
+   {
+    "url": "https://www.ubereats.com/es",
+    "n": "Takeaway",
+    "d": "Levering",
+    "s": "Uber Eats leverer til huset. Se «Bestill mat til huset» på forsiden."
+   }
+  ],
+  "dailyTodo": "Deres favorittbutikk og favorittbakeri",
+  "expTitle": "Opplevelser",
+  "suggestion": "Forslag",
+  "exp": [
+   {
+    "key": "golf",
+    "n": "Golf",
+    "d": "Innen 30 min",
+    "s": "Mer enn 10 golfbaner i verdensklasse."
+   },
+   {
+    "key": "padel",
+    "n": "Padel",
+    "d": "Innen 15 min",
+    "s": "Padelbaner i området."
+   },
+   {
+    "key": "kultur",
+    "n": "Severdigheter og kultur",
+    "d": "20–25 min",
+    "s": "Museer, kirker, gamlebyer og historiske steder."
+   }
+  ],
+  "golfTitle": "Golfbaner i nærheten",
+  "golfIntro": "De 10 nærmeste banene. Kjøretidene er omtrentlige. Trykk på Rute for nøyaktig avstand i Google Maps.",
+  "golfHoles": "hull",
+  "golfRoute": "Rute",
+  "golfWeb": "Nettsted",
+  "golfMin": "min",
+  "golfNotes": {
+   "marbellagolf": "Bygges om til Higuerón Marbella Golf Resort",
+   "lacala": "La Cala har tre 18-hullsbaner og en par 3-bane"
+  },
+  "padelIntro": "De 5 nærmeste stedene med padelbaner. Kjøretidene er omtrentlige. Bestill direkte hos klubben.",
+  "padelCourts": "baner",
+  "padelBook": "Bestill bane",
+  "padelNotes": {
+   "light": "Lys for spill om kvelden"
+  },
+  "beachSum": "De 10 nærmeste strendene",
+  "beachSumD": "8–15 min",
+  "beachIntro": "Kjøretidene er omtrentlige. Trykk på Rute for veibeskrivelse i Google Maps.",
+  "beachM": "m",
+  "beachTags": {
+   "golden": "Gyllen sand",
+   "dark": "Mørk sand",
+   "dunes": "Sanddyner (fredet)",
+   "nudist": "Naturistområde",
+   "port": "Ved havnen",
+   "food": "Restauranter og chiringuitos",
+   "kids": "Barneområde",
+   "long": "Lang strand",
+   "quiet": "Roligere"
+  },
+  "shopSum": "Dagligvarer",
+  "shopSumD": "8–20 min",
+  "shopIntro": "Kjøretidene er omtrentlige. Mange butikker har stengt eller kortere åpningstider på søndager, så sjekk før dere drar.",
+  "shopHours": "Åpningstider",
+  "shops": [
+   {
+    "n": "Carrefour Market Elviria",
+    "area": "Elviria",
+    "min": 8,
+    "type": "Matbutikk",
+    "s": "Vanlig matbutikk med frukt, grønt, kjøtt, fisk og vin. Nærmeste store butikk.",
+    "q": "Carrefour Market Elviria, Marbella",
+    "hours": "Man–lør 9–22",
+    "url": "https://www.carrefour.es/tiendas-carrefour/supermercados/carrefour-market/elviria-marbella-s.aspx"
+   },
+   {
+    "n": "Mercadillo de Las Chapas",
+    "area": "Parking Elviria",
+    "min": 8,
+    "type": "Marked",
+    "s": "Lokalt fredagsmarked med ca. 30 boder: frukt og grønt, klær, vesker og håndverk.",
+    "q": "Pinar de Elviria, 29604 Marbella",
+    "hours": "Fredag 9–14",
+    "url": "https://mercadillos.org/es/marbella/mercadillo-las-chapas"
+   },
+   {
+    "n": "Elviria Centro",
+    "area": "Elviria",
+    "min": 8,
+    "type": "Butikker og service",
+    "s": "Elvirias lille sentrum med bakerier, apotek, banker, kafeer og restauranter.",
+    "q": "Centro Comercial Elviria, Marbella"
+   },
+   {
+    "n": "Mercadona",
+    "area": "La Cala de Mijas",
+    "min": 15,
+    "type": "Matbutikk",
+    "s": "Spanias største dagligvarekjede. Stort utvalg og gode priser.",
+    "q": "Mercadona La Cala de Mijas",
+    "hours": "De fleste dager til 21"
+   },
+   {
+    "n": "Lidl",
+    "area": "La Cala de Mijas",
+    "min": 15,
+    "type": "Lavpris",
+    "s": "Lavprisbutikk med ukens tilbud.",
+    "q": "Lidl La Cala de Mijas"
+   },
+   {
+    "n": "Aldi",
+    "area": "La Cala de Mijas",
+    "min": 15,
+    "type": "Lavpris",
+    "s": "Lavprisbutikk med det viktigste.",
+    "q": "Aldi La Cala de Mijas"
+   },
+   {
+    "n": "Mercadillo de La Cala",
+    "area": "La Cala de Mijas",
+    "min": 15,
+    "type": "Marked",
+    "s": "Stort marked med over 100 boder: råvarer, lokale spesialiteter, klær og husholdningsartikler. Kom før kl. 10 for de beste råvarene.",
+    "q": "Mercadillo La Cala de Mijas",
+    "hours": "Onsdag og lørdag 9–14"
+   },
+   {
+    "n": "La Cañada",
+    "area": "Marbella",
+    "min": 20,
+    "type": "Kjøpesenter",
+    "s": "Stort kjøpesenter med hypermarked (Alcampo) og mange kjente butikker.",
+    "q": "Centro Comercial La Cañada, Marbella"
+   }
+  ],
+  "cultIntro": "Kjøretidene er omtrentlige og åpningstidene kan endres, så sjekk før dere drar. De fleste stedene har gratis inngang.",
+  "cults": [
+   {
+    "n": "Iglesia de la Encarnación",
+    "area": "Ojén",
+    "min": 20,
+    "type": "Kirke",
+    "s": "Landsbyens kirke fra 1400-tallet med et vakkert tretak i maurisk (mudéjar) stil fra 1500–1600-tallet.",
+    "q": "Iglesia Nuestra Señora de la Encarnación, Ojén"
+   },
+   {
+    "n": "Museo del Molino y del Aguardiente",
+    "area": "Ojén",
+    "min": 20,
+    "type": "Museum",
+    "s": "Vannmølle fra 1700-tallet med originale maskiner for olivenolje. I andre etasje: museum for Ojéns berømte brennevin, aguardiente.",
+    "q": "Museo del Molino, Calle Charcas 60, Ojén",
+    "url": "https://sierradelasnieves.es/en/?p=6605"
+   },
+   {
+    "n": "Casco Antiguo",
+    "area": "Marbella",
+    "min": 20,
+    "type": "Gamlebyen",
+    "s": "Marbellas hvite gamleby med Plaza de los Naranjos, smale gater og kirken Iglesia de la Encarnación.",
+    "q": "Plaza de los Naranjos, Marbella",
+    "hours": "Alltid åpent"
+   },
+   {
+    "n": "Museo del Grabado Español Contemporáneo",
+    "area": "Marbella",
+    "min": 20,
+    "type": "Kunstmuseum",
+    "s": "Spanias første museum for grafikk med ca. 2 000 verk, bl.a. av Picasso, Miró og Dalí, i et sykehus fra 1600-tallet. Gratis.",
+    "q": "Museo del Grabado Español Contemporáneo, Marbella",
+    "hours": "Man–lør 10–20, søn 10–14"
+   },
+   {
+    "n": "Colección Arqueológica Municipal",
+    "area": "Marbella",
+    "min": 20,
+    "type": "Museum",
+    "s": "Arkeologiske funn fra området, bl.a. romerske villaer, i en bygning fra 1500-tallet. Gratis.",
+    "q": "Plaza Altamirano, Marbella",
+    "hours": "Man–fre 9–14"
+   },
+   {
+    "n": "Cortijo Miraflores",
+    "area": "Marbella",
+    "min": 20,
+    "type": "Kultursenter",
+    "s": "Historisk gård med olivenoljemuseum og arkeologiske utstillinger. Gratis.",
+    "q": "Cortijo Miraflores, Marbella",
+    "hours": "Daglig 9–20.30"
+   },
+   {
+    "n": "Museo Ralli",
+    "area": "Golden Mile, Marbella",
+    "min": 25,
+    "type": "Kunstmuseum",
+    "s": "En av Europas viktigste samlinger av latinamerikansk kunst, 50 m fra stranden. Gratis.",
+    "q": "Museo Ralli, Marbella",
+    "hours": "Tir–fre 10–17, lør 10–15 (stengt 21.12–14.2)",
+    "url": "https://museoralli.es/en/museum-ralli-and-its-surroundings/"
+   },
+   {
+    "n": "Villa Romana de Río Verde",
+    "area": "Marbella",
+    "min": 25,
+    "type": "Romersk ruin",
+    "s": "Romersk villa fra 100–200-tallet med uvanlige svart-hvite mosaikker. Gratis.",
+    "q": "Villa Romana de Río Verde, Marbella",
+    "hours": "Fre–søn 10.30–13.30",
+    "url": "https://www.historyhit.com/locations/rio-verde-roman-villa/"
+   },
+   {
+    "n": "Mijas Pueblo",
+    "area": "Mijas",
+    "min": 25,
+    "type": "Hvit landsby",
+    "s": "Fjellandsby med kirker, kapellet Virgen de la Peña, en oval tyrefekterarena fra 1900 og et miniatyrmuseum.",
+    "q": "Mijas Pueblo"
+   },
+   {
+    "n": "Castillo Sohail",
+    "area": "Fuengirola",
+    "min": 25,
+    "type": "Borg",
+    "s": "Maurisk borg fra 1100-tallet ved kysten med flott utsikt. Gratis.",
+    "q": "Castillo Sohail, Fuengirola",
+    "hours": "Tir–fre 10–14, helger 10–18"
+   }
+  ],
+  "restSum": "Restauranter",
+  "restSumD": "3–30 min",
+  "restIntro": "20 restauranter fra La Mairena og ned langs kysten. Kjøretidene er omtrentlige. Bestill gjerne bord, særlig om sommeren.",
+  "rests": [
+   {
+    "n": "Kudu Bar",
+    "area": "La Mairena",
+    "min": 3,
+    "type": "Internasjonalt",
+    "s": "Populært sted i La Mairena med terrasse og flott utsikt. Kjent for curry, laks og ribbe. Bestill bord.",
+    "q": "Kudu Bar, La Mairena, Ojén",
+    "price": "€€",
+    "url": "https://thekudubar.com"
+   },
+   {
+    "n": "El Soto de Marbella",
+    "area": "La Mairena",
+    "min": 5,
+    "type": "Bar og restaurant",
+    "s": "Bar og restaurant ved golfbanen El Soto. Åpen for alle, med livemusikk i løpet av året.",
+    "q": "El Soto de Marbella club house, Ojén"
+   },
+   {
+    "n": "El Lago",
+    "area": "Elviria Hills",
+    "min": 10,
+    "type": "Fine dining",
+    "s": "Fine dining ved en innsjø i Elviria Hills med andalusiske råvarer. Har hatt en Michelin-stjerne.",
+    "q": "Restaurante El Lago, Elviria, Marbella"
+   },
+   {
+    "n": "Ombú",
+    "area": "Don Carlos Resort, Elviria",
+    "min": 10,
+    "type": "Middelhavsmat",
+    "s": "Restaurant i tropiske hager på Don Carlos Resort.",
+    "q": "Ombú, Don Carlos Resort, Marbella"
+   },
+   {
+    "n": "La Scala Marbella",
+    "area": "Elviria",
+    "min": 10,
+    "type": "Italiensk",
+    "s": "Høyt rangert italiensk restaurant.",
+    "q": "La Scala Marbella, Elviria",
+    "price": "€€€€"
+   },
+   {
+    "n": "Nikki Beach Marbella",
+    "area": "Elviria",
+    "min": 10,
+    "type": "Beach club",
+    "s": "Kjent helhvit beach club med musikk og internasjonalt publikum.",
+    "q": "Nikki Beach Marbella",
+    "price": "€€€€"
+   },
+   {
+    "n": "The Beach House",
+    "area": "Elviria",
+    "min": 10,
+    "type": "Middelhavsmat",
+    "s": "Restaurant ved stranden med middelhavsmat og havutsikt.",
+    "q": "The Beach House Marbella, Elviria",
+    "price": "€€–€€€"
+   },
+   {
+    "n": "La Plage Casanis",
+    "area": "Elviria",
+    "min": 10,
+    "type": "Beach club",
+    "s": "Elegant beach club med middelhavskjøkken.",
+    "q": "La Plage Casanis, Marbella"
+   },
+   {
+    "n": "Chiringuito Tony's",
+    "area": "Elviria",
+    "min": 10,
+    "type": "Sjømat",
+    "s": "Svært populær strand-chiringuito med sjømat.",
+    "q": "Chiringuito Tonys, Elviria, Marbella",
+    "price": "€€–€€€"
+   },
+   {
+    "n": "Restaurante Merendero Cristina",
+    "area": "Elviria",
+    "min": 10,
+    "type": "Sjømat",
+    "s": "Klassisk strandrestaurant med fisk og skalldyr.",
+    "q": "Merendero Cristina, Elviria, Marbella",
+    "price": "€€–€€€"
+   },
+   {
+    "n": "Alma de Papagayo",
+    "area": "Elviria",
+    "min": 10,
+    "type": "Internasjonalt",
+    "s": "Høyt rangert restaurant med internasjonalt kjøkken.",
+    "q": "Alma de Papagayo, Elviria, Marbella",
+    "price": "€€–€€€"
+   },
+   {
+    "n": "Zumaque",
+    "area": "Elviria",
+    "min": 10,
+    "type": "Grill og sjømat",
+    "s": "Kjøtt og fisk, svært godt likt av gjestene.",
+    "q": "Zumaque, Elviria, Marbella",
+    "price": "€€–€€€"
+   },
+   {
+    "n": "Mini India Elviria",
+    "area": "Elviria",
+    "min": 10,
+    "type": "Indisk",
+    "s": "Indisk restaurant, svært populær blant besøkende.",
+    "q": "Mini India Elviria, Marbella",
+    "price": "€€–€€€"
+   },
+   {
+    "n": "Nosso Summer Club",
+    "area": "Las Chapas",
+    "min": 12,
+    "type": "Beach club",
+    "s": "Stilig beach club på stranden Las Chapas med asiatisk-middelhavsmat.",
+    "q": "Nosso Summer Club, Las Chapas, Marbella"
+   },
+   {
+    "n": "Siroko Beach",
+    "area": "Las Chapas",
+    "min": 12,
+    "type": "Beach club",
+    "s": "Strandrestaurant og lounge med solsenger og musikk.",
+    "q": "Siroko Beach, Las Chapas, Marbella"
+   },
+   {
+    "n": "Simbad",
+    "area": "Marbesa",
+    "min": 12,
+    "type": "Sjømat",
+    "s": "Avslappet strandbar med espetos (grillede sardiner) og god vinliste.",
+    "q": "Simbad Restaurant Beach Bar, Marbesa, Marbella"
+   },
+   {
+    "n": "Andy's Beach",
+    "area": "Cabopino",
+    "min": 12,
+    "type": "Sjømat",
+    "s": "Restaurant rett på sanden med sjømat og havutsikt.",
+    "q": "Andy's Beach, Cabopino, Marbella"
+   },
+   {
+    "n": "Mesón Lorente",
+    "area": "Ojén",
+    "min": 20,
+    "type": "Andalusisk",
+    "s": "Andalusisk mat i Ojén med store porsjoner. Kjent for fiskegryten.",
+    "q": "Mesón Lorente, Ojén"
+   },
+   {
+    "n": "El Fogón de Flore",
+    "area": "Ojén",
+    "min": 20,
+    "type": "Spansk og europeisk",
+    "s": "Restaurant høyt oppe i Ojén med utsikt over dalen.",
+    "q": "El Fogón de Flore, Ojén"
+   },
+   {
+    "n": "El Refugio de Juanar",
+    "area": "Sierra Blanca, Ojén",
+    "min": 30,
+    "type": "Andalusisk",
+    "s": "Koselig fjellrestaurant med hjemmelaget andalusisk mat. En flott tur opp i fjellene.",
+    "q": "El Refugio de Juanar, Ojén"
+   }
+  ]
+ },
+ "contact": {
+  "report": {
+   "title": "Meld en feil eller gi et forslag",
+   "intro": "Har noe gått i stykker, eller har dere en idé til hvordan huset kan bli bedre? Skriv til oss her, gjerne med et bilde. Det går rett til eierne.",
+   "issue": "Noe har gått i stykker",
+   "idea": "Forslag til forbedring",
+   "where": "Hvor?",
+   "text": "Beskriv det kort",
+   "photo": "Ta eller velg et bilde",
+   "photoAdded": "Bilde lagt til",
+   "name": "Navn på den som har booket",
+   "send": "Send",
+   "sending": "Sender …",
+   "thanks": "Takk! Vi har mottatt meldingen og tar kontakt ved behov.",
+   "error": "Meldingen ble ikke sendt. Prøv igjen eller ring oss.",
+   "empty": "Skriv en kort beskrivelse eller legg til et bilde.",
+   "urgent": "Hvis det haster, ring oss på +45 51 59 30 50.",
+   "choose": "Velg sted",
+   "inside": "Inne i huset",
+   "outside": "Utendørs",
+   "nameReq": "Skriv navnet på den som har booket oppholdet.",
+   "roomsIn": [
+    "Rom 1 (hovedsoverom)",
+    "Rom 2",
+    "Rom 3",
+    "Rom 4",
+    "Rom 5",
+    "Bad",
+    "Gjestetoalett",
+    "Walk-in-closet",
+    "Kjøkken",
+    "Stue og spisestue",
+    "Gang og trapp",
+    "Vaskemaskin og tørketrommel"
+   ],
+   "roomsOut": [
+    "Basseng",
+    "Terrasse og solsenger",
+    "Balkong",
+    "Hage",
+    "Innkjørsel og port",
+    "Parkering"
+   ],
+   "other": "Annet"
+  },
+  "eyebrow": "Kontakt",
+  "title": "Hvem ringer man",
+  "sos": "Nødnummer: politi, ambulanse, brannvesen",
+  "ownersTitle": "Eierne",
+  "ownersText": "Pernille, Jens, Christina og Thomas. Vi svarer mellom 08.00 og 23.00, ofte innen noen timer.",
+  "phone": "Telefon",
+  "email": "E-post",
+  "localTitle": "På stedet",
+  "local": [
+   {
+    "who": "Lokal vert / forvalter",
+    "what": "Nøkler, port og alt praktisk",
+    "todo": "Navn og nummer"
+   },
+   {
+    "who": "Bassengservice",
+    "what": "Hvis noe er galt med bassenget",
+    "todo": "Navn og nummer"
+   },
+   {
+    "who": "Elektriker / rørlegger",
+    "what": "Strøm, vann, aircondition",
+    "todo": "Navn og nummer"
+   },
+   {
+    "who": "Rengjøring",
+    "what": "Ekstra rengjøring under oppholdet",
+    "todo": "Navn og nummer"
+   }
+  ],
+  "healthTitle": "Helse",
+  "health": [
+   {
+    "who": "Hospital Universitario Costa del Sol",
+    "tag": "Legevakt døgnet rundt",
+    "what": "Offentlig sykehus mellom Elviria og Marbella. Her kan dere bruke Europeisk helsetrygdkort.",
+    "addr": "Autovía A-7, km 187, Marbella",
+    "tel": "+34 951 976 669",
+    "min": 15,
+    "q": "Hospital Universitario Costa del Sol, Marbella"
+   },
+   {
+    "who": "Hospital Quirónsalud Marbella",
+    "tag": "Privat · legevakt døgnet rundt",
+    "what": "Privatsykehus i Marbella med engelsktalende personale. Krever reiseforsikring eller betaling.",
+    "addr": "Avenida Severo Ochoa 22, Marbella",
+    "tel": "+34 952 774 200",
+    "min": 20,
+    "q": "Hospital Quirónsalud Marbella"
+   },
+   {
+    "who": "Consultorio Las Chapas",
+    "tag": "Legekontor",
+    "what": "Offentlig helsesenter nær huset for vanlig legehjelp. Ta med Europeisk helsetrygdkort.",
+    "addr": "Calle Pinsapo s/n, Las Chapas, Marbella",
+    "tel": "+34 951 704 027",
+    "min": 10,
+    "q": "Consultorio Las Chapas, Calle Pinsapo, Marbella"
+   },
+   {
+    "who": "Salud Responde",
+    "tag": "Helsetelefon",
+    "what": "Andalusias offentlige helsetelefon. Ring for råd eller for å bestille legetime.",
+    "tel": "+34 955 545 060"
+   },
+   {
+    "who": "Farmacia Elviria",
+    "tag": "Apotek",
+    "what": "Nærmeste apotek, i Elviria. Apoteket gir også råd ved lettere sykdom.",
+    "addr": "Avenida de las Cumbres 4, Elviria, Marbella",
+    "tel": "+34 952 831 457",
+    "min": 8,
+    "q": "Farmacia Elviria, Avenida de las Cumbres 4, Marbella"
+   },
+   {
+    "who": "Vaktapotek (farmacia de guardia)",
+    "tag": "Kveld, natt og helligdager",
+    "what": "Apotekene bytter på å ha vakt. Nærmeste vaktapotek står på et skilt på døren til alle apotek, eller finn det på kartet.",
+    "search": "farmacia de guardia Marbella"
+   }
+  ],
+  "healthIntro": "Ved livstruende situasjoner: ring 112. Ta med Europeisk helsetrygdkort og reiseforsikringen.",
+  "hCall": "Ring",
+  "hRoute": "Rute",
+  "hFind": "Finn på kartet"
+ },
+ "safety": {
+  "title": "Brann og sikkerhet",
+  "intro": "Huset ligger inntil skogen. Skogbrann er den største risikoen i området, særlig om sommeren.",
+  "seasonLabel": "1. juni – 15. oktober",
+  "season": "I Andalusia er det forbudt å grille, tenne bål og bruke åpen ild i skogsområder og innen 400 meter fra skog. Det gjelder også ved huset.",
+  "rules": [
+   "Kast aldri sigarettstumper i naturen. Bruk et askebeger.",
+   "Ikke parker bilen på tørt gress. Et varmt eksosrør kan antenne det.",
+   "Ingen fyrverkeri eller himmellykter."
+  ],
+  "houseRuleTodo": "Husets egne regler for grilling (f.eks. om gassgrill på terrassen er tillatt)",
+  "fireTitle": "Hvis dere ser røyk eller ild",
+  "fire": [
+   "Ring 112 med en gang og oppgi adressen: Calle Navarra 5, La Mairena.",
+   "Følg instruksjoner fra politi, brannvesen og Guardia Civil.",
+   "Myndighetene kan sende varsler direkte til telefonen deres (ES-Alert). Følg dem."
+  ],
+  "evacTodo": "Rømningsvei og møteplass ved evakuering",
+  "ext": "Brannslukningsapparat og førstehjelpsskrin står under trappen i 1. etasje."
+ }
+};
+window.VM_EXTRA.no = {
+ "rulesTitle": "Husregler",
+ "rulesIntro": "Slik at alle får et godt opphold og huset er klart til de neste gjestene.",
+ "rules": [
+  {
+   "t": "Maks 12 personer",
+   "s": "Huset er for 10–12 gjester. Det er 5 soverom, 2 ekstra gjestesenger og 1 babyseng."
+  },
+  {
+   "t": "Røyking forbudt innendørs",
+   "s": "Røyk gjerne ute, og bruk et askebeger."
+  },
+  {
+   "t": "Barn ved bassenget",
+   "s": "Barn skal alltid være under tilsyn ved bassenget. Ikke glass ved bassengkanten."
+  },
+  {
+   "t": "Skader",
+   "s": "Har noe gått i stykker, meld det i appen under Huset. Det er helt i orden, vi vil bare gjerne vite det."
+  },
+  {
+   "t": "Ro og naboer",
+   "s": "Respekter naboene. Det skal være ro fra kl. 23."
+  },
+  {
+   "t": "Ingen fester eller arrangementer",
+   "s": "Det er ikke tillatt å holde fester eller noen form for arrangementer i huset."
+  },
+  {
+   "t": "Ingen kjæledyr",
+   "s": "Kjæledyr er ikke tillatt i eller utenfor huset."
+  }
+ ],
+ "pracTitle": "Praktisk i Spania",
+ "prac": [
+  {
+   "t": "Måltider",
+   "s": "Lunsj spises gjerne kl. 14–16 og middag fra kl. 21. Mange restauranter åpner kjøkkenet til middag rundt kl. 20."
+  },
+  {
+   "t": "Butikker og søndager",
+   "s": "Mange mindre butikker er stengt på søndager, og noen midt på dagen. Større matbutikker har lengre åpent."
+  },
+  {
+   "t": "Apotek",
+   "s": "Apotek har et grønt kors. Utenfor åpningstid har et vaktapotek (farmacia de guardia) åpent – det står på døren til alle apotek."
+  },
+  {
+   "t": "Tips",
+   "s": "Ikke påkrevd. Det er vanlig å runde opp eller gi 5–10 % for god service på restaurant."
+  },
+  {
+   "t": "Vann fra springen",
+   "s": "Vannet fra springen kan drikkes, men mange foretrekker flaskevann på grunn av smaken."
+  },
+  {
+   "t": "Strøm",
+   "s": "230 V med europeiske stikkontakter. Gjester fra Storbritannia og USA trenger adapter."
+  },
+  {
+   "t": "Betaling",
+   "s": "Kort tas nesten overalt. Ha litt kontanter til markeder og chiringuitos."
+  }
+ ],
+ "wordsTitle": "10 nyttige spanske ord",
+ "words": [
+  {
+   "es": "Hola",
+   "x": "Hei"
+  },
+  {
+   "es": "Buenos días",
+   "x": "God morgen"
+  },
+  {
+   "es": "Por favor",
+   "x": "Vær så snill"
+  },
+  {
+   "es": "Gracias",
+   "x": "Takk"
+  },
+  {
+   "es": "Perdón",
+   "x": "Unnskyld"
+  },
+  {
+   "es": "¿Cuánto cuesta?",
+   "x": "Hva koster det?"
+  },
+  {
+   "es": "La cuenta, por favor",
+   "x": "Regningen, takk"
+  },
+  {
+   "es": "Agua",
+   "x": "Vann"
+  },
+  {
+   "es": "¡Ayuda!",
+   "x": "Hjelp!"
+  },
+  {
+   "es": "Adiós",
+   "x": "Ha det"
+  }
+ ],
+ "trTitle": "Transport",
+ "trIntro": "Det går ingen offentlig transport opp til La Mairena, så bil er klart enklest.",
+ "tr": [
+  {
+   "t": "Leiebil",
+   "s": "Hent bil på Málaga lufthavn. Det er plass til 4 biler på tomten."
+  },
+  {
+   "t": "Taxi og Uber",
+   "s": "Uber og Cabify kjører i Marbella-området. Bestill i god tid til La Mairena."
+  },
+  {
+   "t": "Flyplasstransfer",
+   "todo": "Deres foretrukne transferselskap og pris"
+  },
+  {
+   "t": "Tog til Málaga",
+   "s": "Fra Fuengirola går lokaltoget (Cercanías C1) til Málaga lufthavn og sentrum, ca. 45 min."
+  },
+  {
+   "t": "Buss",
+   "s": "Busser kjører langs kysten fra Elviria til Marbella og Fuengirola, men ikke opp til huset."
+  },
+  {
+   "t": "Parkering i Marbella",
+   "s": "Bruk et av parkeringshusene under bakken i sentrum – enklere enn gateparkering."
+  }
+ ],
+ "trips": [
+  {
+   "n": "Málaga",
+   "area": "Málaga",
+   "min": 45,
+   "q": "Málaga centro",
+   "s": "Picassomuseet, katedralen, festningen Alcazaba og god shopping.",
+   "type": "By"
+  },
+  {
+   "n": "Ronda",
+   "area": "Ronda",
+   "min": 75,
+   "q": "Ronda",
+   "s": "Byen på klippen med den berømte broen Puente Nuevo over juvet.",
+   "type": "By"
+  },
+  {
+   "n": "Caminito del Rey",
+   "area": "Ardales",
+   "min": 75,
+   "q": "Caminito del Rey",
+   "url": "https://www.caminitodelrey.info",
+   "s": "Gangsti langs fjellveggen høyt over et juv. Bestill billett på forhånd.",
+   "type": "Natur"
+  },
+  {
+   "n": "Gibraltar",
+   "area": "Gibraltar",
+   "min": 75,
+   "q": "Gibraltar",
+   "s": "Klippen med apene, utsikt mot Afrika og britisk stemning. Ta med pass.",
+   "type": "Dagstur"
+  },
+  {
+   "n": "Nerja",
+   "area": "Nerja",
+   "min": 75,
+   "q": "Cueva de Nerja",
+   "s": "Sjarmerende kystby med utsiktspunktet Balcón de Europa og enorme grotter.",
+   "type": "By og grotter"
+  },
+  {
+   "n": "Setenil de las Bodegas",
+   "area": "Cádiz",
+   "min": 90,
+   "q": "Setenil de las Bodegas",
+   "s": "En landsby bygget under overhengende klipper.",
+   "type": "Hvit landsby"
+  },
+  {
+   "n": "Granada – Alhambra",
+   "area": "Granada",
+   "min": 120,
+   "q": "Alhambra, Granada",
+   "url": "https://tickets.alhambra-patronato.es",
+   "s": "Det mauriske palasset Alhambra. Bestill billetter i god tid.",
+   "type": "Kultur"
+  }
+ ],
+ "kidsList": [
+  {
+   "n": "Aquamijas",
+   "area": "Mijas Costa",
+   "min": 20,
+   "q": "Aquamijas",
+   "s": "Vannpark med sklier. Kun om sommeren.",
+   "type": "Vannpark"
+  },
+  {
+   "n": "Bioparc Fuengirola",
+   "area": "Fuengirola",
+   "min": 25,
+   "q": "Bioparc Fuengirola",
+   "s": "Moderne dyrepark med regnskogsdyr i naturlige omgivelser.",
+   "type": "Dyrepark"
+  },
+  {
+   "n": "Sea Life Benalmádena",
+   "area": "Benalmádena",
+   "min": 35,
+   "q": "Sea Life Benalmádena",
+   "s": "Akvarium ved havnen med haier og skilpadder.",
+   "type": "Akvarium"
+  },
+  {
+   "n": "Selwo Marina",
+   "area": "Benalmádena",
+   "min": 35,
+   "q": "Selwo Marina Benalmádena",
+   "s": "Delfiner, sjøløver og pingviner.",
+   "type": "Delfiner og dyr"
+  },
+  {
+   "n": "Selwo Aventura",
+   "area": "Estepona",
+   "min": 40,
+   "q": "Selwo Aventura Estepona",
+   "s": "Safaripark der man kjører blant dyrene.",
+   "type": "Safaripark"
+  }
+ ],
+ "kidsHouse": "I huset: 1 babyseng og 2 ekstra gjestesenger. Barn skal være under tilsyn ved bassenget.",
+ "natureList": [
+  {
+   "n": "Hofsaess Tennis Academy",
+   "area": "La Mairena",
+   "min": 3,
+   "q": "Hofsaess Tennis Academy, La Mairena",
+   "s": "Tennisakademi i La Mairena med grus- og hardcourtbaner, åpent for alle.",
+   "type": "Tennis"
+  },
+  {
+   "n": "Refugio de Juanar",
+   "area": "Sierra Blanca, Ojén",
+   "min": 30,
+   "q": "Refugio de Juanar, Ojén",
+   "s": "Startsted for turer i furuskogen, f.eks. opp til utsiktspunktet Mirador del Macho Montés.",
+   "type": "Fottur"
+  },
+  {
+   "n": "Parque Nacional Sierra de las Nieves",
+   "area": "Sierra de las Nieves",
+   "min": 45,
+   "q": "Parque Nacional Sierra de las Nieves",
+   "s": "Nasjonalpark med fjell, skog og hvite landsbyer. Mange merkede stier.",
+   "type": "Nasjonalpark"
+  },
+  {
+   "n": "La Concha",
+   "area": "Marbella",
+   "min": 30,
+   "q": "La Concha, Marbella",
+   "s": "Marbellas eget fjell. En krevende tur med fantastisk utsikt. Start tidlig om sommeren.",
+   "type": "Fjelltur"
+  },
+  {
+   "n": "Istán og Río Verde",
+   "area": "Istán",
+   "min": 35,
+   "q": "Istán",
+   "s": "Liten fjellandsby ved en innsjø med turer langs elven Río Verde.",
+   "type": "Natur"
+  }
+ ],
+ "expExtra": [
+  {
+   "key": "dagsture",
+   "n": "Dagsturer",
+   "d": "45 min – 2 t",
+   "s": "Málaga, Ronda, Gibraltar, Alhambra og mer."
+  },
+  {
+   "key": "born",
+   "n": "For barn",
+   "d": "20–40 min",
+   "s": "Vannpark, dyrepark, akvarium og safaripark."
+  },
+  {
+   "key": "natur",
+   "n": "Natur, fottur og tennis",
+   "d": "3–45 min",
+   "s": "Fjellturer og tennis i La Mairena."
+  }
+ ],
+ "listIntro": "Kjøretidene er omtrentlige. Sjekk åpningstider og bestill billetter der det trengs.",
+ "backTitle": "Kom igjen",
+ "backText": "Takk for at dere bodde hos oss. En anmeldelse betyr mye for oss. Og neste gang kan dere booke direkte hos oss for beste pris.",
+ "backReview": "Skriv en anmeldelse",
+ "backBook": "Book direkte",
+ "backCode": "Rabattkode for direkte booking",
+ "backTodo": "Rabattkode for direkte booking",
+ "mkTitle": "Markeder og arrangementer",
+ "mkText": "Ukentlige markeder og årets fester i området. Markedene er som regel stengt på helligdager og under byens feria.",
+ "mkSum": "Ukentlige markeder",
+ "mkSumD": "10–30 min",
+ "mkIntro": "Tidene kan endres, så sjekk før dere drar. Kom tidlig, da er det lettere å parkere.",
+ "evSum": "Fester og arrangementer",
+ "evSumD": "Hele året",
+ "evIntro": "De nøyaktige datoene endres fra år til år. Listen starter med inneværende måned.",
+ "mkHome": "Markeder i dag",
+ "mkAll": "Se alle markeder",
+ "mkToday": "I dag",
+ "evNow": "Denne måneden",
+ "evNext": "Neste måned",
+ "markets": [
+  {
+   "n": "Las Chapas-markedet",
+   "area": "Elviria",
+   "when": "Fredag",
+   "hours": "9–14",
+   "s": "Lite lokalt marked med frukt, grønt, klær og husholdningsartikler. Det nærmeste markedet.",
+   "dow": [
+    5
+   ],
+   "min": 10,
+   "q": "Calle Pinsapo, Pinares de Elviria, Marbella"
+  },
+  {
+   "n": "Økologisk marked",
+   "area": "Elviria",
+   "when": "1. og 3. lørdag i måneden",
+   "hours": "9–14",
+   "s": "Økologiske grønnsaker, brød, ost, olivenolje og honning fra lokale produsenter.",
+   "dow": [
+    6
+   ],
+   "min": 10,
+   "q": "Pinares de Elviria, Marbella",
+   "nth": [
+    1,
+    3
+   ]
+  },
+  {
+   "n": "Marbella-markedet",
+   "area": "Marbella",
+   "when": "Mandag",
+   "hours": "9–14",
+   "s": "Byens store ukemarked med over 300 boder: frukt, klær, sko, vesker og mye mer.",
+   "dow": [
+    1
+   ],
+   "min": 20,
+   "q": "Recinto Ferial Las Albarizas, Calle José Manuel Vallés, Marbella"
+  },
+  {
+   "n": "Fuengirola-markedet",
+   "area": "Fuengirola",
+   "when": "Tirsdag",
+   "hours": "9–14",
+   "s": "Et av Andalusias største markeder med over 450 boder. Verdt en hel formiddag.",
+   "dow": [
+    2
+   ],
+   "min": 25,
+   "q": "Recinto Ferial, Fuengirola"
+  },
+  {
+   "n": "San Pedro-markedet",
+   "area": "San Pedro de Alcántara",
+   "when": "Torsdag",
+   "hours": "9–14",
+   "s": "Stort lokalt marked med frukt, grønt, klær og sko.",
+   "dow": [
+    4
+   ],
+   "min": 30,
+   "q": "Calle Jorge Guillén, San Pedro de Alcántara"
+  },
+  {
+   "n": "Loppemarkedet i Puerto Banús",
+   "area": "Nueva Andalucía",
+   "when": "Lørdag",
+   "hours": "9–14",
+   "s": "Brukte ting, antikviteter, håndverk og litt av hvert. Hyggelig å rusle rundt i.",
+   "dow": [
+    6
+   ],
+   "min": 30,
+   "q": "Avenida Pilar Calvo, Nueva Andalucía, Marbella"
+  },
+  {
+   "n": "Loppemarkedet i Fuengirola",
+   "area": "Fuengirola",
+   "when": "Lørdag",
+   "hours": "9–14",
+   "s": "Over 300 boder med antikviteter, brukte ting og håndverk.",
+   "dow": [
+    6
+   ],
+   "min": 25,
+   "q": "Recinto Ferial, Fuengirola"
+  },
+  {
+   "n": "Søndagsmarkedet i Fuengirola",
+   "area": "Fuengirola",
+   "when": "Søndag",
+   "hours": "9–14",
+   "s": "Lærvarer, sko, tekstiler og håndverk. Et av få markeder på søndager.",
+   "dow": [
+    0
+   ],
+   "min": 25,
+   "q": "Calle Méndez Núñez, Fuengirola"
+  },
+  {
+   "n": "Håndverksmarkedet i Puerto Banús",
+   "area": "Puerto Banús",
+   "when": "Daglig i juni–august",
+   "hours": "Om kvelden",
+   "s": "Sommermarked med smykker, kunst og håndlagde ting ved havnen.",
+   "dow": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6
+   ],
+   "min": 30,
+   "q": "Plaza Antonio Banderas, Puerto Banús",
+   "season": [
+    6,
+    7,
+    8
+   ],
+   "eve": 1
+  }
+ ],
+ "events": [
+  {
+   "m": 1,
+   "area": "Marbella",
+   "when": "5. januar",
+   "n": "Helligtrekongers-tog",
+   "s": "Cabalgata de Reyes: tog med de tre vise menn som kaster godteri til barna."
+  },
+  {
+   "m": 2,
+   "area": "Marbella",
+   "when": "Februar eller mars",
+   "n": "Karneval",
+   "s": "Utkledning, musikk og opptog i gatene."
+  },
+  {
+   "m": 3,
+   "area": "Málaga og Marbella",
+   "when": "Mars eller april",
+   "n": "Semana Santa (påskeuken)",
+   "s": "Store prosesjoner med flotte figurer. Málagas er blant Spanias mest kjente."
+  },
+  {
+   "m": 5,
+   "area": "Marbella – Juanar",
+   "when": "Mai",
+   "n": "Romería Cruz de Juanar",
+   "s": "Pilegrimsvandring med hester og vogner opp i fjellene til korset ved Juanar, nær huset."
+  },
+  {
+   "m": 6,
+   "area": "Marbella",
+   "when": "Rundt 11. juni",
+   "n": "Feria de San Bernabé",
+   "s": "Marbellas store byfest i en uke med tivoli, musikk, flamenco og fest om natten."
+  },
+  {
+   "m": 6,
+   "area": "Strendene",
+   "when": "23. juni",
+   "n": "Noche de San Juan",
+   "s": "Sankthans på stranden med bål, musikk og fest til langt på natt."
+  },
+  {
+   "m": 6,
+   "area": "Ojén",
+   "when": "Slutten av juni",
+   "n": "Ojeando Festival",
+   "s": "Liten, koselig musikkfestival i Ojén med spanske band."
+  },
+  {
+   "m": 7,
+   "area": "Marbella",
+   "when": "16. juli",
+   "n": "Virgen del Carmen",
+   "s": "Fiskernes fest med prosesjon ned til havet og båter på vannet."
+  },
+  {
+   "m": 7,
+   "area": "Marbella",
+   "when": "Juli–august",
+   "n": "Starlite Festival",
+   "s": "Konserter med store internasjonale navn i et gammelt steinbrudd. Kjøp billetter i god tid."
+  },
+  {
+   "m": 8,
+   "area": "Las Chapas / Elviria",
+   "when": "Begynnelsen av august",
+   "n": "Feria de Las Chapas",
+   "s": "Lokal byfest i Elviria, den nærmeste ferian fra huset."
+  },
+  {
+   "m": 8,
+   "area": "Málaga",
+   "when": "Midten av august",
+   "n": "Feria de Málaga",
+   "s": "En av Andalusias største fester: dans og musikk i gatene om dagen og på festplassen om natten."
+  },
+  {
+   "m": 10,
+   "area": "Ojén",
+   "when": "Rundt 9. oktober",
+   "n": "Feria de Ojén",
+   "s": "Landsbyens fest for skytshelgenen San Dionisio med musikk, dans og boder i fem dager."
+  },
+  {
+   "m": 10,
+   "area": "San Pedro de Alcántara",
+   "when": "Midten av oktober",
+   "n": "Feria de San Pedro",
+   "s": "Sesongens siste store feria på kysten."
+  },
+  {
+   "m": 11,
+   "area": "Ojén",
+   "when": "1. november",
+   "n": "Fiesta del Tostón",
+   "s": "Familier samles i naturen og rister kastanjer over bål."
+  },
+  {
+   "m": 12,
+   "area": "Marbella og Málaga",
+   "when": "Desember",
+   "n": "Jul i byene",
+   "s": "Julelys, julemarkeder og stemning i gamlebyen i Marbella og i Calle Larios i Málaga."
+  }
+ ],
+ "rvTitle": "Skriv en anmeldelse",
+ "rvAirbnb": "Dere har booket via Airbnb. Etter utsjekk sender Airbnb dere en e-post der dere kan anmelde oppholdet. Det betyr veldig mye for oss.",
+ "rvBooking": "Dere har booket via Booking.com. Etter utsjekk sender Booking.com dere en e-post der dere kan anmelde oppholdet. Det betyr veldig mye for oss.",
+ "rvVrbo": "Dere har booket via Vrbo. Etter utsjekk sender Vrbo dere en e-post der dere kan anmelde oppholdet. Det betyr veldig mye for oss.",
+ "rvDirect": "Takk for at dere bodde hos oss. Har dere en idé til hvordan huset kan bli enda bedre, vil vi gjerne høre den. Og neste gang kan dere booke direkte hos oss.",
+ "rvAny": "Har dere booket via Airbnb eller Booking.com, sender de en e-post etter utsjekk der dere kan anmelde oppholdet. Det betyr veldig mye for oss. Har dere en idé til hvordan huset kan bli enda bedre, vil vi også gjerne høre den.",
+ "rvIdea": "Gi et forslag",
+ "rvBook": "Book direkte neste gang",
+ "rvTitleDirect": "Takk for besøket"
 };
 
 window.VM_WIFIQR="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%2037%2037%22%20shape-rendering%3D%22crispEdges%22%3E%3Crect%20width%3D%2237%22%20height%3D%2237%22%20fill%3D%22%23fff%22/%3E%3Cpath%20d%3D%22M2%202h1v1h-1zM3%202h1v1h-1zM4%202h1v1h-1zM5%202h1v1h-1zM6%202h1v1h-1zM7%202h1v1h-1zM8%202h1v1h-1zM11%202h1v1h-1zM14%202h1v1h-1zM15%202h1v1h-1zM18%202h1v1h-1zM19%202h1v1h-1zM21%202h1v1h-1zM22%202h1v1h-1zM24%202h1v1h-1zM28%202h1v1h-1zM29%202h1v1h-1zM30%202h1v1h-1zM31%202h1v1h-1zM32%202h1v1h-1zM33%202h1v1h-1zM34%202h1v1h-1zM2%203h1v1h-1zM8%203h1v1h-1zM11%203h1v1h-1zM15%203h1v1h-1zM16%203h1v1h-1zM17%203h1v1h-1zM19%203h1v1h-1zM22%203h1v1h-1zM26%203h1v1h-1zM28%203h1v1h-1zM34%203h1v1h-1zM2%204h1v1h-1zM4%204h1v1h-1zM5%204h1v1h-1zM6%204h1v1h-1zM8%204h1v1h-1zM10%204h1v1h-1zM11%204h1v1h-1zM14%204h1v1h-1zM15%204h1v1h-1zM18%204h1v1h-1zM19%204h1v1h-1zM20%204h1v1h-1zM23%204h1v1h-1zM24%204h1v1h-1zM25%204h1v1h-1zM26%204h1v1h-1zM28%204h1v1h-1zM30%204h1v1h-1zM31%204h1v1h-1zM32%204h1v1h-1zM34%204h1v1h-1zM2%205h1v1h-1zM4%205h1v1h-1zM5%205h1v1h-1zM6%205h1v1h-1zM8%205h1v1h-1zM10%205h1v1h-1zM12%205h1v1h-1zM13%205h1v1h-1zM16%205h1v1h-1zM17%205h1v1h-1zM18%205h1v1h-1zM21%205h1v1h-1zM22%205h1v1h-1zM25%205h1v1h-1zM28%205h1v1h-1zM30%205h1v1h-1zM31%205h1v1h-1zM32%205h1v1h-1zM34%205h1v1h-1zM2%206h1v1h-1zM4%206h1v1h-1zM5%206h1v1h-1zM6%206h1v1h-1zM8%206h1v1h-1zM10%206h1v1h-1zM13%206h1v1h-1zM15%206h1v1h-1zM17%206h1v1h-1zM20%206h1v1h-1zM23%206h1v1h-1zM24%206h1v1h-1zM25%206h1v1h-1zM26%206h1v1h-1zM28%206h1v1h-1zM30%206h1v1h-1zM31%206h1v1h-1zM32%206h1v1h-1zM34%206h1v1h-1zM2%207h1v1h-1zM8%207h1v1h-1zM10%207h1v1h-1zM11%207h1v1h-1zM12%207h1v1h-1zM13%207h1v1h-1zM17%207h1v1h-1zM18%207h1v1h-1zM19%207h1v1h-1zM20%207h1v1h-1zM22%207h1v1h-1zM24%207h1v1h-1zM28%207h1v1h-1zM34%207h1v1h-1zM2%208h1v1h-1zM3%208h1v1h-1zM4%208h1v1h-1zM5%208h1v1h-1zM6%208h1v1h-1zM7%208h1v1h-1zM8%208h1v1h-1zM10%208h1v1h-1zM12%208h1v1h-1zM14%208h1v1h-1zM16%208h1v1h-1zM18%208h1v1h-1zM20%208h1v1h-1zM22%208h1v1h-1zM24%208h1v1h-1zM26%208h1v1h-1zM28%208h1v1h-1zM29%208h1v1h-1zM30%208h1v1h-1zM31%208h1v1h-1zM32%208h1v1h-1zM33%208h1v1h-1zM34%208h1v1h-1zM10%209h1v1h-1zM12%209h1v1h-1zM14%209h1v1h-1zM16%209h1v1h-1zM17%209h1v1h-1zM20%209h1v1h-1zM23%209h1v1h-1zM25%209h1v1h-1zM2%2010h1v1h-1zM4%2010h1v1h-1zM5%2010h1v1h-1zM6%2010h1v1h-1zM7%2010h1v1h-1zM8%2010h1v1h-1zM11%2010h1v1h-1zM12%2010h1v1h-1zM13%2010h1v1h-1zM14%2010h1v1h-1zM15%2010h1v1h-1zM16%2010h1v1h-1zM17%2010h1v1h-1zM18%2010h1v1h-1zM19%2010h1v1h-1zM24%2010h1v1h-1zM28%2010h1v1h-1zM29%2010h1v1h-1zM30%2010h1v1h-1zM31%2010h1v1h-1zM32%2010h1v1h-1zM2%2011h1v1h-1zM3%2011h1v1h-1zM6%2011h1v1h-1zM9%2011h1v1h-1zM10%2011h1v1h-1zM11%2011h1v1h-1zM13%2011h1v1h-1zM17%2011h1v1h-1zM18%2011h1v1h-1zM20%2011h1v1h-1zM21%2011h1v1h-1zM22%2011h1v1h-1zM25%2011h1v1h-1zM26%2011h1v1h-1zM27%2011h1v1h-1zM2%2012h1v1h-1zM4%2012h1v1h-1zM5%2012h1v1h-1zM6%2012h1v1h-1zM8%2012h1v1h-1zM11%2012h1v1h-1zM13%2012h1v1h-1zM14%2012h1v1h-1zM17%2012h1v1h-1zM20%2012h1v1h-1zM22%2012h1v1h-1zM27%2012h1v1h-1zM28%2012h1v1h-1zM29%2012h1v1h-1zM30%2012h1v1h-1zM31%2012h1v1h-1zM32%2012h1v1h-1zM33%2012h1v1h-1zM4%2013h1v1h-1zM9%2013h1v1h-1zM10%2013h1v1h-1zM11%2013h1v1h-1zM12%2013h1v1h-1zM13%2013h1v1h-1zM14%2013h1v1h-1zM16%2013h1v1h-1zM23%2013h1v1h-1zM24%2013h1v1h-1zM25%2013h1v1h-1zM26%2013h1v1h-1zM28%2013h1v1h-1zM29%2013h1v1h-1zM30%2013h1v1h-1zM31%2013h1v1h-1zM32%2013h1v1h-1zM33%2013h1v1h-1zM2%2014h1v1h-1zM3%2014h1v1h-1zM5%2014h1v1h-1zM7%2014h1v1h-1zM8%2014h1v1h-1zM10%2014h1v1h-1zM14%2014h1v1h-1zM20%2014h1v1h-1zM23%2014h1v1h-1zM27%2014h1v1h-1zM29%2014h1v1h-1zM30%2014h1v1h-1zM32%2014h1v1h-1zM3%2015h1v1h-1zM5%2015h1v1h-1zM14%2015h1v1h-1zM16%2015h1v1h-1zM17%2015h1v1h-1zM18%2015h1v1h-1zM22%2015h1v1h-1zM25%2015h1v1h-1zM26%2015h1v1h-1zM28%2015h1v1h-1zM31%2015h1v1h-1zM5%2016h1v1h-1zM7%2016h1v1h-1zM8%2016h1v1h-1zM10%2016h1v1h-1zM14%2016h1v1h-1zM21%2016h1v1h-1zM23%2016h1v1h-1zM26%2016h1v1h-1zM27%2016h1v1h-1zM31%2016h1v1h-1zM32%2016h1v1h-1zM33%2016h1v1h-1zM3%2017h1v1h-1zM9%2017h1v1h-1zM10%2017h1v1h-1zM11%2017h1v1h-1zM13%2017h1v1h-1zM14%2017h1v1h-1zM15%2017h1v1h-1zM16%2017h1v1h-1zM18%2017h1v1h-1zM21%2017h1v1h-1zM22%2017h1v1h-1zM23%2017h1v1h-1zM24%2017h1v1h-1zM25%2017h1v1h-1zM26%2017h1v1h-1zM27%2017h1v1h-1zM28%2017h1v1h-1zM31%2017h1v1h-1zM32%2017h1v1h-1zM33%2017h1v1h-1zM34%2017h1v1h-1zM2%2018h1v1h-1zM3%2018h1v1h-1zM8%2018h1v1h-1zM11%2018h1v1h-1zM12%2018h1v1h-1zM14%2018h1v1h-1zM15%2018h1v1h-1zM16%2018h1v1h-1zM18%2018h1v1h-1zM19%2018h1v1h-1zM21%2018h1v1h-1zM24%2018h1v1h-1zM27%2018h1v1h-1zM30%2018h1v1h-1zM33%2018h1v1h-1zM2%2019h1v1h-1zM3%2019h1v1h-1zM6%2019h1v1h-1zM11%2019h1v1h-1zM12%2019h1v1h-1zM13%2019h1v1h-1zM16%2019h1v1h-1zM19%2019h1v1h-1zM20%2019h1v1h-1zM21%2019h1v1h-1zM22%2019h1v1h-1zM27%2019h1v1h-1zM29%2019h1v1h-1zM31%2019h1v1h-1zM32%2019h1v1h-1zM34%2019h1v1h-1zM2%2020h1v1h-1zM3%2020h1v1h-1zM4%2020h1v1h-1zM6%2020h1v1h-1zM8%2020h1v1h-1zM9%2020h1v1h-1zM11%2020h1v1h-1zM13%2020h1v1h-1zM14%2020h1v1h-1zM15%2020h1v1h-1zM16%2020h1v1h-1zM17%2020h1v1h-1zM19%2020h1v1h-1zM22%2020h1v1h-1zM24%2020h1v1h-1zM29%2020h1v1h-1zM33%2020h1v1h-1zM3%2021h1v1h-1zM5%2021h1v1h-1zM6%2021h1v1h-1zM7%2021h1v1h-1zM9%2021h1v1h-1zM11%2021h1v1h-1zM12%2021h1v1h-1zM14%2021h1v1h-1zM17%2021h1v1h-1zM19%2021h1v1h-1zM20%2021h1v1h-1zM22%2021h1v1h-1zM25%2021h1v1h-1zM26%2021h1v1h-1zM27%2021h1v1h-1zM31%2021h1v1h-1zM32%2021h1v1h-1zM3%2022h1v1h-1zM4%2022h1v1h-1zM5%2022h1v1h-1zM8%2022h1v1h-1zM10%2022h1v1h-1zM12%2022h1v1h-1zM13%2022h1v1h-1zM14%2022h1v1h-1zM15%2022h1v1h-1zM16%2022h1v1h-1zM17%2022h1v1h-1zM18%2022h1v1h-1zM21%2022h1v1h-1zM22%2022h1v1h-1zM23%2022h1v1h-1zM24%2022h1v1h-1zM25%2022h1v1h-1zM29%2022h1v1h-1zM30%2022h1v1h-1zM32%2022h1v1h-1zM33%2022h1v1h-1zM34%2022h1v1h-1zM2%2023h1v1h-1zM3%2023h1v1h-1zM7%2023h1v1h-1zM9%2023h1v1h-1zM12%2023h1v1h-1zM13%2023h1v1h-1zM17%2023h1v1h-1zM19%2023h1v1h-1zM20%2023h1v1h-1zM25%2023h1v1h-1zM26%2023h1v1h-1zM27%2023h1v1h-1zM28%2023h1v1h-1zM32%2023h1v1h-1zM33%2023h1v1h-1zM2%2024h1v1h-1zM5%2024h1v1h-1zM6%2024h1v1h-1zM7%2024h1v1h-1zM8%2024h1v1h-1zM14%2024h1v1h-1zM16%2024h1v1h-1zM17%2024h1v1h-1zM18%2024h1v1h-1zM19%2024h1v1h-1zM22%2024h1v1h-1zM23%2024h1v1h-1zM24%2024h1v1h-1zM26%2024h1v1h-1zM29%2024h1v1h-1zM30%2024h1v1h-1zM31%2024h1v1h-1zM32%2024h1v1h-1zM33%2024h1v1h-1zM2%2025h1v1h-1zM7%2025h1v1h-1zM9%2025h1v1h-1zM13%2025h1v1h-1zM14%2025h1v1h-1zM17%2025h1v1h-1zM20%2025h1v1h-1zM23%2025h1v1h-1zM26%2025h1v1h-1zM29%2025h1v1h-1zM31%2025h1v1h-1zM32%2025h1v1h-1zM34%2025h1v1h-1zM2%2026h1v1h-1zM4%2026h1v1h-1zM5%2026h1v1h-1zM8%2026h1v1h-1zM9%2026h1v1h-1zM12%2026h1v1h-1zM13%2026h1v1h-1zM14%2026h1v1h-1zM15%2026h1v1h-1zM17%2026h1v1h-1zM18%2026h1v1h-1zM19%2026h1v1h-1zM24%2026h1v1h-1zM26%2026h1v1h-1zM27%2026h1v1h-1zM28%2026h1v1h-1zM29%2026h1v1h-1zM30%2026h1v1h-1zM33%2026h1v1h-1zM34%2026h1v1h-1zM10%2027h1v1h-1zM11%2027h1v1h-1zM12%2027h1v1h-1zM16%2027h1v1h-1zM17%2027h1v1h-1zM18%2027h1v1h-1zM20%2027h1v1h-1zM22%2027h1v1h-1zM23%2027h1v1h-1zM25%2027h1v1h-1zM26%2027h1v1h-1zM30%2027h1v1h-1zM34%2027h1v1h-1zM2%2028h1v1h-1zM3%2028h1v1h-1zM4%2028h1v1h-1zM5%2028h1v1h-1zM6%2028h1v1h-1zM7%2028h1v1h-1zM8%2028h1v1h-1zM12%2028h1v1h-1zM14%2028h1v1h-1zM15%2028h1v1h-1zM16%2028h1v1h-1zM17%2028h1v1h-1zM18%2028h1v1h-1zM20%2028h1v1h-1zM22%2028h1v1h-1zM23%2028h1v1h-1zM25%2028h1v1h-1zM26%2028h1v1h-1zM28%2028h1v1h-1zM30%2028h1v1h-1zM31%2028h1v1h-1zM32%2028h1v1h-1zM33%2028h1v1h-1zM2%2029h1v1h-1zM8%2029h1v1h-1zM10%2029h1v1h-1zM12%2029h1v1h-1zM14%2029h1v1h-1zM16%2029h1v1h-1zM23%2029h1v1h-1zM24%2029h1v1h-1zM26%2029h1v1h-1zM30%2029h1v1h-1zM32%2029h1v1h-1zM2%2030h1v1h-1zM4%2030h1v1h-1zM5%2030h1v1h-1zM6%2030h1v1h-1zM8%2030h1v1h-1zM10%2030h1v1h-1zM11%2030h1v1h-1zM12%2030h1v1h-1zM14%2030h1v1h-1zM15%2030h1v1h-1zM20%2030h1v1h-1zM23%2030h1v1h-1zM26%2030h1v1h-1zM27%2030h1v1h-1zM28%2030h1v1h-1zM29%2030h1v1h-1zM30%2030h1v1h-1zM31%2030h1v1h-1zM33%2030h1v1h-1zM34%2030h1v1h-1zM2%2031h1v1h-1zM4%2031h1v1h-1zM5%2031h1v1h-1zM6%2031h1v1h-1zM8%2031h1v1h-1zM10%2031h1v1h-1zM12%2031h1v1h-1zM13%2031h1v1h-1zM16%2031h1v1h-1zM17%2031h1v1h-1zM18%2031h1v1h-1zM22%2031h1v1h-1zM24%2031h1v1h-1zM25%2031h1v1h-1zM26%2031h1v1h-1zM27%2031h1v1h-1zM34%2031h1v1h-1zM2%2032h1v1h-1zM4%2032h1v1h-1zM5%2032h1v1h-1zM6%2032h1v1h-1zM8%2032h1v1h-1zM10%2032h1v1h-1zM11%2032h1v1h-1zM13%2032h1v1h-1zM15%2032h1v1h-1zM16%2032h1v1h-1zM20%2032h1v1h-1zM21%2032h1v1h-1zM23%2032h1v1h-1zM24%2032h1v1h-1zM26%2032h1v1h-1zM31%2032h1v1h-1zM32%2032h1v1h-1zM2%2033h1v1h-1zM8%2033h1v1h-1zM18%2033h1v1h-1zM21%2033h1v1h-1zM22%2033h1v1h-1zM23%2033h1v1h-1zM25%2033h1v1h-1zM29%2033h1v1h-1zM30%2033h1v1h-1zM31%2033h1v1h-1zM32%2033h1v1h-1zM2%2034h1v1h-1zM3%2034h1v1h-1zM4%2034h1v1h-1zM5%2034h1v1h-1zM6%2034h1v1h-1zM7%2034h1v1h-1zM8%2034h1v1h-1zM10%2034h1v1h-1zM11%2034h1v1h-1zM13%2034h1v1h-1zM14%2034h1v1h-1zM15%2034h1v1h-1zM18%2034h1v1h-1zM19%2034h1v1h-1zM20%2034h1v1h-1zM21%2034h1v1h-1zM24%2034h1v1h-1zM26%2034h1v1h-1zM28%2034h1v1h-1zM29%2034h1v1h-1zM30%2034h1v1h-1zM31%2034h1v1h-1zM33%2034h1v1h-1z%22%20fill%3D%22%23000%22/%3E%3C/svg%3E";
