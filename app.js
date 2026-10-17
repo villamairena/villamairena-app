@@ -210,17 +210,27 @@
           (g.url ? '<a href="' + esc(g.url) + '" target="_blank" rel="noopener">' + esc(a.golfWeb) + " ↗</a>" : "") + "</span></li>";
       }).join("") + "</ol></details>";
   }
+  var BFILT = ["food", "water", "kids", "long", "quiet", "dunes", "port", "nudist"];
+  var WATER = { da: { t: "Vandaktiviteter", all: "Alle strande" }, en: { t: "Water sports", all: "All beaches" }, es: { t: "Actividades acuáticas", all: "Todas las playas" }, de: { t: "Wassersport", all: "Alle Strände" }, fr: { t: "Activités nautiques", all: "Toutes les plages" }, sv: { t: "Vattenaktiviteter", all: "Alla stränder" }, no: { t: "Vannaktiviteter", all: "Alle strender" } };
+  function btag(t) { return t === "water" ? WATER[lang].t : (T.area.beachTags[t] || t); }
+  document.addEventListener("click", function (e) {
+    var b = e.target.closest && e.target.closest("[data-bf]"); if (!b) return;
+    var f = b.getAttribute("data-bf"), box = b.closest("details");
+    box.querySelectorAll("[data-bf]").forEach(function (x) { x.setAttribute("aria-pressed", x === b ? "true" : "false"); });
+    box.querySelectorAll("li[data-tags]").forEach(function (li) { li.hidden = f !== "all" && (" " + li.getAttribute("data-tags") + " ").indexOf(" " + f + " ") < 0; });
+  });
   function renderBeachItem() {
     var a = T.area, B = window.VM_BEACH || [];
     var origin = encodeURIComponent("Calle Navarra 5, 29612 La Mairena, Ojén");
     return '<details class="place golf" id="strande"><summary><span class="nm">' + esc(a.beachSum) + '</span><span class="dist">' + esc(a.beachSumD) + "</span></summary>" +
-      '<p class="muted gi">' + esc(a.beachIntro) + "</p><ol>" +
+      '<p class="muted gi">' + esc(a.beachIntro) + "</p>" +
+      '<div class="antabs bfilter" role="group">' + ["all"].concat(BFILT).map(function (t) { return '<button class="chipbtn" type="button" data-bf="' + t + '" aria-pressed="' + (t === "all") + '">' + esc(t === "all" ? WATER[lang].all : btag(t)) + "</button>"; }).join("") + "</div><ol>" +
       B.map(function (g) {
         var route = "https://www.google.com/maps/dir/?api=1&origin=" + origin + "&destination=" + encodeURIComponent("Playa " + g.name.split(" (")[0].split(" / ")[0] + ", " + g.area) + "&travelmode=driving";
-        var len = g.len ? (g.len >= 1000 ? (g.len / 1000).toLocaleString(lang === "en" ? "en-GB" : "da-DK") + " km" : g.len + " m") : "";
-        return '<li><div class="gh"><span class="gn">' + esc(g.name) + '</span><span class="gm">' + CA() + ' ' + g.min + " " + esc(a.golfMin) + "</span></div>" +
+        var len = g.len ? (g.len >= 1000 ? (g.len / 1000).toLocaleString(lang === "en" ? "en-GB" : lang === "no" ? "nb-NO" : lang === "sv" ? "sv-SE" : lang === "fr" ? "fr-FR" : lang === "de" ? "de-DE" : lang === "es" ? "es-ES" : "da-DK") + " km" : g.len + " m") : "";
+        return '<li data-tags="' + g.tags.join(" ") + '"><div class="gh"><span class="gn">' + esc(g.name) + '</span><span class="gm">' + CA() + ' ' + g.min + " " + esc(a.golfMin) + "</span></div>" +
           '<span class="gs">' + esc(g.area) + (len ? " · " + len : "") + "</span>" +
-          '<span class="gs">' + g.tags.map(function (t) { return esc(a.beachTags[t] || t); }).join(" · ") + "</span>" +
+          '<span class="gs">' + g.tags.map(function (t) { return esc(btag(t)); }).join(" · ") + "</span>" +
           '<span class="gl"><a href="' + route + '" target="_blank" rel="noopener">' + ic("i-pin", 14) + esc(a.golfRoute) + "</a></span></li>";
       }).join("") + "</ol></details>";
   }
