@@ -211,20 +211,29 @@
       }).join("") + "</ol></details>";
   }
   var BFILT = ["food", "water", "kids", "long", "quiet", "dunes", "port", "nudist"];
-  var WATER = { da: { t: "Vandaktiviteter", all: "Alle strande" }, en: { t: "Water sports", all: "All beaches" }, es: { t: "Actividades acuáticas", all: "Todas las playas" }, de: { t: "Wassersport", all: "Alle Strände" }, fr: { t: "Activités nautiques", all: "Toutes les plages" }, sv: { t: "Vattenaktiviteter", all: "Alla stränder" }, no: { t: "Vannaktiviteter", all: "Alle strender" } };
+  var WATER = { da: { none: "Ingen strande har alle de valgte. Fjern et filter.", t: "Vandaktiviteter", all: "Alle strande" }, en: { none: "No beach has all the selected features. Remove a filter.", t: "Water sports", all: "All beaches" }, es: { none: "Ninguna playa tiene todo lo seleccionado. Quita un filtro.", t: "Actividades acuáticas", all: "Todas las playas" }, de: { none: "Kein Strand hat alle gewählten Merkmale. Entfernen Sie einen Filter.", t: "Wassersport", all: "Alle Strände" }, fr: { none: "Aucune plage ne réunit tous ces critères. Retirez un filtre.", t: "Activités nautiques", all: "Toutes les plages" }, sv: { none: "Ingen strand har allt som valts. Ta bort ett filter.", t: "Vattenaktiviteter", all: "Alla stränder" }, no: { none: "Ingen strand har alt som er valgt. Fjern et filter.", t: "Vannaktiviteter", all: "Alle strender" } };
   function btag(t) { return t === "water" ? WATER[lang].t : (T.area.beachTags[t] || t); }
   document.addEventListener("click", function (e) {
     var b = e.target.closest && e.target.closest("[data-bf]"); if (!b) return;
-    var f = b.getAttribute("data-bf"), box = b.closest("details");
-    box.querySelectorAll("[data-bf]").forEach(function (x) { x.setAttribute("aria-pressed", x === b ? "true" : "false"); });
-    box.querySelectorAll("li[data-tags]").forEach(function (li) { li.hidden = f !== "all" && (" " + li.getAttribute("data-tags") + " ").indexOf(" " + f + " ") < 0; });
+    var f = b.getAttribute("data-bf"), box = b.closest("details"), all = box.querySelector('[data-bf="all"]');
+    if (f === "all") box.querySelectorAll("[data-bf]").forEach(function (x) { x.setAttribute("aria-pressed", x === all ? "true" : "false"); });
+    else b.setAttribute("aria-pressed", b.getAttribute("aria-pressed") === "true" ? "false" : "true");
+    var sel = [].slice.call(box.querySelectorAll('[data-bf]:not([data-bf="all"])[aria-pressed="true"]')).map(function (x) { return x.getAttribute("data-bf"); });
+    all.setAttribute("aria-pressed", sel.length ? "false" : "true");
+    var n = 0;
+    box.querySelectorAll("li[data-tags]").forEach(function (li) {
+      var t = " " + li.getAttribute("data-tags") + " ";
+      li.hidden = !sel.every(function (k) { return t.indexOf(" " + k + " ") >= 0; });
+      if (!li.hidden) n++;
+    });
+    var em = box.querySelector(".bempty"); if (em) em.hidden = n > 0;
   });
   function renderBeachItem() {
     var a = T.area, B = window.VM_BEACH || [];
     var origin = encodeURIComponent("Calle Navarra 5, 29612 La Mairena, Ojén");
     return '<details class="place golf" id="strande"><summary><span class="nm">' + esc(a.beachSum) + '</span><span class="dist">' + esc(a.beachSumD) + "</span></summary>" +
       '<p class="muted gi">' + esc(a.beachIntro) + "</p>" +
-      '<div class="antabs bfilter" role="group">' + ["all"].concat(BFILT).map(function (t) { return '<button class="chipbtn" type="button" data-bf="' + t + '" aria-pressed="' + (t === "all") + '">' + esc(t === "all" ? WATER[lang].all : btag(t)) + "</button>"; }).join("") + "</div><ol>" +
+      '<div class="antabs bfilter" role="group">' + ["all"].concat(BFILT).map(function (t) { return '<button class="chipbtn" type="button" data-bf="' + t + '" aria-pressed="' + (t === "all") + '">' + esc(t === "all" ? WATER[lang].all : btag(t)) + "</button>"; }).join("") + '</div><p class="muted bempty" hidden>' + esc(WATER[lang].none) + "</p><ol>" +
       B.map(function (g) {
         var route = "https://www.google.com/maps/dir/?api=1&origin=" + origin + "&destination=" + encodeURIComponent("Playa " + g.name.split(" (")[0].split(" / ")[0] + ", " + g.area) + "&travelmode=driving";
         var len = g.len ? (g.len >= 1000 ? (g.len / 1000).toLocaleString(lang === "en" ? "en-GB" : lang === "no" ? "nb-NO" : lang === "sv" ? "sv-SE" : lang === "fr" ? "fr-FR" : lang === "de" ? "de-DE" : lang === "es" ? "es-ES" : "da-DK") + " km" : g.len + " m") : "";
@@ -264,16 +273,30 @@
           (g.url ? '<a href="' + esc(g.url) + '" target="_blank" rel="noopener">' + esc(a.golfWeb) + " ↗</a>" : "") + gygLink(g.n) + "</span></li>";
       }).join("") + "</ol></details>";
   }
+  var RFILT = ["beach", "fish", "tapas", "spanish", "italian", "asian", "intl", "gourmet", "beachclub", "view", "kids"];
+  var RTAGS = {
+    da: { all: "Alle restauranter", none: "Ingen restauranter har alle de valgte. Fjern et filter.", beach: "Ved stranden", fish: "Fisk og skaldyr", tapas: "Tapas", spanish: "Spansk/andalusisk", italian: "Italiensk", asian: "Asiatisk/indisk", intl: "International", gourmet: "Gourmet", beachclub: "Beach club", view: "Udsigt", kids: "Børnevenlig" },
+    en: { all: "All restaurants", none: "No restaurant has all the selected features. Remove a filter.", beach: "On the beach", fish: "Fish and seafood", tapas: "Tapas", spanish: "Spanish/Andalusian", italian: "Italian", asian: "Asian/Indian", intl: "International", gourmet: "Gourmet", beachclub: "Beach club", view: "View", kids: "Child-friendly" },
+    es: { all: "Todos los restaurantes", none: "Ningún restaurante tiene todo lo seleccionado. Quita un filtro.", beach: "En la playa", fish: "Pescado y marisco", tapas: "Tapas", spanish: "Español/andaluz", italian: "Italiano", asian: "Asiático/indio", intl: "Internacional", gourmet: "Gourmet", beachclub: "Beach club", view: "Vistas", kids: "Para niños" },
+    de: { all: "Alle Restaurants", none: "Kein Restaurant hat alle gewählten Merkmale. Entfernen Sie einen Filter.", beach: "Am Strand", fish: "Fisch und Meeresfrüchte", tapas: "Tapas", spanish: "Spanisch/andalusisch", italian: "Italienisch", asian: "Asiatisch/indisch", intl: "International", gourmet: "Gourmet", beachclub: "Beach Club", view: "Aussicht", kids: "Kinderfreundlich" },
+    fr: { all: "Tous les restaurants", none: "Aucun restaurant ne réunit tous ces critères. Retirez un filtre.", beach: "Sur la plage", fish: "Poissons et fruits de mer", tapas: "Tapas", spanish: "Espagnol/andalou", italian: "Italien", asian: "Asiatique/indien", intl: "International", gourmet: "Gastronomique", beachclub: "Beach club", view: "Vue", kids: "Adapté aux enfants" },
+    sv: { all: "Alla restauranger", none: "Ingen restaurang har allt som valts. Ta bort ett filter.", beach: "Vid stranden", fish: "Fisk och skaldjur", tapas: "Tapas", spanish: "Spanskt/andalusiskt", italian: "Italienskt", asian: "Asiatiskt/indiskt", intl: "Internationellt", gourmet: "Gourmet", beachclub: "Beach club", view: "Utsikt", kids: "Barnvänligt" },
+    no: { all: "Alle restauranter", none: "Ingen restauranter har alt som er valgt. Fjern et filter.", beach: "Ved stranden", fish: "Fisk og sjømat", tapas: "Tapas", spanish: "Spansk/andalusisk", italian: "Italiensk", asian: "Asiatisk/indisk", intl: "Internasjonalt", gourmet: "Gourmet", beachclub: "Beach club", view: "Utsikt", kids: "Barnevennlig" }
+  };
   function renderRestItem() {
-    var a = T.area, L = a.rests || [];
+    var a = T.area, L = window.VM_RESTS || [], R = RTAGS[lang] || RTAGS.en, desc = {};
+    (a.rests || []).forEach(function (r) { desc[r.n] = r.s; });
     var origin = encodeURIComponent("Calle Navarra 5, 29612 La Mairena, Ojén");
     return '<details class="place golf" id="restauranter"><summary><span class="nm">' + esc(a.restSum) + '</span><span class="dist">' + esc(a.restSumD) + "</span></summary>" +
-      '<p class="muted gi">' + esc(a.restIntro) + "</p><ol>" +
+      '<p class="muted gi">' + esc(a.restIntro) + "</p>" +
+      '<div class="antabs bfilter" role="group">' + ["all"].concat(RFILT).map(function (t) { return '<button class="chipbtn" type="button" data-bf="' + t + '" aria-pressed="' + (t === "all") + '">' + esc(R[t]) + "</button>"; }).join("") + "</div>" +
+      '<p class="muted bempty" hidden>' + esc(R.none) + "</p><ol>" +
       L.map(function (g) {
-        var route = "https://www.google.com/maps/dir/?api=1&origin=" + origin + "&destination=" + encodeURIComponent(g.q) + "&travelmode=driving";
-        return '<li><div class="gh"><span class="gn">' + esc(g.n) + '</span><span class="gm">' + CA() + ' ' + g.min + " " + esc(a.golfMin) + "</span></div>" +
-          '<span class="gs">' + esc(g.type) + " · " + esc(g.area) + (g.price ? " · " + esc(g.price) : "") + "</span>" +
-          '<span class="gs">' + esc(g.s) + "</span>" +
+        var route = "https://www.google.com/maps/dir/?api=1&origin=" + origin + "&destination=" + encodeURIComponent(g.n + ", " + g.area) + "&travelmode=driving";
+        return '<li data-tags="' + g.tags.join(" ") + '"><div class="gh"><span class="gn">' + esc(g.n) + '</span><span class="gm">' + CA() + " " + g.min + " " + esc(a.golfMin) + "</span></div>" +
+          '<span class="gs">' + esc(g.area) + " · " + esc(g.price) + "</span>" +
+          '<span class="gs">' + g.tags.map(function (t) { return esc(R[t] || t); }).join(" · ") + "</span>" +
+          (desc[g.n] ? '<span class="gs">' + esc(desc[g.n]) + "</span>" : "") +
           '<span class="gl"><a href="' + route + '" target="_blank" rel="noopener">' + ic("i-pin", 14) + esc(a.golfRoute) + "</a>" +
           (g.url ? '<a href="' + esc(g.url) + '" target="_blank" rel="noopener">' + esc(a.golfWeb) + " ↗</a>" : "") + "</span></li>";
       }).join("") + "</ol></details>";
