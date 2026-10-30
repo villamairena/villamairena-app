@@ -249,34 +249,34 @@
   function airportUberText() {
     return { da: "Bestil Uber fra lufthavnen (Taxi)", en: "Order an Uber from the airport (Taxi)", es: "Pedir un Uber desde el aeropuerto (Taxi)", de: "Uber vom Flughafen bestellen (Taxi)", fr: "Commander un Uber depuis l'aéroport (Taxi)", sv: "Beställ Uber från flygplatsen (Taxi)", no: "Bestill Uber fra flyplassen (Taxi)" }[lang] || "Uber";
   }
-  // Bestil Uber: åbner Uber-appen med villaen som afhentning (eller som mål for "hjem").
+  // Bestil Uber (Taxi): kopiér målets adresse og åbn Uber. iPhone-appen tager ikke imod adresser fra links,
+  // så gæsten indsætter selv målet. Afhentning sætter Uber ud fra telefonens position.
   function rideCard() {
-    var D = [
-      { k: "elviria", lat: 36.5008, lng: -4.7660, price: "15–20 €", min: 12 },
-      { k: "marbella", lat: 36.5103, lng: -4.8848, price: "25–32 €", min: 20 }
-    ];
     var R = {
-      da: { airport: "Fra lufthavnen til villaen", title: "Bestil en Uber (Taxi)", body: "Tryk på et mål. Uber-appen åbner med villaen som afhentningssted.", elviria: "Elviria by", marbella: "Marbella gamle bydel", approx: "ca.", other: "Andet mål", home: "Hjem til villaen", note: "Priserne er vejledende for en UberX om dagen og kan være højere om aftenen og i weekenden. Bilerne holder typisk ved kysten, så regn med 10–20 minutters ventetid." },
-      en: { airport: "From the airport to the villa", title: "Order an Uber (Taxi)", body: "Tap a destination. The Uber app opens with the villa as pickup.", elviria: "Elviria village", marbella: "Marbella old town", approx: "approx.", other: "Other destination", home: "Back to the villa", note: "Prices are indicative for an UberX during the day and may be higher in the evening and at weekends. Cars are usually down by the coast, so allow 10–20 minutes for pickup." },
-      es: { airport: "Del aeropuerto a la villa", title: "Pedir un Uber (Taxi)", body: "Pulsa un destino. La app de Uber se abre con la villa como punto de recogida.", elviria: "Elviria pueblo", marbella: "Casco antiguo de Marbella", approx: "aprox.", other: "Otro destino", home: "Volver a la villa", note: "Precios orientativos para un UberX de día; pueden ser más altos por la noche y los fines de semana. Los coches suelen estar en la costa, así que cuenta con 10–20 minutos de espera." },
-      de: { airport: "Vom Flughafen zur Villa", title: "Uber bestellen (Taxi)", body: "Ziel antippen. Die Uber-App öffnet sich mit der Villa als Abholort.", elviria: "Elviria Ort", marbella: "Altstadt Marbella", approx: "ca.", other: "Anderes Ziel", home: "Zurück zur Villa", note: "Richtpreise für ein UberX tagsüber; abends und am Wochenende kann es teurer sein. Die Autos stehen meist an der Küste, rechnen Sie mit 10–20 Minuten Wartezeit." },
-      fr: { airport: "De l'aéroport à la villa", title: "Commander un Uber (Taxi)", body: "Touchez une destination. L'app Uber s'ouvre avec la villa comme lieu de prise en charge.", elviria: "Village d'Elviria", marbella: "Vieille ville de Marbella", approx: "env.", other: "Autre destination", home: "Retour à la villa", note: "Prix indicatifs pour un UberX en journée, parfois plus élevés le soir et le week-end. Les voitures sont souvent sur la côte : comptez 10 à 20 minutes d'attente." },
-      sv: { airport: "Från flygplatsen till villan", title: "Beställ en Uber (Taxi)", body: "Tryck på ett mål. Uber-appen öppnas med villan som upphämtningsplats.", elviria: "Elviria by", marbella: "Marbellas gamla stad", approx: "ca", other: "Annat mål", home: "Tillbaka till villan", note: "Priserna är ungefärliga för en UberX dagtid och kan vara högre på kvällar och helger. Bilarna står oftast vid kusten, så räkna med 10–20 minuters väntetid." },
-      no: { airport: "Fra flyplassen til villaen", title: "Bestill en Uber (Taxi)", body: "Trykk på et mål. Uber-appen åpnes med villaen som hentested.", elviria: "Elviria by", marbella: "Marbella gamleby", approx: "ca.", other: "Annet mål", home: "Hjem til villaen", note: "Prisene er veiledende for en UberX på dagtid og kan være høyere på kvelder og i helger. Bilene står som regel ved kysten, så regn med 10–20 minutters ventetid." }
-    }[lang] || null;
+      da: { title: "Bestil en Uber (Taxi)", body: "Tryk Kopiér ved dit mål, åbn Uber og indsæt adressen som mål. Uber henter dig, hvor du står.", elviria: "Elviria by", marbella: "Marbella gamle bydel", airport: "Fra lufthavnen til villaen", home: "Hjem til villaen", approx: "ca.", copy: "Kopiér", open: "Åbn Uber", note: "Priserne er vejledende for en UberX om dagen og kan være højere om aftenen og i weekenden. Bilerne holder typisk ved kysten, så regn med 10–20 minutters ventetid." },
+      en: { title: "Order an Uber (Taxi)", body: "Tap Copy next to your destination, open Uber and paste the address as your destination. Uber picks you up where you are.", elviria: "Elviria village", marbella: "Marbella old town", airport: "From the airport to the villa", home: "Back to the villa", approx: "approx.", copy: "Copy", open: "Open Uber", note: "Prices are indicative for an UberX during the day and may be higher in the evening and at weekends. Cars are usually down by the coast, so allow 10–20 minutes for pickup." },
+      es: { title: "Pedir un Uber (Taxi)", body: "Pulsa Copiar junto a tu destino, abre Uber y pega la dirección como destino. Uber te recoge donde estés.", elviria: "Elviria pueblo", marbella: "Casco antiguo de Marbella", airport: "Del aeropuerto a la villa", home: "Volver a la villa", approx: "aprox.", copy: "Copiar", open: "Abrir Uber", note: "Precios orientativos para un UberX de día; pueden ser más altos por la noche y los fines de semana. Los coches suelen estar en la costa, así que cuenta con 10–20 minutos de espera." },
+      de: { title: "Uber bestellen (Taxi)", body: "Tippen Sie bei Ihrem Ziel auf Kopieren, öffnen Sie Uber und fügen Sie die Adresse als Ziel ein. Uber holt Sie dort ab, wo Sie sind.", elviria: "Elviria Ort", marbella: "Altstadt Marbella", airport: "Vom Flughafen zur Villa", home: "Zurück zur Villa", approx: "ca.", copy: "Kopieren", open: "Uber öffnen", note: "Richtpreise für ein UberX tagsüber; abends und am Wochenende kann es teurer sein. Die Autos stehen meist an der Küste, rechnen Sie mit 10–20 Minuten Wartezeit." },
+      fr: { title: "Commander un Uber (Taxi)", body: "Touchez Copier à côté de votre destination, ouvrez Uber et collez l'adresse comme destination. Uber vous prend là où vous êtes.", elviria: "Village d'Elviria", marbella: "Vieille ville de Marbella", airport: "De l'aéroport à la villa", home: "Retour à la villa", approx: "env.", copy: "Copier", open: "Ouvrir Uber", note: "Prix indicatifs pour un UberX en journée, parfois plus élevés le soir et le week-end. Les voitures sont souvent sur la côte : comptez 10 à 20 minutes d'attente." },
+      sv: { title: "Beställ en Uber (Taxi)", body: "Tryck på Kopiera vid ditt mål, öppna Uber och klistra in adressen som mål. Uber hämtar dig där du är.", elviria: "Elviria by", marbella: "Marbellas gamla stad", airport: "Från flygplatsen till villan", home: "Tillbaka till villan", approx: "ca", copy: "Kopiera", open: "Öppna Uber", note: "Priserna är ungefärliga för en UberX dagtid och kan vara högre på kvällar och helger. Bilarna står oftast vid kusten, så räkna med 10–20 minuters väntetid." },
+      no: { title: "Bestill en Uber (Taxi)", body: "Trykk Kopier ved målet ditt, åpne Uber og lim inn adressen som mål. Uber henter deg der du står.", elviria: "Elviria by", marbella: "Marbella gamleby", airport: "Fra flyplassen til villaen", home: "Hjem til villaen", approx: "ca.", copy: "Kopier", open: "Åpne Uber", note: "Prisene er veiledende for en UberX på dagtid og kan være høyere på kvelder og i helger. Bilene står som regel ved kysten, så regn med 10–20 minutters ventetid." }
+    }[lang];
     if (!R) return "";
     var P = uberPlaces();
-    var fromVilla = uberLook(P.villa, null);
-    var toVilla = uberLook(null, P.villa);
-    function a(href, inner, cls) { return '<a class="' + cls + '" href="' + esc(href) + '" target="_blank" rel="noopener">' + inner + "</a>"; }
+    var VILLA_COPY = "Calle Navarra 5, 29612 Ojén, Málaga";
+    var D = [
+      { k: "elviria", icon: "i-car", copy: "Centro Comercial Elviria, Marbella", url: uberLook(P.villa, P.elviria), meta: R.approx + " 11–15 € · 12 min" },
+      { k: "marbella", icon: "i-car", copy: "Plaza de los Naranjos, Marbella", url: uberLook(P.villa, P.marbella), meta: R.approx + " 25–32 € · 20 min" },
+      { k: "airport", icon: "i-home", copy: VILLA_COPY, url: airportUberUrl(), meta: R.approx + " 50–65 € · 45 min" },
+      { k: "home", icon: "i-home", copy: VILLA_COPY, url: uberLook(null, P.villa), meta: VILLA_COPY }
+    ];
     return '<div class="card food ride" id="uber"><h3>' + esc(R.title) + '</h3><p class="muted" style="font-size:.9rem">' + esc(R.body) + "</p>" +
       '<div class="ride-list">' + D.map(function (d) {
-        return a(uberLook(P.villa, P[d.k]),
-          '<span class="ic">' + ic("i-car", 20) + '</span><span class="rt"><span class="t">' + esc(R[d.k]) + '</span><span class="s">' + esc(R.approx + " " + d.price + " · " + d.min + " min") + '</span></span><span class="go">›</span>', "ride-dest");
-      }).join("") +
-      a(airportUberUrl(), '<span class="ic">' + ic("i-car", 20) + '</span><span class="rt"><span class="t">' + esc(R.airport) + '</span><span class="s">' + esc(R.approx + " 50–65 € · 45 min") + '</span></span><span class="go">›</span>', "ride-dest") +
-      "</div>" +
-      '<div class="acts">' + a(fromVilla, ic("i-car", 18) + esc(R.other), "cta") + a(toVilla, ic("i-home", 18) + esc(R.home), "linkbtn") + "</div>" +
+        return '<div class="ride-dest"><span class="ic">' + ic(d.icon, 20) + '</span>' +
+          '<span class="rt"><span class="t">' + esc(R[d.k]) + '</span><span class="s">' + esc(d.meta) + "</span>" +
+          '<span class="ride-acts"><button class="btn" data-copy="' + esc(d.copy) + '">' + esc(R.copy) + "</button>" +
+          '<a class="linkbtn" href="' + esc(d.url) + '" target="_blank" rel="noopener">' + esc(R.open) + " ↗</a></span></span></div>";
+      }).join("") + "</div>" +
       '<div class="note">' + esc(R.note) + "</div></div>";
   }
   var WATER = { da:{ none: "Ingen strande har alle de valgte. Fjern et filter.", t: "Vandaktiviteter", all: "Alle strande" }, en: { none: "No beach has all the selected features. Remove a filter.", t: "Water sports", all: "All beaches" }, es: { none: "Ninguna playa tiene todo lo seleccionado. Quita un filtro.", t: "Actividades acuáticas", all: "Todas las playas" }, de: { none: "Kein Strand hat alle gewählten Merkmale. Entfernen Sie einen Filter.", t: "Wassersport", all: "Alle Strände" }, fr: { none: "Aucune plage ne réunit tous ces critères. Retirez un filtre.", t: "Activités nautiques", all: "Toutes les plages" }, sv: { none: "Ingen strand har allt som valts. Ta bort ett filter.", t: "Vattenaktiviteter", all: "Alla stränder" }, no: { none: "Ingen strand har alt som er valgt. Fjern et filter.", t: "Vannaktiviteter", all: "Alle strender" } };
