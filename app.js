@@ -267,7 +267,7 @@
     var D = [
       { k: "elviria", icon: "i-car", copy: "Centro Comercial Elviria, Marbella", url: uberLook(P.villa, P.elviria), meta: R.approx + " 11–15 € · 12 min" },
       { k: "marbella", icon: "i-car", copy: "Plaza de los Naranjos, Marbella", url: uberLook(P.villa, P.marbella), meta: R.approx + " 20–25 € · 20 min" },
-      { k: "airport", icon: "i-home", copy: VILLA_COPY, url: airportUberUrl(), meta: R.approx + " 50–65 € · 45 min" },
+      { k: "airport", icon: "i-home", copy: VILLA_COPY, url: airportUberUrl(), meta: R.approx + " 60–70 € · 45 min" },
       { k: "home", icon: "i-home", copy: VILLA_COPY, url: uberLook(null, P.villa), meta: VILLA_COPY }
     ];
     return '<div class="card food ride" id="uber"><h3>' + esc(R.title) + '</h3><p class="muted" style="font-size:.9rem">' + esc(R.body) + "</p>" +
