@@ -236,7 +236,7 @@
       "&dropoff%5Blatitude%5D=36.531&dropoff%5Blongitude%5D=-4.754&dropoff%5Bnickname%5D=VillaMairena&dropoff%5Bformatted_address%5D=" + e(ADDR);
   }
   function airportUberText() {
-    return { da: "Bestil Uber fra lufthavnen", en: "Order an Uber from the airport", es: "Pedir un Uber desde el aeropuerto", de: "Uber vom Flughafen bestellen", fr: "Commander un Uber depuis l'aéroport", sv: "Beställ Uber från flygplatsen", no: "Bestill Uber fra flyplassen" }[lang] || "Uber";
+    return { da: "Bestil Uber fra lufthavnen (Taxi)", en: "Order an Uber from the airport (Taxi)", es: "Pedir un Uber desde el aeropuerto (Taxi)", de: "Uber vom Flughafen bestellen (Taxi)", fr: "Commander un Uber depuis l'aéroport (Taxi)", sv: "Beställ Uber från flygplatsen (Taxi)", no: "Bestill Uber fra flyplassen (Taxi)" }[lang] || "Uber";
   }
   // Bestil Uber: åbner Uber-appen med villaen som afhentning (eller som mål for "hjem").
   function rideCard() {
