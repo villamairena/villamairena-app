@@ -229,18 +229,28 @@
   }
   var BFILT = ["food", "water", "kids", "long", "quiet", "dunes", "port", "nudist"];
   // Uber fra Málaga lufthavn direkte til villaen
-  function airportUberUrl() {
-    var e = encodeURIComponent;
-    return "https://m.uber.com/ul/?action=setPickup" +
-      "&pickup%5Blatitude%5D=36.6749&pickup%5Blongitude%5D=-4.4991&pickup%5Bnickname%5D=" + e("Aeropuerto de Málaga (AGP)") +
-      "&dropoff%5Blatitude%5D=36.531&dropoff%5Blongitude%5D=-4.754&dropoff%5Bnickname%5D=VillaMairena&dropoff%5Bformatted_address%5D=" + e(ADDR);
+  // Uber-links i Ubers web-format (m.uber.com/looking). Steder med Google place-id og præcise koordinater.
+  function uberPlaces() {
+    return {
+      villa: { addressLine1: "VillaMairena", addressLine2: "C. Navarra, 5, 29612 Ojén, Málaga, Spain", id: "ChIJhbnni5Tfcg0R8BOvhlYEbjs", latitude: 36.5322322, longitude: -4.7508528 },
+      elviria: { addressLine1: "Centro Comercial Elviria", addressLine2: "29604 Marbella, Málaga, Spain", id: "ChIJvW80-Ywgcw0R182MfUh-_tI", latitude: 36.495854, longitude: -4.7771567 },
+      marbella: { addressLine1: "Plaza de los Naranjos", addressLine2: "29601 Marbella, Málaga, Spain", id: "ChIJDQK2jwfYcg0RUsVl43kzoXk", latitude: 36.5100993, longitude: -4.8850214 },
+      airport: { addressLine1: "Málaga-Costa del Sol Airport (AGP)", addressLine2: "Av. del Comandante García Morato, 29004 Málaga, Spain", id: "ChIJpTC6dhj6cg0Rmj7eRy-ttVc", latitude: 36.6767427, longitude: -4.4938696 }
+    };
   }
+  function uberLook(pick, drop) {
+    function j(o) { var x = {}; for (var k in o) x[k] = o[k]; x.source = "SEARCH"; x.provider = "google_places"; return encodeURIComponent(JSON.stringify(x)); }
+    var q = [];
+    if (pick) q.push("pickup=" + j(pick));
+    if (drop) q.push("drop%5B0%5D=" + j(drop));
+    return "https://m.uber.com/looking" + (q.length ? "?" + q.join("&") : "");
+  }
+  function airportUberUrl() { var P = uberPlaces(); return uberLook(P.airport, P.villa); }
   function airportUberText() {
     return { da: "Bestil Uber fra lufthavnen (Taxi)", en: "Order an Uber from the airport (Taxi)", es: "Pedir un Uber desde el aeropuerto (Taxi)", de: "Uber vom Flughafen bestellen (Taxi)", fr: "Commander un Uber depuis l'aéroport (Taxi)", sv: "Beställ Uber från flygplatsen (Taxi)", no: "Bestill Uber fra flyplassen (Taxi)" }[lang] || "Uber";
   }
   // Bestil Uber: åbner Uber-appen med villaen som afhentning (eller som mål for "hjem").
   function rideCard() {
-    var V = { lat: 36.531, lng: -4.754, name: "VillaMairena" };
     var D = [
       { k: "elviria", lat: 36.5008, lng: -4.7660, price: "15–20 €", min: 12 },
       { k: "marbella", lat: 36.5103, lng: -4.8848, price: "25–32 €", min: 20 }
@@ -255,17 +265,13 @@
       no: { airport: "Fra flyplassen til villaen", title: "Bestill en Uber (Taxi)", body: "Trykk på et mål. Uber-appen åpnes med villaen som hentested.", elviria: "Elviria by", marbella: "Marbella gamleby", approx: "ca.", other: "Annet mål", home: "Hjem til villaen", note: "Prisene er veiledende for en UberX på dagtid og kan være høyere på kvelder og i helger. Bilene står som regel ved kysten, så regn med 10–20 minutters ventetid." }
     }[lang] || null;
     if (!R) return "";
-    function pt(p, lat, lng, nick, addr) {
-      return "&" + p + "%5Blatitude%5D=" + lat + "&" + p + "%5Blongitude%5D=" + lng + "&" + p + "%5Bnickname%5D=" + encodeURIComponent(nick) +
-        (addr ? "&" + p + "%5Bformatted_address%5D=" + encodeURIComponent(addr) : "");
-    }
-    var base = "https://m.uber.com/ul/?action=setPickup";
-    var fromVilla = base + pt("pickup", V.lat, V.lng, V.name, ADDR);
-    var toVilla = base + "&pickup=my_location" + pt("dropoff", V.lat, V.lng, V.name, ADDR);
+    var P = uberPlaces();
+    var fromVilla = uberLook(P.villa, null);
+    var toVilla = uberLook(null, P.villa);
     function a(href, inner, cls) { return '<a class="' + cls + '" href="' + esc(href) + '" target="_blank" rel="noopener">' + inner + "</a>"; }
     return '<div class="card food ride" id="uber"><h3>' + esc(R.title) + '</h3><p class="muted" style="font-size:.9rem">' + esc(R.body) + "</p>" +
       '<div class="ride-list">' + D.map(function (d) {
-        return a(fromVilla + pt("dropoff", d.lat, d.lng, R[d.k]),
+        return a(uberLook(P.villa, P[d.k]),
           '<span class="ic">' + ic("i-car", 20) + '</span><span class="rt"><span class="t">' + esc(R[d.k]) + '</span><span class="s">' + esc(R.approx + " " + d.price + " · " + d.min + " min") + '</span></span><span class="go">›</span>', "ride-dest");
       }).join("") +
       a(airportUberUrl(), '<span class="ic">' + ic("i-car", 20) + '</span><span class="rt"><span class="t">' + esc(R.airport) + '</span><span class="s">' + esc(R.approx + " 50–65 € · 45 min") + '</span></span><span class="go">›</span>', "ride-dest") +
