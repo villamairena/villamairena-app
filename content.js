@@ -94,7 +94,7 @@ window.VM_CONTENT = {
       dailyTodo: "Tilføj jeres foretrukne supermarked og bager",
       expTitle: "Oplevelser", suggestion: "Forslag",
       exp: [
-        { key: "golf", n: "Golf", d: "5–35 min", s: "Mere end 10 golfbaner i verdensklasse." },
+        { key: "golf", n: "Golf", d: "5–35 min", s: "16 golfbaner i verdensklasse." },
         { key: "padel", n: "Padel", d: "Inden for 15 min", s: "Padelbaner i området." },
         { key: "kultur", n: "Seværdigheder og kultur", d: "20–25 min", s: "Museer, kirker, gamle bydele og historiske steder." }
       ],
@@ -238,7 +238,7 @@ window.VM_CONTENT = {
       dailyTodo: "Your favourite supermarket and bakery",
       expTitle: "Things to do", suggestion: "Suggestion",
       exp: [
-        { key: "golf", n: "Golf", d: "5–35 min", s: "More than 10 world-class golf courses." },
+        { key: "golf", n: "Golf", d: "5–35 min", s: "16 world-class golf courses." },
         { key: "padel", n: "Padel", d: "Within 15 min", s: "Padel courts in the area." },
         { key: "kultur", n: "Sights and culture", d: "20–25 min", s: "Museums, churches, old towns and historic sites." }
       ],
@@ -382,7 +382,7 @@ window.VM_CONTENT = {
       dailyTodo: "Vuestro supermercado y panadería favoritos",
       expTitle: "Qué hacer", suggestion: "Sugerencia",
       exp: [
-        { key: "golf", n: "Golf", d: "5–35 min", s: "Más de 10 campos de golf de primer nivel." },
+        { key: "golf", n: "Golf", d: "5–35 min", s: "16 campos de golf de primer nivel." },
         { key: "padel", n: "Pádel", d: "A menos de 15 min", s: "Pistas de pádel en la zona." },
         { key: "kultur", n: "Monumentos y cultura", d: "20–25 min", s: "Museos, iglesias, cascos antiguos y lugares históricos." }
       ],
@@ -526,7 +526,7 @@ window.VM_CONTENT = {
       dailyTodo: "Ihr Lieblingssupermarkt und Ihre Lieblingsbäckerei",
       expTitle: "Erlebnisse", suggestion: "Vorschlag",
       exp: [
-        { key: "golf", n: "Golf", d: "5–35 Min.", s: "Mehr als 10 Golfplätze der Spitzenklasse." },
+        { key: "golf", n: "Golf", d: "5–35 Min.", s: "16 Golfplätze der Spitzenklasse." },
         { key: "padel", n: "Padel", d: "Innerhalb von 15 Min.", s: "Padelplätze in der Umgebung." },
         { key: "kultur", n: "Sehenswürdigkeiten und Kultur", d: "20–25 Min.", s: "Museen, Kirchen, Altstädte und historische Orte." }
       ],
@@ -3307,7 +3307,7 @@ window.VM_CONTENT.fr = {
     "key": "golf",
     "n": "Golf",
     "d": "5–35 min",
-    "s": "Plus de 10 parcours de golf de classe mondiale."
+    "s": "16 parcours de golf de classe mondiale."
    },
    {
     "key": "padel",
@@ -4768,7 +4768,7 @@ window.VM_CONTENT.sv = {
     "key": "golf",
     "n": "Golf",
     "d": "5–35 min",
-    "s": "Fler än 10 golfbanor i världsklass."
+    "s": "16 golfbanor i världsklass."
    },
    {
     "key": "padel",
@@ -6229,7 +6229,7 @@ window.VM_CONTENT.no = {
     "key": "golf",
     "n": "Golf",
     "d": "5–35 min",
-    "s": "Mer enn 10 golfbaner i verdensklasse."
+    "s": "16 golfbaner i verdensklasse."
    },
    {
     "key": "padel",
