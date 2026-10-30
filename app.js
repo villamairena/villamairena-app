@@ -373,6 +373,76 @@
   };
   function gygUrl(q) { return "https://www.getyourguide.com/s/?q=" + encodeURIComponent(q) + "&partner_id=" + GYG_PARTNER + "&cmp=villamairena-app&locale_autoset=true"; }
   function gygLink(name) { var q = GYG_Q[name]; return q ? '<a href="' + gygUrl(q) + '" target="_blank" rel="noopener sponsored">' + esc({ da: "Find ture", en: "Find tours", es: "Ver tours", de: "Touren finden", fr: "Voir les excursions", sv: "Hitta turer", no: "Finn turer" }[lang]) + " ↗</a>" : ""; }
+  // Færdige ture i bil: rundture fra villaen med flere stop i Google Maps
+  function renderCarTrips() {
+    var L = {
+      da: { title: "Færdige ture i bil", intro: "Rundture fra villaen og hjem igen. Tryk på Åbn rute, så viser Google Maps hele turen med alle stop.", drive: "Køretid i alt", open: "Åbn rute", day: "Heldag", half: "Halv dag", stops: "Stop",
+        white: ["Ronda og de hvide byer", "Gå over broen Puente Nuevo i Ronda og spis frokost under klipperne i Setenil."],
+        mijas: ["Mijas Pueblo og stranden", "Hvid bjergby med udsigt over kysten. Slut af med en tur på stranden ved borgen i Fuengirola."],
+        granada: ["Granada og Alhambra", "Book billetter til Alhambra i god tid. Se solnedgangen fra Mirador de San Nicolás."],
+        nerja: ["Nerja og Frigiliana", "Drypstenshulerne i Nerja, udsigten fra Balcón de Europa og de smalle gader i Frigiliana."],
+        hills: ["Bjergene bag villaen", "Ojén og skoven ved Refugio de Juanar, derefter middag i Marbellas gamle bydel."] },
+      en: { title: "Ready-made road trips", intro: "Round trips from the villa and back. Tap Open route and Google Maps shows the whole trip with every stop.", drive: "Total driving", open: "Open route", day: "Full day", half: "Half day", stops: "Stops",
+        white: ["Ronda and the white villages", "Walk across the Puente Nuevo bridge in Ronda and have lunch under the rocks in Setenil."],
+        mijas: ["Mijas Pueblo and the beach", "A white mountain village with views of the coast. Finish on the beach by the castle in Fuengirola."],
+        granada: ["Granada and the Alhambra", "Book Alhambra tickets well ahead. Watch the sunset from Mirador de San Nicolás."],
+        nerja: ["Nerja and Frigiliana", "The Nerja caves, the view from Balcón de Europa and the narrow streets of Frigiliana."],
+        hills: ["The hills behind the villa", "Ojén and the forest at Refugio de Juanar, then dinner in Marbella old town."] },
+      es: { title: "Rutas en coche", intro: "Rutas circulares desde la villa. Pulsa Abrir ruta y Google Maps muestra todo el recorrido con cada parada.", drive: "Conducción total", open: "Abrir ruta", day: "Día completo", half: "Medio día", stops: "Paradas",
+        white: ["Ronda y los pueblos blancos", "Cruza el Puente Nuevo de Ronda y come bajo las rocas de Setenil."],
+        mijas: ["Mijas Pueblo y la playa", "Pueblo blanco con vistas a la costa. Termina en la playa junto al castillo de Fuengirola."],
+        granada: ["Granada y la Alhambra", "Reserva las entradas de la Alhambra con antelación. Atardecer en el Mirador de San Nicolás."],
+        nerja: ["Nerja y Frigiliana", "Las cuevas de Nerja, el Balcón de Europa y las calles estrechas de Frigiliana."],
+        hills: ["La sierra detrás de la villa", "Ojén y el bosque del Refugio de Juanar, y luego cena en el casco antiguo de Marbella."] },
+      de: { title: "Fertige Autotouren", intro: "Rundtouren ab der Villa und zurück. Tippen Sie auf Route öffnen, dann zeigt Google Maps die ganze Tour mit allen Stopps.", drive: "Fahrzeit gesamt", open: "Route öffnen", day: "Ganztägig", half: "Halbtägig", stops: "Stopps",
+        white: ["Ronda und die weißen Dörfer", "Über die Brücke Puente Nuevo in Ronda und Mittagessen unter den Felsen von Setenil."],
+        mijas: ["Mijas Pueblo und der Strand", "Weißes Bergdorf mit Blick auf die Küste. Zum Schluss an den Strand bei der Burg in Fuengirola."],
+        granada: ["Granada und die Alhambra", "Alhambra-Tickets frühzeitig buchen. Sonnenuntergang vom Mirador de San Nicolás."],
+        nerja: ["Nerja und Frigiliana", "Die Tropfsteinhöhlen von Nerja, der Balcón de Europa und die engen Gassen von Frigiliana."],
+        hills: ["Die Berge hinter der Villa", "Ojén und der Wald am Refugio de Juanar, danach Abendessen in der Altstadt von Marbella."] },
+      fr: { title: "Circuits en voiture", intro: "Boucles au départ de la villa. Touchez Ouvrir l'itinéraire et Google Maps affiche tout le circuit avec chaque arrêt.", drive: "Conduite totale", open: "Ouvrir l'itinéraire", day: "Journée", half: "Demi-journée", stops: "Arrêts",
+        white: ["Ronda et les villages blancs", "Traversez le Puente Nuevo à Ronda et déjeunez sous les rochers de Setenil."],
+        mijas: ["Mijas Pueblo et la plage", "Village blanc avec vue sur la côte. Terminez sur la plage près du château de Fuengirola."],
+        granada: ["Grenade et l'Alhambra", "Réservez les billets de l'Alhambra à l'avance. Coucher de soleil au Mirador de San Nicolás."],
+        nerja: ["Nerja et Frigiliana", "Les grottes de Nerja, la vue du Balcón de Europa et les ruelles de Frigiliana."],
+        hills: ["Les collines derrière la villa", "Ojén et la forêt du Refugio de Juanar, puis dîner dans la vieille ville de Marbella."] },
+      sv: { title: "Färdiga bilturer", intro: "Rundturer från villan och hem igen. Tryck på Öppna rutt så visar Google Maps hela turen med alla stopp.", drive: "Total körtid", open: "Öppna rutt", day: "Heldag", half: "Halvdag", stops: "Stopp",
+        white: ["Ronda och de vita byarna", "Gå över bron Puente Nuevo i Ronda och ät lunch under klipporna i Setenil."],
+        mijas: ["Mijas Pueblo och stranden", "Vit bergsby med utsikt över kusten. Avsluta på stranden vid borgen i Fuengirola."],
+        granada: ["Granada och Alhambra", "Boka biljetter till Alhambra i god tid. Se solnedgången från Mirador de San Nicolás."],
+        nerja: ["Nerja och Frigiliana", "Droppstensgrottorna i Nerja, utsikten från Balcón de Europa och de smala gatorna i Frigiliana."],
+        hills: ["Bergen bakom villan", "Ojén och skogen vid Refugio de Juanar, sedan middag i Marbellas gamla stad."] },
+      no: { title: "Ferdige bilturer", intro: "Rundturer fra villaen og hjem igjen. Trykk på Åpne rute, så viser Google Maps hele turen med alle stopp.", drive: "Kjøretid totalt", open: "Åpne rute", day: "Heldag", half: "Halv dag", stops: "Stopp",
+        white: ["Ronda og de hvite byene", "Gå over broen Puente Nuevo i Ronda og spis lunsj under klippene i Setenil."],
+        mijas: ["Mijas Pueblo og stranden", "Hvit fjellby med utsikt over kysten. Avslutt på stranden ved borgen i Fuengirola."],
+        granada: ["Granada og Alhambra", "Bestill billetter til Alhambra i god tid. Se solnedgangen fra Mirador de San Nicolás."],
+        nerja: ["Nerja og Frigiliana", "Dryppsteinshulene i Nerja, utsikten fra Balcón de Europa og de smale gatene i Frigiliana."],
+        hills: ["Fjellene bak villaen", "Ojén og skogen ved Refugio de Juanar, deretter middag i Marbellas gamleby."] }
+    }[lang];
+    if (!L) return "";
+    var VILLA = "Calle Navarra 5, 29612 La Mairena, Ojén, Málaga";
+    var R = [
+      ["white", "day", 190, ["Puente Nuevo, Ronda", "Setenil de las Bodegas"]],
+      ["mijas", "half", 70, ["Mijas Pueblo", "Castillo Sohail, Fuengirola"]],
+      ["granada", "day", 240, ["Alhambra, Granada", "Mirador de San Nicolás, Granada"]],
+      ["nerja", "day", 180, ["Cueva de Nerja", "Balcón de Europa, Nerja", "Frigiliana"]],
+      ["hills", "half", 70, ["Ojén", "Refugio de Juanar", "Plaza de los Naranjos, Marbella"]]
+    ];
+    function dur(m) { var h = Math.floor(m / 60), r = m % 60, u = { da: "t", en: "h", es: "h", de: "Std.", fr: "h", sv: "tim", no: "t" }[lang]; return CA() + " " + (h ? h + " " + u + (r ? " " + r + " min" : "") : r + " min"); }
+    function url(stops) {
+      return "https://www.google.com/maps/dir/?api=1&origin=" + encodeURIComponent(VILLA) + "&destination=" + encodeURIComponent(VILLA) +
+        "&waypoints=" + encodeURIComponent(stops.join("|")) + "&travelmode=driving";
+    }
+    return '<div class="card golf" id="bilture"><h3>' + esc(L.title) + '</h3><p class="muted" style="font-size:.9rem">' + esc(L.intro) + "</p><ol>" +
+      R.map(function (r) {
+        var t = L[r[0]];
+        return '<li><div class="gh"><span class="gn">' + esc(t[0]) + '</span><span class="gm">' + esc(L[r[1]]) + "</span></div>" +
+          '<span class="gs">' + esc(t[1]) + "</span>" +
+          '<span class="gs"><strong>' + esc(L.stops) + ":</strong> " + esc(r[3].map(function (x) { return x.split(",")[0]; }).join(" → ")) + "</span>" +
+          '<span class="gs">' + esc(L.drive) + ": " + esc(dur(r[2])) + "</span>" +
+          '<span class="gl"><a href="' + esc(url(r[3])) + '" target="_blank" rel="noopener">' + ic("i-car", 14) + esc(L.open) + "</a></span></li>";
+      }).join("") + "</ol></div>";
+  }
   // Populære oplevelser med booking via GetYourGuide (partner-link)
   function renderGygPicks() {
     var L = {
@@ -475,6 +545,7 @@
       renderMarkets() +
       '<div class="card"><h3>' + esc(a.expTitle) + "</h3>" + places(a.exp.concat(E().expExtra || []), a.suggestion) +
         '<div class="gyg"><p class="muted" style="font-size:.86rem">' + esc({ da: "Se alle ture og oplevelser i området, med guide og afhentning.", en: "See all tours and activities in the area, with guide and pick-up.", es: "Todos los tours y actividades de la zona, con guía y recogida.", de: "Alle Touren und Aktivitäten in der Umgebung, mit Guide und Abholung.", fr: "Toutes les excursions et activités de la région, avec guide et prise en charge.", sv: "Se alla turer och upplevelser i området, med guide och upphämtning.", no: "Se alle turer og opplevelser i området, med guide og henting." }[lang]) + '</p><a class="cta" href="' + gygUrl("Marbella") + '" target="_blank" rel="noopener sponsored">' + esc({ da: "Find ture i området", en: "Find tours nearby", es: "Ver tours en la zona", de: "Touren in der Nähe", fr: "Excursions à proximité", sv: "Hitta turer i området", no: "Finn turer i området" }[lang]) + " ↗</a></div>" + "</div>" +
+      renderCarTrips() +
       renderGygPicks() +
       '<div class="card" id="praktisk"><h3>' + esc(E().pracTitle) + "</h3>" + infoList(E().prac || []) +
       '<details class="words"><summary>' + esc(E().wordsTitle) + '</summary><div class="tbl">' + (E().words || []).map(function (w) { return '<div><span lang="es"><strong>' + esc(w.es) + "</strong></span><span></span><span>" + esc(w.x) + "</span></div>"; }).join("") + "</div></details></div>";
@@ -800,7 +871,7 @@
     else if (target === "transport") { tab = "ankomst"; focusEl = target; }
     else if (target === "kom-igen" || target === "sundhed") { tab = "kontakt"; focusEl = target; }
     else if (target === "mad" || target === "vejr") { tab = "hjem"; focusEl = target; }
-    else if (["oplevelser","golf","padel","strande","indkoeb","markeder","markedsdage","begivenheder","kultur","restauranter","dagsture","born","natur","praktisk"].indexOf(target) >= 0) { tab = "omraadet"; focusEl = target; }
+    else if (["bilture","oplevelser","golf","padel","strande","indkoeb","markeder","markedsdage","begivenheder","kultur","restauranter","dagsture","born","natur","praktisk"].indexOf(target) >= 0) { tab = "omraadet"; focusEl = target; }
     if (PANELS.indexOf(tab) < 0) tab = "hjem";
     current = tab;
     PANELS.forEach(function (id) { document.getElementById(id).hidden = id !== tab; });
