@@ -373,6 +373,36 @@
   };
   function gygUrl(q) { return "https://www.getyourguide.com/s/?q=" + encodeURIComponent(q) + "&partner_id=" + GYG_PARTNER + "&cmp=villamairena-app&locale_autoset=true"; }
   function gygLink(name) { var q = GYG_Q[name]; return q ? '<a href="' + gygUrl(q) + '" target="_blank" rel="noopener sponsored">' + esc({ da: "Find ture", en: "Find tours", es: "Ver tours", de: "Touren finden", fr: "Voir les excursions", sv: "Hitta turer", no: "Finn turer" }[lang]) + " ↗</a>" : ""; }
+  // Populære oplevelser med booking via GetYourGuide (partner-link)
+  function renderGygPicks() {
+    var L = {
+      da: { title: "Book en oplevelse", intro: "Populære ture og oplevelser i området. Du booker og betaler direkte hos GetYourGuide, ofte med gratis afbestilling.", go: "Se ture", day: "Heldagstur", half: "Halv dag", eve: "Aften",
+        caminito: "Caminito del Rey", boat: "Bådtur og delfiner", alhambra: "Alhambra i Granada", ronda: "Ronda og de hvide byer", gibraltar: "Gibraltar", flamenco: "Flamenco-aften", tapas: "Tapas- og madtur i Málaga", wine: "Vinsmagning ved Ronda", kayak: "Kajak og paddleboard", jeep: "Jeepsafari i bjergene" },
+      en: { title: "Book an experience", intro: "Popular tours and activities nearby. You book and pay directly with GetYourGuide, often with free cancellation.", go: "See tours", day: "Full day", half: "Half day", eve: "Evening",
+        caminito: "Caminito del Rey", boat: "Boat trip and dolphins", alhambra: "Alhambra in Granada", ronda: "Ronda and the white villages", gibraltar: "Gibraltar", flamenco: "Flamenco evening", tapas: "Tapas and food tour in Málaga", wine: "Wine tasting near Ronda", kayak: "Kayak and paddleboard", jeep: "Jeep safari in the mountains" },
+      es: { title: "Reserva una experiencia", intro: "Tours y actividades populares en la zona. Reservas y pagas directamente en GetYourGuide, a menudo con cancelación gratuita.", go: "Ver tours", day: "Día completo", half: "Medio día", eve: "Noche",
+        caminito: "Caminito del Rey", boat: "Paseo en barco y delfines", alhambra: "La Alhambra de Granada", ronda: "Ronda y los pueblos blancos", gibraltar: "Gibraltar", flamenco: "Noche de flamenco", tapas: "Ruta de tapas en Málaga", wine: "Cata de vinos en Ronda", kayak: "Kayak y paddle surf", jeep: "Safari en jeep por la sierra" },
+      de: { title: "Erlebnis buchen", intro: "Beliebte Touren und Aktivitäten in der Umgebung. Sie buchen und bezahlen direkt bei GetYourGuide, oft mit kostenloser Stornierung.", go: "Touren ansehen", day: "Ganztägig", half: "Halbtägig", eve: "Abends",
+        caminito: "Caminito del Rey", boat: "Bootstour und Delfine", alhambra: "Alhambra in Granada", ronda: "Ronda und die weißen Dörfer", gibraltar: "Gibraltar", flamenco: "Flamenco-Abend", tapas: "Tapas- und Food-Tour in Málaga", wine: "Weinprobe bei Ronda", kayak: "Kajak und Stand-up-Paddling", jeep: "Jeep-Safari in den Bergen" },
+      fr: { title: "Réserver une activité", intro: "Excursions et activités populaires dans la région. Vous réservez et payez directement sur GetYourGuide, souvent avec annulation gratuite.", go: "Voir les excursions", day: "Journée", half: "Demi-journée", eve: "Soirée",
+        caminito: "Caminito del Rey", boat: "Sortie en bateau et dauphins", alhambra: "L'Alhambra de Grenade", ronda: "Ronda et les villages blancs", gibraltar: "Gibraltar", flamenco: "Soirée flamenco", tapas: "Tour des tapas à Málaga", wine: "Dégustation de vins près de Ronda", kayak: "Kayak et paddle", jeep: "Safari en jeep dans la montagne" },
+      sv: { title: "Boka en upplevelse", intro: "Populära turer och aktiviteter i området. Du bokar och betalar direkt hos GetYourGuide, ofta med gratis avbokning.", go: "Se turer", day: "Heldag", half: "Halvdag", eve: "Kväll",
+        caminito: "Caminito del Rey", boat: "Båttur och delfiner", alhambra: "Alhambra i Granada", ronda: "Ronda och de vita byarna", gibraltar: "Gibraltar", flamenco: "Flamencokväll", tapas: "Tapas- och mattur i Málaga", wine: "Vinprovning vid Ronda", kayak: "Kajak och paddleboard", jeep: "Jeepsafari i bergen" },
+      no: { title: "Book en opplevelse", intro: "Populære turer og opplevelser i området. Du booker og betaler direkte hos GetYourGuide, ofte med gratis avbestilling.", go: "Se turer", day: "Heldagstur", half: "Halv dag", eve: "Kveld",
+        caminito: "Caminito del Rey", boat: "Båttur og delfiner", alhambra: "Alhambra i Granada", ronda: "Ronda og de hvite byene", gibraltar: "Gibraltar", flamenco: "Flamenco-kveld", tapas: "Tapas- og mattur i Málaga", wine: "Vinsmaking ved Ronda", kayak: "Kajakk og padlebrett", jeep: "Jeepsafari i fjellene" }
+    }[lang];
+    if (!L) return "";
+    var P = [
+      ["caminito", "day", "Caminito del Rey"], ["boat", "half", "Marbella boat trip dolphins"], ["alhambra", "day", "Alhambra Granada from Marbella"],
+      ["ronda", "day", "Ronda white villages from Marbella"], ["gibraltar", "day", "Gibraltar day trip from Marbella"], ["flamenco", "eve", "flamenco show Marbella"],
+      ["tapas", "half", "Malaga tapas tour"], ["wine", "half", "Ronda wine tasting"], ["kayak", "half", "Marbella kayak paddle board"], ["jeep", "half", "jeep safari Marbella"]
+    ];
+    return '<div class="card" id="oplevelser"><h3>' + esc(L.title) + '</h3><p class="muted" style="font-size:.9rem">' + esc(L.intro) + '</p><div class="ride-list">' +
+      P.map(function (x) {
+        return '<a class="ride-dest" href="' + gygUrl(x[2]) + '" target="_blank" rel="noopener sponsored"><span class="rt"><span class="t">' + esc(L[x[0]]) +
+          '</span><span class="s">' + esc(L[x[1]]) + '</span></span><span class="s" style="color:var(--pine);font-weight:700;font-size:.85rem;white-space:nowrap">' + esc(L.go) + ' ↗</span></a>';
+      }).join("") + "</div></div>";
+  }
   function xlistItem(key, title, d, s, intro, list, note) {
     var a = T.area, origin = encodeURIComponent("Calle Navarra 5, 29612 La Mairena, Ojén");
     return '<details class="place golf" id="' + key + '"><summary><span class="nm">' + esc(title) + '</span><span class="dist">' + esc(d || "") + "</span>" + (s ? '<span class="ds">' + esc(s) + "</span>" : "") + "</summary>" +
@@ -445,6 +475,7 @@
       renderMarkets() +
       '<div class="card"><h3>' + esc(a.expTitle) + "</h3>" + places(a.exp.concat(E().expExtra || []), a.suggestion) +
         '<div class="gyg"><p class="muted" style="font-size:.86rem">' + esc({ da: "Se alle ture og oplevelser i området, med guide og afhentning.", en: "See all tours and activities in the area, with guide and pick-up.", es: "Todos los tours y actividades de la zona, con guía y recogida.", de: "Alle Touren und Aktivitäten in der Umgebung, mit Guide und Abholung.", fr: "Toutes les excursions et activités de la région, avec guide et prise en charge.", sv: "Se alla turer och upplevelser i området, med guide och upphämtning.", no: "Se alle turer og opplevelser i området, med guide og henting." }[lang]) + '</p><a class="cta" href="' + gygUrl("Marbella") + '" target="_blank" rel="noopener sponsored">' + esc({ da: "Find ture i området", en: "Find tours nearby", es: "Ver tours en la zona", de: "Touren in der Nähe", fr: "Excursions à proximité", sv: "Hitta turer i området", no: "Finn turer i området" }[lang]) + " ↗</a></div>" + "</div>" +
+      renderGygPicks() +
       '<div class="card" id="praktisk"><h3>' + esc(E().pracTitle) + "</h3>" + infoList(E().prac || []) +
       '<details class="words"><summary>' + esc(E().wordsTitle) + '</summary><div class="tbl">' + (E().words || []).map(function (w) { return '<div><span lang="es"><strong>' + esc(w.es) + "</strong></span><span></span><span>" + esc(w.x) + "</span></div>"; }).join("") + "</div></details></div>";
   }
@@ -769,7 +800,7 @@
     else if (target === "transport") { tab = "ankomst"; focusEl = target; }
     else if (target === "kom-igen" || target === "sundhed") { tab = "kontakt"; focusEl = target; }
     else if (target === "mad" || target === "vejr") { tab = "hjem"; focusEl = target; }
-    else if (["golf","padel","strande","indkoeb","markeder","markedsdage","begivenheder","kultur","restauranter","dagsture","born","natur","praktisk"].indexOf(target) >= 0) { tab = "omraadet"; focusEl = target; }
+    else if (["oplevelser","golf","padel","strande","indkoeb","markeder","markedsdage","begivenheder","kultur","restauranter","dagsture","born","natur","praktisk"].indexOf(target) >= 0) { tab = "omraadet"; focusEl = target; }
     if (PANELS.indexOf(tab) < 0) tab = "hjem";
     current = tab;
     PANELS.forEach(function (id) { document.getElementById(id).hidden = id !== tab; });
