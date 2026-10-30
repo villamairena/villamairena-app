@@ -232,8 +232,8 @@
   function airportUberUrl() {
     var e = encodeURIComponent;
     return "https://m.uber.com/ul/?action=setPickup" +
-      "&pickup[latitude]=36.6749&pickup[longitude]=-4.4991&pickup[nickname]=" + e("Aeropuerto de Málaga (AGP)") +
-      "&dropoff[latitude]=36.531&dropoff[longitude]=-4.754&dropoff[nickname]=VillaMairena&dropoff[formatted_address]=" + e(ADDR);
+      "&pickup%5Blatitude%5D=36.6749&pickup%5Blongitude%5D=-4.4991&pickup%5Bnickname%5D=" + e("Aeropuerto de Málaga (AGP)") +
+      "&dropoff%5Blatitude%5D=36.531&dropoff%5Blongitude%5D=-4.754&dropoff%5Bnickname%5D=VillaMairena&dropoff%5Bformatted_address%5D=" + e(ADDR);
   }
   function airportUberText() {
     return { da: "Bestil Uber fra lufthavnen", en: "Order an Uber from the airport", es: "Pedir un Uber desde el aeropuerto", de: "Uber vom Flughafen bestellen", fr: "Commander un Uber depuis l'aéroport", sv: "Beställ Uber från flygplatsen", no: "Bestill Uber fra flyplassen" }[lang] || "Uber";
@@ -256,8 +256,8 @@
     }[lang] || null;
     if (!R) return "";
     function pt(p, lat, lng, nick, addr) {
-      return "&" + p + "[latitude]=" + lat + "&" + p + "[longitude]=" + lng + "&" + p + "[nickname]=" + encodeURIComponent(nick) +
-        (addr ? "&" + p + "[formatted_address]=" + encodeURIComponent(addr) : "");
+      return "&" + p + "%5Blatitude%5D=" + lat + "&" + p + "%5Blongitude%5D=" + lng + "&" + p + "%5Bnickname%5D=" + encodeURIComponent(nick) +
+        (addr ? "&" + p + "%5Bformatted_address%5D=" + encodeURIComponent(addr) : "");
     }
     var base = "https://m.uber.com/ul/?action=setPickup";
     var fromVilla = base + pt("pickup", V.lat, V.lng, V.name, ADDR);
